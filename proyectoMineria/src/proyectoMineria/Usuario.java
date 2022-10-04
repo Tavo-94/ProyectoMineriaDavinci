@@ -12,6 +12,13 @@ public abstract class Usuario {
 	
 	
 	
+	public Usuario(String nombreUsuario, String clave, String cargo, Boolean estadoActivo) {
+		super();
+		this.nombreUsuario = nombreUsuario;
+		this.clave = clave;
+		this.cargo = cargo;
+		this.estadoActivo = estadoActivo;
+	}
 	public abstract void loguearse(String nombreDeUsuario, String clave);
 	public abstract void cambiarClave(String claveNueva);
 	public abstract void cerrarSesion();
