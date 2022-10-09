@@ -58,9 +58,30 @@ public class AdminSistema extends Usuario {
 	
 		
 	@Override
-	public void cambiarClave(Scanner inputUsuario) {
+	public void cambiarClave(Scanner inputDelUsuario) {
 		// TODO Auto-generated method stub
+		String nombreUsuario;
+		String clave;
+		String claveNueva;
+
+		System.out.println("ingresar nombre de usuario");
+		do {
+			nombreUsuario = inputDelUsuario.next();
+		} while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
 		
+		System.out.println("ingresar clave actual");
+		do {
+			clave = inputDelUsuario.next();
+		} while (clave.isBlank() || clave.isEmpty());
+
+		System.out.println("ingresar clave nueva");
+		do {
+			claveNueva = inputDelUsuario.next();
+		} while (claveNueva.isBlank() || claveNueva.isEmpty());
+		
+		if (this.validarLogIn(nombreUsuario, clave)) {
+			this.getMineria().cambiarClave(nombreUsuario, claveNueva);
+		}
 	}
 
 
@@ -119,6 +140,27 @@ public class AdminSistema extends Usuario {
 
 	}
 	
+	public void darDeBaja(Scanner inputDelUsuario) {
+		String nombreUsuario;
+		
+		System.out.println("ingresar nombre de usuario a dar de baja");
+		do {
+			nombreUsuario = inputDelUsuario.next();
+		} while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+		
+		this.getMineria().bajaUsuario(nombreUsuario);
+	}
+	
+	public void darDeAlta(Scanner inputDelUsuario) {
+		String nombreUsuario;
+		
+		System.out.println("ingresar nombre de usuario a dar de Alta");
+		do {
+			nombreUsuario = inputDelUsuario.next();
+		} while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+		
+		this.getMineria().altaUsuario(nombreUsuario);
+	}
 	
 	/*public Boolean validarDatos(String nombreUsuario, String clave, String cargo, Boolean estadoActivo) {
 		//usar listas + stream api para recorrer toda la coleccion y verificar que el nombre de usuario y el cargo no se encuentre ya ingresados en la coleccion de <usuarios>

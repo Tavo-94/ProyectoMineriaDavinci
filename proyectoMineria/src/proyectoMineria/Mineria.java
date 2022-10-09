@@ -42,6 +42,11 @@ public class Mineria {
 		return listaUsuariosAdmin.stream().anyMatch(admin -> admin.getNombreUsuario().equals(nombreUsuario) && admin.getClave().equals(clave));
 	}
 
+	public void cambiarClave(String nombreUsuario, String claveNueva) {
+		if (this.listaUsuariosAdmin.stream().anyMatch(admin -> admin.getNombreUsuario().equals(nombreUsuario))) {
+			listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario)).forEach(admin -> admin.setClave(claveNueva));;
+		}
+	}
 	
 	public List<Usuario> getListaUsuariosVentas() {
 		return listaUsuariosVentas;
@@ -76,6 +81,18 @@ public class Mineria {
 	@Override
 	public String toString() {
 		return "Mineria [nombre=" + nombre + "]";
+	}
+
+
+	public void bajaUsuario(String nombreUsuario) {
+		// TODO Auto-generated method stub
+		this.listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario)).forEach(admin -> admin.setEstadoActivo(false));
+	}
+
+
+	public void altaUsuario(String nombreUsuario) {
+		// TODO Auto-generated method stub
+		this.listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario)).forEach(admin -> admin.setEstadoActivo(true));
 	}
 
 

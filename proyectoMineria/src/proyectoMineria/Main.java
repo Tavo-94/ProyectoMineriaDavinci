@@ -17,59 +17,75 @@ public class Main {
 		
 		metalPlus.agregarAdmin(gus);
 		
-		gus.loguearse(input);
+		gus.darDeBaja(input);
 		
-		metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
+		System.out.println(gus);
+		
+		gus.darDeAlta(input);
+
+		System.out.println(gus);
+
 		
 		
+		/*
+		 * gus.loguearse(input);
+		 * 
+		 * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
+		 * 
+		 * gus.cambiarClave(input);
+		 * 
+		 * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
+		 */
+
 		
-		//creo 1er usuario 
-		gus.crearUsuario(input);
 		
-		System.out.println("***************************");
-		System.out.println("Lista de Admins Stock");
-		System.out.println("***************************");
-		
-		gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
-		
-		System.out.println("***************************");
-		System.out.println("Lista de Admins Ventas");
-		System.out.println("***************************");
-		
-		gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
-		
-		//Creo 2do usuario
-		
-		gus.crearUsuario(input);
-		
-		System.out.println("***************************");
-		System.out.println("Lista de Admins Stock");
-		System.out.println("***************************");
-		
-		gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
-		
-		System.out.println("***************************");
-		System.out.println("Lista de Admins Ventas");
-		System.out.println("***************************");
-		
-		gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
-		
-		//creo 3er usuario
-		
-		gus.crearUsuario(input);
-		
-		System.out.println("***************************");
-		System.out.println("Lista de Admins Stock");
-		System.out.println("***************************");
-		
-		gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
-		
-		System.out.println("***************************");
-		System.out.println("Lista de Admins Ventas");
-		System.out.println("***************************");
-		
-		gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
-		
+		/*
+		 * //creo 1er usuario gus.crearUsuario(input);
+		 * 
+		 * System.out.println("***************************");
+		 * System.out.println("Lista de Admins Stock");
+		 * System.out.println("***************************");
+		 * 
+		 * gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
+		 * 
+		 * System.out.println("***************************");
+		 * System.out.println("Lista de Admins Ventas");
+		 * System.out.println("***************************");
+		 * 
+		 * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
+		 * 
+		 * //Creo 2do usuario
+		 * 
+		 * gus.crearUsuario(input);
+		 * 
+		 * System.out.println("***************************");
+		 * System.out.println("Lista de Admins Stock");
+		 * System.out.println("***************************");
+		 * 
+		 * gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
+		 * 
+		 * System.out.println("***************************");
+		 * System.out.println("Lista de Admins Ventas");
+		 * System.out.println("***************************");
+		 * 
+		 * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
+		 * 
+		 * //creo 3er usuario
+		 * 
+		 * gus.crearUsuario(input);
+		 * 
+		 * System.out.println("***************************");
+		 * System.out.println("Lista de Admins Stock");
+		 * System.out.println("***************************");
+		 * 
+		 * gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
+		 * 
+		 * System.out.println("***************************");
+		 * System.out.println("Lista de Admins Ventas");
+		 * System.out.println("***************************");
+		 * 
+		 * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
+		 */
 		
 		
 		input.close();
