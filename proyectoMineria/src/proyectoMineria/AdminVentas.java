@@ -1,5 +1,7 @@
 package proyectoMineria;
 
+import javax.swing.JOptionPane;
+
 public class AdminVentas extends Usuario {
 
 	public AdminVentas(String nombreUsuario, String clave, String cargo, Boolean estadoActivo) {
@@ -22,6 +24,12 @@ public class AdminVentas extends Usuario {
 	@Override
 	public void cerrarSesion() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public void visualizarStock(Deposito deposito) {
+		
+	
 		
 	}
 
