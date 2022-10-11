@@ -21,6 +21,7 @@ public class AdminStock extends Usuario {
         System.out.println("ingresar tipo de material");
         do {
             tipo = inputDelUsuario.next();
+            
         } while (tipo.isBlank() || tipo.isEmpty());
 
         System.out.println("ingresar pureza");
