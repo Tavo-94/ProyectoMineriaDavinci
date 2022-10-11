@@ -2,7 +2,6 @@ package proyectoMineria;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Mineria {
 
@@ -20,6 +19,7 @@ public class Mineria {
 		this.listaUsuariosAdmin = new ArrayList<>();
 	}
 
+	
 
 	public void agregarAdmin(AdminSistema admin) {
 		this.listaUsuariosAdmin.add(admin);
@@ -33,7 +33,6 @@ public class Mineria {
 			listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario)).forEach(admin -> admin.setSessionActiva(true));
 		} else {
 			System.out.println("Credenciales invalidas");
-			
 		}
 		
 	}
