@@ -2,6 +2,8 @@ package proyectoMineria;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -10,7 +12,7 @@ public class Main {
 
         Mineria metalPlus = new Mineria("Metal plus");
 
-        AdminSistema gus = new AdminSistema("Gus94", "Lolabonita94", "Admin", true, metalPlus);
+        //AdminSistema gus = new AdminSistema("Gus94", "Lolabonita94", "Admin", true, metalPlus);
 
         Deposito deposito = new Deposito();
 
@@ -27,6 +29,19 @@ public class Main {
         deposito.mostrarStock();
         
         admin.mostrarTotalOro();
+        
+        AdminVentas vendedor = new AdminVentas("ari", "1234", "ventas", true, metalPlus);
+        
+        vendedor.setDeposito(deposito);
+        
+        vendedor.nuevoRegistroDeOperacion(input);
+        
+        metalPlus.getListaClientes().forEach(System.out::println);
+        metalPlus.getListaDeOperaciones().forEach(System.out::println);
+        
+        deposito.mostrarStock();    
+        admin.mostrarTotalOro();
+        
 
         /*
          * System.out.println(gus);

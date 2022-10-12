@@ -7,15 +7,17 @@ public class Material {
         
         private String tipo;
         private Double pureza;
-        private Double cantidad;
+        private Double cantidad;//en kilos
         private LocalDate fecha;
+        private Double precio;
         
         
-        public Material(String tipo, Double pureza, Double cantidad) {
+        public Material(String tipo, Double pureza, Double cantidad, Double precio) {
             super();
             this.tipo = tipo;
             this.pureza = pureza;
             this.cantidad = cantidad;
+            this.precio = precio;
             this.fecha = LocalDate.now();
         }
 
@@ -42,6 +44,16 @@ public class Material {
         }
         public void setFecha(LocalDate fecha) {
             this.fecha = fecha;
+        }
+
+        
+        
+        public Double getPrecio() {
+            return precio;
+        }
+
+        public void setPrecio(Double precio) {
+            this.precio = precio;
         }
 
         @Override

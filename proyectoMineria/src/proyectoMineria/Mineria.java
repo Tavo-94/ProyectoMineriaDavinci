@@ -9,6 +9,9 @@ public class Mineria {
 	private List<Usuario> listaUsuariosVentas;
 	private List<Usuario> listaUsuariosStock;
 	private List<Usuario> listaUsuariosAdmin;
+    private List<Cliente> listaClientes;
+    private List<TicketOperacion> listaDeOperaciones;
+    
 	
 	
 	public Mineria(String nombre) {
@@ -17,6 +20,8 @@ public class Mineria {
 		this.listaUsuariosVentas = new ArrayList<>();
 		this.listaUsuariosStock = new ArrayList<>();
 		this.listaUsuariosAdmin = new ArrayList<>();
+		this.listaClientes = new ArrayList<>();
+		this.listaDeOperaciones = new ArrayList<>();
 	}
 
 	
@@ -70,14 +75,42 @@ public class Mineria {
 	public List<Usuario> getListaUsuariosAdmin() {
 		return listaUsuariosAdmin;
 	}
+	
+	
 
 
-	public void setListaUsuariosAdmin(List<Usuario> listaUsuariosAdmin) {
+	public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+
+
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+
+
+    public void setListaUsuariosAdmin(List<Usuario> listaUsuariosAdmin) {
 		this.listaUsuariosAdmin = listaUsuariosAdmin;
 	}
+    
+    
 
 
-	@Override
+	public List<TicketOperacion> getListaDeOperaciones() {
+        return listaDeOperaciones;
+    }
+
+
+
+    public void setListaDeOperaciones(List<TicketOperacion> listaDeOperaciones) {
+        this.listaDeOperaciones = listaDeOperaciones;
+    }
+
+
+
+    @Override
 	public String toString() {
 		return "Mineria [nombre=" + nombre + "]";
 	}

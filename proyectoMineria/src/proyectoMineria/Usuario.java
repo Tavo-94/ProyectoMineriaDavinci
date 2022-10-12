@@ -29,6 +29,12 @@ public abstract class Usuario {
 	public abstract void cambiarClave(Scanner inputUsuario);
 	public abstract void cerrarSesion();
 	
+	
+    public boolean validarCargoVentas() {
+        // TODO Auto-generated method stub
+        return getCargo().equalsIgnoreCase("Ventas");
+    }
+	
 	//getters y setters
 	public String getNombre() {
 		return nombre;
