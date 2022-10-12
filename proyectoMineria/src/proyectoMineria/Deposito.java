@@ -21,9 +21,9 @@ public class Deposito {
         listaMateriales.forEach(System.out::println);
     }
     
-    public void agregarStock(Usuario usuario, String tipo, Double pureza, Double cantidad) {
+    public void agregarStock(Usuario usuario, String tipo, Double pureza, Double cantidad, Double precio) {
         if (this.validarCargo(usuario)) {
-            listaMateriales.add(new Material(tipo, pureza, cantidad));
+            listaMateriales.add(new Material(tipo, pureza, cantidad, precio));
             System.out.println("Se Agrego Exitosamente!!!");
             if (tipo.equalsIgnoreCase("oro")) {
                 this.totalDeOro += cantidad;
@@ -44,6 +44,7 @@ public class Deposito {
 
 
     public Double sumaTotalDeOro() {
+        
         return this.listaMateriales.stream().filter(m -> m.getTipo().equalsIgnoreCase("oro")).mapToDouble(m -> m.getCantidad()).sum() ;
         
     }

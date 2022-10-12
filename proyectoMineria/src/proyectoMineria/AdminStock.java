@@ -16,6 +16,7 @@ public class AdminStock extends Usuario {
         String tipo;
         Double pureza;
         Double cantidad;
+        Double precio;
         LocalDate fecha;
 
         System.out.println("ingresar tipo de material");
@@ -34,7 +35,12 @@ public class AdminStock extends Usuario {
             cantidad = inputDelUsuario.nextDouble();
         } while (cantidad < 0d || cantidad == null);
 
-        this.getDepositoDeMateriales().agregarStock(this, tipo, pureza, cantidad);
+        System.out.println("ingresar precio");
+        do {
+            precio = inputDelUsuario.nextDouble();
+        } while (precio < 0d || precio == null);
+        
+        this.getDepositoDeMateriales().agregarStock(this, tipo, pureza, cantidad, precio);
 
     }
 
