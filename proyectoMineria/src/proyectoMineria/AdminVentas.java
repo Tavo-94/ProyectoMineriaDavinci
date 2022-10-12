@@ -35,18 +35,18 @@ public class AdminVentas extends Usuario {
 	}
 	
 	public void visualizarStock(Deposito deposito) {
-		deposito.mostrarStock();
+		deposito.visualizarStock();
 	}
 
-    public void nuevoRegistro(Scanner inputRegistro,Cliente cliente,Deposito deposito) {	
+    public void nuevoRegistro(Scanner inputRegistro,Deposito deposito) {	
     	
-    	String material;
     	String nombre;
     	String apellido;
     	String dni;
+    	String material;
     	String cantMaterial;
     	
-	    	if(cliente.getAlta()==true) {
+	
 	            System.out.println("Ingresar nombre del cliente");
 	            do {
 	                nombre = inputRegistro.next();
@@ -88,19 +88,13 @@ public class AdminVentas extends Usuario {
 	
 
 		                
-		            } while (material.isBlank() || material.isEmpty());
+		            } while (material.isBlank() || material.isEmpty() || material.equalsIgnoreCase("ORO")
+		            		|| material.equalsIgnoreCase("PLATA")|| material.equalsIgnoreCase("COBRE"));
 		            
 		       
 		            		this.getRegistroCliente().agregarRegistroCliente(this, nombre, apellido, dni);
 	                
-	    	}
-	    	
-	    	else {
-	    		System.out.println("El cliente no esta registrado");
-	    	}
-    	
-        
-    	
+
 	}
     
     

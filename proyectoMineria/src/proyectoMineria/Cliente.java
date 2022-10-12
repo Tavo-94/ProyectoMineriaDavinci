@@ -9,14 +9,14 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	private String dni;
-	private boolean alta;
+
 	
 	
-	public Cliente(String nombre,String apellido,String dni,boolean alta) {
+	public Cliente(String nombre,String apellido,String dni) {
 		this.nombre=nombre;
 		this.apellido=apellido;
 		this.dni=dni;
-		this.alta=alta;
+
         this.listaClientes = new ArrayList<>();
 
 	}
@@ -51,21 +51,12 @@ public class Cliente {
 		this.dni = dni;
 	}
 
-
-	public boolean getAlta() {
-		return alta;
-	}
-
-
-	public void setAlta(boolean alta) {
-		this.alta = alta;
-	}
 	
 	public void agregarRegistroCliente(Usuario usuario,String nombre,String apellido,String dni) {
 		
 	    if (usuario.validarCargoVentas()) {
 	    	
-            listaClientes.add(new Cliente(nombre,apellido, dni, alta));
+            listaClientes.add(new Cliente(nombre,apellido, dni));
             System.out.println("Cliente registrado");
      
 
