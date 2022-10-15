@@ -1,28 +1,121 @@
 package proyectoMineria;
+import java.util.Scanner;
 
-public class AdminStock extends Usuario {
+public class AdminStock {
+	
+	static Scanner entrada = new Scanner(System.in);
+	
+	static Deposito stock = new Deposito();
 
-	public AdminStock(String nombreUsuario, String clave, String cargo, Boolean estadoActivo) {
-		super(nombreUsuario, clave, cargo, estadoActivo);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void loguearse(String nombreDeUsuario, String clave) {
-		// TODO Auto-generated method stub
+	public void Login() {
 		
+		SobreCarga();
+		System.out.println("Bienvenido");
+		imprimirMenu();
+	}
+	
+	private void SobreCarga() {
+		Material material = new Material();
+		material.setTipo(null);
+		material.setCantidad(null);
+		material.setPureza(null);
+		material.setPrecio(null);
+		material.setFecha(null);
+		stock.add(material);
+	}
+	
+	private void imprimirMenu() {
+		System.out.println("Por favor escoja una de las siguientes opciones");
+		System.out.println("Para acceder a la opci�n escriba el numero que corresponda");
+		System.out.println("1.Agregar material ");
+		System.out.println("2.Buscar material");
+		System.out.println("3.Modificar Stock");
+		System.out.println("4.Salir");
+		
+		int opcion = entrada.nextInt();
+		switch (opcion) {
+		case 1: agregarMaterial();
+			break;
+		case 2: buscarMaterial();
+			break;
+		case 3: modificarStock(null);
+			break;
+		case 4: Salir();
+			break;
+			default: System.out.println("Se eligio una opci�n incorrecta volver a intentar");
+				break;
+			}
 	}
 
-	@Override
-	public void cambiarClave(String claveNueva) {
-		// TODO Auto-generated method stub
+	private void agregarMaterial() {
+		System.out.println("ingresar tipo de material");
+		Material material = new Material();
+		material.setTipo(entrada.next());
+		System.out.println("ingresar cantidad");
+		material.setCantidad(entrada.nextDouble());
+        System.out.println("ingresar pureza");
+        material.setPureza(entrada.nextDouble());
+       		if(stock.add(material)== true) {
+				 System.out.println("Se agrego correctamente el alumno");
+			 } else {
+				 System.out.println("no se pudo agregar correctamente");
+					System.out.println("si deseas agregar nuevamente un material ");
+					System.out.println("seleccionar opcion 1");	
+					}
+       		imprimirMenu();
+       		}
+	
+	private void buscarMaterial() {
+		System.out.println("Ingrese tipo de material que desea buscar");
+		String tipo = entrada.next();
+		Material material = new Material();
+		material = stock.buscarMaterial(tipo); 
+		if(material.getTipo() == "0" ) {
+			System.out.println("el material no se encontro");
+		}else {
+			System.out.println("El material es");
+			System.out.println(material);
+		}
+		 imprimirMenu();
+	}
+	
+	private void modificarStock(Material material) {
+		System.out.println("Ingrese el tipo de material");
+		material.setTipo(entrada.next());
+		System.out.println("Ingrese cantidad");
+		material.setCantidad(entrada.nextDouble());
+		System.out.println("Ingrese pureza");
+		material.setPureza(entrada.nextDouble());
+		if(stock.modificarStock(material)) {
+			System.out.println("el Stock se pudo editar correctamente");
+		}else {
+			System.out.println("no se pudo editar el stock");
+		}
 		
+		 imprimirMenu();
+	}
+	
+	private void Salir() {
+		System.out.println("El programa finalizo");
+		System.exit(0);
 	}
 
-	@Override
-	public void cerrarSesion() {
-		// TODO Auto-generated method stub
+	/*private void menuAlter(Deposito material) {
+		System.out.println("1.Oro");
+		System.out.println("2.Plata");
+		System.out.println("3.Cobre");
 		
-	}
+		int opcion = entrada.nextInt();
+		switch (opcion) {
+		case 1: Oro(material);
+			break;
+		case 2: Plata(material);
+			break;
+		case 3: Cobre(material);
+			break;
+			default: System.out.println("Se eligio una opci�n incorrecta volver a intentar");
+				break;
+			}
+	}*/
 
 }
