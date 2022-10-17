@@ -12,7 +12,7 @@ public class Main {
 
         Mineria metalPlus = new Mineria("Metal plus");
 
-        //AdminSistema gus = new AdminSistema("Gus94", "Lolabonita94", "Admin", true, metalPlus);
+        AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
 
         Deposito deposito = new Deposito();
 
@@ -42,8 +42,16 @@ public class Main {
         deposito.mostrarStock();    
         admin.mostrarTotalOro();
         
-
+        
         /*
+         * System.out.println("***************************");
+         * System.out.println("Caso login y alta de usuarios");
+         * System.out.println("***************************");
+         * 
+         * 
+         * 
+         * 
+         * 
          * System.out.println(gus);
          * 
          * metalPlus.agregarAdmin(gus);
@@ -55,9 +63,9 @@ public class Main {
          * gus.darDeAlta(input);
          * 
          * System.out.println(gus);
-         */
-
-        /*
+         * 
+         * 
+         * 
          * gus.loguearse(input);
          * 
          * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
@@ -65,9 +73,9 @@ public class Main {
          * gus.cambiarClave(input);
          * 
          * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
-         */
-
-        /*
+         * 
+         * 
+         * 
          * //creo 1er usuario gus.crearUsuario(input);
          * 
          * System.out.println("***************************");

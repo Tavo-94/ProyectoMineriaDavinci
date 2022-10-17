@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 public class AdminVentas extends Usuario {
 
     Deposito deposito;
-    Cliente registroClientes;
 
     public AdminVentas(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
@@ -43,7 +42,7 @@ public class AdminVentas extends Usuario {
         String dni;// Clave primaria
         String cantMaterial = "";
         Double totalDeVenta;
-        Boolean esMayorista = null;
+        Boolean esMayorista = true;
         Cliente cliente;
 
         System.out.println("Ingresar nombre del cliente");
@@ -77,7 +76,7 @@ public class AdminVentas extends Usuario {
                     || Double.parseDouble(cantMaterial) > deposito.getTotalDeOro());
 
             deposito.setTotalDeOro(deposito.getTotalDeOro() - Double.parseDouble(cantMaterial));
-
+            this.deposito.descontarCantidad(Double.parseDouble(cantMaterial));
         }
         if (material.equalsIgnoreCase("PLATA")) {
             System.out.println("Ingresar cantidad vendida");
@@ -128,18 +127,14 @@ public class AdminVentas extends Usuario {
 
         this.getMineria().getListaDeOperaciones()
                 .add(new TicketOperacion(Double.parseDouble(cantMaterial), totalDeVenta, cliente, this));
+        
+        this.deposito.eliminarRegistro();
+
     }
     
     //pendiente descontar al total luego de cada nueva operacion segun el tipo de material
 
-    public Cliente getRegistroCliente() {
-
-        return registroClientes;
-    }
-
-    public void setRegistroCliente(Cliente registroClientes) {
-        this.registroClientes = registroClientes;
-    }
+   
 
     public Deposito getDeposito() {
         return deposito;
@@ -149,13 +144,6 @@ public class AdminVentas extends Usuario {
         this.deposito = deposito;
     }
 
-    public Cliente getRegistroClientes() {
-        return registroClientes;
-    }
-
-    public void setRegistroClientes(Cliente registroClientes) {
-        this.registroClientes = registroClientes;
-    }
 
     @Override
     public String toString() {

@@ -59,8 +59,11 @@ public class Material {
         @Override
         public String toString() {
             return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha=" + fecha
-                    + "]";
+                    + ", precio=" + precio + "]";
         }
+
+
+        
         
         
         
