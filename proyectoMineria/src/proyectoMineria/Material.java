@@ -1,39 +1,29 @@
 package proyectoMineria;
-import java.time.LocalDate;
 
 public class Material {
 
 	public String tipo;
 	Double cantidad;
 	Double pureza;
-	Double precio;
-	LocalDate fecha;
+	Double fecha;
 	
-	public Material(String tipo, Double cantidad, Double pureza, Double precio, LocalDate fecha) {
+	public Material(String tipo, Double cantidad, Double pureza, Double fecha) {
 		super();
 		this.tipo = tipo;
 		this.cantidad = cantidad;
 		this.pureza = pureza;
-		this.precio = precio;
 		this.fecha = fecha;
 	}
 	
 	public Material() {
 		// TODO Auto-generated constructor stub
-	}
+	} 
 
 	@Override
 	public String toString() {
-		return "material [tipo=" + tipo + ", cantidad=" + cantidad + ", pureza=" + pureza + ", precio=" + precio + ", fecha=" + fecha + "]";
+		return "material [tipo=" + tipo + ", cantidad=" + cantidad + ", pureza=" + pureza + ", fecha=" + fecha + "]";
 	}
 	
-	public Double getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(Double precio) {
-		this.precio = precio;
-	}
 
 	public String getTipo() {
 		return tipo;
@@ -61,11 +51,11 @@ public class Material {
 		this.cantidad = cantidad;
 	}
 
-	public LocalDate getFecha() {
+	public double getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Double fecha) {
 		this.fecha = fecha;
 	}
 	
