@@ -2,16 +2,17 @@ package proyectoMineria;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 
 public class Mineria {
 
 	String nombre;
-	private List<Usuario> listaUsuariosVentas;
-	private List<Usuario> listaUsuariosStock;
-	private List<Usuario> listaUsuariosAdmin;
+	private List<AdminVentas> listaUsuariosVentas;
+	private List<AdminStock> listaUsuariosStock;
+	private List<AdminSistema> listaUsuariosAdmin;
     private List<Cliente> listaClientes;
     private List<TicketOperacion> listaDeOperaciones;
-    
+    private InterfazUI interfazUI;
 	
 	
 	public Mineria(String nombre) {
@@ -33,7 +34,7 @@ public class Mineria {
 	public void loguearse(String nombreUsuario, String clave) {
 		// TODO Auto-generated method stub
 		
-		if (this.validarLogIn(nombreUsuario, clave)) {
+		if (this.validarLogInSistema(nombreUsuario, clave)) {
 			System.out.println("Log In exitoso");
 			listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario)).forEach(admin -> admin.setSessionActiva(true));
 		} else {
@@ -42,8 +43,15 @@ public class Mineria {
 		
 	}
 	
-	public Boolean validarLogIn(String nombreUsuario, String clave) {
+	public Boolean validarLogInSistema(String nombreUsuario, String clave) {
 		return listaUsuariosAdmin.stream().anyMatch(admin -> admin.getNombreUsuario().equals(nombreUsuario) && admin.getClave().equals(clave));
+	}
+	
+	public Boolean validarLogInVentas(String nombreUsuario, String clave) {
+        return listaUsuariosVentas.stream().anyMatch(ventas -> ventas.getNombreUsuario().equals(nombreUsuario) && ventas.getClave().equals(clave));
+	}
+	public Boolean validarLogInStock(String nombreUsuario, String clave) {
+	    return listaUsuariosStock.stream().anyMatch(stock -> stock.getNombreUsuario().equals(nombreUsuario) && stock.getClave().equals(clave));
 	}
 
 	public void cambiarClave(String nombreUsuario, String claveNueva) {
@@ -52,34 +60,47 @@ public class Mineria {
 		}
 	}
 	
-	public List<Usuario> getListaUsuariosVentas() {
-		return listaUsuariosVentas;
-	}
-
-
-	public void setListaUsuariosVentas(List<Usuario> listaUsuariosVentas) {
-		this.listaUsuariosVentas = listaUsuariosVentas;
-	}
-
-
-	public List<Usuario> getListaUsuariosStock() {
-		return listaUsuariosStock;
-	}
-
-
-	public void setListaUsuariosStock(List<Usuario> listaUsuariosStock) {
-		this.listaUsuariosStock = listaUsuariosStock;
-	}
-
-
-	public List<Usuario> getListaUsuariosAdmin() {
-		return listaUsuariosAdmin;
-	}
 	
 	
 
 
-	public List<Cliente> getListaClientes() {
+	public List<AdminVentas> getListaUsuariosVentas() {
+        return listaUsuariosVentas;
+    }
+
+
+
+    public void setListaUsuariosVentas(List<AdminVentas> listaUsuariosVentas) {
+        this.listaUsuariosVentas = listaUsuariosVentas;
+    }
+
+
+
+    public List<AdminStock> getListaUsuariosStock() {
+        return listaUsuariosStock;
+    }
+
+
+
+    public void setListaUsuariosStock(List<AdminStock> listaUsuariosStock) {
+        this.listaUsuariosStock = listaUsuariosStock;
+    }
+
+
+
+    public List<AdminSistema> getListaUsuariosAdmin() {
+        return listaUsuariosAdmin;
+    }
+
+
+
+    public void setListaUsuariosAdmin(List<AdminSistema> listaUsuariosAdmin) {
+        this.listaUsuariosAdmin = listaUsuariosAdmin;
+    }
+
+
+
+    public List<Cliente> getListaClientes() {
         return listaClientes;
     }
 
@@ -91,10 +112,7 @@ public class Mineria {
 
 
 
-    public void setListaUsuariosAdmin(List<Usuario> listaUsuariosAdmin) {
-		this.listaUsuariosAdmin = listaUsuariosAdmin;
-	}
-    
+   
     
 
 
@@ -127,6 +145,35 @@ public class Mineria {
 		this.listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario)).forEach(admin -> admin.setEstadoActivo(true));
 	}
 
+	public AdminSistema usuarioAdminLogeado(String nombreUsuario, String contraseña) {
+        return this.listaUsuariosAdmin.stream().filter(admin -> admin.getNombreUsuario().equals(nombreUsuario) && admin.getClave().equals(contraseña)).findFirst().get();
+	    
+	}
+	
+	public AdminVentas usuarioVentasLogeado(String nombreUsuario, String contraseña) {
+	    return this.listaUsuariosVentas.stream().filter(venta -> venta.getNombreUsuario().equals(nombreUsuario) && venta.getClave().equals(contraseña)).findFirst().get();
+	    
+	}
+	
+	public AdminStock usuarioStockLogeado(String nombreUsuario, String contraseña) {
+	    return this.listaUsuariosStock.stream().filter(stock -> stock.getNombreUsuario().equals(nombreUsuario) && stock.getClave().equals(contraseña)).findFirst().get();
+	    
+	}
+	
+	
+
+
+    public InterfazUI getInterfazUI() {
+        return interfazUI;
+    }
+
+
+
+    public void setInterfazUI(InterfazUI interfazUI) {
+        this.interfazUI = interfazUI;
+    }
+	
+	
 
 
 
