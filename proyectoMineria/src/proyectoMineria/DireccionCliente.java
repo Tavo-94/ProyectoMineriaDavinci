@@ -6,7 +6,6 @@ public class DireccionCliente {
     private String altura;
     private String codigoPostal;
     private String ciudad;
-    private Integer idCliente;
     
     public DireccionCliente(String calle, String altura, String codigoPostal, String ciudad) {
         super();
@@ -14,7 +13,6 @@ public class DireccionCliente {
         this.altura = altura;
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
-        this.idCliente = null;
     }
 
     public String getCalle() {
@@ -48,15 +46,6 @@ public class DireccionCliente {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-
-    public Integer getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
-    }
-    
     
     
 }

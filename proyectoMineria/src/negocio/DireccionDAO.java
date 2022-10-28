@@ -24,7 +24,7 @@ public class DireccionDAO {
         try {
             
             //defino la query
-            String queryString = "INSERT INTO direccion(calle, numero, codigo_postal, ciudad, cliente_idcliente) VALUES(?,?,?,?,?)";
+            String queryString = "INSERT INTO direccion(calle, altura, codigo_postal, ciudad) VALUES(?,?,?,?)";
             //armo la conexion
             conexion = getConnection();
             
@@ -34,10 +34,8 @@ public class DireccionDAO {
             ptmt.setString(2, nuevaDireccion.getAltura());
             ptmt.setString(3, nuevaDireccion.getCodigoPostal());
             ptmt.setString(4, nuevaDireccion.getCiudad());
-            ptmt.setInt(5, nuevaDireccion.getIdCliente());
             
             ptmt.executeUpdate();
-            
             System.out.println("Se agrego con exito");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,8 +100,6 @@ public class DireccionDAO {
         return 0;
         
     }
-    
-    
     
 
 
