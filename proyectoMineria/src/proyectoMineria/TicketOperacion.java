@@ -28,6 +28,8 @@ public class TicketOperacion {
 
 
 
+
+
     public Cliente getCliente() {
         return cliente;
     }

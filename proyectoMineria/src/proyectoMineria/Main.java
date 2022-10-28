@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import negocio.AdminVentasDao;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,7 +16,9 @@ public class Main {
         AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
        
         gus.crearUsuario();
-
+        
+        gus.eliminarAdminVentas();
+                        
         /*
          * Scanner input = new Scanner(System.in);
          * 
