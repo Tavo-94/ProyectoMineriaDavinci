@@ -163,6 +163,12 @@ public class AdminSistema extends Usuario {
 
 	}
 	
+	public void eliminarAdminVentas() {
+
+        AdminVentasDao ventasDAO = new AdminVentasDao();
+        ventasDAO.eliminarAdminVentas();
+	}
+	
 	public void darDeBaja(Scanner inputDelUsuario) {
 		String nombreUsuario;
 		

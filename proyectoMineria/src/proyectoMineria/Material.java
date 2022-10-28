@@ -9,18 +9,31 @@ public class Material {
         private Double pureza;
         private Double cantidad;//en kilos
         private LocalDate fecha;
-        private Double precio;
+        private Double precioBase;
         
         
-        public Material(String tipo, Double pureza, Double cantidad, Double precio) {
+        public Material(String tipo, Double pureza, Double cantidad) {
             super();
             this.tipo = tipo;
             this.pureza = pureza;
             this.cantidad = cantidad;
-            this.precio = precio;
+            this.seteoDePrecio(tipo);
             this.fecha = LocalDate.now();
         }
 
+        private void seteoDePrecio(String tipo) {
+            if (tipo.equalsIgnoreCase("oro")) {
+                this.precioBase = 100_000d;
+            }
+            if (tipo.equalsIgnoreCase("plata")) {
+                this.precioBase = 10_000d;
+            }
+            if (tipo.equalsIgnoreCase("cobre")) {
+                this.precioBase = 1_000d;
+            }
+        }
+        
+        
         public String getTipo() {
             return tipo;
         }
@@ -49,17 +62,17 @@ public class Material {
         
         
         public Double getPrecio() {
-            return precio;
+            return precioBase;
         }
 
         public void setPrecio(Double precio) {
-            this.precio = precio;
+            this.precioBase = precio;
         }
 
         @Override
         public String toString() {
             return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha=" + fecha
-                    + ", precio=" + precio + "]";
+                    + ", precio=" + precioBase + "]";
         }
 
 

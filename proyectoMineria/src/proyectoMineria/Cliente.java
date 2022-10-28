@@ -9,6 +9,8 @@ public class Cliente {
     private String apellido;
     private String dni;
     private Boolean esMayorista;
+    private String telefono;
+    private Integer idDireccion;
 
     
     
@@ -60,6 +62,27 @@ public class Cliente {
 
     public void setEsMayorista(Boolean esMayorista) {
         this.esMayorista = esMayorista;
+    }
+
+    
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+
+    public Integer getIdDireccion() {
+        return idDireccion;
+    }
+
+
+    public void setIdDireccion(Integer idDireccion) {
+        this.idDireccion = idDireccion;
     }
 
 

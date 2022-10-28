@@ -24,7 +24,7 @@ public class Deposito {
     
     public void agregarStock(Usuario usuario, String tipo, Double pureza, Double cantidad, Double precio) {
         if (this.validarCargo(usuario)) {
-            listaMateriales.add(new Material(tipo, pureza, cantidad, precio));
+            listaMateriales.add(new Material(tipo, pureza, cantidad));
             System.out.println("Se Agrego Exitosamente!!!");
             if (tipo.equalsIgnoreCase("oro")) {
                 this.totalDeOro += cantidad;

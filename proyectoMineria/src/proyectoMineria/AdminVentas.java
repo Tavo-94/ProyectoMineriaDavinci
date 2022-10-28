@@ -4,6 +4,11 @@ import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.swing.JOptionPane;
+
+import negocio.ClienteDAO;
+import negocio.DireccionDAO;
+
 public class AdminVentas extends Usuario {
 
     Deposito deposito;
@@ -35,100 +40,103 @@ public class AdminVentas extends Usuario {
         this.getDeposito().mostrarStock();
     }
 
-    public void nuevoRegistroDeOperacion(Scanner inputRegistro) {
+    public void nuevoTicket() {
 
         String nombre;
         String apellido;
         String dni;// Clave primaria
-        String cantMaterial = "";
+        Double cantMaterial = 0d;
         Double totalDeVenta;
         Boolean esMayorista = true;
-        Cliente cliente;
+        String calle;
+        String altura;
+        String codigoPostal;
+        String ciudad;
 
+        //creo cliente
+        //creo materialComprado
+        //creo ticket con Cliente, AdmminVentas, MaterialComprado
+        //
+        //INGRESO DATOS DEL CLIENTE
         System.out.println("Ingresar nombre del cliente");
         do {
-            nombre = inputRegistro.next();
+            nombre = JOptionPane.showInputDialog("Ingresar nombre del cliente");
 
         } while (nombre.isBlank() || nombre.isEmpty());
 
         System.out.println("Ingresar apellido del cliente");
         do {
-            apellido = inputRegistro.next();
+            apellido = JOptionPane.showInputDialog("Ingresar apellido del cliente");
 
         } while (apellido.isBlank() || apellido.isEmpty());
 
         System.out.println("Ingresar dni");
         do {
-            dni = inputRegistro.next();
+            dni = JOptionPane.showInputDialog("Ingresar DNI del cliente");
 
         } while (dni.isBlank() || dni.isEmpty());
 
+        //INGRESO DATOS DE DIRECCION
+        do {
+            calle = JOptionPane.showInputDialog("Ingresar calle");
+
+        } while (dni.isBlank() || dni.isEmpty());
+        do {
+            altura = JOptionPane.showInputDialog("Ingresar altura");
+
+        } while (dni.isBlank() || dni.isEmpty());
+        do {
+            codigoPostal = JOptionPane.showInputDialog("Ingresar codigo postal");
+
+        } while (dni.isBlank() || dni.isEmpty());
+        do {
+            ciudad = JOptionPane.showInputDialog("Ingresar ciudad");
+
+        } while (dni.isBlank() || dni.isEmpty());
+        
+        //INGRESO DATOS DEL MATERIAL
         System.out.println("Ingresar tipo de material");
 
-        final String material = inputRegistro.next();
-
-        if (material.equalsIgnoreCase("ORO")) {
-            System.out.println("Ingresar cantidad vendida");
-            do {
-                cantMaterial = inputRegistro.next();
-
-            } while (Double.parseDouble(cantMaterial) < 0d || cantMaterial == null
-                    || Double.parseDouble(cantMaterial) > deposito.getTotalDeOro());
-
-            deposito.setTotalDeOro(deposito.getTotalDeOro() - Double.parseDouble(cantMaterial));
-            this.deposito.descontarCantidad(Double.parseDouble(cantMaterial));
-        }
-        if (material.equalsIgnoreCase("PLATA")) {
-            System.out.println("Ingresar cantidad vendida");
-            do {
-                cantMaterial = inputRegistro.next();
-
-            } while (Double.parseDouble(cantMaterial) < 0d || cantMaterial == null
-                    || Double.parseDouble(cantMaterial) > deposito.getTotalDePlata());
-
-            deposito.setTotalDeOro(deposito.getTotalDeOro() - Double.parseDouble(cantMaterial));
-
-        }
-        if (material.equalsIgnoreCase("COBRE")) {
-            System.out.println("Ingresar cantidad vendida");
-            do {
-                cantMaterial = inputRegistro.next();
-
-            } while (Double.parseDouble(cantMaterial) < 0d || cantMaterial == null
-                    || Double.parseDouble(cantMaterial) > deposito.getTotalDeCobre());
-
-            deposito.setTotalDeOro(deposito.getTotalDeOro() - Double.parseDouble(cantMaterial));
-
-        }
-
-        // Creamos nuevo cliente
-
-        cliente = new Cliente(nombre, apellido, dni, esMayorista);
-
-        // agregamos cliente a la lista de la mineria
-        this.getMineria().getListaClientes().add(cliente);
-
-        // totalizamos el precio (por ahora es el primedio de todos los precios de un
-        // TIPO de material)
-
-        Double precioDelMaterial = this.getDeposito().getListaMateriales().stream()
-                .filter(mat -> mat.getTipo().equalsIgnoreCase(material))
-                .collect(Collectors.averagingDouble(m -> m.getPrecio()));
-        System.out.println(precioDelMaterial + " Precio del material");
-
-        totalDeVenta = Double.parseDouble(cantMaterial) * precioDelMaterial;
+        String tipoDeMaterial = JOptionPane.showInputDialog("Ingresar tipo del material");
         
-        //aplico el descuento si es o no mayorista
-        if (cliente.getEsMayorista()) {
-            totalDeVenta = totalDeVenta * 0.9;
-        }
-
-        // Agregar operacion de venta a la lista
-
-        this.getMineria().getListaDeOperaciones()
-                .add(new TicketOperacion(Double.parseDouble(cantMaterial), totalDeVenta, cliente, this));
+        cantMaterial = Double.parseDouble(JOptionPane.showInputDialog("ingresar Cantidad Requerida"));
         
-        this.deposito.eliminarRegistro();
+        Double pureza = Double.parseDouble(JOptionPane.showInputDialog("ingresar la pureza"));
+        
+        //creo instacias de objetos
+        
+        Material materialComprado = new Material(tipoDeMaterial, pureza, cantMaterial);
+        
+        Cliente nuevoCliente = new Cliente(nombre, apellido, dni, esMayorista);
+
+        DireccionCliente nuevaDireccion = new DireccionCliente(calle, altura, codigoPostal, ciudad);
+
+        //agregamos direccion
+        DireccionDAO direccionDao = new DireccionDAO();
+        
+        direccionDao.agregarNuevadireccion(nuevaDireccion);
+        
+        // agregamos cliente a la lista de la mineria (DAO cliente)
+        ClienteDAO clienteDAO = new ClienteDAO();
+        
+        clienteDAO.agregarNuevoCliente(nuevoCliente, this, nuevaDireccion);
+        
+        //creamos nuevo ticket
+        TicketOperacion nuevoTicket = new TicketOperacion(materialComprado, nuevoCliente, this);
+   
+        //calculo del TOTAL
+        
+        if (materialComprado.getPureza() >= 70 ) {
+            totalDeVenta = materialComprado.getPrecio() * 2 * materialComprado.getCantidad();
+        } else if (materialComprado.getPureza()>=50) {
+            totalDeVenta = materialComprado.getPrecio() * 1.5 * materialComprado.getCantidad();
+        } else {
+            totalDeVenta = materialComprado.getPrecio() * materialComprado.getCantidad();
+        }
+        
+        nuevoTicket.setTotal(totalDeVenta);
+        
+       
 
     }
     
