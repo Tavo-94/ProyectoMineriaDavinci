@@ -4,13 +4,15 @@ import java.time.LocalDate;
 
 public class Material {
 
-        
+        private Integer idMaterial;
         private String tipo;
         private Double pureza;
         private Double cantidad;//en kilos
         private LocalDate fecha;
         private Double precioBase;
-        
+        private Double coeficientePurezaAlta;
+        private Double coeficientePurezaMedia;
+        private Double coeficientePurezaBaja;
         
         public Material(String tipo, Double pureza, Double cantidad) {
             super();
@@ -18,7 +20,8 @@ public class Material {
             this.pureza = pureza;
             this.cantidad = cantidad;
             this.seteoDePrecio(tipo);
-            this.fecha = LocalDate.now();
+            this.seteoDeCoeficientes(tipo);
+            this.fecha = LocalDate.now();            
         }
 
         private void seteoDePrecio(String tipo) {
@@ -31,6 +34,18 @@ public class Material {
             if (tipo.equalsIgnoreCase("cobre")) {
                 this.precioBase = 1_000d;
             }
+        }
+        
+        private void seteoDeCoeficientes(String tipo) {
+            if (tipo.equalsIgnoreCase("oro")) {
+                this.coeficientePurezaAlta = 2d;
+            }
+            if (tipo.equalsIgnoreCase("plata")) {
+                this.coeficientePurezaMedia = 1d;
+            }
+            if (tipo.equalsIgnoreCase("cobre")) {
+                this.coeficientePurezaBaja = 0.5d;
+            }            
         }
         
         
@@ -60,13 +75,47 @@ public class Material {
         }
 
         
+
         
-        public Double getPrecio() {
+        
+        public Integer getIdMaterial() {
+            return idMaterial;
+        }
+
+        public void setIdMaterial(Integer idMaterial) {
+            this.idMaterial = idMaterial;
+        }
+
+        public Double getPrecioBase() {
             return precioBase;
         }
 
-        public void setPrecio(Double precio) {
-            this.precioBase = precio;
+        public void setPrecioBase(Double precioBase) {
+            this.precioBase = precioBase;
+        }
+
+        public Double getCoeficientePurezaAlta() {
+            return coeficientePurezaAlta;
+        }
+
+        public void setCoeficientePurezaAlta(Double coeficientePurezaAlta) {
+            this.coeficientePurezaAlta = coeficientePurezaAlta;
+        }
+
+        public Double getCoeficientePurezaMedia() {
+            return coeficientePurezaMedia;
+        }
+
+        public void setCoeficientePurezaMedia(Double coeficientePurezaMedia) {
+            this.coeficientePurezaMedia = coeficientePurezaMedia;
+        }
+
+        public Double getCoeficientePurezaBaja() {
+            return coeficientePurezaBaja;
+        }
+
+        public void setCoeficientePurezaBaja(Double coeficientePurezaBaja) {
+            this.coeficientePurezaBaja = coeficientePurezaBaja;
         }
 
         @Override
