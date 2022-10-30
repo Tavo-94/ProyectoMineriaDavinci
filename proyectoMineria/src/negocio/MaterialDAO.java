@@ -5,12 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import proyectoMineria.AdminSistema;
-import proyectoMineria.AdminVentas;
-import proyectoMineria.Cliente;
-import proyectoMineria.DireccionCliente;
+import proyectoMineria.Material;
 
-public class ClienteDAO {
+public class MaterialDAO {
+
     Connection conexion = null;
     PreparedStatement ptmt = null;
     ResultSet resultSet = null;
@@ -20,21 +18,21 @@ public class ClienteDAO {
         conn = ConexionDB.getInstance().getConnection();
         return conn;
     }
-
-    public void agregarNuevoCliente(Cliente nuevoCliente, AdminVentas adminVentas) {
+    
+    public void agregarNuevoMaterialPedido(Material material) {
         try {
 
             // defino la query
-            String queryString = "INSERT INTO cliente(nombre, apellido, telefono, admin_ventas_nombre_usuario) VALUES(?,?,?,?)";
+            String queryString = "INSERT INTO material_pedido(tipo, pureza, cantidad, precio) VALUES(?,?,?,?)";
             // armo la conexion
             conexion = getConnection();
 
             // preparo el statement que ejecuta la query
             ptmt = conexion.prepareStatement(queryString);
-            ptmt.setString(1, nuevoCliente.getNombre());
-            ptmt.setString(2, nuevoCliente.getApellido());
-            ptmt.setString(3, nuevoCliente.getTelefono());
-            ptmt.setString(4, adminVentas.getNombreUsuario());
+            ptmt.setString(1, material.getTipo());
+            ptmt.setDouble(2, material.getPureza());
+            ptmt.setDouble(3, material.getCantidad());
+            ptmt.setDouble(4, material.getPrecioBase());
 
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
@@ -58,29 +56,29 @@ public class ClienteDAO {
         }
 
     }
-
-    public Integer obtenerUltimoIDDeCliente() {
+    
+    public Integer obtenerUltimoIDMaterialPedido() {
 
         try {
             conexion = getConnection();
 
-            String query = "SELECT MAX(idcliente) AS ultimo_id FROM cliente;";
+            String query = "SELECT MAX(idmaterial) AS ultimo_id FROM material_pedido;";
 
             ptmt = conexion.prepareStatement(query);
 
             resultSet = ptmt.executeQuery();
-            
+
             if (resultSet.next()) {
                 resultSet.first();
                 System.out.println(resultSet.getInt("ultimo_id"));
                 return resultSet.getInt("ultimo_id");
             }
-
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return 0;
     }
+
 
 }

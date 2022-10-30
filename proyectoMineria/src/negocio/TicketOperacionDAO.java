@@ -5,12 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminVentas;
 import proyectoMineria.Cliente;
-import proyectoMineria.DireccionCliente;
+import proyectoMineria.Material;
+import proyectoMineria.TicketOperacion;
 
-public class ClienteDAO {
+public class TicketOperacionDAO {
+
     Connection conexion = null;
     PreparedStatement ptmt = null;
     ResultSet resultSet = null;
@@ -20,21 +21,22 @@ public class ClienteDAO {
         conn = ConexionDB.getInstance().getConnection();
         return conn;
     }
-
-    public void agregarNuevoCliente(Cliente nuevoCliente, AdminVentas adminVentas) {
+    
+    public void agregarNuevoTicketOperacionDelPedido(TicketOperacion nuevoTicketOperacion, AdminVentas vendedor, Cliente cliente, Material materialPedido) {
         try {
 
             // defino la query
-            String queryString = "INSERT INTO cliente(nombre, apellido, telefono, admin_ventas_nombre_usuario) VALUES(?,?,?,?)";
+            String queryString = "INSERT INTO pedido(fecha, total, admin_ventas_nombre_usuario, cliente_idcliente, material_pedido_idmaterial) VALUES(?,?,?,?,?)";
             // armo la conexion
             conexion = getConnection();
 
             // preparo el statement que ejecuta la query
             ptmt = conexion.prepareStatement(queryString);
-            ptmt.setString(1, nuevoCliente.getNombre());
-            ptmt.setString(2, nuevoCliente.getApellido());
-            ptmt.setString(3, nuevoCliente.getTelefono());
-            ptmt.setString(4, adminVentas.getNombreUsuario());
+            ptmt.setDate(1, java.sql.Date.valueOf(nuevoTicketOperacion.getFechaDeOperacion()));
+            ptmt.setDouble(2, nuevoTicketOperacion.getTotal());
+            ptmt.setString(3, vendedor.getNombreUsuario());
+            ptmt.setInt(4, Long.valueOf(cliente.getIdCliente()).intValue());
+            ptmt.setInt(5, materialPedido.getIdMaterial());
 
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
@@ -58,29 +60,6 @@ public class ClienteDAO {
         }
 
     }
-
-    public Integer obtenerUltimoIDDeCliente() {
-
-        try {
-            conexion = getConnection();
-
-            String query = "SELECT MAX(idcliente) AS ultimo_id FROM cliente;";
-
-            ptmt = conexion.prepareStatement(query);
-
-            resultSet = ptmt.executeQuery();
-            
-            if (resultSet.next()) {
-                resultSet.first();
-                System.out.println(resultSet.getInt("ultimo_id"));
-                return resultSet.getInt("ultimo_id");
-            }
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return 0;
-    }
+    
 
 }

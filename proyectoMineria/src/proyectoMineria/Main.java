@@ -14,11 +14,15 @@ public class Main {
         Mineria metalPlus = new Mineria("Metal plus");
 
         AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
-       
-        gus.crearUsuario();
         
-        gus.eliminarAdminVentas();
-                        
+        AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
+        
+        //gus.crearUsuario();
+        
+        //gus.eliminarAdminVentas();
+          
+        dani.nuevoTicket();
+        
         /*
          * Scanner input = new Scanner(System.in);
          * 
