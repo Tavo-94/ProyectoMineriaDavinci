@@ -20,39 +20,35 @@ public class ClienteDAO {
         conn = ConexionDB.getInstance().getConnection();
         return conn;
     }
-    
-    public void agregarNuevoCliente(Cliente nuevoCliente, AdminVentas adminVentas, DireccionCliente nuevaDireccion) {
+
+    public void agregarNuevoCliente(Cliente nuevoCliente, AdminVentas adminVentas) {
         try {
-            
-            //defino la query
-            String queryString = "INSERT INTO cliente(nombre, apellido, telefono, direccion_iddireccion, admin_ventas_nombre_usuario) VALUES(?,?,?,?,?)";
-            //armo la conexion
+
+            // defino la query
+            String queryString = "INSERT INTO cliente(nombre, apellido, telefono, admin_ventas_nombre_usuario) VALUES(?,?,?,?)";
+            // armo la conexion
             conexion = getConnection();
-            
-            DireccionDAO dirDAO = new DireccionDAO();
-            int iddireccion = dirDAO.obtenerIdDeDireccion(nuevaDireccion);
-            
-            //preparo el statement que ejecuta la query
+
+            // preparo el statement que ejecuta la query
             ptmt = conexion.prepareStatement(queryString);
             ptmt.setString(1, nuevoCliente.getNombre());
             ptmt.setString(2, nuevoCliente.getApellido());
             ptmt.setString(3, nuevoCliente.getTelefono());
-            ptmt.setInt(4, iddireccion); //id direccion
-            ptmt.setString(5, adminVentas.getNombreUsuario());
-            
+            ptmt.setString(4, adminVentas.getNombreUsuario());
+
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            //siempre cierro el Statement y la conexion al finalizar el metodo
+            // siempre cierro el Statement y la conexion al finalizar el metodo
             try {
                 if (ptmt != null) {
                     ptmt.close();
                 }
                 if (conexion != null) {
                     conexion.close();
-                }           
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (Exception e) {
@@ -63,5 +59,28 @@ public class ClienteDAO {
 
     }
 
-    
+    public Integer obtenerUltimoIDDeCliente() {
+
+        try {
+            conexion = getConnection();
+
+            String query = "SELECT MAX(idcliente) AS ultimo_id FROM cliente;";
+
+            ptmt = conexion.prepareStatement(query);
+
+            resultSet = ptmt.executeQuery();
+            
+            if (resultSet.next()) {
+                resultSet.first();
+                System.out.println(resultSet.getInt("ultimo_id"));
+                return resultSet.getInt("ultimo_id");
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 }
