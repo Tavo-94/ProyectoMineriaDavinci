@@ -17,12 +17,15 @@ public class Main {
         
         AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
         
+        AdminVentasDao ventasDAO = new AdminVentasDao();
+        
         //gus.crearUsuario();
         
         //gus.eliminarAdminVentas();
           
-        dani.nuevoTicket();
+        //dani.nuevoTicket();
         
+        ventasDAO.validarLoginVentas(dani);        
         /*
          * Scanner input = new Scanner(System.in);
          * 
