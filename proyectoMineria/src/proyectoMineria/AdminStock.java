@@ -66,7 +66,7 @@ public class AdminStockDAO {
              ptmt.setString(1, agregarMaterial.getTipo());
              ptmt.setDouble(2, agregarMaterial.getPureza());
              ptmt.setDouble(3, agregarMaterial.getCantidad());
-             ptmt.setInt(4, 1);
+             ptmt.setInt(4, 0);
              
              ptmt.executeUpdate();
 
