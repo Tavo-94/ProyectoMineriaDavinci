@@ -1,28 +1,96 @@
 package proyectoMineria;
 
+import java.time.LocalDate;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 public class AdminStock extends Usuario {
 
-	public AdminStock(String nombreUsuario, String clave, String cargo, Boolean estadoActivo) {
-		super(nombreUsuario, clave, cargo, estadoActivo);
-		// TODO Auto-generated constructor stub
-	}
+    Deposito depositoDeMateriales;
+    Validaciones v = new Validaciones();
+    
+    public AdminStock(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
+        super(nombreUsuario, clave, cargo, estadoActivo, mineria);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void loguearse(String nombreDeUsuario, String clave) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void agregarMaterial() {
 
-	@Override
-	public void cambiarClave(String claveNueva) {
-		// TODO Auto-generated method stub
-		
-	}
+        String material;
+        String mensaje;
+        
+        mensaje=JOptionPane.showInputDialog("1-Agregar material al stock" //opcion del usuario
+        		+ " \n2-Salir");
+        
+	        switch(Integer.parseInt(mensaje)) {
+	        	
+	        case 1:
+	        	
+	        	do {
+	            material=JOptionPane.showInputDialog("Ingrese el tipo de material");
+	     
+	        	}while((v.validarTexto(material)!=true || material.length()<3));  //si el string es menor a 3 las letras y tiene valores especiales saldra error
+		                  
+	            break;
+	            
+	        case 2: break;
+	        
+	        
+	        default: 
+	        	System.out.println("Opcion invalida");
+	        	
+	        break;
+	        
+	        }
+	        
+        }
 
-	@Override
-	public void cerrarSesion() {
-		// TODO Auto-generated method stub
-		
-	}
+
+    public void mostrarTotalOro() {
+        System.out.println(this.getDepositoDeMateriales().sumaTotalDeOro());
+    }
+
+    public void mostrarTotalPlata() {
+        System.out.println(this.getDepositoDeMateriales().sumaTotalDePlata());
+    }
+
+    public void mostrarTotalCobre() {
+        System.out.println(this.getDepositoDeMateriales().sumaTotalDeCobre());
+    }
+
+    @Override
+    public void loguearse(Scanner inputUsuario) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void cambiarClave(Scanner inputUsuario) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void cerrarSesion() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public Deposito getDepositoDeMateriales() {
+        return depositoDeMateriales;
+    }
+
+    public void setDepositoDeMateriales(Deposito depositoDeMateriales) {
+        this.depositoDeMateriales = depositoDeMateriales;
+    }
+
+    @Override
+    public String toString() {
+        return "AdminStock [getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getNombreUsuario()="
+                + getNombreUsuario() + ", getClave()=" + getClave() + ", getCargo()=" + getCargo()
+                + ", getEstadoActivo()=" + getEstadoActivo() + ", getSessionActiva()=" + getSessionActiva()
+                + ", getMineria()=" + getMineria() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+                + ", toString()=" + super.toString() + "]";
+    }
 
 }

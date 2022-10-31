@@ -1,14 +1,15 @@
 package proyectoMineria;
 
 import java.util.Scanner;
+import proyectoMineria.Conexion;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class AdminVentas extends Usuario {
-    
 
     Deposito deposito;
-
+    Cliente registroClientes;
+    Validaciones v = new Validaciones();
     public AdminVentas(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
         // TODO Auto-generated constructor stub
@@ -43,26 +44,26 @@ public class AdminVentas extends Usuario {
         String dni;// Clave primaria
         String cantMaterial = "";
         Double totalDeVenta;
-        Boolean esMayorista = true;
+        Boolean esMayorista = null;
         Cliente cliente;
 
         System.out.println("Ingresar nombre del cliente");
         do {
             nombre = inputRegistro.next();
 
-        } while (nombre.isBlank() || nombre.isEmpty());
+        } while (v.validarTexto(nombre)!=true || nombre.length()<3);
 
         System.out.println("Ingresar apellido del cliente");
         do {
             apellido = inputRegistro.next();
 
-        } while (apellido.isBlank() || apellido.isEmpty());
+        } while (v.validarTexto(apellido)!=true || apellido.length()<3);
 
         System.out.println("Ingresar dni");
         do {
             dni = inputRegistro.next();
 
-        } while (dni.isBlank() || dni.isEmpty());
+        } while (v.validarDNI(dni)!=true);
 
         System.out.println("Ingresar tipo de material");
 
@@ -73,11 +74,11 @@ public class AdminVentas extends Usuario {
             do {
                 cantMaterial = inputRegistro.next();
 
-            } while (Double.parseDouble(cantMaterial) < 0d || cantMaterial == null
+            } while (Double.parseDouble(cantMaterial) < 0 || v.validacionNumerosVacios(cantMaterial)
                     || Double.parseDouble(cantMaterial) > deposito.getTotalDeOro());
 
             deposito.setTotalDeOro(deposito.getTotalDeOro() - Double.parseDouble(cantMaterial));
-            this.deposito.descontarCantidad(Double.parseDouble(cantMaterial));
+
         }
         if (material.equalsIgnoreCase("PLATA")) {
             System.out.println("Ingresar cantidad vendida");
@@ -128,14 +129,18 @@ public class AdminVentas extends Usuario {
 
         this.getMineria().getListaDeOperaciones()
                 .add(new TicketOperacion(Double.parseDouble(cantMaterial), totalDeVenta, cliente, this));
-        
-        this.deposito.eliminarRegistro();
-
     }
     
     //pendiente descontar al total luego de cada nueva operacion segun el tipo de material
 
-   
+    public Cliente getRegistroCliente() {
+
+        return registroClientes;
+    }
+
+    public void setRegistroCliente(Cliente registroClientes) {
+        this.registroClientes = registroClientes;
+    }
 
     public Deposito getDeposito() {
         return deposito;
@@ -145,6 +150,13 @@ public class AdminVentas extends Usuario {
         this.deposito = deposito;
     }
 
+    public Cliente getRegistroClientes() {
+        return registroClientes;
+    }
+
+    public void setRegistroClientes(Cliente registroClientes) {
+        this.registroClientes = registroClientes;
+    }
 
     @Override
     public String toString() {
