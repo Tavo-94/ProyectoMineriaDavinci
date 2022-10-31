@@ -12,7 +12,7 @@ public class AdminStock extends Usuario {
 	
 	static Deposito stock = new Deposito();
 
-	public void Login() {
+	/*public void Login() {
 		
 		SobreCarga();
 		System.out.println("Bienvenido");
@@ -52,9 +52,40 @@ public class AdminStock extends Usuario {
 			default: System.out.println("Se eligio una opci�n incorrecta volver a intentar");
 				break;
 			}
-	}
+	}*/
+	
+	public void agregarMaterial(Scanner inputDelUsuario) {
+        String tipo;
+        Double pureza;
+        Double cantidad;
+        Double precio;
+        LocalDate fecha;
 
-	private void agregarMaterial() {
+        System.out.println("ingresar tipo de material");
+        do {
+            tipo = inputDelUsuario.next();
+            
+        } while (tipo.isBlank() || tipo.isEmpty());
+
+        System.out.println("ingresar pureza");
+        do {
+            pureza = inputDelUsuario.nextDouble();
+        } while (pureza < 0d || pureza > 100d);
+
+        System.out.println("ingresar cantidad");
+        do {
+            cantidad = inputDelUsuario.nextDouble();
+        } while (cantidad < 0d || cantidad == null);
+
+        System.out.println("ingresar precio");
+        do {
+            precio = inputDelUsuario.nextDouble();
+        } while (precio < 0d || precio == null);
+        
+        this.getDepositoDeMateriales().agregarStock(this, tipo, pureza, cantidad, precio);
+	}
+	
+	/*private void agregarMaterial() {
 		System.out.println("ingresar tipo de material");
 		Material material = new Material();
 		material.setTipo(entrada.next());
@@ -72,7 +103,7 @@ public class AdminStock extends Usuario {
 			System.out.println("seleccionar opcion 1");
 			}
        		imprimirMenu();
-	}
+	}*/
        		
 	private void buscarMaterial() {
 		System.out.println("Ingrese tipo de material que desea buscar");
@@ -88,7 +119,7 @@ public class AdminStock extends Usuario {
 		 imprimirMenu();
 	}
 	
-	private void modificarStock(Material material) {
+	/*private void modificarStock(Material material) {
 		System.out.println("Ingrese el tipo de material");
 		material.setTipo(entrada.next());
 		System.out.println("Ingrese cantidad");
@@ -103,6 +134,7 @@ public class AdminStock extends Usuario {
 		
 		 imprimirMenu();
 	}
+	
 	private void mostrarStock() {
 		System.out.println(stock);
 		imprimirMenu();
@@ -111,7 +143,20 @@ public class AdminStock extends Usuario {
 	private void Salir() {
 		System.out.println("El programa finalizo");
 		System.exit(0);
-	}
+	}*/
+	
+	  public void mostrarTotalOro() {
+        System.out.println(this.getDepositoDeMateriales().sumaTotalDeOro());
+    }
+
+    public void mostrarTotalPlata() {
+        System.out.println(this.getDepositoDeMateriales().sumaTotalDePlata());
+    }
+
+    public void mostrarTotalCobre() {
+        System.out.println(this.getDepositoDeMateriales().sumaTotalDeCobre());
+    }
+	
     @Override
     public String toString() {
         return "AdminStock [getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getNombreUsuario()="
