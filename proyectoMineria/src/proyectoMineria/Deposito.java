@@ -130,7 +130,7 @@ public class Deposito {
     
 
 
-	*/LinkedList<Material> Stock = new LinkedList<Material>();
+	/*LinkedList<Material> Stock = new LinkedList<Material>();
 
 	public boolean add(Material material) {
 		 char [] letras = material.getTipo().toCharArray();
