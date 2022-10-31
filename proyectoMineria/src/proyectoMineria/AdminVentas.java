@@ -19,6 +19,9 @@ public class AdminVentas extends Usuario {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
         // TODO Auto-generated constructor stub
     }
+    
+    
+    
 
     @Override
     public void loguearse(Scanner inputUsuario) {
