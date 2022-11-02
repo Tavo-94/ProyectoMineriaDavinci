@@ -24,14 +24,15 @@ public class AdminStockDAO {
     
     public void agregarNuevoAdminStock(AdminStock nuevoStock, AdminSistema adminSistema) {
         try {
-            String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?)";
+            String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?,?)";
             conexion = getConnection();
             ptmt = conexion.prepareStatement(queryString);
             ptmt.setString(1, nuevoStock.getNombre());
             ptmt.setString(2, nuevoStock.getApellido());
             ptmt.setString(3, nuevoStock.getNombreUsuario());
             ptmt.setString(4, nuevoStock.getClave());
-            ptmt.setString(5, adminSistema.getNombreUsuario());
+            ptmt.setInt(5, 1);
+            ptmt.setString(6, adminSistema.getNombreUsuario());
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
         } catch (SQLException e) {

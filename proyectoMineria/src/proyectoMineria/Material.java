@@ -23,6 +23,18 @@ public class Material {
             this.seteoDeCoeficientes(tipo);
             this.fecha = LocalDate.now();            
         }
+        
+        
+
+        public Material(Integer idMaterial, String tipo, Double pureza, Double cantidad) {
+            super();
+            this.idMaterial = idMaterial;
+            this.tipo = tipo;
+            this.pureza = pureza;
+            this.cantidad = cantidad;
+        }
+
+
 
         private void seteoDePrecio(String tipo) {
             if (tipo.equalsIgnoreCase("oro")) {
