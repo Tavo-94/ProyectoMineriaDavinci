@@ -4,46 +4,75 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import negocio.AdminVentasDao;
+
 public class Main {
 
     public static void main(String[] args) {
-
-        Scanner input = new Scanner(System.in);
-
+        
+        //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
 
-        //AdminSistema gus = new AdminSistema("Gus94", "Lolabonita94", "Admin", true, metalPlus);
-
-        Deposito deposito = new Deposito();
-
-        AdminStock admin = new AdminStock("den", "1234", "Stock", true, metalPlus);
-
-        admin.setDepositoDeMateriales(deposito);
-
-        admin.agregarMaterial(input);
-
-        deposito.mostrarStock();
-
-        admin.agregarMaterial(input);
-
-        deposito.mostrarStock();
+        AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
         
-        admin.mostrarTotalOro();
+        AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
         
-        AdminVentas vendedor = new AdminVentas("ari", "1234", "ventas", true, metalPlus);
+        AdminVentasDao ventasDAO = new AdminVentasDao();
         
-        vendedor.setDeposito(deposito);
+        //gus.crearUsuario();
         
-        vendedor.nuevoRegistroDeOperacion(input);
+        //gus.eliminarAdminVentas();
+          
+        //dani.nuevoTicket();
         
-        metalPlus.getListaClientes().forEach(System.out::println);
-        metalPlus.getListaDeOperaciones().forEach(System.out::println);
-        
-        deposito.mostrarStock();    
-        admin.mostrarTotalOro();
-        
-
+        ventasDAO.validarLoginVentas(dani);        
         /*
+         * Scanner input = new Scanner(System.in);
+         * 
+         * Mineria metalPlus = new Mineria("Metal plus");
+         * 
+         * AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true,
+         * metalPlus);
+         * 
+         * Deposito deposito = new Deposito();
+         * 
+         * AdminStock admin = new AdminStock("den", "1234", "Stock", true, metalPlus);
+         * 
+         * admin.setDepositoDeMateriales(deposito);
+         * 
+         * admin.agregarMaterial(input);
+         * 
+         * deposito.mostrarStock();
+         * 
+         * admin.agregarMaterial(input);
+         * 
+         * deposito.mostrarStock();
+         * 
+         * admin.mostrarTotalOro();
+         * 
+         * AdminVentas vendedor = new AdminVentas("ari", "1234", "ventas", true,
+         * metalPlus);
+         * 
+         * vendedor.setDeposito(deposito);
+         * 
+         * vendedor.nuevoRegistroDeOperacion(input);
+         * 
+         * metalPlus.getListaClientes().forEach(System.out::println);
+         * metalPlus.getListaDeOperaciones().forEach(System.out::println);
+         * 
+         * deposito.mostrarStock();
+         * admin.mostrarTotalOro();
+         */        
+        
+        /*
+         * System.out.println("***************************");
+         * System.out.println("Caso login y alta de usuarios");
+         * System.out.println("***************************");
+         * 
+         * 
+         * 
+         * 
+         * 
          * System.out.println(gus);
          * 
          * metalPlus.agregarAdmin(gus);
@@ -55,9 +84,9 @@ public class Main {
          * gus.darDeAlta(input);
          * 
          * System.out.println(gus);
-         */
-
-        /*
+         * 
+         * 
+         * 
          * gus.loguearse(input);
          * 
          * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
@@ -65,9 +94,9 @@ public class Main {
          * gus.cambiarClave(input);
          * 
          * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
-         */
-
-        /*
+         * 
+         * 
+         * 
          * //creo 1er usuario gus.crearUsuario(input);
          * 
          * System.out.println("***************************");
@@ -115,7 +144,7 @@ public class Main {
          * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
          */
 
-        input.close();
+        //input.close();
     }
 
 }

@@ -7,17 +7,19 @@ public class Cliente {
 
     private String nombre;
     private String apellido;
-    private String dni;
     private Boolean esMayorista;
+    private String telefono;
+    private Integer idCliente;
 
     
-    
-    public Cliente(String nombre,String apellido,String dni, Boolean esMayorista) {
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.dni=dni;
+     
+    public Cliente(String nombre, String apellido, Boolean esMayorista, String telefono) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.esMayorista = esMayorista;
-        
+        this.telefono = telefono;
+        this.idCliente = null;
     }
 
 
@@ -40,18 +42,6 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-
-    public String getDni() {
-        return dni;
-    }
-
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-    
-    
-
     
     public Boolean getEsMayorista() {
         return esMayorista;
@@ -62,10 +52,31 @@ public class Cliente {
         this.esMayorista = esMayorista;
     }
 
+    
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
 
     @Override
     public String toString() {
-        return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", esMayorista=" + esMayorista
+        return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", esMayorista=" + esMayorista
                 + "]";
     }
     

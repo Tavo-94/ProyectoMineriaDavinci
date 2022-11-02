@@ -4,6 +4,7 @@ package proyectoMineria;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Deposito {
     
@@ -23,7 +24,7 @@ public class Deposito {
     
     public void agregarStock(Usuario usuario, String tipo, Double pureza, Double cantidad, Double precio) {
         if (this.validarCargo(usuario)) {
-            listaMateriales.add(new Material(tipo, pureza, cantidad, precio));
+            listaMateriales.add(new Material(tipo, pureza, cantidad));
             System.out.println("Se Agrego Exitosamente!!!");
             if (tipo.equalsIgnoreCase("oro")) {
                 this.totalDeOro += cantidad;
@@ -92,5 +93,40 @@ public class Deposito {
     public void setTotalDeCobre(Double totalDeCobre) {
         this.totalDeCobre = totalDeCobre;
     }
+
+    @Override
+    public String toString() {
+        return "Deposito [listaMateriales=" + listaMateriales + "]";
+    }
+
+    public void descontarCantidad(Double cantidadVendida) {
+        // TODO Auto-generated method stub
+        
+        for (Material material : listaMateriales) {
+            //check si la cantidad vendida es menor a la cantidad del registro
+            if (cantidadVendida <= material.getCantidad()) {
+                material.setCantidad(material.getCantidad() - cantidadVendida);
+                //si despues del descuento la cantidad es 0 se rompe el loop
+                if (material.getCantidad() == 0d) {
+                    return;
+                }
+            } else {
+                //si la cantidad es mayor, descuento a la cantidad vendida la cantidad del registro y seteo a 0 la cantidad del registro
+                cantidadVendida -= material.getCantidad();
+                material.setCantidad(0d);   
+            }
+            //Si la cantidad vendida == 0 => se rompe el loop porque no tiene sentido seguir iterando sobre toda la coleccion
+            if (cantidadVendida == 0d) {
+                return;
+            }
+        }
+                
+    }
+    
+    public void eliminarRegistro() {
+        this.listaMateriales.removeIf(mat -> mat.getCantidad() == 0d);
+    }
+    
+    
     
 }

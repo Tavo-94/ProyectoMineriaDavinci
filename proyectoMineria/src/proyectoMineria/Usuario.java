@@ -34,6 +34,9 @@ public abstract class Usuario {
         // TODO Auto-generated method stub
         return getCargo().equalsIgnoreCase("Ventas");
     }
+    public Boolean validarString(String aValidar) {
+        return aValidar.isBlank() || aValidar.isEmpty() || aValidar == null;     
+    }
 	
 	//getters y setters
 	public String getNombre() {
