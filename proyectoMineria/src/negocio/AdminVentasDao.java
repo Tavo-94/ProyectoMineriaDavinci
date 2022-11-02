@@ -29,7 +29,7 @@ public class AdminVentasDao {
         try {
 
             // defino la query
-            String queryString = "INSERT INTO admin_ventas(nombre, apellido, nombre_usuario, clave, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?)";
+            String queryString = "INSERT INTO admin_ventas(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?,?)";
             // armo la conexion
             conexion = getConnection();
 
@@ -39,7 +39,8 @@ public class AdminVentasDao {
             ptmt.setString(2, nuevoVentas.getApellido());
             ptmt.setString(3, nuevoVentas.getNombreUsuario());
             ptmt.setString(4, nuevoVentas.getClave());
-            ptmt.setString(5, adminSistema.getNombreUsuario());
+            ptmt.setInt(5, 1); //hardcode de id deposito = 1 xq hay un solo deposito
+            ptmt.setString(6, adminSistema.getNombreUsuario());
 
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
@@ -178,6 +179,12 @@ public class AdminVentasDao {
         } finally {
             try {
 
+                if (conexion != null) {
+                    conexion.close();
+                }
+                if (ptmt != null) {
+                    ptmt.close();
+                }
                 if (resultSet != null) {
                     resultSet.close();
                 }
