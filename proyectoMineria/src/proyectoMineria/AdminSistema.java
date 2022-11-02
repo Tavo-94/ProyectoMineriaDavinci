@@ -24,12 +24,12 @@ public class AdminSistema extends Usuario {
 		System.out.println("ingresar nombre de usuario");
 		do {
 			nombreUsuario = inputDelUsuario.next();
-		} while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+		} while ((v.validarTexto(nombreUsuario)!=true || v.validacionTextoVacio(nombreUsuario)!=true));
 		
 		System.out.println("ingresar clave");
 		do {
 			clave = inputDelUsuario.next();
-		} while (clave.isBlank() || clave.isEmpty());
+		} while ((v.validacionTextoVacio(clave)!=true));
 		
 		this.getMineria().loguearse(nombreUsuario, clave);
 		
