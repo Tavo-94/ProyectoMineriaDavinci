@@ -25,7 +25,7 @@ public class Main {
         //tests del AdminVentas
         
         //Es funcional
-        //dani.nuevoTicket();
+        dani.nuevoTicket();
         
         //Es funcional
         dani.visualizarStock();

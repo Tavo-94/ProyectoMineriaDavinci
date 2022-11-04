@@ -42,6 +42,8 @@ public class AdminVentas extends Usuario {
 
     }
 
+    
+    //faltaria implementar un JTable o en un OptionPane para mostrar los datos
     public void visualizarStock() {
 
         MaterialDAO materialDAO = new MaterialDAO();
@@ -183,7 +185,8 @@ public class AdminVentas extends Usuario {
         
         ticketOperacionDAO.agregarNuevoTicketOperacionDelPedido(nuevoTicketPedido, this, nuevoCliente, materialComprado);
         
-       
+        //elimino los registros necesarios del deposito para reflejar la venta realizada
+        materialDAO.eliminarMaterialCompradoDeLaTablaMaterial(materialComprado);
 
     }
     
