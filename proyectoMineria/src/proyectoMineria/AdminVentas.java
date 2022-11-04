@@ -1,5 +1,6 @@
 package proyectoMineria;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -42,7 +43,16 @@ public class AdminVentas extends Usuario {
     }
 
     public void visualizarStock() {
-        this.getDeposito().mostrarStock();
+
+        MaterialDAO materialDAO = new MaterialDAO();
+        
+        ArrayList<Material> listaDeMateriales = new ArrayList<>();
+        
+        listaDeMateriales= materialDAO.visualizarStock();
+        
+        for (Material material : listaDeMateriales) {
+            System.out.println(material.getTipo() + " | " + material.getCantidad() + " | " + material.getPureza() + " | " + material.getPrecioBase());
+        }
     }
 
     public void nuevoTicket() {

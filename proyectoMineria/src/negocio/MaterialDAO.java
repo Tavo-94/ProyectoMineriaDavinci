@@ -25,6 +25,7 @@ public class MaterialDAO {
         try {
             conexion = getConnection();
 
+            //id deposito hardcodeado a 1 porque hay un solo deposito
             String query = "SELECT idmaterial, tipo, pureza, cantidad FROM material WHERE deposito_iddeposito = 1;";
 
             ptmt = conexion.prepareStatement(query);
