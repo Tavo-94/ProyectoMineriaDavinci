@@ -1,14 +1,14 @@
 package proyectoMineria;
 
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
+import IU.InterfazGeneral;
 import negocio.AdminVentasDao;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        InterfazGeneral interfazGeneral = new InterfazGeneral();
+        interfazGeneral.MenuPrincipal();
         
         //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
