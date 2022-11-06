@@ -18,7 +18,7 @@ public class AdminStockDAO {
     Connection conexion = null;
     PreparedStatement ptmt = null;
     ResultSet resultSet = null;
-    
+    Validaciones v = new Validaciones();
     
     private Connection getConnection() throws SQLException {
         Connection conn;
@@ -60,7 +60,7 @@ public class AdminStockDAO {
     
     public void agregarMaterial (Material agregarMaterial ) {
     	try {
-    		 String query = "INSERT INTO material(idmaterial, tipo, pureza, cantidad, deposito_iddeposito) VALUES(?,?,?,?,?)";
+    		 String query = "INSERT INTO material(tipo, pureza, cantidad, deposito_iddeposito) VALUES(?,?,?,?,?)";
              conexion = getConnection();
              ptmt = conexion.prepareStatement(query);
              ptmt.setString(1, agregarMaterial.getTipo());
@@ -87,6 +87,85 @@ public class AdminStockDAO {
                 }
             }
     	}
+	
+		public void mostrarStock (Material mostrarStock) {
+    	try {
+			
+    		String query = "SELECT * FROM material";
+    		conexion = getConnection();
+    		ptmt = conexion.prepareStatement(query);
+    		ptmt.setString(0, query);
+    		
+            ptmt.executeUpdate();
+    		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        try {
+        	if (ptmt != null)
+                ptmt.close();
+        	if (conexion != null)
+                conexion.close();
+        	} catch (SQLException e) {
+            e.printStackTrace();
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+        }
+    }
+    
+    public void mostrarStocklTipoPureza(Material mostrarMaterial ) {
+    	try {
+			
+    		String query = "SELECT tipo, pureza, SUM(cantidad) FROM material WHERE tipo = '?' AND pureza = '?' GROUP BY cantidad";
+    		conexion = getConnection();
+    		ptmt = conexion.prepareStatement(query);
+    		ptmt.setString(1,mostrarMaterial.getTipo());
+    		ptmt.setDouble(1,mostrarMaterial.getPureza());
+    		
+            ptmt.executeUpdate();
+    		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        try {
+        	if (ptmt != null)
+                ptmt.close();
+        	if (conexion != null)
+                conexion.close();
+        	} catch (SQLException e) {
+            e.printStackTrace();
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+        }
+    }
+    
+    public void mostrarStocklTipo(Material mostrarMaterial ) {	
+    	try {
+			
+    		String query = "SELECT tipo, pureza, SUM(cantidad) FROM material WHERE tipo = '?' GROUP BY cantidad";
+    		conexion = getConnection();
+    		ptmt = conexion.prepareStatement(query);
+    		ptmt.setString(1,mostrarMaterial.getTipo());
+    		
+            ptmt.executeUpdate();
+    		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+        try {
+        	if (ptmt != null)
+                ptmt.close();
+        	if (conexion != null)
+                conexion.close();
+        	} catch (SQLException e) {
+            e.printStackTrace();
+            } catch (Exception e) {
+            e.printStackTrace();
+            }
+        }
+    }
     
     public Deposito buscarMaterial (Material buscarMaterial ) {
     	
