@@ -21,6 +21,11 @@ public class InterfazGeneral {
         String adminStockPassword = "1234";
 
 
+        JOptionPane.showMessageDialog(null,
+                "Bienvenido!\n" + "A continuación ingrese su usuario y contraseña para poder continuar.",
+                "Main Menu", JOptionPane.WARNING_MESSAGE,
+                new ImageIcon(InterfazGeneral.class.getResource("")));
+
         Username = JOptionPane.showInputDialog("Ingrese su usuario:");
         Password = JOptionPane.showInputDialog("Ingrese su contraseña:");
 
@@ -41,11 +46,18 @@ public class InterfazGeneral {
                     break;
 
                 case 3:
+                    JOptionPane.showMessageDialog(null,
+                            "Cerrando applicacion a continuacion",
+                            "Main Menu", JOptionPane.WARNING_MESSAGE,
+                            new ImageIcon(InterfazGeneral.class.getResource("")));
                     System.exit(0);
                     break;
 
                 default:
-                    JOptionPane.showMessageDialog(null, "Opcion incorrecta.\n" + "Sesión terminada.");
+                    JOptionPane.showMessageDialog(null,
+                            "Cerrando applicacion a continuacion",
+                            "Main Menu", JOptionPane.WARNING_MESSAGE,
+                            new ImageIcon(InterfazGeneral.class.getResource("")));
                     MenuPrincipal();
                     break;
             }
@@ -73,11 +85,18 @@ public class InterfazGeneral {
                     break;
 
                 case 5:
+                    JOptionPane.showMessageDialog(null,
+                            "Cerrando applicacion a continuacion",
+                            "Main Menu", JOptionPane.WARNING_MESSAGE,
+                            new ImageIcon(InterfazGeneral.class.getResource("")));
                     System.exit(0);
                     break;
 
                 default:
-                    JOptionPane.showMessageDialog(null, "Opcion incorrecta.\n" + "Sesión terminada.");
+                    JOptionPane.showMessageDialog(null,
+                            "Cerrando applicacion a continuacion",
+                            "Main Menu", JOptionPane.WARNING_MESSAGE,
+                            new ImageIcon(InterfazGeneral.class.getResource("")));
                     MenuPrincipal();
                     break;
 
@@ -100,11 +119,18 @@ public class InterfazGeneral {
                             break;
 
                         case 3:
+                            JOptionPane.showMessageDialog(null,
+                                    "Cerrando applicacion a continuacion",
+                                    "Main Menu", JOptionPane.WARNING_MESSAGE,
+                                    new ImageIcon(InterfazGeneral.class.getResource("")));
                             System.exit(0);
                             break;
 
                         default:
-                            JOptionPane.showMessageDialog(null, "Opcion incorrecta.\n" + "Sesión terminada.");
+                            JOptionPane.showMessageDialog(null,
+                                    "Cerrando applicacion a continuacion",
+                                    "Main Menu", JOptionPane.WARNING_MESSAGE,
+                                    new ImageIcon(InterfazGeneral.class.getResource("")));
                             MenuPrincipal();
                             break;
 
