@@ -1,6 +1,7 @@
 package IU;
 
 
+import proyectoMineria.Deposito;
 import proyectoMineria.Main;
 
 import javax.swing.*;
@@ -35,14 +36,16 @@ public class InterfazGeneral {
             JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
 
             int ingresoAdminSistema;
-            ingresoAdminSistema = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar nuevo Admin Ventas. \n"
-                    + "2) Ingresar nuevo Admin Stock.\n" + "3) Salir."));
+            ingresoAdminSistema = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar Admin Ventas panel. \n"
+                    + "2) Ingresar Admin Stock panel.\n" + "3) Salir."));
 
             switch (ingresoAdminSistema) {
                 case 1:
+                    AdminVentas();
                     break;
 
                 case 2:
+                    AdminStock();
                     break;
 
                 case 3:
@@ -73,15 +76,19 @@ public class InterfazGeneral {
 
             switch (ingresoAdminVentas) {
                 case 1:
+                    Venta();
                     break;
 
                 case 2:
+                    AgregarCliente();
                     break;
 
                 case 3:
+                    ConsultarStock();
                     break;
 
                 case 4:
+                    RealizarBalance();
                     break;
 
                 case 5:
@@ -113,9 +120,11 @@ public class InterfazGeneral {
 
                     switch (ingresoAdminStock) {
                         case 1:
+                            AgregarStock();
                             break;
 
                         case 2:
+                            ActualizarStock();
                             break;
 
                         case 3:
@@ -141,6 +150,142 @@ public class InterfazGeneral {
             MenuPrincipal();
                 }
             }
+
+            //-------------------------- ADMINSISTEMAS . adminventas ---------------------------//
+            public  static void AdminVentas(){
+                int adminVentas;
+                adminVentas = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar nuevo Admin Ventas. \n"
+                        + "2) Modificar un Admin Ventas.\n" + "3) Eliminar un Admin Ventas.\n" + "4) Salir."));
+
+                switch (adminVentas) {
+                    case 1:
+                        AgregarAdminVentas();
+                        break;
+
+                    case 2:
+                        ModificarAdminVentas();
+                        break;
+
+                    case 3:
+                        EliminarAdminVentas();
+                        break;
+
+                    case 4:
+                        JOptionPane.showMessageDialog(null,
+                                "Cerrando applicacion a continuacion",
+                                "Main Menu", JOptionPane.WARNING_MESSAGE,
+                                new ImageIcon(InterfazGeneral.class.getResource("")));
+                        System.exit(0);
+                        break;
+
+                    default:
+                        JOptionPane.showMessageDialog(null,
+                                "Cerrando applicacion a continuacion",
+                                "Main Menu", JOptionPane.WARNING_MESSAGE,
+                                new ImageIcon(InterfazGeneral.class.getResource("")));
+                        MenuPrincipal();
+                        break;
+                }
+
+            }
+
+            public static void AgregarAdminVentas(){
+
+            }
+
+            public static void ModificarAdminVentas(){
+
+            }
+
+            public static void EliminarAdminVentas(){
+
+            }
+
+
+            //-------------------------- ADMINSISTEMAS . adminstock ---------------------------//
+
+            public  static void AdminStock(){
+                int adminStock;
+                adminStock = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar nuevo Admin Stock. \n"
+                        + "2) Modificar un Admin Stock.\n" + "3) Eliminar un Admin Stock.\n" + "4) Salir."));
+
+                switch (adminStock) {
+                    case 1:
+                        AgregarAdminStock();
+                        break;
+
+                    case 2:
+                        ModificarAdminStock();
+                        break;
+
+                    case 3:
+                        EliminarAdminStock();
+                        break;
+
+                    case 4:
+                        JOptionPane.showMessageDialog(null,
+                                "Cerrando applicacion a continuacion",
+                                "Main Menu", JOptionPane.WARNING_MESSAGE,
+                                new ImageIcon(InterfazGeneral.class.getResource("")));
+                        System.exit(0);
+                        break;
+
+                    default:
+                        JOptionPane.showMessageDialog(null,
+                                "Cerrando applicacion a continuacion",
+                                "Main Menu", JOptionPane.WARNING_MESSAGE,
+                                new ImageIcon(InterfazGeneral.class.getResource("")));
+                        MenuPrincipal();
+                        break;
+                }
+
+            }
+
+            public static void AgregarAdminStock(){
+
+             }
+
+            public static void ModificarAdminStock(){
+
+            }
+
+            public static void EliminarAdminStock(){
+
+            }
+
+
+            //-------------------------- ADMINVENTAS ---------------------------//
+
+            public static void Venta(){
+
+            }
+
+            public static Deposito ConsultarStock(){
+
+                return null;
+            }
+
+            public static void AgregarCliente(){
+
+            }
+
+            public static void RealizarBalance(){
+
+            }
+
+
+
+            //-------------------------- ADMINSTOCK ---------------------------//
+
+            public  static void AgregarStock(){
+
+            }
+
+            public static void ActualizarStock(){
+
+            }
+
+
         }
 
 
