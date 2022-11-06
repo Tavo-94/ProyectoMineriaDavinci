@@ -1,6 +1,7 @@
 package IU;
 
 
+import negocio.AdminVentasDao;
 import proyectoMineria.Deposito;
 import proyectoMineria.Main;
 
@@ -10,7 +11,7 @@ public class InterfazGeneral {
 
     static Main menu = new Main();
 
-    public static void MenuPrincipal() {
+    public void MenuPrincipal() {
 
         String Username, Password;
 
@@ -152,7 +153,7 @@ public class InterfazGeneral {
             }
 
             //-------------------------- ADMINSISTEMAS . adminventas ---------------------------//
-            public  static void AdminVentas(){
+            public void AdminVentas(){
                 int adminVentas;
                 adminVentas = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar nuevo Admin Ventas. \n"
                         + "2) Modificar un Admin Ventas.\n" + "3) Eliminar un Admin Ventas.\n" + "4) Salir."));
@@ -191,20 +192,31 @@ public class InterfazGeneral {
 
             public static void AgregarAdminVentas(){
 
+                String UsernameVentas, PasswordVentas;
+
+                UsernameVentas = JOptionPane.showInputDialog("Ingrese su usuario:");
+                PasswordVentas = JOptionPane.showInputDialog("Ingrese su contraseña:");
+
+
             }
 
             public static void ModificarAdminVentas(){
 
+
+
             }
 
-            public static void EliminarAdminVentas(){
+            public void EliminarAdminVentas(){
+
+                AdminVentasDao ventasDAO = new AdminVentasDao();
+                ventasDAO.eliminarAdminVentas();
 
             }
 
 
             //-------------------------- ADMINSISTEMAS . adminstock ---------------------------//
 
-            public  static void AdminStock(){
+            public void AdminStock(){
                 int adminStock;
                 adminStock = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar nuevo Admin Stock. \n"
                         + "2) Modificar un Admin Stock.\n" + "3) Eliminar un Admin Stock.\n" + "4) Salir."));
@@ -242,6 +254,12 @@ public class InterfazGeneral {
             }
 
             public static void AgregarAdminStock(){
+
+                String UsernameStock, PasswordStock;
+
+                UsernameStock = JOptionPane.showInputDialog("Ingrese su usuario:");
+                PasswordStock = JOptionPane.showInputDialog("Ingrese su contraseña:");
+
 
              }
 
