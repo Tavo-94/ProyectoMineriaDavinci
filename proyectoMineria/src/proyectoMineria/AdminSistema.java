@@ -1,27 +1,22 @@
 package proyectoMineria;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
 import negocio.AdminStockDAO;
 import negocio.AdminVentasDao;
 
+import javax.swing.*;
+import java.util.Scanner;
+
 public class AdminSistema extends Usuario {
-        
+
 	public AdminSistema(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
 		super(nombreUsuario, clave, cargo, estadoActivo, mineria);
 		// TODO Auto-generated constructor stub
 		    
 	}
 
-	
+
+
 	@Override
 	public void loguearse(Scanner inputDelUsuario) {
 		// TODO Auto-generated method stub
@@ -64,8 +59,8 @@ public class AdminSistema extends Usuario {
 		}
 		*/
 	}
-	
-		
+
+
 	@Override
 	public void cambiarClave(Scanner inputDelUsuario) {
 		// TODO Auto-generated method stub
@@ -101,7 +96,7 @@ public class AdminSistema extends Usuario {
 	}
 //creo instancia de adimin ventas
 	public void crearUsuario() {
-		
+
 		String nombreUsuario;
 		String clave;
 		String cargo;
@@ -207,6 +202,7 @@ public class AdminSistema extends Usuario {
 	public Boolean validarLogIn(String nombreUsuario, String clave) {
 		return this.getMineria().getListaUsuariosAdmin().stream().anyMatch(admin -> admin.getNombreUsuario().equals(nombreUsuario) && admin.getClave().equals(clave));		
 	}
+
 
 
 	@Override

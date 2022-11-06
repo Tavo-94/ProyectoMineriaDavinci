@@ -2,18 +2,19 @@ package IU;
 
 
 import negocio.AdminVentasDao;
+import proyectoMineria.AdminSistema;
 import proyectoMineria.Deposito;
 import proyectoMineria.Main;
+import proyectoMineria.Mineria;
 
 import javax.swing.*;
 
 public class InterfazGeneral {
 
     static Main menu = new Main();
+    private String Username, Password;
 
     public void MenuPrincipal() {
-
-        String Username, Password;
 
         String adminSistema = "adminsistema";
         String adminSistemaPassword = "1234";
@@ -154,6 +155,7 @@ public class InterfazGeneral {
 
             //-------------------------- ADMINSISTEMAS . adminventas ---------------------------//
             public void AdminVentas(){
+
                 int adminVentas;
                 adminVentas = Integer.parseInt(JOptionPane.showInputDialog(null, "Qué desea realizar ?\n" + "1) Ingresar nuevo Admin Ventas. \n"
                         + "2) Modificar un Admin Ventas.\n" + "3) Eliminar un Admin Ventas.\n" + "4) Salir."));
@@ -190,13 +192,11 @@ public class InterfazGeneral {
 
             }
 
-            public static void AgregarAdminVentas(){
+            public void AgregarAdminVentas(){
 
-                String UsernameVentas, PasswordVentas;
-
-                UsernameVentas = JOptionPane.showInputDialog("Ingrese su usuario:");
-                PasswordVentas = JOptionPane.showInputDialog("Ingrese su contraseña:");
-
+                Mineria metalPlus = new Mineria("Metal plus");
+                AdminSistema agregarAdminVentas = new AdminSistema(Username, Password, "Admin", true, metalPlus);
+                agregarAdminVentas.crearUsuario();
 
             }
 
@@ -253,13 +253,11 @@ public class InterfazGeneral {
 
             }
 
-            public static void AgregarAdminStock(){
+            public void AgregarAdminStock(){
 
-                String UsernameStock, PasswordStock;
-
-                UsernameStock = JOptionPane.showInputDialog("Ingrese su usuario:");
-                PasswordStock = JOptionPane.showInputDialog("Ingrese su contraseña:");
-
+                Mineria metalPlus = new Mineria("Metal plus");
+                AdminSistema agregarAdminVentas = new AdminSistema(Username, Password, "Admin", true, metalPlus);
+                agregarAdminVentas.crearUsuario();
 
              }
 
@@ -268,6 +266,8 @@ public class InterfazGeneral {
             }
 
             public static void EliminarAdminStock(){
+
+
 
             }
 
@@ -296,6 +296,8 @@ public class InterfazGeneral {
             //-------------------------- ADMINSTOCK ---------------------------//
 
             public  static void AgregarStock(){
+
+
 
             }
 
