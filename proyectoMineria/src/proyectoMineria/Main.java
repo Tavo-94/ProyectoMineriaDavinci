@@ -1,14 +1,14 @@
 package proyectoMineria;
 
-import IU.InterfazGeneral;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import negocio.AdminVentasDao;
 
 public class Main {
 
     public static void main(String[] args) {
-
-        InterfazGeneral interfazGeneral = new InterfazGeneral();
-        interfazGeneral.MenuPrincipal();
         
         //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
@@ -17,15 +17,20 @@ public class Main {
         
         AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
         
-        AdminVentasDao ventasDAO = new AdminVentasDao();
-        
+        //tests del AdminSistema
         //gus.crearUsuario();
         
         //gus.eliminarAdminVentas();
-          
-        //dani.nuevoTicket();
         
-        ventasDAO.validarLoginVentas(dani);        
+        //tests del AdminVentas
+        
+        //Es funcional
+        dani.nuevoTicket();
+        
+        //Es funcional
+        dani.visualizarStock();
+        
+        //ventasDAO.validarLoginVentas(dani);        
         /*
          * Scanner input = new Scanner(System.in);
          * 
