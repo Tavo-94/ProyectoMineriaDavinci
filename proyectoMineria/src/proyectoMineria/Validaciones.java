@@ -40,5 +40,34 @@ public class Validaciones {
 		
 	}
 	
+	public static boolean validarPassword(String cadenaTexto) {
+		
+		return cadenaTexto.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$");
+		
+	}
+	
+	public boolean validarASCII(String cadenaTexto) {
+		int contador =0;
+		int valorASCII=0;
+		boolean validador = false;
+		
+		for(int i = 0; i<cadenaTexto.length();i++) {
+			
+			char caracter = cadenaTexto.charAt(i);
+			valorASCII = (int) caracter;
+				if(valorASCII < 97 || valorASCII > 122) {
+					
+					contador++;
+					validador = true;
+				}
+				else {
+					validador = false;
+				}
+		
+		}
+		return validador;
+		
+	}
+	
 	
 }
