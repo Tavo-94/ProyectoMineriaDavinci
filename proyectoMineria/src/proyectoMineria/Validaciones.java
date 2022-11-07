@@ -46,6 +46,17 @@ public class Validaciones {
 
 	}
 
+	public boolean validacionCodPostal(String codigoPostal) {
+
+		return codigoPostal.matches("^[0-9]{4}$")//expresiones regulares permitidas numeros del 0-9 (4 en total)
+
+	}
+
+	public static boolean validarTelefono(String telefono) {
+		
+		return telefono.matches("^[0-9]$"); //expresiones regulares permitidas numeros del 0-9 
+	}
+
 }
 	
 	
