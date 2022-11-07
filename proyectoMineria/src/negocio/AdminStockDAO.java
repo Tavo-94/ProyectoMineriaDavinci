@@ -11,6 +11,7 @@ import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminStock;
 import proyectoMineria.Deposito;
 import proyectoMineria.Material;
+import proyectoMineria.Validaciones;
 
 public class AdminStockDAO {
 
