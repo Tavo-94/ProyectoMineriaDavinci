@@ -4,7 +4,6 @@ package proyectoMineria;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class Deposito {
     
@@ -12,6 +11,7 @@ public class Deposito {
     private Double totalDeOro = 0d;
     private Double totalDePlata = 0d;
     private Double totalDeCobre = 0d;
+
     
     public Deposito() {
         super();
@@ -22,7 +22,7 @@ public class Deposito {
         listaMateriales.forEach(System.out::println);
     }
     
-    public void agregarStock(Usuario usuario, String tipo, Double pureza, Double cantidad, Double precio) {
+    public void agregarStock(Usuario usuario, String tipo, Double pureza, Double cantidad) {
         if (this.validarCargo(usuario)) {
             listaMateriales.add(new Material(tipo, pureza, cantidad));
             System.out.println("Se Agrego Exitosamente!!!");
@@ -38,6 +38,12 @@ public class Deposito {
         }
     }
 
+    public void visualizarStock() {
+        
+        for(int i=0;i<listaMateriales.size();i++) {
+        	System.out.println(listaMateriales.get(i));
+        }
+    }
     private boolean validarCargo(Usuario usuario) {
         // TODO Auto-generated method stub
         return usuario.getCargo().equalsIgnoreCase("Stock");
@@ -45,7 +51,6 @@ public class Deposito {
 
 
     public Double sumaTotalDeOro() {
-        
         return this.listaMateriales.stream().filter(m -> m.getTipo().equalsIgnoreCase("oro")).mapToDouble(m -> m.getCantidad()).sum() ;
         
     }
@@ -93,40 +98,5 @@ public class Deposito {
     public void setTotalDeCobre(Double totalDeCobre) {
         this.totalDeCobre = totalDeCobre;
     }
-
-    @Override
-    public String toString() {
-        return "Deposito [listaMateriales=" + listaMateriales + "]";
-    }
-
-    public void descontarCantidad(Double cantidadVendida) {
-        // TODO Auto-generated method stub
-        
-        for (Material material : listaMateriales) {
-            //check si la cantidad vendida es menor a la cantidad del registro
-            if (cantidadVendida <= material.getCantidad()) {
-                material.setCantidad(material.getCantidad() - cantidadVendida);
-                //si despues del descuento la cantidad es 0 se rompe el loop
-                if (material.getCantidad() == 0d) {
-                    return;
-                }
-            } else {
-                //si la cantidad es mayor, descuento a la cantidad vendida la cantidad del registro y seteo a 0 la cantidad del registro
-                cantidadVendida -= material.getCantidad();
-                material.setCantidad(0d);   
-            }
-            //Si la cantidad vendida == 0 => se rompe el loop porque no tiene sentido seguir iterando sobre toda la coleccion
-            if (cantidadVendida == 0d) {
-                return;
-            }
-        }
-                
-    }
-    
-    public void eliminarRegistro() {
-        this.listaMateriales.removeIf(mat -> mat.getCantidad() == 0d);
-    }
-    
-    
     
 }
