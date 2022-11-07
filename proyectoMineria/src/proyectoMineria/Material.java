@@ -20,18 +20,25 @@ public class Material {
             this.pureza = pureza;
             this.cantidad = cantidad;
             this.seteoDePrecio(tipo);
-            this.seteoDeCoeficientes(tipo);
+            this.seteoDeCoeficientes(pureza);
             this.fecha = LocalDate.now();            
         }
         
         
-
+        //Constructor para la query en MaterialDAO
+        
+        //no hace falta setear la fecha porque ya la deberia sacar de la tabla material en la DB
+        
+        //El precio base tampoco pero no afecta sacarlo de la DB o calcularlo en el codigo porque es una constante
+        //en funcion del tipo de material
         public Material(Integer idMaterial, String tipo, Double pureza, Double cantidad) {
             super();
             this.idMaterial = idMaterial;
             this.tipo = tipo;
             this.pureza = pureza;
             this.cantidad = cantidad;
+            this.seteoDePrecio(tipo);
+            this.seteoDeCoeficientes(pureza);
         }
 
 
@@ -48,14 +55,14 @@ public class Material {
             }
         }
         
-        private void seteoDeCoeficientes(String tipo) {
-            if (tipo.equalsIgnoreCase("oro")) {
+        private void seteoDeCoeficientes(Double pureza) {
+            if (pureza > 70) {
                 this.coeficientePurezaAlta = 2d;
             }
-            if (tipo.equalsIgnoreCase("plata")) {
+            if (pureza > 30) {
                 this.coeficientePurezaMedia = 1d;
             }
-            if (tipo.equalsIgnoreCase("cobre")) {
+            if (pureza > 0) {
                 this.coeficientePurezaBaja = 0.5d;
             }            
         }

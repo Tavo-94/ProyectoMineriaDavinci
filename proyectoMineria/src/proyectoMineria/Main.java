@@ -17,12 +17,18 @@ public class Main {
         
         AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
         
-        
-        gus.crearUsuario();
+        //tests del AdminSistema
+        //gus.crearUsuario();
         
         //gus.eliminarAdminVentas();
-          
-        //dani.nuevoTicket();
+        
+        //tests del AdminVentas
+        
+        //Es funcional
+        dani.nuevoTicket();
+        
+        //Es funcional
+        dani.visualizarStock();
         
         //ventasDAO.validarLoginVentas(dani);        
         /*
