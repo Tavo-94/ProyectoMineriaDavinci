@@ -42,7 +42,7 @@ public class Validaciones {
  
 	public boolean validacionContrasenia(String clave) {
 
-		return clave.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,32}$")//valida que la contraseña contenga numeros, letras, caracteres especiales, no contenga espacios y sea entre 8 - 32 caracteres.
+		return clave.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,32}$");//valida que la contraseña contenga numeros, letras, caracteres especiales, no contenga espacios y sea entre 8 - 32 caracteres.
 
 	}
 

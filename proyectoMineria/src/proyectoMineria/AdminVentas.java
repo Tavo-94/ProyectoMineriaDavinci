@@ -82,8 +82,8 @@ public class AdminVentas extends Usuario {
         String calle;
         String altura;
         String codigoPostal;
-        String ciudad;
-        Integer idCliente;
+        String ciudad = null;
+        Integer idCliente = null;
         
         //datos del pedido
         Double total;
