@@ -13,6 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import java.awt.Cursor;
+import javax.swing.JPanel;
 
 public class PantallaPrincipal {
 
@@ -65,6 +67,7 @@ public class PantallaPrincipal {
         frmAdminsistemas.getContentPane().add(menuBar);
         
         JMenu mnNewMenu = new JMenu("HOME");
+        mnNewMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         mnNewMenu.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 12));
         menuBar.add(mnNewMenu);
         
@@ -98,45 +101,63 @@ public class PantallaPrincipal {
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Close");
         mnNewMenu.add(mntmNewMenuItem_1);
         
-        JLabel lblNewLabel_1 = new JLabel("MINERALPLUS");
-        lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_1.setFont(new Font("JetBrains Mono ExtraBold", Font.PLAIN, 18));
-        lblNewLabel_1.setBounds(32, 34, 233, 38);
-        frmAdminsistemas.getContentPane().add(lblNewLabel_1);
-        
-        JSeparator separator = new JSeparator();
-        separator.setBounds(20, 72, 265, 2);
-        frmAdminsistemas.getContentPane().add(separator);
-        
         JTextArea txtrLoremIpsumDolor = new JTextArea();
         txtrLoremIpsumDolor.setLineWrap(true);
         txtrLoremIpsumDolor.setEditable(false);
         txtrLoremIpsumDolor.setWrapStyleWord(true);
         txtrLoremIpsumDolor.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius pellentesque sagittis. Cras faucibus nibh pulvinar mi cursus pretium. Vivamus tincidunt tempus lectus non luctus. Integer cursus enim sed tempor auctor. Maecenas ac consequat velit, sed vulputate nulla. Mauris bibendum, est sed semper bibendum, arcu lacus dignissim orci, convallis sollicitudin neque magna et magna. Phasellus mollis arcu ipsum, in suscipit metus gravida et. Sed luctus vestibulum nibh in congue. Fusce mattis malesuada dui id porttitor. Nulla vel leo at neque porta cursus. Donec nec consectetur lorem. Proin eget turpis porttitor, facilisis mauris vel, dignissim sem.");
-        txtrLoremIpsumDolor.setBounds(21, 83, 264, 270);
+        txtrLoremIpsumDolor.setBounds(31, 131, 291, 219);
         frmAdminsistemas.getContentPane().add(txtrLoremIpsumDolor);
         
         JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
+        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
-        btnNewButton.setBounds(379, 89, 291, 38);
+        btnNewButton.setBounds(407, 111, 291, 38);
         frmAdminsistemas.getContentPane().add(btnNewButton);
         
         JButton btnPanelAdminVentas = new JButton("PANEL ADMIN VENTAS");
+        btnPanelAdminVentas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnPanelAdminVentas.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
-        btnPanelAdminVentas.setBounds(379, 178, 291, 38);
+        btnPanelAdminVentas.setBounds(407, 200, 291, 38);
         frmAdminsistemas.getContentPane().add(btnPanelAdminVentas);
         
         JButton btnPanelAdminStock = new JButton("PANEL ADMIN STOCK");
+        btnPanelAdminStock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnPanelAdminStock.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
-        btnPanelAdminStock.setBounds(379, 265, 291, 38);
+        btnPanelAdminStock.setBounds(407, 287, 291, 38);
         frmAdminsistemas.getContentPane().add(btnPanelAdminStock);
         
         JSeparator separator_3 = new JSeparator();
-        separator_3.setBounds(379, 240, 291, 2);
+        separator_3.setBounds(407, 262, 291, 2);
         frmAdminsistemas.getContentPane().add(separator_3);
         
         JSeparator separator_3_1 = new JSeparator();
-        separator_3_1.setBounds(379, 149, 291, 2);
+        separator_3_1.setBounds(407, 171, 291, 2);
         frmAdminsistemas.getContentPane().add(separator_3_1);
+        
+        JLabel lblNewLabel_1_1_2 = new JLabel("MINERAL PLUS");
+        lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_2.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1_2.setBounds(0, 36, 726, 23);
+        frmAdminsistemas.getContentPane().add(lblNewLabel_1_1_2);
+        
+        JPanel panel = new JPanel();
+        panel.setBounds(0, 11, 736, 61);
+        frmAdminsistemas.getContentPane().add(panel);
+        
+        JSeparator separator_3_2 = new JSeparator();
+        separator_3_2.setOrientation(SwingConstants.VERTICAL);
+        separator_3_2.setBounds(359, 66, 2, 519);
+        frmAdminsistemas.getContentPane().add(separator_3_2);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("SOBRE NOSOTROS");
+        lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1.setBounds(69, 97, 192, 23);
+        frmAdminsistemas.getContentPane().add(lblNewLabel_1_1);
+        
+        JSeparator separator = new JSeparator();
+        separator.setBounds(83, 122, 164, 2);
+        frmAdminsistemas.getContentPane().add(separator);
     }
 }

@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import java.awt.Panel;
 import java.awt.Component;
 import java.awt.Rectangle;
+import java.awt.Cursor;
 
 public class AdminSistemasMenu {
 
@@ -72,6 +73,7 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(menuBar);
         
         JMenu mnNewMenu = new JMenu("HOME");
+        mnNewMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         mnNewMenu.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 12));
         menuBar.add(mnNewMenu);
         
@@ -111,11 +113,13 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(separator_3);
         
         JButton btnNewButton = new JButton("AGREGAR");
+        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnNewButton.setBounds(36, 225, 291, 23);
         frmAdminsistemaMenu.getContentPane().add(btnNewButton);
         
         JButton btnModificar = new JButton("MODIFICAR");
+        btnModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             }
@@ -125,6 +129,7 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(btnModificar);
         
         JButton btnEliminar = new JButton("ELIMINAR");
+        btnEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnEliminar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnEliminar.setBounds(36, 295, 291, 23);
         frmAdminsistemaMenu.getContentPane().add(btnEliminar);
@@ -150,16 +155,19 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(lblNewLabel_1_1_1);
         
         JButton btnNewButton_1 = new JButton("AGREGAR");
+        btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnNewButton_1.setBounds(407, 225, 291, 23);
         frmAdminsistemaMenu.getContentPane().add(btnNewButton_1);
         
         JButton btnModificar_1 = new JButton("MODIFICAR");
+        btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnModificar_1.setBounds(407, 261, 291, 23);
         frmAdminsistemaMenu.getContentPane().add(btnModificar_1);
         
         JButton btnEliminar_1 = new JButton("ELIMINAR");
+        btnEliminar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnEliminar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnEliminar_1.setBounds(407, 295, 291, 23);
         frmAdminsistemaMenu.getContentPane().add(btnEliminar_1);
