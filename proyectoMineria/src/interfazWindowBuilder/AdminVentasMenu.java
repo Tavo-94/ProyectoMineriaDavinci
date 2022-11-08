@@ -1,11 +1,12 @@
 package interfazWindowBuilder;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class AdminStockMenu {
+public class AdminVentasMenu {
 
-    private JFrame frmAdminstockMenu;
+    private JFrame frame;
 
     /**
      * Launch the application.
@@ -14,8 +15,8 @@ public class AdminStockMenu {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    AdminStockMenu window = new AdminStockMenu();
-                    window.frmAdminstockMenu.setVisible(true);
+                    AdminVentasMenu window = new AdminVentasMenu();
+                    window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -26,7 +27,7 @@ public class AdminStockMenu {
     /**
      * Create the application.
      */
-    public AdminStockMenu() {
+    public AdminVentasMenu() {
         initialize();
     }
 
@@ -34,10 +35,9 @@ public class AdminStockMenu {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frmAdminstockMenu = new JFrame();
-        frmAdminstockMenu.setTitle("ADMINSTOCK MENU");
-        frmAdminstockMenu.setBounds(100, 100, 450, 300);
-        frmAdminstockMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame = new JFrame();
+        frame.setBounds(100, 100, 450, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }
