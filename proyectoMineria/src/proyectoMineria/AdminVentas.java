@@ -56,6 +56,12 @@ public class AdminVentas extends Usuario {
             System.out.println(material.getTipo() + " | " + material.getCantidad() + " | " + material.getPureza() + " | " + material.getPrecioBase());
         }
     }
+    
+    public void visualizarOperacionesDeVenta() {
+        TicketOperacionDAO ticketDAO = new TicketOperacionDAO();
+        
+        ticketDAO.mostrarTodasLasOperaciones();
+    }  
 
     public void nuevoTicket() {
 
