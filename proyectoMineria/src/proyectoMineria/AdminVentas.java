@@ -14,6 +14,7 @@ import negocio.TicketOperacionDAO;
 
 public class AdminVentas extends Usuario {
 
+    Validaciones v = new Validaciones();
     Deposito deposito;
 
     public AdminVentas(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
