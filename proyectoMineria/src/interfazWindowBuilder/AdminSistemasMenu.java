@@ -63,6 +63,13 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmAdminsistemaMenu.getContentPane().setLayout(null);
         
+        JLabel lblNewLabel_1_1_2_1 = new JLabel("MENU PRINCIPAL");
+        lblNewLabel_1_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_2_1.setForeground(Color.DARK_GRAY);
+        lblNewLabel_1_1_2_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 12));
+        lblNewLabel_1_1_2_1.setBounds(610, 21, 116, 51);
+        frmAdminsistemaMenu.getContentPane().add(lblNewLabel_1_1_2_1);
+        
         JLabel lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon("D:\\carol\\aaaa.png"));
         lblNewLabel.setBounds(0, 358, 736, 215);
@@ -109,6 +116,7 @@ public class AdminSistemasMenu {
         mnNewMenu.add(mntmNewMenuItem_1);
         
         JMenu mnNewMenu_1 = new JMenu("ADMINSISTEMA");
+        mnNewMenu_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         mnNewMenu_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 12));
         menuBar.add(mnNewMenu_1);
         

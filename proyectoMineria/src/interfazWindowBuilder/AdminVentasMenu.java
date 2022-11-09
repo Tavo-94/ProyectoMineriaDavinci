@@ -55,6 +55,13 @@ public class AdminVentasMenu {
         frmAdminventasMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmAdminventasMenu.getContentPane().setLayout(null);
         
+        JLabel lblNewLabel_1_1_2_1 = new JLabel("MENU PRINCIPAL");
+        lblNewLabel_1_1_2_1.setForeground(Color.DARK_GRAY);
+        lblNewLabel_1_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_2_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 12));
+        lblNewLabel_1_1_2_1.setBounds(610, 21, 116, 51);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_1_2_1);
+        
         JLabel lblNewLabel = new JLabel("New label");
         lblNewLabel.setIcon(new ImageIcon("D:\\carol\\AAAAAAA.png"));
         lblNewLabel.setBounds(0, 358, 736, 215);
@@ -99,6 +106,44 @@ public class AdminVentasMenu {
         
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Close");
         mnNewMenu.add(mntmNewMenuItem_1);
+        
+        JMenu mnNewMenu_1 = new JMenu("ADMINVENTAS");
+        mnNewMenu_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 12));
+        mnNewMenu_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        menuBar.add(mnNewMenu_1);
+        
+        JMenu mnNewMenu_2 = new JMenu("CLIENTES");
+        mnNewMenu_1.add(mnNewMenu_2);
+        
+        JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar Cliente");
+        mnNewMenu_2.add(mntmNewMenuItem_6);
+        
+        JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar Cliente");
+        mnNewMenu_2.add(mntmNewMenuItem_7);
+        
+        JMenuItem mntmNewMenuItem_9 = new JMenuItem("Eliminar Cliente");
+        mnNewMenu_2.add(mntmNewMenuItem_9);
+        
+        JSeparator separator = new JSeparator();
+        mnNewMenu_1.add(separator);
+        
+        JMenu mnNewMenu_3 = new JMenu("VENTA");
+        mnNewMenu_1.add(mnNewMenu_3);
+        
+        JMenuItem mntmNewMenuItem_10 = new JMenuItem("Realizar Venta");
+        mnNewMenu_3.add(mntmNewMenuItem_10);
+        
+        JMenuItem mntmNewMenuItem_11 = new JMenuItem("Comprobante Venta");
+        mnNewMenu_3.add(mntmNewMenuItem_11);
+        
+        JSeparator separator_3 = new JSeparator();
+        mnNewMenu_1.add(separator_3);
+        
+        JMenu mnNewMenu_4 = new JMenu("STOCK");
+        mnNewMenu_1.add(mnNewMenu_4);
+        
+        JMenuItem mntmNewMenuItem_12 = new JMenuItem("Consultar Stock");
+        mnNewMenu_4.add(mntmNewMenuItem_12);
         
         JLabel lblNewLabel_1_1_2 = new JLabel("PANEL ADMINVENTAS");
         lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -201,5 +246,4 @@ public class AdminVentasMenu {
         btnComprobante.setBounds(276, 262, 192, 23);
         frmAdminventasMenu.getContentPane().add(btnComprobante);
     }
-
 }
