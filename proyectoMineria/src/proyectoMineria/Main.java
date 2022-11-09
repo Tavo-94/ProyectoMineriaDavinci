@@ -9,13 +9,42 @@ import negocio.AdminVentasDao;
 public class Main {
 
     public static void main(String[] args) {
-        
+        Validaciones v = new Validaciones();
         //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
 
         AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
         
         AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
+        
+        AdminStock ariel = new AdminStock("Ariel", "1234", "Stock", true, metalPlus);
+        
+        Scanner input = new Scanner(System.in);
+
+        
+        ariel.agregarMaterial();
+        
+        if(v.validarASCII("?????")==true) { //si no existe una cadena de caracteres especiales validamos el texto
+        	System.out.println("Texto valido");
+        }
+        else {
+        	System.out.println("Error al ingresar texto");
+        }
+        
+        v.validarDNI("123456?78");
+        v.validarDNI("12345678");
+        
+        v.validacionContrasenia("Davinci123");
+        v.validacionContrasenia("davinci");
+        
+        v.validacionTextoVacio("");
+        v.validacionTextoVacio("Hola");
+
+        v.validarTexto("Ariel");
+        v.validarTexto("Ariel12");
+        
+        v.validarTelefono("1116920060");
+
         
         //tests del AdminSistema
         //gus.crearUsuario();
@@ -31,7 +60,7 @@ public class Main {
         //dani.visualizarStock();
         
         //Es funcional
-        dani.visualizarOperacionesDeVenta();
+        //dani.visualizarOperacionesDeVenta();
         
         //ventasDAO.validarLoginVentas(dani);        
         /*
