@@ -11,7 +11,7 @@ public class Validaciones {
 		if(cadenaTexto.matches("[a-zA-z]+([ '-][a-zA-Z]+)*")){
 			JOptionPane.showMessageDialog(null,"Ingresado correctamente");
 		} else {
-			JOptionPane.showMessageDialog(null,"La contraseña no cumple con los requisitos (Debe tener numeros, letras, caracteres especiales, sin espacios y ser de mínimo 8 caracteres");
+			JOptionPane.showMessageDialog(null,"Mal ingresado");
 		}
 
 
