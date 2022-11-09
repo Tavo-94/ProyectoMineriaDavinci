@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import java.awt.Cursor;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PantallaPrincipal {
 
@@ -110,6 +112,11 @@ public class PantallaPrincipal {
         frmAdminsistemas.getContentPane().add(txtrLoremIpsumDolor);
         
         JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
         btnNewButton.setBounds(407, 111, 291, 38);

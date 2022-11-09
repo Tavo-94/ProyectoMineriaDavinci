@@ -22,6 +22,7 @@ import java.awt.Panel;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.Cursor;
+import javax.swing.JRadioButtonMenuItem;
 
 public class AdminSistemasMenu {
 
@@ -106,6 +107,37 @@ public class AdminSistemasMenu {
         
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Close");
         mnNewMenu.add(mntmNewMenuItem_1);
+        
+        JMenu mnNewMenu_1 = new JMenu("ADMINSISTEMA");
+        mnNewMenu_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 12));
+        menuBar.add(mnNewMenu_1);
+        
+        JMenu mnNewMenu_2 = new JMenu("ADMINVENTAS");
+        mnNewMenu_1.add(mnNewMenu_2);
+        
+        JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar AdminVentas");
+        mnNewMenu_2.add(mntmNewMenuItem_6);
+        
+        JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar AdminVentas");
+        mnNewMenu_2.add(mntmNewMenuItem_7);
+        
+        JMenuItem mntmNewMenuItem_9 = new JMenuItem("Eliminar AdminVentas");
+        mnNewMenu_2.add(mntmNewMenuItem_9);
+        
+        JSeparator separator_6 = new JSeparator();
+        mnNewMenu_1.add(separator_6);
+        
+        JMenu mnNewMenu_3 = new JMenu("ADMINSTOCK");
+        mnNewMenu_1.add(mnNewMenu_3);
+        
+        JMenuItem mntmNewMenuItem_10 = new JMenuItem("Agregar AdminStock");
+        mnNewMenu_3.add(mntmNewMenuItem_10);
+        
+        JMenuItem mntmNewMenuItem_11 = new JMenuItem("Modificar AdminStock");
+        mnNewMenu_3.add(mntmNewMenuItem_11);
+        
+        JMenuItem mntmNewMenuItem_12 = new JMenuItem("EliminarAdminStock");
+        mnNewMenu_3.add(mntmNewMenuItem_12);
         
         JSeparator separator_3 = new JSeparator();
         separator_3.setOrientation(SwingConstants.VERTICAL);

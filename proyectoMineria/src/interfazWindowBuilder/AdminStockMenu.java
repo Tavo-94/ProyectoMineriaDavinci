@@ -11,6 +11,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class AdminStockMenu {
 
@@ -45,16 +48,11 @@ public class AdminStockMenu {
     private void initialize() {
         frmAdminstockMenu = new JFrame();
         frmAdminstockMenu.setResizable(false);
-        frmAdminstockMenu.setTitle("MINERALPLUS");
+        frmAdminstockMenu.setTitle("ADMINSTOCK MENU");
         frmAdminstockMenu.getContentPane().setBackground(Color.WHITE);
         frmAdminstockMenu.setBounds(100, 100, 752, 612);
         frmAdminstockMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmAdminstockMenu.getContentPane().setLayout(null);
-        
-        JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\AdobeStock_2813541252.jpg"));
-        lblNewLabel.setBounds(-87, 371, 920, 246);
-        frmAdminstockMenu.getContentPane().add(lblNewLabel);
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(new Color(153, 204, 204));
@@ -95,6 +93,60 @@ public class AdminStockMenu {
         
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Close");
         mnNewMenu.add(mntmNewMenuItem_1);
+        
+        JLabel lblNewLabel_1_1_2 = new JLabel("PANEL ADMINSTOCK");
+        lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_2.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1_2.setBounds(0, 36, 726, 23);
+        frmAdminstockMenu.getContentPane().add(lblNewLabel_1_1_2);
+        
+        JPanel panel = new JPanel();
+        panel.setBounds(0, 11, 736, 61);
+        frmAdminstockMenu.getContentPane().add(panel);
+        
+        JLabel lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\checklist (3).png"));
+        lblNewLabel_1.setBounds(132, 136, 128, 133);
+        frmAdminstockMenu.getContentPane().add(lblNewLabel_1);
+        
+        JLabel lblNewLabel = new JLabel("");
+        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\adsdsa.png"));
+        lblNewLabel.setBounds(391, 54, 345, 519);
+        frmAdminstockMenu.getContentPane().add(lblNewLabel);
+        
+        JSeparator separator_5_1 = new JSeparator();
+        separator_5_1.setBounds(77, 308, 221, 2);
+        frmAdminstockMenu.getContentPane().add(separator_5_1);
+        
+        JLabel lblNewLabel_1_1_1 = new JLabel("STOCK");
+        lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1_1.setBounds(92, 280, 192, 23);
+        frmAdminstockMenu.getContentPane().add(lblNewLabel_1_1_1);
+        
+        JButton btnNewButton_1 = new JButton("AGREGAR NUEVO STOCK");
+        btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnNewButton_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnNewButton_1.setBounds(43, 326, 291, 23);
+        frmAdminstockMenu.getContentPane().add(btnNewButton_1);
+        
+        JButton btnModificar_1 = new JButton("MODIFICAR EXISTENTE");
+        btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnModificar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnModificar_1.setBounds(43, 362, 291, 23);
+        frmAdminstockMenu.getContentPane().add(btnModificar_1);
+        
+        JButton btnEliminar_1 = new JButton("ACTUALIZAR ");
+        btnEliminar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnEliminar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnEliminar_1.setBounds(43, 396, 291, 23);
+        frmAdminstockMenu.getContentPane().add(btnEliminar_1);
+        
+        JButton btnEliminar_1_1 = new JButton("ELIMINAR");
+        btnEliminar_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnEliminar_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnEliminar_1_1.setBounds(43, 430, 291, 23);
+        frmAdminstockMenu.getContentPane().add(btnEliminar_1_1);
     }
 
 }

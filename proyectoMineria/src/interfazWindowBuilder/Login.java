@@ -70,6 +70,7 @@ public class Login {
         frmMetalplus.getContentPane().add(menuBar);
         
         JMenu mnNewMenu = new JMenu("HOME");
+        mnNewMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         mnNewMenu.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 12));
         menuBar.add(mnNewMenu);
         

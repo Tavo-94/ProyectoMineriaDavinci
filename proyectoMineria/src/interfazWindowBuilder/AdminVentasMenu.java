@@ -12,6 +12,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class AdminVentasMenu {
 
@@ -46,15 +49,15 @@ public class AdminVentasMenu {
     private void initialize() {
         frmAdminventasMenu = new JFrame();
         frmAdminventasMenu.setResizable(false);
-        frmAdminventasMenu.setTitle("ADMINSTOCK MENU");
+        frmAdminventasMenu.setTitle("ADMINVENTAS MENU");
         frmAdminventasMenu.getContentPane().setBackground(Color.WHITE);
         frmAdminventasMenu.setBounds(100, 100, 752, 612);
         frmAdminventasMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmAdminventasMenu.getContentPane().setLayout(null);
         
         JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\AdobeStock_2813541252.jpg"));
-        lblNewLabel.setBounds(-87, 371, 920, 246);
+        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\AAAAAAA.png"));
+        lblNewLabel.setBounds(0, 358, 736, 215);
         frmAdminventasMenu.getContentPane().add(lblNewLabel);
         
         JMenuBar menuBar = new JMenuBar();
@@ -96,6 +99,107 @@ public class AdminVentasMenu {
         
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Close");
         mnNewMenu.add(mntmNewMenuItem_1);
+        
+        JLabel lblNewLabel_1_1_2 = new JLabel("PANEL ADMINVENTAS");
+        lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_2.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1_2.setBounds(0, 36, 726, 23);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_1_2);
+        
+        JPanel panel = new JPanel();
+        panel.setBounds(0, 11, 736, 61);
+        frmAdminventasMenu.getContentPane().add(panel);
+        
+        JLabel lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add-user.png"));
+        lblNewLabel_1.setBounds(91, 101, 71, 77);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("CLIENTES");
+        lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1.setBounds(53, 180, 143, 23);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_1);
+        
+        JSeparator separator_5 = new JSeparator();
+        separator_5.setBounds(45, 209, 158, 2);
+        frmAdminventasMenu.getContentPane().add(separator_5);
+        
+        JButton btnNewButton = new JButton("AGREGAR");
+        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnNewButton.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnNewButton.setBounds(26, 225, 192, 23);
+        frmAdminventasMenu.getContentPane().add(btnNewButton);
+        
+        JButton btnModificar = new JButton("MODIFICAR");
+        btnModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnModificar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnModificar.setBounds(26, 261, 192, 23);
+        frmAdminventasMenu.getContentPane().add(btnModificar);
+        
+        JButton btnEliminar = new JButton("ELIMINAR");
+        btnEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnEliminar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnEliminar.setBounds(26, 295, 192, 23);
+        frmAdminventasMenu.getContentPane().add(btnEliminar);
+        
+        JSeparator separator_3_2 = new JSeparator();
+        separator_3_2.setOrientation(SwingConstants.VERTICAL);
+        separator_3_2.setBounds(246, 46, 2, 519);
+        frmAdminventasMenu.getContentPane().add(separator_3_2);
+        
+        JSeparator separator_3_2_1 = new JSeparator();
+        separator_3_2_1.setOrientation(SwingConstants.VERTICAL);
+        separator_3_2_1.setBounds(491, 26, 2, 519);
+        frmAdminventasMenu.getContentPane().add(separator_3_2_1);
+        
+        JLabel lblNewLabel_1_2 = new JLabel("");
+        lblNewLabel_1_2.setIcon(new ImageIcon("D:\\carol\\shopping-bag.png"));
+        lblNewLabel_1_2.setBounds(342, 103, 64, 77);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_2);
+        
+        JLabel lblNewLabel_1_1_1 = new JLabel("VENTA");
+        lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1_1.setBounds(303, 180, 143, 23);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_1_1);
+        
+        JSeparator separator_5_1 = new JSeparator();
+        separator_5_1.setBounds(295, 209, 158, 2);
+        frmAdminventasMenu.getContentPane().add(separator_5_1);
+        
+        JButton btnRealizar = new JButton("REALIZAR");
+        btnRealizar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnRealizar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnRealizar.setBounds(276, 225, 192, 23);
+        frmAdminventasMenu.getContentPane().add(btnRealizar);
+        
+        JLabel lblNewLabel_1_2_1 = new JLabel("");
+        lblNewLabel_1_2_1.setIcon(new ImageIcon("D:\\carol\\conversation.png"));
+        lblNewLabel_1_2_1.setBounds(587, 103, 64, 77);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_2_1);
+        
+        JLabel lblNewLabel_1_1_1_1 = new JLabel("STOCK");
+        lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_1_1_1_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        lblNewLabel_1_1_1_1.setBounds(548, 180, 143, 23);
+        frmAdminventasMenu.getContentPane().add(lblNewLabel_1_1_1_1);
+        
+        JSeparator separator_5_1_1 = new JSeparator();
+        separator_5_1_1.setBounds(540, 209, 158, 2);
+        frmAdminventasMenu.getContentPane().add(separator_5_1_1);
+        
+        JButton btnRealizar_1 = new JButton("CONSULTAR");
+        btnRealizar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnRealizar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnRealizar_1.setBounds(521, 225, 192, 23);
+        frmAdminventasMenu.getContentPane().add(btnRealizar_1);
+        
+        JButton btnComprobante = new JButton("COMPROBANTE");
+        btnComprobante.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnComprobante.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnComprobante.setBounds(276, 262, 192, 23);
+        frmAdminventasMenu.getContentPane().add(btnComprobante);
     }
 
 }
