@@ -107,10 +107,22 @@ public class AdminStockDAO {
     		String query = "SELECT * FROM material";
     		conexion = getConnection();
     		ptmt = conexion.prepareStatement(query);
-    		
             resultSet = ptmt.executeQuery(query);
             
-            System.out.println(resultSet);
+            while (resultSet.next()) {
+            	int ID = resultSet.getInt(1);
+            	String Material = resultSet.getString(2);
+            	double Pureza = resultSet.getDouble(3);
+            	double Cantidad = resultSet.getDouble(4);
+            	int ID_Deposito = resultSet.getInt(5);
+            	
+            	System.out.println("ID: " + ID + 
+            			" | Material: " + Material + 
+            			" | Pureza: " + Pureza + 
+            			" | Cantidad: " + Cantidad + 
+            			" | ID_Deposito: " + ID_Deposito);
+            	
+			}
     		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -120,6 +132,9 @@ public class AdminStockDAO {
                 ptmt.close();
         	if (conexion != null)
                 conexion.close();
+        	if (resultSet != null) {
+        		resultSet.close();
+        	}
         	} catch (SQLException e) {
             e.printStackTrace();
             } catch (Exception e) {
@@ -135,11 +150,22 @@ public class AdminStockDAO {
 	    		conexion = getConnection();
 	    		ptmt = conexion.prepareStatement(query);
 	    		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-	    		ptmt.setString(1, tipo);
-	            ptmt.executeUpdate();
-	            System.out.println(ptmt.getQueryTimeout());
-	            
+	    		ptmt.setString(2, tipo);
 	            resultSet = ptmt.executeQuery();
+	            
+	            while (resultSet.next()) {
+	            	int ID = resultSet.getInt(1);
+	            	String Material = resultSet.getString(2);
+	            	double Pureza = resultSet.getDouble(3);
+	            	double Cantidad = resultSet.getDouble(4);
+	            	int ID_Deposito = resultSet.getInt(5);
+	            	
+	            	System.out.println("ID: " + ID + 
+	            			" | Material: " + Material + 
+	            			" | Pureza: " + Pureza + 
+	            			" | Cantidad: " + Cantidad + 
+	            			" | ID_Deposito: " + ID_Deposito);
+	            }
 	    		
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -149,6 +175,9 @@ public class AdminStockDAO {
 	                ptmt.close();
 	        	if (conexion != null)
 	                conexion.close();
+	        	if (resultSet != null) {
+	        		resultSet.close();
+	        	}
 	        	} catch (SQLException e) {
 	            e.printStackTrace();
 	            } catch (Exception e) {
@@ -177,6 +206,9 @@ public class AdminStockDAO {
                 ptmt.close();
         	if (conexion != null)
                 conexion.close();
+        	if (resultSet != null) {
+        		resultSet.close();
+        	}
         	} catch (SQLException e) {
             e.printStackTrace();
             } catch (Exception e) {
@@ -205,6 +237,9 @@ public class AdminStockDAO {
                 ptmt.close();
         	if (conexion != null)
                 conexion.close();
+        	if (resultSet != null) {
+        		resultSet.close();
+        	}
         	} catch (SQLException e) {
             e.printStackTrace();
             } catch (Exception e) {
@@ -233,6 +268,9 @@ public class AdminStockDAO {
                 ptmt.close();
         	if (conexion != null)
                 conexion.close();
+        	if (resultSet != null) {
+        		resultSet.close();
+        	}
         	} catch (SQLException e) {
             e.printStackTrace();
             } catch (Exception e) {
@@ -262,6 +300,9 @@ public class AdminStockDAO {
                 ptmt.close();
         	if (conexion != null)
                 conexion.close();
+        	if (resultSet != null) {
+        		resultSet.close();
+        	}
         	} catch (SQLException e) {
             e.printStackTrace();
             } catch (Exception e) {
