@@ -111,7 +111,7 @@ public class AdminVentas extends Usuario {
         do {
             telefono = JOptionPane.showInputDialog("Ingresar telefono del cliente");
             
-        } while ((v.validacionNumerosVacios(telefono)!=true) || v.validarTelefono(telefono)!=true);
+        } while ((v.validacionNumerosVacios(telefono)!=true));
 
         //creo instancia de cliente para luego almacenarlo en la DB
         Cliente nuevoCliente = new Cliente(nombre, apellido, esMayorista, telefono);

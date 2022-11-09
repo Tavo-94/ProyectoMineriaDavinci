@@ -96,17 +96,6 @@ public class Validaciones {
 
 	}
 
-	public boolean validarTelefono(String telefono) {
-		
-		if(telefono.matches("^[0-9]$")){
-			JOptionPane.showMessageDialog(null,"Ingresado correctamente");
-		} else {
-			JOptionPane.showMessageDialog(null,"Mal ingresado");
-		}
-
-		return telefono.matches("^[0-9]$"); //expresiones regulares permitidas numeros del 0-9 
-	}
-
 }
 	
 	
