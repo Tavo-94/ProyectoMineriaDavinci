@@ -90,7 +90,6 @@ public class Validaciones {
 			JOptionPane.showMessageDialog("Mal ingresado");
 		}
 
-
 		return telefono.matches("^[0-9]$"); //expresiones regulares permitidas numeros del 0-9 
 	}
 
