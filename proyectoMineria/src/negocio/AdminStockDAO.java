@@ -146,12 +146,12 @@ public class AdminStockDAO {
 	    public void mostrarStockTipo(String tipo) {	
 	    	try {
 				
-	    		String query = "SELECT tipo, pureza, SUM(cantidad) FROM material WHERE tipo = '?' GROUP BY cantidad";
+	    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = ? GROUP BY pureza";
 	    		conexion = getConnection();
 	    		ptmt = conexion.prepareStatement(query);
 	    		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-	    		ptmt.setString(2, tipo);
-	            resultSet = ptmt.executeQuery();
+	    		ptmt.setString(1,tipo);
+	            resultSet = ptmt.executeQuery(query);
 	            
 	            while (resultSet.next()) {
 	            	int ID = resultSet.getInt(1);
@@ -189,14 +189,29 @@ public class AdminStockDAO {
     public void mostrarStockTipoPurezaAlta(String tipo) {
     	try {
 			
-    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = '?' AND pureza BETWEEN 70 AND 100 GROUP BY cantidad";
+    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = ? AND pureza BETWEEN 70 AND 100 GROUP BY pureza";
     		conexion = getConnection();
     		ptmt = conexion.prepareStatement(query);
     		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		ptmt.setString(1, tipo);
-            ptmt.executeUpdate();
+            ptmt.executeQuery(query);
             
             resultSet = ptmt.executeQuery();
+            
+            while (resultSet.next()) {
+            	int ID = resultSet.getInt(1);
+            	String Material = resultSet.getString(2);
+            	double Pureza = resultSet.getDouble(3);
+            	double Cantidad = resultSet.getDouble(4);
+            	int ID_Deposito = resultSet.getInt(5);
+            	
+            	System.out.println("ID: " + ID + 
+            			" | Material: " + Material + 
+            			" | Pureza: " + Pureza + 
+            			" | Cantidad: " + Cantidad + 
+            			" | ID_Deposito: " + ID_Deposito);
+            }
+    		
     		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -220,14 +235,29 @@ public class AdminStockDAO {
     public void mostrarStockTipoPurezaMedia(String tipo ) {
     	try {
 			
-    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = '?' AND pureza BETWEEN 50 AND 69 GROUP BY cantidad";
+    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = ? AND pureza BETWEEN 50 AND 69 GROUP BY pureza";
     		conexion = getConnection();
     		ptmt = conexion.prepareStatement(query);
     		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-    		ptmt.setString(1, tipo);
+    		ptmt.setString(1,tipo);
             ptmt.executeUpdate();
             
             resultSet = ptmt.executeQuery();
+            
+            while (resultSet.next()) {
+            	int ID = resultSet.getInt(1);
+            	String Material = resultSet.getString(2);
+            	double Pureza = resultSet.getDouble(3);
+            	double Cantidad = resultSet.getDouble(4);
+            	int ID_Deposito = resultSet.getInt(5);
+            	
+            	System.out.println("ID: " + ID + 
+            			" | Material: " + Material + 
+            			" | Pureza: " + Pureza + 
+            			" | Cantidad: " + Cantidad + 
+            			" | ID_Deposito: " + ID_Deposito);
+            }
+    		
     		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -251,7 +281,7 @@ public class AdminStockDAO {
     public void mostrarStockTipoPurezaBaja (String tipo) {
     	try {
 			
-    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = '?' AND pureza <= 49 GROUP BY cantidad";
+    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = ? AND pureza <= 49 GROUP BY pureza";
     		conexion = getConnection();
     		ptmt = conexion.prepareStatement(query);
     		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
@@ -259,6 +289,21 @@ public class AdminStockDAO {
             ptmt.executeUpdate();
             
             resultSet = ptmt.executeQuery();
+            
+            while (resultSet.next()) {
+            	int ID = resultSet.getInt(1);
+            	String Material = resultSet.getString(2);
+            	double Pureza = resultSet.getDouble(3);
+            	double Cantidad = resultSet.getDouble(4);
+            	int ID_Deposito = resultSet.getInt(5);
+            	
+            	System.out.println("ID: " + ID + 
+            			" | Material: " + Material + 
+            			" | Pureza: " + Pureza + 
+            			" | Cantidad: " + Cantidad + 
+            			" | ID_Deposito: " + ID_Deposito);
+            }
+    		
     		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -284,13 +329,28 @@ public class AdminStockDAO {
     	
     	try {
 			
-    		String query = "SELECT * FROM material WHERE tipo = '?'";
+    		String query = "SELECT * FROM material WHERE tipo = ?";
     		conexion = getConnection();
     		ptmt = conexion.prepareStatement(query);
     		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		ptmt.setString(1, tipo);
-    		
             ptmt.executeQuery();
+            
+            resultSet = ptmt.executeQuery();
+            
+            while (resultSet.next()) {
+            	int ID = resultSet.getInt(1);
+            	String Material = resultSet.getString(2);
+            	double Pureza = resultSet.getDouble(3);
+            	double Cantidad = resultSet.getDouble(4);
+            	int ID_Deposito = resultSet.getInt(5);
+            	
+            	System.out.println("ID: " + ID + 
+            			" | Material: " + Material + 
+            			" | Pureza: " + Pureza + 
+            			" | Cantidad: " + Cantidad + 
+            			" | ID_Deposito: " + ID_Deposito);
+            }
     		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -318,7 +378,7 @@ public class AdminStockDAO {
             String query = "DELETE FROM material WHERE idmaterial = ?";
             
             String materialAEliminar = (String) JOptionPane.showInputDialog
-            		(null, "Seleccionar material a eliminar", "Eliminar", JOptionPane.DEFAULT_OPTION);
+            		(null, "Seleccionar ID de material a eliminar", "Eliminar", JOptionPane.DEFAULT_OPTION);
             ptmt = conexion.prepareStatement(query);
             ptmt.setString(1, materialAEliminar);
             
@@ -346,4 +406,3 @@ public class AdminStockDAO {
         } 
     }
     
-}
