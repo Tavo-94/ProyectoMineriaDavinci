@@ -58,6 +58,18 @@ public class Validaciones {
 		
 	}
  
+	public static boolean validarPassword(String cadenaTexto) {
+		
+		if(cadenaTexto.matches("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$")){
+			JOptionPane.showMessageDialog("Ingresado correctamente");
+		} else {
+			JOptionPane.showMessageDialog("La contraseña no cumple con los requisitos");
+		}
+
+		return cadenaTexto.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$");
+		
+	}
+
 	public boolean validacionContrasenia(String clave) {
 
 		if(clave.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,32}$")){
