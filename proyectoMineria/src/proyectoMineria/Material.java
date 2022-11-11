@@ -1,5 +1,5 @@
 package proyectoMineria;
-import java.time.LocalDate;
+import java.time.*;
 
 
 public class Material {
@@ -8,7 +8,7 @@ public class Material {
         private String tipo;
         private Double pureza;
         private Double cantidad;//en kilos
-        private LocalDate fecha;
+        private LocalDateTime fecha_ingreso;
         private Double precioBase;
         private Double coeficientePurezaAlta;
         private Double coeficientePurezaMedia;
@@ -21,7 +21,7 @@ public class Material {
             this.cantidad = cantidad;
             this.seteoDePrecio(tipo);
             this.seteoDeCoeficientes(pureza);
-            this.fecha = LocalDate.now();            
+            this.setFecha_ingreso(LocalDateTime.now());            
         }
         
         
@@ -43,7 +43,12 @@ public class Material {
 
 
 
-        private void seteoDePrecio(String tipo) {
+        public Material() {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		private void seteoDePrecio(String tipo) {
             if (tipo.equalsIgnoreCase("oro")) {
                 this.precioBase = 100_000d;
             }
@@ -86,16 +91,6 @@ public class Material {
         public void setCantidad(Double cantidad) {
             this.cantidad = cantidad;
         }
-        public LocalDate getFecha() {
-            return fecha;
-        }
-        public void setFecha(LocalDate fecha) {
-            this.fecha = fecha;
-        }
-
-        
-
-        
         
         public Integer getIdMaterial() {
             return idMaterial;
@@ -139,9 +134,19 @@ public class Material {
 
         @Override
         public String toString() {
-            return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha=" + fecha
+            return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha_ingreso=" + fecha_ingreso
                     + ", precio=" + precioBase + "]";
         }
+
+
+		public LocalDateTime getFecha_ingreso() {
+			return fecha_ingreso;
+		}
+
+
+		public void setFecha_ingreso(LocalDateTime fecha_ingreso) {
+			this.fecha_ingreso = fecha_ingreso;
+		}
 
 
         
