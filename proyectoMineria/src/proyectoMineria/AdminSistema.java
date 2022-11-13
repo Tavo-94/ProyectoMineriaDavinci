@@ -161,6 +161,12 @@ public class AdminSistema extends Usuario {
         ventasDAO.eliminarAdminVentas();
     }
 
+    public void eliminarAdminStock() {
+        
+        AdminStockDAO stockDAO = new AdminStockDAO();
+        stockDAO.eliminarAdminStock();
+    }
+
     public void darDeBaja(Scanner inputDelUsuario) {
         String nombreUsuario;
 
