@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminStock;
@@ -54,4 +57,81 @@ public class AdminStockDAO {
         }
 
     }
+    
+    public void eliminarAdminStock() {
+        try {
+            conexion = getConnection();
+
+            String query = "DELETE FROM admin_stock WHERE nombre_usuario = ?";
+
+            Object[] opciones = this.obtenerListaDeUsuariosStock();
+
+            String usuarioAEliminar = (String) JOptionPane.showInputDialog(null, "Seleccionar usuario a eleminar",
+                    "Eliminar", JOptionPane.DEFAULT_OPTION, null, opciones, opciones[0]);
+
+            ptmt = conexion.prepareStatement(query);
+            ptmt.setString(1, usuarioAEliminar);
+
+            ptmt.executeUpdate();
+            System.out.println("Eliminado con exito");
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // creo un array que contiene todos los nombres de usuario de la tabla
+    private Object[] obtenerListaDeUsuariosStock() {
+        try {
+
+            String query = "SELECT nombre_usuario FROM admin_stock;";
+
+            ptmt = conexion.prepareStatement(query);
+
+            resultSet = ptmt.executeQuery();
+
+            ArrayList<String> lista = new ArrayList<>();
+            while (resultSet.next()) {
+
+                lista.add(resultSet.getString("nombre_usuario"));
+
+            }
+            return lista.toArray();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+    
 }
