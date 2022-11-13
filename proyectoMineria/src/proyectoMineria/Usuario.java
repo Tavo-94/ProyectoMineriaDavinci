@@ -1,4 +1,5 @@
 package proyectoMineria;
+
 import java.util.Scanner;
 
 public abstract class Usuario {
@@ -27,12 +28,6 @@ public abstract class Usuario {
 	public abstract void loguearse(Scanner inputDelUsuario);
 	public abstract void cambiarClave(Scanner inputUsuario);
 	public abstract void cerrarSesion();
-	
-	
-    public boolean validarCargoVentas() {
-        // TODO Auto-generated method stub
-        return getCargo().equalsIgnoreCase("Ventas");
-    }
 	
 	//getters y setters
 	public String getNombre() {
@@ -87,10 +82,21 @@ public abstract class Usuario {
 		// TODO Auto-generated method stub
 		
 	}
+	
+    public boolean validarCargoVentas() {
+        // TODO Auto-generated method stub
+        return getCargo().equalsIgnoreCase("Ventas");
+    }
+    
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", apellido=" + apellido + ", nombreUsuario=" + nombreUsuario + ", clave="
 				+ clave + ", cargo=" + cargo + ", mineria=" + mineria + ", estadoActivo=" + estadoActivo
 				+ ", sessionActiva=" + sessionActiva + "]";
-	}	
+	}
+	
+	
+	
+	
+	
 }

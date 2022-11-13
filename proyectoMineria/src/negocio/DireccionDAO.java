@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import proyectoMineria.AdminVentas;
 import proyectoMineria.DireccionCliente;
 
 public class DireccionDAO {
@@ -101,6 +102,9 @@ public class DireccionDAO {
         return 0;
         
     }
+    
+    
+    
 
 
 }

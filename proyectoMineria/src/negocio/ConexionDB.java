@@ -38,13 +38,4 @@ public class ConexionDB {
         }
         return conexion;
     }
-    
-    //consultar base de datos
-    public static void consultarBase(String sql) {
-    	try {
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-    }
 }

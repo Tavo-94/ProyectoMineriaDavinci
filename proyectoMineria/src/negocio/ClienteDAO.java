@@ -5,8 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminVentas;
 import proyectoMineria.Cliente;
+import proyectoMineria.DireccionCliente;
 
 public class ClienteDAO {
     Connection conexion = null;
