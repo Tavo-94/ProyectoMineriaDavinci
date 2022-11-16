@@ -153,6 +153,10 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(separator_3);
         
         JButton btnNewButton = new JButton("AGREGAR");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnNewButton.setBounds(36, 225, 291, 23);

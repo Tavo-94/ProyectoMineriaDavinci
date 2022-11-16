@@ -1,7 +1,11 @@
 package interfazWindowBuilder;
+
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -10,46 +14,36 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-import java.awt.Cursor;
-import javax.swing.JPanel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
 
-public class PantallaPrincipal {
+public class mainpantalla extends JFrame {
 
+    private JPanel contentPane;
     private JFrame frame;
     private JFrame frmAdminsistemas;
 
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
+    
             public void run() {
                 try {
-                    PantallaPrincipal window = new PantallaPrincipal();
-                    window.frame.setVisible(true);
+                    mainpantalla frame = new mainpantalla();
+                    frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        });
-    }
+       
 
     /**
-     * Create the application.
+     * Create the frame.
      */
-    public PantallaPrincipal() {
-        initialize();
-    }
-
-    /**
-     * Initialize the contents of the frame.
-     */
-    private void initialize() {
+    public mainpantalla() {
         frmAdminsistemas = new JFrame();
         frmAdminsistemas.setResizable(false);
         frmAdminsistemas.setTitle("MINERALPLUS");
@@ -114,8 +108,8 @@ public class PantallaPrincipal {
         JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Login login = new Login();
-                login.LoginWindow();
+                Login window = new Login();
+                window.frmMetalplus.setVisible(true);
                 
             }
         });
@@ -169,4 +163,5 @@ public class PantallaPrincipal {
         separator.setBounds(83, 122, 164, 2);
         frmAdminsistemas.getContentPane().add(separator);
     }
+
 }

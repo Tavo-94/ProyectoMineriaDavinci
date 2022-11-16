@@ -24,7 +24,7 @@ import javax.swing.SwingConstants;
 
 public class Login {
 
-    private JFrame frmMetalplus;
+    JFrame frmMetalplus;
     private JPasswordField passTxt;
     private JTextField userTxt;
     private JFrame frmAdminsistemas;
@@ -32,7 +32,7 @@ public class Login {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void LoginWindow() {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

@@ -4,11 +4,17 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import interfazWindowBuilder.PantallaPrincipal;
+import interfazWindowBuilder.mainpantalla;
 import negocio.AdminVentasDao;
 
 public class Main {
 
     public static void main(String[] args) {
+        
+        mainpantalla pantalla = new mainpantalla();
+        pantalla.run();
+        System.out.println("pantalla principal");
         
         //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
