@@ -52,10 +52,17 @@ public class AdminVentas extends Usuario {
         
         listaDeMateriales= materialDAO.visualizarStock();
         
+        System.out.println(" Tipo | Pureza | Cantidad | Precio |");
         for (Material material : listaDeMateriales) {
-            System.out.println(material.getTipo() + " | " + material.getCantidad() + " | " + material.getPureza() + " | " + material.getPrecioBase());
+            System.out.println(material.getTipo() + "   |   " + material.getPureza()  + "   |   " +material.getCantidad() + "   |   " + material.getPrecioBase());
         }
     }
+    
+    public void visualizarOperacionesDeVenta() {
+        TicketOperacionDAO ticketDAO = new TicketOperacionDAO();
+        
+        ticketDAO.mostrarTodasLasOperaciones();
+    }  
 
     public void nuevoTicket() {
 
