@@ -1,10 +1,6 @@
 package proyectoMineria;
 
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
-import negocio.AdminVentasDao;
+import negocio.AdminStockDAO;
 
 public class Main {
 
@@ -13,24 +9,33 @@ public class Main {
         //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
 
-        AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
+        //AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true, metalPlus);
         
-        AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
+        AdminStockDAO den = new AdminStockDAO ("den", "1234", "Stock", true, metalPlus);
         
-        AdminVentasDao ventasDAO = new AdminVentasDao();
+        //den.agregarMaterial(null);
+        
+        //den.mostrarStock();
+        
+      den.mostrarStockTipo(null);
+        
+       //den.mostrarStockTipoPurezaAlta(null);
+        
+        //den.mostrarStockTipoPurezaMedia(null);
+        
+        //den.mostrarStockTipoPurezaBaja(null);
+        
+        //den.buscarMaterial(null);
+        
+        //den.eliminarMaterial();
+        
+        
+        //AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
         
         //tests del AdminSistema
-        
-        // Funcional
         //gus.crearUsuario();
         
-        // Funcional        
         //gus.eliminarAdminVentas();
-        
-        // Funcional
-        //gus.eliminarAdminStock();
-        
-        
         
         //tests del AdminVentas
         
@@ -43,19 +48,126 @@ public class Main {
         //Es funcional
         //dani.visualizarOperacionesDeVenta();
         
-        //test Validacion del LogIn ventas
+        //ventasDAO.validarLoginVentas(dani);        
+        /*
+         * Scanner input = new Scanner(System.in);
+         * 
+         * Mineria metalPlus = new Mineria("Metal plus");
+         * 
+         * AdminSistema gus = new AdminSistema("Gus94", "456", "Admin", true,
+         * metalPlus);
+         * 
+         * Deposito deposito = new Deposito();
+         * 
+         * AdminStock admin = new AdminStock("den", "1234", "Stock", true, metalPlus);
+         * 
+         * admin.setDepositoDeMateriales(deposito);
+         * 
+         * admin.agregarMaterial(input);
+         * 
+         * deposito.mostrarStock();
+         * 
+         * admin.agregarMaterial(input);
+         * 
+         * deposito.mostrarStock();
+         * 
+         * admin.mostrarTotalOro();
+         * 
+         * AdminVentas vendedor = new AdminVentas("ari", "1234", "ventas", true,
+         * metalPlus);
+         * 
+         * vendedor.setDeposito(deposito);
+         * 
+         * vendedor.nuevoRegistroDeOperacion(input);
+         * 
+         * metalPlus.getListaClientes().forEach(System.out::println);
+         * metalPlus.getListaDeOperaciones().forEach(System.out::println);
+         * 
+         * deposito.mostrarStock();
+         * admin.mostrarTotalOro();
+         */        
         
-          if (ventasDAO.validarLoginVentas(dani)) {
-          JOptionPane.showMessageDialog(null, "Login Exitoso", "Validacion LogIn",
-          JOptionPane.INFORMATION_MESSAGE);
-          } else {
-          JOptionPane.showMessageDialog(null, "Error, volver a intentarlo",
-          "Validacion LogIn", JOptionPane.WARNING_MESSAGE);
-          }
-         
-                
-        
+        /*
+         * System.out.println("***************************");
+         * System.out.println("Caso login y alta de usuarios");
+         * System.out.println("***************************");
+         * 
+         * 
+         * 
+         * 
+         * 
+         * System.out.println(gus);
+         * 
+         * metalPlus.agregarAdmin(gus);
+         * 
+         * gus.darDeBaja(input);
+         * 
+         * System.out.println(gus);
+         * 
+         * gus.darDeAlta(input);
+         * 
+         * System.out.println(gus);
+         * 
+         * 
+         * 
+         * gus.loguearse(input);
+         * 
+         * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
+         * 
+         * gus.cambiarClave(input);
+         * 
+         * metalPlus.getListaUsuariosAdmin().forEach(System.out::println);
+         * 
+         * 
+         * 
+         * //creo 1er usuario gus.crearUsuario(input);
+         * 
+         * System.out.println("***************************");
+         * System.out.println("Lista de Admins Stock");
+         * System.out.println("***************************");
+         * 
+         * gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
+         * 
+         * System.out.println("***************************");
+         * System.out.println("Lista de Admins Ventas");
+         * System.out.println("***************************");
+         * 
+         * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
+         * 
+         * //Creo 2do usuario
+         * 
+         * gus.crearUsuario(input);
+         * 
+         * System.out.println("***************************");
+         * System.out.println("Lista de Admins Stock");
+         * System.out.println("***************************");
+         * 
+         * gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
+         * 
+         * System.out.println("***************************");
+         * System.out.println("Lista de Admins Ventas");
+         * System.out.println("***************************");
+         * 
+         * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
+         * 
+         * //creo 3er usuario
+         * 
+         * gus.crearUsuario(input);
+         * 
+         * System.out.println("***************************");
+         * System.out.println("Lista de Admins Stock");
+         * System.out.println("***************************");
+         * 
+         * gus.getMineria().getListaUsuariosStock().forEach(System.out::println);
+         * 
+         * System.out.println("***************************");
+         * System.out.println("Lista de Admins Ventas");
+         * System.out.println("***************************");
+         * 
+         * gus.getMineria().getListaUsuariosVentas().forEach(System.out::println);
+         */
 
+        //input.close();
     }
 
 }

@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.stream.Collectors;
 
+import Datos.Producto;
 import proyectoMineria.Material;
 
 public class MaterialDAO {
@@ -20,6 +23,39 @@ public class MaterialDAO {
         conn = ConexionDB.getInstance().getConnection();
         return conn;
     }
+    
+	public LinkedList<Material> LlenarLista() {
+		
+		String sql ="SELECT * FROM `producto`"; 
+		
+		String[] datos = new String[3];
+		
+		LinkedList<Material> Stock = new LinkedList<Material>();
+		try {
+			ptmt = conexion.prepareStatement(sql);
+			
+			ResultSet result =  ptmt.executeQuery();
+			
+			while(result.next()) {
+				datos[0] = result.getString(1);
+				datos[1] = result.getString(2);
+				datos[2] = result.getString(3);
+				datos[3] = result.getString(4);
+				datos[4] = result.getString(5);
+				datos[5] = result.getTimestamp(6).toLocaleString();
+					//System.out.println("Nombre: " + datos[0] + " tipo: " + datos[1]);
+				
+				Stock.add(new Material());
+				
+			}
+			
+			return Stock;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("error ");
+			return null;
+		}
+	}
 
     // Metodos tabla material
     public ArrayList<Material> visualizarStock() {
@@ -37,7 +73,7 @@ public class MaterialDAO {
 
             while (resultSet.next()) {
                 Material material = new Material(resultSet.getInt("idmaterial"), resultSet.getString("tipo"),
-                        resultSet.getDouble("pureza"), resultSet.getDouble("cantidad"));
+                        resultSet.getString("pureza"), resultSet.getDouble("cantidad"));
 
                 listaDeMateriales.add(material);
             }
@@ -78,7 +114,7 @@ public class MaterialDAO {
 
         //la filtro en funcion de la pureza del material comprado
         ArrayList<Material> listaFiltradaPorPureza = listaDeMateriales.stream()
-                .filter(mat -> mat.getPureza() >= materialComprado.getPureza())
+                .filter(mat -> mat.getPureza() == materialComprado.getPureza())
                 .collect(Collectors.toCollection(ArrayList::new));
 
         //recorro la lista filtrada
@@ -193,7 +229,7 @@ public class MaterialDAO {
             // preparo el statement que ejecuta la query
             ptmt = conexion.prepareStatement(queryString);
             ptmt.setString(1, material.getTipo());
-            ptmt.setDouble(2, material.getPureza());
+            ptmt.setString(2, material.getPureza());
             ptmt.setDouble(3, material.getCantidad());
             ptmt.setDouble(4, material.getPrecioBase());
 

@@ -6,40 +6,39 @@ public class Material {
 
         private Integer idMaterial;
         private String tipo;
-        private Double pureza;
+        private String pureza;
         private Double cantidad;//en kilos
-        private LocalDateTime fecha_ingreso;
+        private LocalDate fecha_ingreso;
         private Double precioBase;
         private Double coeficientePurezaAlta;
         private Double coeficientePurezaMedia;
         private Double coeficientePurezaBaja;
         
-        public Material(String tipo, Double pureza, Double cantidad) {
-            super();
-            this.tipo = tipo;
-            this.pureza = pureza;
-            this.cantidad = cantidad;
-            this.seteoDePrecio(tipo);
-            this.seteoDeCoeficientes(pureza);
-            this.setFecha_ingreso(LocalDateTime.now());            
-        }
+
         
         
-        //Constructor para la query en MaterialDAO
+        public Material(Integer idMaterial, String tipo, String pureza, Double cantidad, LocalDate fecha_ingreso,
+				Double precioBase, Double coeficientePurezaAlta, Double coeficientePurezaMedia,
+				Double coeficientePurezaBaja) {
+			super();
+			this.idMaterial = idMaterial;
+			this.tipo = tipo;
+			this.pureza = pureza;
+			this.cantidad = cantidad;
+			this.fecha_ingreso = fecha_ingreso;
+			this.precioBase = precioBase;
+			this.coeficientePurezaAlta = coeficientePurezaAlta;
+			this.coeficientePurezaMedia = coeficientePurezaMedia;
+			this.coeficientePurezaBaja = coeficientePurezaBaja;
+		}
+
+
+		//Constructor para la query en MaterialDAO
         
         //no hace falta setear la fecha porque ya la deberia sacar de la tabla material en la DB
         
         //El precio base tampoco pero no afecta sacarlo de la DB o calcularlo en el codigo porque es una constante
         //en funcion del tipo de material
-        public Material(Integer idMaterial, String tipo, Double pureza, Double cantidad) {
-            super();
-            this.idMaterial = idMaterial;
-            this.tipo = tipo;
-            this.pureza = pureza;
-            this.cantidad = cantidad;
-            this.seteoDePrecio(tipo);
-            this.seteoDeCoeficientes(pureza);
-        }
 
 
 
@@ -60,14 +59,14 @@ public class Material {
             }
         }
         
-        private void seteoDeCoeficientes(Double pureza) {
-            if (pureza > 70) {
+        private void seteoDeCoeficientes(String pureza) {
+            if (pureza == "Alta") {
                 this.coeficientePurezaAlta = 2d;
             }
-            if (pureza > 30) {
+            if (pureza == "Media") {
                 this.coeficientePurezaMedia = 1d;
             }
-            if (pureza > 0) {
+            if (pureza == "Baja") {
                 this.coeficientePurezaBaja = 0.5d;
             }            
         }
@@ -79,10 +78,10 @@ public class Material {
         public void setTipo(String tipo) {
             this.tipo = tipo;
         }
-        public Double getPureza() {
+        public String getPureza() {
             return pureza;
         }
-        public void setPureza(Double pureza) {
+        public void setPureza(String pureza) {
             this.pureza = pureza;
         }
         public Double getCantidad() {
@@ -139,24 +138,14 @@ public class Material {
         }
 
 
-		public LocalDateTime getFecha_ingreso() {
+		public LocalDate getFecha_ingreso() {
 			return fecha_ingreso;
 		}
 
 
-		public void setFecha_ingreso(LocalDateTime fecha_ingreso) {
+		public void setFecha_ingreso(LocalDate fecha_ingreso) {
 			this.fecha_ingreso = fecha_ingreso;
 		}
-
-
-        
-        
-        
-        
-        
-        
-
-    
 	
 	
 }

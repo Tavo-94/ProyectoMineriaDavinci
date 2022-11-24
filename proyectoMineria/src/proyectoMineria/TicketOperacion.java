@@ -20,11 +20,9 @@ public class TicketOperacion {
 		this.materialComprado = materialComprado;
 		this.total = total;
 	}
-
 	public TicketOperacion(Material materialComprado2, Cliente nuevoCliente, AdminVentas adminVentas) {
 		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	public String toString() {
 		return "TicketOperacion [cliente=" + cliente + ", fechaDeOperacion=" + fechaDeOperacion + ", vendedor="

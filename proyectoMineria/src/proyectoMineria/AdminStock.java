@@ -1,8 +1,6 @@
 package proyectoMineria;
 
-import java.time.LocalDate;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class AdminStock extends Usuario {
 
@@ -13,7 +11,7 @@ public class AdminStock extends Usuario {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
         // TODO Auto-generated constructor stub
     }
-
+    
     @Override
     public void loguearse(Scanner inputUsuario) {
         // TODO Auto-generated method stub
