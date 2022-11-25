@@ -8,7 +8,7 @@ public class Material {
         private String tipo;
         private String pureza;
         private Double cantidad;//en kilos
-        private LocalDate fecha_ingreso;
+        private LocalDate fecha_de_ingreso;
         private Double precioBase;
         private Double coeficientePurezaAlta;
         private Double coeficientePurezaMedia;
@@ -17,15 +17,14 @@ public class Material {
 
         
         
-        public Material(Integer idMaterial, String tipo, String pureza, Double cantidad, LocalDate fecha_ingreso,
-				Double precioBase, Double coeficientePurezaAlta, Double coeficientePurezaMedia,
-				Double coeficientePurezaBaja) {
+        public Material(Integer idMaterial, String tipo, String pureza, Double cantidad, LocalDate fecha_de_ingreso,
+				Double precioBase) {
 			super();
 			this.idMaterial = idMaterial;
 			this.tipo = tipo;
 			this.pureza = pureza;
 			this.cantidad = cantidad;
-			this.fecha_ingreso = fecha_ingreso;
+			this.fecha_de_ingreso = fecha_de_ingreso;
 			this.precioBase = precioBase;
 			this.coeficientePurezaAlta = coeficientePurezaAlta;
 			this.coeficientePurezaMedia = coeficientePurezaMedia;
@@ -43,6 +42,22 @@ public class Material {
 
 
         public Material() {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Material(String tipoDeMaterial, Double pureza2, Double cantMaterial) {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Material(Integer iD, String material, String pureza2, Double cantidad2, LocalDate fecha_de_Ingreso2,
+				int iD_Deposito) {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Material(int int1, String string, String string2, double double1) {
 			// TODO Auto-generated constructor stub
 		}
 
@@ -133,18 +148,18 @@ public class Material {
 
         @Override
         public String toString() {
-            return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha_ingreso=" + fecha_ingreso
+            return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha_ingreso=" + fecha_de_ingreso
                     + ", precio=" + precioBase + "]";
         }
 
 
 		public LocalDate getFecha_ingreso() {
-			return fecha_ingreso;
+			return fecha_de_ingreso;
 		}
 
 
-		public void setFecha_ingreso(LocalDate fecha_ingreso) {
-			this.fecha_ingreso = fecha_ingreso;
+		public void setFecha_ingreso(LocalDate fecha_de_ingreso) {
+			this.fecha_de_ingreso = fecha_de_ingreso;
 		}
 	
 	

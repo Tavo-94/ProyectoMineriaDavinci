@@ -178,9 +178,9 @@ public class AdminVentas extends Usuario {
    
         //calculo del TOTAL
             
-        if (materialComprado.getPureza() >= 70 ) {
+        if (materialComprado.getPureza() == "ALTA" ) {
             total = materialComprado.getPrecioBase() * materialComprado.getCantidad() * materialComprado.getCoeficientePurezaAlta();
-        } else if (materialComprado.getPureza()>=50) {
+        } else if (materialComprado.getPureza() == "MEDIA") {
             total = materialComprado.getPrecioBase() * materialComprado.getCantidad() * materialComprado.getCoeficientePurezaMedia();
         } else {
             total = materialComprado.getPrecioBase() * materialComprado.getCantidad() * materialComprado.getCoeficientePurezaBaja();
@@ -219,18 +219,3 @@ public class AdminVentas extends Usuario {
                 + ", toString()=" + super.toString() + "]";
     }
 
-}
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
