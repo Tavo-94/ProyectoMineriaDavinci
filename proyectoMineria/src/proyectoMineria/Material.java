@@ -62,6 +62,11 @@ public class Material {
 		}
 
 
+		public Material(String tipoDeMaterial, String pureza2, Double cantMaterial) {
+			// TODO Auto-generated constructor stub
+		}
+
+
 		private void seteoDePrecio(String tipo) {
             if (tipo.equalsIgnoreCase("oro")) {
                 this.precioBase = 100_000d;
