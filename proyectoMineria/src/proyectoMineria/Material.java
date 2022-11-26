@@ -6,7 +6,7 @@ public class Material {
 
         private Integer idMaterial;
         private String tipo;
-        private Double pureza;
+        private String pureza;
         private Double cantidad;//en kilos
         private LocalDateTime fecha_ingreso;
         private Double precioBase;
@@ -14,7 +14,7 @@ public class Material {
         private Double coeficientePurezaMedia;
         private Double coeficientePurezaBaja;
         
-        public Material(String tipo, Double pureza, Double cantidad) {
+        public Material(String tipo, String pureza, Double cantidad) {
             super();
             this.tipo = tipo;
             this.pureza = pureza;
@@ -31,7 +31,7 @@ public class Material {
         
         //El precio base tampoco pero no afecta sacarlo de la DB o calcularlo en el codigo porque es una constante
         //en funcion del tipo de material
-        public Material(Integer idMaterial, String tipo, Double pureza, Double cantidad) {
+        public Material(Integer idMaterial, String tipo, String pureza, Double cantidad) {
             super();
             this.idMaterial = idMaterial;
             this.tipo = tipo;
@@ -60,14 +60,14 @@ public class Material {
             }
         }
         
-        private void seteoDeCoeficientes(Double pureza) {
-            if (pureza > 70) {
+        private void seteoDeCoeficientes(String pureza) {
+            if (pureza.equalsIgnoreCase("alta")) {
                 this.coeficientePurezaAlta = 2d;
             }
-            if (pureza > 30) {
+            if (pureza.equalsIgnoreCase("media")) {
                 this.coeficientePurezaMedia = 1d;
             }
-            if (pureza > 0) {
+            if (pureza.equalsIgnoreCase("baja")) {
                 this.coeficientePurezaBaja = 0.5d;
             }            
         }
@@ -79,10 +79,10 @@ public class Material {
         public void setTipo(String tipo) {
             this.tipo = tipo;
         }
-        public Double getPureza() {
+        public String getPureza() {
             return pureza;
         }
-        public void setPureza(Double pureza) {
+        public void setPureza(String pureza) {
             this.pureza = pureza;
         }
         public Double getCantidad() {

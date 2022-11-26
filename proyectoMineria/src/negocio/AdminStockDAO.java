@@ -31,7 +31,8 @@ public class AdminStockDAO {
     
     public void agregarNuevoAdminStock(AdminStock nuevoStock, AdminSistema adminSistema) {
         try {
-            String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?,?)";
+            
+            String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,MD5(?),?,?)";
             conexion = getConnection();
             ptmt = conexion.prepareStatement(queryString);
             ptmt.setString(1, nuevoStock.getNombre());
@@ -145,8 +146,8 @@ public class AdminStockDAO {
              ptmt = conexion.prepareStatement(query);
              m.setTipo(JOptionPane.showInputDialog("ingrese tipo de material"));
              ptmt.setString(1, m.getTipo());
-             m.setPureza(Double.parseDouble(JOptionPane.showInputDialog("ingrese pureza")));
-             ptmt.setDouble(2, m.getPureza());
+             m.setPureza(JOptionPane.showInputDialog("ingrese pureza"));
+             ptmt.setString(2, m.getPureza());
              m.setCantidad(Double.parseDouble(JOptionPane.showInputDialog("ingrese cantidad")));
              ptmt.setDouble(3, m.getCantidad());
              ptmt.executeUpdate();

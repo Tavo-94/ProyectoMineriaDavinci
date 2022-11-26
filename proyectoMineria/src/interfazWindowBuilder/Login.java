@@ -18,9 +18,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.Component;
 import javax.swing.SwingConstants;
+
+import negocio.TicketOperacionDAO;
+import proyectoMineria.TicketOperacion;
 
 public class Login {
 
@@ -28,6 +32,7 @@ public class Login {
     private JPasswordField passTxt;
     private JTextField userTxt;
     private JFrame frmAdminsistemas;
+    private TicketOperacionDAO operaciones;
 
     /**
      * Launch the application.
@@ -197,5 +202,7 @@ public class Login {
         frmMetalplus.getContentPane().add(separator_1_1_1);
         frmMetalplus.setBounds(100, 100, 725, 508);
         frmMetalplus.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JTable tablita = operaciones.mostrarTodasLasOperaciones();
     }
 }

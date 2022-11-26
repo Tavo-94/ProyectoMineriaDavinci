@@ -43,7 +43,7 @@ public class TicketOperacionDAO {
             ptmt.setDate(1, java.sql.Date.valueOf(nuevoTicketOperacion.getFechaDeOperacion()));
             ptmt.setDouble(2, nuevoTicketOperacion.getTotal());
             ptmt.setString(3, vendedor.getNombreUsuario());
-            ptmt.setInt(4, Long.valueOf(cliente.getIdCliente()).intValue());
+            ptmt.setInt(4, cliente.getIdCliente()); //Long.valueOf(cliente.getIdCliente()).intValue()
             ptmt.setInt(5, materialPedido.getIdMaterial());
 
             ptmt.executeUpdate();
@@ -71,7 +71,7 @@ public class TicketOperacionDAO {
     
     //muestro todas la ventas
 
-    public void mostrarTodasLasOperaciones() {
+    public JTable mostrarTodasLasOperaciones() {
         try {
 
             // defino la query
@@ -136,6 +136,9 @@ public class TicketOperacionDAO {
             
             JOptionPane.showMessageDialog(null, new JScrollPane(tabla));
             
+            return tabla;
+
+            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -157,6 +160,7 @@ public class TicketOperacionDAO {
             }
 
         }
+        return null;
 
     }
 }
