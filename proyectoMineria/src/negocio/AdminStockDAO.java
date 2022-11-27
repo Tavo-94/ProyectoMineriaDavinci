@@ -501,291 +501,135 @@ public class AdminStockDAO {
              
             JOptionPane.showMessageDialog(null,"Se agrego con exito");
             
-            String query2 = "SELECT * FROM material ORDER BY fecha_ingreso DESC";
+            String query2 = "SELECT * FROM material ORDER BY fecha_de_ingreso DESC";
             conexion = getConnection();
     		ptmt = conexion.prepareStatement(query2);
             resultSet = ptmt.executeQuery(query2);
             
+            DefaultTableModel modeloDeTabla = new DefaultTableModel();
+            
+            Integer numeroDeColumnas = resultSet.getMetaData().getColumnCount();
+            Object[] labelDeColumnas = new Object[numeroDeColumnas];
+            
+            for (int i = 0; i < numeroDeColumnas; i++) {
+                labelDeColumnas[i] = resultSet.getMetaData().getColumnLabel(i+1);
+            }
+            
+            modeloDeTabla.setColumnIdentifiers(labelDeColumnas);
+            
             while (resultSet.next()) {
-            	int ID = resultSet.getInt(1);
-            	String Material = resultSet.getString(2);
-            	String Pureza = resultSet.getString(3);
-            	double Cantidad = resultSet.getDouble(4);
-            	LocalDate Fecha_de_Ingreso = resultSet.getDate(5).toLocalDate();
-            	int ID_Deposito = resultSet.getInt(6);
-            	
-            	
-            	System.out.println("ID: " + ID + 
-            			" | Material: " + Material + 
-            			" | Pureza: " + Pureza + 
-            			" | Cantidad: " + Cantidad + 
-            			" | ID_Deposito: " + ID_Deposito +
-            			" | Fecha_Ingreso: " + Fecha_de_Ingreso);
-            	
-			}
-    	} catch (SQLException e) {
-    			e.printStackTrace();
-    		} finally {
-            try {
-            	if (ptmt != null)
-                    ptmt.close();
-            	if (conexion != null)
-                    conexion.close();
-            	if (resultSet != null) {
-            		resultSet.close();
-            	}
-            	} catch (SQLException e) {
-                e.printStackTrace();
-                } catch (Exception e) {
-                e.printStackTrace();
+
+                Object[] fila = new Object[numeroDeColumnas];
+                
+                for (int i = 0; i < numeroDeColumnas; i++) {
+                    fila[i] = resultSet.getObject(i+1);
                 }
+                
+                modeloDeTabla.addRow(fila);
             }
-    	}
-	
-		/*public void mostrarStock () {
-    	try {
-			
-    		String query = "SELECT * FROM material ORDER BY fecha_de_ingreso DESC";
-    		conexion = getConnection();
-    		ptmt = conexion.prepareStatement(query);
-            resultSet = ptmt.executeQuery(query);
             
-            while (resultSet.next()) {
-            	int ID = resultSet.getInt(1);
-            	String Material = resultSet.getString(2);
-            	String Pureza = resultSet.getString(3);
-            	double Cantidad = resultSet.getDouble(4);
-            	int ID_Deposito = resultSet.getInt(5);
-            	Date Fecha_Ingreso = resultSet.getDate(6);
-            	
-            	System.out.println("ID: " + ID + 
-            			" | Material: " + Material + 
-            			" | Pureza: " + Pureza + 
-            			" | Cantidad: " + Cantidad + 
-            			" | ID_Deposito: " + ID_Deposito +
-            			" | Fecha_Ingreso: " + Fecha_Ingreso);
-            	
-			}
-    		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-        try {
-        	if (ptmt != null)
-                ptmt.close();
-        	if (conexion != null)
-                conexion.close();
-        	if (resultSet != null) {
-        		resultSet.close();
-        	}
-        	} catch (SQLException e) {
+            JTable tabla = new JTable(modeloDeTabla);
+            
+            JFrame cuadrito = new JFrame("Test de Cuadrito");
+            
+            cuadrito.add(tabla);
+            
+            JOptionPane.showMessageDialog(null, new JScrollPane(tabla));
+            
+        } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            // siempre cierro el Statement y la conexion al finalizar el metodo
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             } catch (Exception e) {
-            e.printStackTrace();
+                e.printStackTrace();
             }
-        } 
-    }*/
-		
-	   /* public void mostrarStockTipo(String tipo) {	
-	    	try {
-				tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-	    		String query = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = '"+tipo+"' GROUP BY pureza ORDER BY fecha_de_ingreso DESC";
-	    		conexion = getConnection();
-	    		ptmt = conexion.prepareStatement(query);
-	    		ptmt.executeQuery();
-	            resultSet = ptmt.executeQuery(query);
-	            
-	            while (resultSet.next()) {
-	            	int ID = resultSet.getInt(1);
-	            	String Material = resultSet.getString(2);
-	            	String Pureza = resultSet.getString(3);
-	            	double Cantidad = resultSet.getDouble(4);
-	            	int ID_Deposito = resultSet.getInt(5);
-	            	Date Fecha_Ingreso = resultSet.getDate(6);
-	            	
-	            	System.out.println("ID: " + ID + 
-	            			" | Material: " + Material + 
-	            			" | Pureza: " + Pureza + 
-	            			" | Cantidad: " + Cantidad + 
-	            			" | ID_Deposito: " + ID_Deposito +
-	            			" | Fecha_Ingreso: " + Fecha_Ingreso);
-	            	
-				}
-	    		
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-	        try {
-	        	if (ptmt != null)
-	                ptmt.close();
-	        	if (conexion != null)
-	                conexion.close();
-	        	if (resultSet != null) {
-	        		resultSet.close();
-	        	}
-	        	} catch (SQLException e) {
-	            e.printStackTrace();
-	            } catch (Exception e) {
-	            e.printStackTrace();
-	            }
-	        } 
-	    }*/
-    
-    /*public void mostrarStockTipoPurezaAlta(String tipo) {
-    	try {
-    		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-    		String query = "SELECT tipo, pureza, fecha_de_ingreso,  cantidad FROM material WHERE tipo = '"+tipo+"' AND pureza = 'ALTA'";
-    		conexion = getConnection();
-    		ptmt = conexion.prepareStatement(query);
-            ptmt.executeQuery(query);
-            
-            resultSet = ptmt.executeQuery();
-            
-            while (resultSet.next()) {
-            	int ID = resultSet.getInt(1);
-            	String Material = resultSet.getString(2);
-            	String Pureza = resultSet.getString(3);
-            	double Cantidad = resultSet.getDouble(4);
-            	int ID_Deposito = resultSet.getInt(5);
-            	Date Fecha_Ingreso = resultSet.getDate(6);
-            	
-            	System.out.println("ID: " + ID + 
-            			" | Material: " + Material + 
-            			" | Pureza: " + Pureza + 
-            			" | Cantidad: " + Cantidad + 
-            			" | ID_Deposito: " + ID_Deposito +
-            			" | Fecha_Ingreso: " + Fecha_Ingreso);
-            	
-			}
-    		
-    		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-        try {
-        	if (ptmt != null)
-                ptmt.close();
-        	if (conexion != null)
-                conexion.close();
-        	if (resultSet != null) {
-        		resultSet.close();
-        	}
-        	} catch (SQLException e) {
-            e.printStackTrace();
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-        } 
-    }*/
-    
-    /*public void mostrarStockTipoPurezaMedia(String tipo ) {
-    	try {
-			tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-    		String query = "SELECT tipo, pureza, fecha_de_ingreso,  cantidad FROM material WHERE tipo = '"+tipo+"' AND pureza = 'MEDIA'";
-    		conexion = getConnection();
-    		ptmt = conexion.prepareStatement(query);
-            ptmt.executeUpdate();
-            
-            resultSet = ptmt.executeQuery();
-            
-            while (resultSet.next()) {
-            	int ID = resultSet.getInt(1);
-            	String Material = resultSet.getString(2);
-            	double Pureza = resultSet.getDouble(3);
-            	double Cantidad = resultSet.getDouble(4);
-            	int ID_Deposito = resultSet.getInt(5);
-            	Date Fecha_Ingreso = resultSet.getDate(6);
-            	
-            	System.out.println("ID: " + ID + 
-            			" | Material: " + Material + 
-            			" | Pureza: " + Pureza + 
-            			" | Cantidad: " + Cantidad + 
-            			" | ID_Deposito: " + ID_Deposito +
-            			" | Fecha_Ingreso: " + Fecha_Ingreso);
-            	
-			}
-    		
-    		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-        try {
-        	if (ptmt != null)
-                ptmt.close();
-        	if (conexion != null)
-                conexion.close();
-        	if (resultSet != null) {
-        		resultSet.close();
-        	}
-        	} catch (SQLException e) {
-            e.printStackTrace();
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-        } 
-    }*/
-    
-   /* public void mostrarStockTipoPurezaBaja (String tipo) {
-    	try {
-			tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
-    		String query = "SELECT tipo, pureza, fecha_de_ingreso,  cantidad FROM material WHERE tipo = '"+tipo+"' AND pureza = 'BAJA'";
-    		conexion = getConnection();
-    		ptmt = conexion.prepareStatement(query);
-            ptmt.executeUpdate();
-            
-            resultSet = ptmt.executeQuery();
-            
-            while (resultSet.next()) {
-            	int ID = resultSet.getInt(1);
-            	String Material = resultSet.getString(2);
-            	double Pureza = resultSet.getDouble(3);
-            	double Cantidad = resultSet.getDouble(4);
-            	int ID_Deposito = resultSet.getInt(5);
-            	Date Fecha_Ingreso = resultSet.getDate(6);
-            	
-            	System.out.println("ID: " + ID + 
-            			" | Material: " + Material + 
-            			" | Pureza: " + Pureza + 
-            			" | Cantidad: " + Cantidad + 
-            			" | ID_Deposito: " + ID_Deposito +
-            			" | Fecha_Ingreso: " + Fecha_Ingreso);
-            	
-			}
-    		
-    		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-        try {
-        	if (ptmt != null)
-                ptmt.close();
-        	if (conexion != null)
-                conexion.close();
-        	if (resultSet != null) {
-        		resultSet.close();
-        	}
-        	} catch (SQLException e) {
-            e.printStackTrace();
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-        } 
-    }*/
-     
-    public void buscarMaterial (String tipo ) {
+
+        }
+
+    }
+	 
+    public void buscarMaterial (String tipo, String pureza) {
     	
     	try {
 			
-    		String query = "SELECT * FROM material WHERE tipo = ?";
+    		String query = "SELECT * FROM material WHERE tipo = ? AND pureza = ?";
     		conexion = getConnection();
     		ptmt = conexion.prepareStatement(query);
     		tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		ptmt.setString(1, tipo);
+    		pureza = JOptionPane.showInputDialog("ingrese tipo de pureza requerido");
+    		ptmt.setString(2, pureza);
             ptmt.executeQuery();
             
             resultSet = ptmt.executeQuery();
             
+            DefaultTableModel modeloDeTabla = new DefaultTableModel();
+            
+            Integer numeroDeColumnas = resultSet.getMetaData().getColumnCount();
+            Object[] labelDeColumnas = new Object[numeroDeColumnas];
+            
+            for (int i = 0; i < numeroDeColumnas; i++) {
+                labelDeColumnas[i] = resultSet.getMetaData().getColumnLabel(i+1);
+            }
+            
+            modeloDeTabla.setColumnIdentifiers(labelDeColumnas);
+            
             while (resultSet.next()) {
+
+                Object[] fila = new Object[numeroDeColumnas];
+                
+                for (int i = 0; i < numeroDeColumnas; i++) {
+                    fila[i] = resultSet.getObject(i+1);
+                }
+                
+                modeloDeTabla.addRow(fila);
+            }
+            
+            JTable tabla = new JTable(modeloDeTabla);
+            
+            JFrame cuadrito = new JFrame("Test de Cuadrito");
+            
+            cuadrito.add(tabla);
+            
+            JOptionPane.showMessageDialog(null, new JScrollPane(tabla));
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // siempre cierro el Statement y la conexion al finalizar el metodo
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+            
+           /* while (resultSet.next()) {
             	int ID = resultSet.getInt(1);
             	String Material = resultSet.getString(2);
             	double Pureza = resultSet.getDouble(3);
@@ -820,7 +664,41 @@ public class AdminStockDAO {
             e.printStackTrace();
             }
         } 
-    }
+    }*/
+    
+    private Object[] listaDeMateriales() {
+    	try {
+    		
+    		String query = "SELECT idmaterial FROM material;";
+    		
+    		ptmt = conexion.prepareStatement(query);
+    		
+    		resultSet = ptmt.executeQuery();
+    		
+    		ArrayList<String> listaMaterial = new ArrayList<>();
+    		
+    		while (resultSet.next()) {
+    			
+    			listaMaterial.add(resultSet.getString("idmaterial"));
+    			}
+    		return listaMaterial.toArray();
+    		} catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+             } finally {
+            	 try {
+            		 if (resultSet != null) {
+                     resultSet.close();
+                     }
+            		 } catch (SQLException e) {
+            			 e.printStackTrace();
+            			 } catch (Exception e) {
+            				 e.printStackTrace();
+            				 }
+            	 }
+    	return null;
+    	}
+
     
     public void eliminarMaterial() {
         try {
@@ -828,8 +706,10 @@ public class AdminStockDAO {
             
             String query = "DELETE FROM material WHERE idmaterial = ?";
             
-            String materialAEliminar = (String) JOptionPane.showInputDialog
-            		(null, "Seleccionar ID de material a eliminar", "Eliminar", JOptionPane.DEFAULT_OPTION);
+            Object[] opciones = this.listaDeMateriales();
+            
+            String materialAEliminar = (String) JOptionPane.showInputDialog(null, "Seleccionar material a eliminar", "Eliminar", 
+            		JOptionPane.DEFAULT_OPTION, null, opciones, opciones[0]);
             ptmt = conexion.prepareStatement(query);
             ptmt.setString(1, materialAEliminar);
             

@@ -14,6 +14,8 @@ import negocio.AdminVentasDao;
 
 public class AdminSistema extends Usuario {
 
+    Validaciones v = new Validaciones();
+    
     public AdminSistema(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
         // TODO Auto-generated constructor stub
@@ -30,12 +32,12 @@ public class AdminSistema extends Usuario {
         System.out.println("ingresar nombre de usuario");
         do {
             nombreUsuario = inputDelUsuario.next();
-        } while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+        } while ((Validaciones.validarTexto(nombreUsuario)!=true));
 
         System.out.println("ingresar clave");
         do {
             clave = inputDelUsuario.next();
-        } while (clave.isBlank() || clave.isEmpty());
+        } while ((v.validacionContrasenia(clave)!=true));
 
         this.getMineria().loguearse(nombreUsuario, clave);
 
@@ -73,17 +75,17 @@ public class AdminSistema extends Usuario {
         System.out.println("ingresar nombre de usuario");
         do {
             nombreUsuario = inputDelUsuario.next();
-        } while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+        } while ((Validaciones.validarTexto(nombreUsuario)!=true || v.validacionTextoVacio(nombreUsuario)!=true));
 
         System.out.println("ingresar clave actual");
         do {
             clave = inputDelUsuario.next();
-        } while (clave.isBlank() || clave.isEmpty());
+        } while ((v.validacionContrasenia(clave)!=true));
 
         System.out.println("ingresar clave nueva");
         do {
             claveNueva = inputDelUsuario.next();
-        } while (claveNueva.isBlank() || claveNueva.isEmpty());
+        } while ((v.validacionContrasenia(claveNueva)!=true));
 
         if (this.validarLogIn(nombreUsuario, clave)) {
             this.getMineria().cambiarClave(nombreUsuario, claveNueva);
@@ -104,13 +106,17 @@ public class AdminSistema extends Usuario {
         String cargo;
         Boolean estadoActivo = null;
 
-            nombreUsuario = JOptionPane.showInputDialog("Ingrese Nombre de usuario");
-
-        
-            clave = JOptionPane.showInputDialog("Ingrese clave");
-
-        
-            cargo = JOptionPane.showInputDialog("Ingrese Nombre de cargo");
+        do {
+			nombreUsuario = JOptionPane.showInputDialog("Ingrese Nombre de usuario");
+		} while ((Validaciones.validarTexto(nombreUsuario)!=true || v.validacionTextoVacio(nombreUsuario)!=true));
+		
+		do {
+			clave = JOptionPane.showInputDialog("Ingrese clave");
+		} while ((v.validacionContrasenia(clave)!=true));
+		
+		do {
+			cargo = JOptionPane.showInputDialog("Ingrese Nombre de cargo (ventas/stock/sistema)");
+		} while ((Validaciones.validarTexto(cargo)!=true || v.validacionTextoVacio(cargo)!=true || v.validarCargo(cargo)!=true));
 
         do {
             Object[] opciones = { true, false };
@@ -169,7 +175,7 @@ public class AdminSistema extends Usuario {
         System.out.println("ingresar nombre de usuario a dar de baja");
         do {
             nombreUsuario = inputDelUsuario.next();
-        } while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+        } while ((Validaciones.validarTexto(nombreUsuario)!=true || v.validacionTextoVacio(nombreUsuario)!=true));
 
         this.getMineria().bajaUsuario(nombreUsuario);
     }
@@ -180,7 +186,7 @@ public class AdminSistema extends Usuario {
         System.out.println("ingresar nombre de usuario a dar de Alta");
         do {
             nombreUsuario = inputDelUsuario.next();
-        } while (nombreUsuario.isBlank() || nombreUsuario.isEmpty());
+        } while ((Validaciones.validarTexto(nombreUsuario)!=true || v.validacionTextoVacio(nombreUsuario)!=true));
 
         this.getMineria().altaUsuario(nombreUsuario);
     }

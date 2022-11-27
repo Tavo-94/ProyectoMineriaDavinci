@@ -1,11 +1,8 @@
 package proyectoMineria;
 
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
 import interfazWindowBuilder.PantallaPrincipal;
-import negocio.AdminVentasDao;
+
+
 
 public class Main {
 
@@ -14,7 +11,6 @@ public class Main {
     	PantallaPrincipal app = new PantallaPrincipal();
     	app.Aplicacion();
        
-
     }
 
 }
