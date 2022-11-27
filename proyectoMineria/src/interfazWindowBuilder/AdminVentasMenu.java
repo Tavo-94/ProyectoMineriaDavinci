@@ -15,6 +15,9 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
 
 public class AdminVentasMenu {
 
@@ -23,7 +26,12 @@ public class AdminVentasMenu {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void AdminVentasMenu() {
+    	try {
+    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    	} catch (Throwable e) {
+    		e.printStackTrace();
+    	}
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -171,6 +179,13 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(separator_5);
         
         JButton btnNewButton = new JButton("AGREGAR");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARcliente agregarCliente = new AGREGARcliente();
+        		agregarCliente.addCliente();
+        		
+        	}
+        });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnNewButton.setBounds(26, 225, 192, 23);

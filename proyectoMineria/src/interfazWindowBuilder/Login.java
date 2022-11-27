@@ -31,13 +31,11 @@ public class Login {
     private JFrame frmMetalplus;
     private JPasswordField passTxt;
     private JTextField userTxt;
-    private JFrame frmAdminsistemas;
-    private TicketOperacionDAO operaciones;
 
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void VentanaLogin() {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -188,11 +186,19 @@ public class Login {
         userTxt.setColumns(10);
         
         JLabel lblNewLabel = new JLabel("MENU PRINCIPAL");
+        lblNewLabel.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		System.exit(0);
+        	}
+        	
+        });
         lblNewLabel.setForeground(Color.GRAY);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
         lblNewLabel.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         lblNewLabel.setBounds(390, 403, 249, 14);
+        lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         frmMetalplus.getContentPane().add(lblNewLabel);
         
         JSeparator separator_1_1_1 = new JSeparator();
@@ -201,8 +207,7 @@ public class Login {
         separator_1_1_1.setBounds(358, 211, 306, 2);
         frmMetalplus.getContentPane().add(separator_1_1_1);
         frmMetalplus.setBounds(100, 100, 725, 508);
-        frmMetalplus.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        JTable tablita = operaciones.mostrarTodasLasOperaciones();
+        frmMetalplus.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      
     }
 }
