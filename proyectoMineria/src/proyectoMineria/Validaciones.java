@@ -1,8 +1,10 @@
 package proyectoMineria;
 
+import  java.util.ArrayList;
+
 public class Validaciones {
 	
-
+	ArrayList vali = new ArrayList();
 
 	public static boolean validarTexto(String cadenaTexto) { 
 		return cadenaTexto.matches("[a-zA-z]+([ '-][a-zA-Z]+)*"); //expresiones regulares permitidas
