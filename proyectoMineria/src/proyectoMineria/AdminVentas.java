@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 
+import mineriaTest.Validaciones;
 import negocio.ClienteDAO;
 import negocio.DireccionDAO;
 import negocio.MaterialDAO;
@@ -14,6 +15,8 @@ import negocio.TicketOperacionDAO;
 
 public class AdminVentas extends Usuario {
 
+	 Validaciones v = new Validaciones();
+	
     Deposito deposito;
 
     public AdminVentas(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
@@ -100,18 +103,18 @@ public class AdminVentas extends Usuario {
         do {
             nombre = JOptionPane.showInputDialog("Ingresar nombre del cliente");
 
-        } while (nombre.isBlank() || nombre.isEmpty());
+        } while ((Validaciones.validarTexto(nombre)!=true || v.validacionTextoVacio(nombre)!=true));
 
         System.out.println("Ingresar apellido del cliente");
         do {
             apellido = JOptionPane.showInputDialog("Ingresar apellido del cliente");
 
-        } while (apellido.isBlank() || apellido.isEmpty());
+        } while ((Validaciones.validarTexto(apellido)!=true || v.validacionTextoVacio(apellido)!=true));
         
         do {
             telefono = JOptionPane.showInputDialog("Ingresar telefono del cliente");
             
-        } while (telefono.isBlank() || telefono.isEmpty());
+        } while ((v.validacionNumerosVacios(telefono)));
 
         //creo instancia de cliente para luego almacenarlo en la DB
         Cliente nuevoCliente = new Cliente(nombre, apellido, esMayorista, telefono);
@@ -129,19 +132,19 @@ public class AdminVentas extends Usuario {
         do {
             calle = JOptionPane.showInputDialog("Ingresar calle");
 
-        } while (calle.isBlank() || calle.isEmpty());
+        } while ((v.validacionTextoVacio(calle)!=true));
         do {
             altura = JOptionPane.showInputDialog("Ingresar altura");
 
-        } while (altura.isBlank() || altura.isEmpty());
+        } while ((v.validacionTextoVacio(altura)!=true));
         do {
             codigoPostal = JOptionPane.showInputDialog("Ingresar codigo postal");
 
-        } while (codigoPostal.isBlank() || codigoPostal.isEmpty());
+        } while ((v.validacionNumerosVacios(codigoPostal)!=true || v.validacionCodPostal(codigoPostal)!=true));
         do {
             ciudad = JOptionPane.showInputDialog("Ingresar ciudad");
 
-        } while (ciudad.isBlank() || ciudad.isEmpty());
+        } while ((v.validacionTextoVacio(ciudad)!=true));
         
         
         //Creo nueva Direccion y la agrego a la DB
