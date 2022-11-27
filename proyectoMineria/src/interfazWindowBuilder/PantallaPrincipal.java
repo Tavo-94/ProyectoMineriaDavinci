@@ -127,15 +127,9 @@ public class PantallaPrincipal {
         JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-                Login login = new Login();
-                login.LoginWindow();
-                
-=======
             	Login login = new Login();
         		login.VentanaLogin();
                
->>>>>>> prueba
             }
         });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -1,19 +1,6 @@
 package interfazWindowBuilder;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
-import negocio.AdminStockDAO;
-import negocio.AdminVentasDao;
-
 import java.awt.Button;
-
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
@@ -29,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTable;
@@ -41,26 +29,14 @@ import proyectoMineria.TicketOperacion;
 
 public class Login {
 
-    JFrame frmMetalplus;
+    private JFrame frmMetalplus;
     private JPasswordField passTxt;
     private JTextField userTxt;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    private JFrame frmAdminsistemas;
-=======
-    
->>>>>>> Stashed changes
-=======
->>>>>>> prueba
 
     /**
      * Launch the application.
      */
-<<<<<<< HEAD
-    public static void LoginWindow() {
-=======
     public static void VentanaLogin() {
->>>>>>> prueba
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -150,6 +126,25 @@ public class Login {
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+
+            	char[] clave = passTxt.getPassword();
+            	String claveFinal = new String(clave);
+            	
+            	if (userTxt.getText().equals("") && claveFinal.equals("1234")) {
+            		dispose();
+            		JOptionPane.showMessageDialog(null, "Accesso exitoso.", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+            		AdminSistemasMenu adminSistema = new AdminSistemasMenu();
+            		adminSistema.setVisible(true);
+            	}else if (userTxt.getText().equals("") && claveFinal.equals("1234")) {
+            		dispose();
+            		JOptionPane.showMessageDialog(null, "Accesso exitoso.", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
+            		AdminSistemasMenu adminSistema = new AdminSistemasMenu();
+            		adminSistema.setVisible(true);)
+            		
+            			
+            	
+            		
+            	}
             	
             }
         });

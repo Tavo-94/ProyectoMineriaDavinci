@@ -12,7 +12,7 @@ public class Mineria {
 	private List<AdminSistema> listaUsuariosAdmin;
     private List<Cliente> listaClientes;
     private List<TicketOperacion> listaDeOperaciones;
-    private InterfazUI interfazUI;
+ 
 	
 	
 	public Mineria(String nombre) {
@@ -159,22 +159,6 @@ public class Mineria {
 	    return this.listaUsuariosStock.stream().filter(stock -> stock.getNombreUsuario().equals(nombreUsuario) && stock.getClave().equals(contraseña)).findFirst().get();
 	    
 	}
-	
-	
-
-
-    public InterfazUI getInterfazUI() {
-        return interfazUI;
-    }
-
-
-
-    public void setInterfazUI(InterfazUI interfazUI) {
-        this.interfazUI = interfazUI;
-    }
-	
-	
-
 
 
 

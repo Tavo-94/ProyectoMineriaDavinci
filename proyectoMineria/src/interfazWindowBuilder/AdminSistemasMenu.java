@@ -160,15 +160,10 @@ public class AdminSistemasMenu {
         
         JButton btnNewButton = new JButton("AGREGAR");
         btnNewButton.addActionListener(new ActionListener() {
-<<<<<<< HEAD
-            public void actionPerformed(ActionEvent e) {
-            }
-=======
         	public void actionPerformed(ActionEvent e) {
         		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas();
         		agregarAdminVentas.addAdminVentas();
         	}
->>>>>>> prueba
         });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
