@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.Cursor;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.UIManager;
 
 public class AdminSistemasMenu {
 
@@ -31,7 +32,12 @@ public class AdminSistemasMenu {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void AdminSistemaMenu() {
+    	try {
+    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    	} catch (Throwable e) {
+    		e.printStackTrace();
+    	}
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -154,8 +160,15 @@ public class AdminSistemasMenu {
         
         JButton btnNewButton = new JButton("AGREGAR");
         btnNewButton.addActionListener(new ActionListener() {
+<<<<<<< HEAD
             public void actionPerformed(ActionEvent e) {
             }
+=======
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas();
+        		agregarAdminVentas.addAdminVentas();
+        	}
+>>>>>>> prueba
         });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));

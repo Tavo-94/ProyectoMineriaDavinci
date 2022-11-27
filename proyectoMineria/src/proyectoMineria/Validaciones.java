@@ -1,8 +1,6 @@
 package proyectoMineria;
 
 public class Validaciones {
-	
-
 
 	public static boolean validarTexto(String cadenaTexto) { 
 		return cadenaTexto.matches("[a-zA-z]+([ '-][a-zA-Z]+)*"); //expresiones regulares permitidas
@@ -42,8 +40,29 @@ public class Validaciones {
  
 	public boolean validacionContrasenia(String clave) {
 
-		return clave.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,32}$")//valida que la contraseña contenga numeros, letras, caracteres especiales, no contenga espacios y sea entre 8 - 32 caracteres.
+		return clave.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,32}$");//valida que la contraseña contenga numeros, letras, caracteres especiales, no contenga espacios y sea entre 8 - 32 caracteres.
 
+	}
+
+	public boolean validacionCodPostal(String codigoPostal) {
+
+		if(codigoPostal.matches("^[0-9]{4}$")){
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public boolean validarCargo(String cargo) {
+		
+		if (cargo.equalsIgnoreCase("ventas") || cargo.equalsIgnoreCase("stock") || cargo.equalsIgnoreCase("sistema") ) {
+			return true;
+		} else {
+			return false;
+		}
+		
+		
 	}
 
 }

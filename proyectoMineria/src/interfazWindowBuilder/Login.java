@@ -31,25 +31,36 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import java.awt.Component;
 import javax.swing.SwingConstants;
+
+import negocio.TicketOperacionDAO;
+import proyectoMineria.TicketOperacion;
 
 public class Login {
 
     JFrame frmMetalplus;
     private JPasswordField passTxt;
     private JTextField userTxt;
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     private JFrame frmAdminsistemas;
 =======
     
 >>>>>>> Stashed changes
+=======
+>>>>>>> prueba
 
     /**
      * Launch the application.
      */
+<<<<<<< HEAD
     public static void LoginWindow() {
+=======
+    public static void VentanaLogin() {
+>>>>>>> prueba
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -201,11 +212,19 @@ public class Login {
         userTxt.setColumns(10);
         
         JLabel lblNewLabel = new JLabel("MENU PRINCIPAL");
+        lblNewLabel.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		System.exit(0);
+        	}
+        	
+        });
         lblNewLabel.setForeground(Color.GRAY);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
         lblNewLabel.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         lblNewLabel.setBounds(390, 403, 249, 14);
+        lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         frmMetalplus.getContentPane().add(lblNewLabel);
         
         JSeparator separator_1_1_1 = new JSeparator();
@@ -214,6 +233,7 @@ public class Login {
         separator_1_1_1.setBounds(358, 211, 306, 2);
         frmMetalplus.getContentPane().add(separator_1_1_1);
         frmMetalplus.setBounds(100, 100, 725, 508);
-        frmMetalplus.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frmMetalplus.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+      
     }
 }

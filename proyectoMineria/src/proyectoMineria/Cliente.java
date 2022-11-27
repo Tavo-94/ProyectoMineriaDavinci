@@ -27,7 +27,12 @@ public class Cliente {
 	}
 
 
-	public List<Cliente> getListaClientes() {
+	public Cliente(String nombre2, String apellido2, Boolean esMayorista2, String telefono2) {
+        // TODO Auto-generated constructor stub
+    }
+
+
+    public List<Cliente> getListaClientes() {
 		return listaClientes;
 	}
 

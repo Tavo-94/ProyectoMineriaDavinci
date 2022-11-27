@@ -29,7 +29,7 @@ public class AdminVentasDao {
         try {
 
             // defino la query
-            String queryString = "INSERT INTO admin_ventas(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?,?)";
+            String queryString = "INSERT INTO admin_ventas(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,MD5(?),?,?)";
             // armo la conexion
             conexion = getConnection();
 

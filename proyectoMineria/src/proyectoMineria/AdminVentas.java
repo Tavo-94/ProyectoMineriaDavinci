@@ -50,7 +50,7 @@ public class AdminVentas extends Usuario {
         
         ArrayList<Material> listaDeMateriales = new ArrayList<>();
         
-        listaDeMateriales= materialDAO.visualizarStock();
+        listaDeMateriales = materialDAO.visualizarStock();
         
         System.out.println(" Tipo | Pureza | Cantidad | Precio |");
         for (Material material : listaDeMateriales) {
@@ -74,7 +74,7 @@ public class AdminVentas extends Usuario {
         //Datos del material vendido
         Integer idMaterial;
         String tipoDeMaterial;
-        Double pureza;
+        String pureza;
         Double cantMaterial = 0d;
         Double totalDeVenta;
         Boolean esMayorista = true;
@@ -83,8 +83,8 @@ public class AdminVentas extends Usuario {
         String calle;
         String altura;
         String codigoPostal;
-        String ciudad;
-        Integer idCliente;
+        String ciudad = null;
+        Integer idCliente = null;
         
         //datos del pedido
         Double total;
@@ -160,7 +160,9 @@ public class AdminVentas extends Usuario {
         
         cantMaterial = Double.parseDouble(JOptionPane.showInputDialog("ingresar Cantidad Requerida"));
         
-        pureza = Double.parseDouble(JOptionPane.showInputDialog("ingresar la pureza"));
+        Object[] opcionPureza = {"alta", "media", "baja"};
+        pureza = (String) JOptionPane.showInputDialog(null, "Ingresar pureza del material", "pureza", JOptionPane.DEFAULT_OPTION, null, opcionPureza, opcionPureza[0]);
+        
         
         //Creo nuevo Material del pedido y los ingreso en la DB
         Material materialComprado = new Material(tipoDeMaterial, pureza, cantMaterial);
@@ -174,13 +176,13 @@ public class AdminVentas extends Usuario {
         materialComprado.setIdMaterial(idMaterial);
 
         //creamos nuevo ticket
-        TicketOperacion nuevoTicketPedido = new TicketOperacion(materialComprado, nuevoCliente, this);
+        TicketOperacion nuevoTicketPedido = new TicketOperacion(nuevoCliente, this, materialComprado);
    
         //calculo del TOTAL
             
-        if (materialComprado.getPureza() >= 70 ) {
+        if (materialComprado.getPureza().equalsIgnoreCase("alta")) {
             total = materialComprado.getPrecioBase() * materialComprado.getCantidad() * materialComprado.getCoeficientePurezaAlta();
-        } else if (materialComprado.getPureza()>=50) {
+        } else if (materialComprado.getPureza().equalsIgnoreCase("media")) {
             total = materialComprado.getPrecioBase() * materialComprado.getCantidad() * materialComprado.getCoeficientePurezaMedia();
         } else {
             total = materialComprado.getPrecioBase() * materialComprado.getCantidad() * materialComprado.getCoeficientePurezaBaja();

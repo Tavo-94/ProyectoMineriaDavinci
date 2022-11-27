@@ -104,17 +104,13 @@ public class AdminSistema extends Usuario {
         String cargo;
         Boolean estadoActivo = null;
 
-        do {
             nombreUsuario = JOptionPane.showInputDialog("Ingrese Nombre de usuario");
-        } while (super.validarString(nombreUsuario));
 
-        do {
+        
             clave = JOptionPane.showInputDialog("Ingrese clave");
-        } while (super.validarString(clave));
 
-        do {
+        
             cargo = JOptionPane.showInputDialog("Ingrese Nombre de cargo");
-        } while (super.validarString(cargo));
 
         do {
             Object[] opciones = { true, false };

@@ -14,6 +14,7 @@ import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.UIManager;
 
 public class AdminStockMenu {
 
@@ -22,7 +23,12 @@ public class AdminStockMenu {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void AdminStockMenu() {
+    	try {
+    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    	} catch (Throwable e) {
+    		e.printStackTrace();
+    	}
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

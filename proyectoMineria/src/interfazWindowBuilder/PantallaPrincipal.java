@@ -1,10 +1,10 @@
 package interfazWindowBuilder;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -13,10 +13,18 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-import java.awt.Cursor;
-import javax.swing.JPanel;
+import java.awt.Button;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Label;
+import javax.swing.JPanel;
+import java.awt.Panel;
+import java.awt.Component;
+import java.awt.Rectangle;
+import java.awt.Cursor;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.UIManager;
 
 public class PantallaPrincipal {
 
@@ -26,12 +34,17 @@ public class PantallaPrincipal {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void Aplicacion() {
+    	try {
+    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+    	} catch (Throwable e) {
+    		e.printStackTrace();
+    	}
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
                     PantallaPrincipal window = new PantallaPrincipal();
-                    window.frame.setVisible(true);
+                    window.frmAdminsistemas.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -114,9 +127,15 @@ public class PantallaPrincipal {
         JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
                 Login login = new Login();
                 login.LoginWindow();
                 
+=======
+            	Login login = new Login();
+        		login.VentanaLogin();
+               
+>>>>>>> prueba
             }
         });
         btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -125,12 +144,24 @@ public class PantallaPrincipal {
         frmAdminsistemas.getContentPane().add(btnNewButton);
         
         JButton btnPanelAdminVentas = new JButton("PANEL ADMIN VENTAS");
+        btnPanelAdminVentas.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Login login = new Login();
+        		login.VentanaLogin();
+        	}
+        });
         btnPanelAdminVentas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnPanelAdminVentas.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
         btnPanelAdminVentas.setBounds(407, 200, 291, 38);
         frmAdminsistemas.getContentPane().add(btnPanelAdminVentas);
         
         JButton btnPanelAdminStock = new JButton("PANEL ADMIN STOCK");
+        btnPanelAdminStock.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Login login = new Login();
+        		login.VentanaLogin();
+        	}
+        });
         btnPanelAdminStock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnPanelAdminStock.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
         btnPanelAdminStock.setBounds(407, 287, 291, 38);

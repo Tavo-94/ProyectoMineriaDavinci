@@ -37,7 +37,7 @@ public class MaterialDAO {
 
             while (resultSet.next()) {
                 Material material = new Material(resultSet.getInt("idmaterial"), resultSet.getString("tipo"),
-                        resultSet.getDouble("pureza"), resultSet.getDouble("cantidad"));
+                        resultSet.getString("pureza"), resultSet.getDouble("cantidad"));
 
                 listaDeMateriales.add(material);
             }
@@ -78,7 +78,7 @@ public class MaterialDAO {
 
         //la filtro en funcion de la pureza del material comprado
         ArrayList<Material> listaFiltradaPorPureza = listaDeMateriales.stream()
-                .filter(mat -> mat.getPureza() >= materialComprado.getPureza())
+                .filter(mat -> mat.getPureza().equalsIgnoreCase(materialComprado.getPureza()))
                 .collect(Collectors.toCollection(ArrayList::new));
 
         //recorro la lista filtrada
@@ -186,14 +186,14 @@ public class MaterialDAO {
         try {
 
             // defino la query
-            String queryString = "INSERT INTO material_pedido(tipo, pureza, cantidad, precio) VALUES(?,?,?,?)";
+            String queryString = "INSERT INTO material_pedido(tipo, pureza, cantidad, precio_base) VALUES(?,?,?,?)";
             // armo la conexion
             conexion = getConnection();
 
             // preparo el statement que ejecuta la query
             ptmt = conexion.prepareStatement(queryString);
             ptmt.setString(1, material.getTipo());
-            ptmt.setDouble(2, material.getPureza());
+            ptmt.setString(2, material.getPureza());
             ptmt.setDouble(3, material.getCantidad());
             ptmt.setDouble(4, material.getPrecioBase());
 

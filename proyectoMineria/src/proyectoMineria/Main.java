@@ -5,12 +5,16 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 import interfazWindowBuilder.PantallaPrincipal;
+<<<<<<< HEAD
 import interfazWindowBuilder.mainpantalla;
+=======
+>>>>>>> prueba
 import negocio.AdminVentasDao;
 
 public class Main {
 
     public static void main(String[] args) {
+<<<<<<< HEAD
         
         mainpantalla pantalla = new mainpantalla();
         pantalla.run();
@@ -61,6 +65,12 @@ public class Main {
          
                 
         
+=======
+    	
+    	PantallaPrincipal app = new PantallaPrincipal();
+    	app.Aplicacion();
+       
+>>>>>>> prueba
 
     }
 
