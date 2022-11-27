@@ -1,9 +1,6 @@
 package proyectoMineria;
 
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
+import negocio.AdminStockDAO;
 import negocio.AdminVentasDao;
 
 public class Main {
@@ -13,11 +10,13 @@ public class Main {
         //test conexion
         Mineria metalPlus = new Mineria("Metal plus");
 
-        AdminSistema gus = new AdminSistema("gus94", "456", "Admin", true, metalPlus);
+        //AdminSistema gus = new AdminSistema("gus94", "456", "Admin", true, metalPlus);
         
-        AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
+       // AdminVentas dani = new AdminVentas("daniBoy78", "1234", "Ventas", true, metalPlus);
         
-        AdminVentasDao ventasDAO = new AdminVentasDao();
+        AdminStockDAO den = new AdminStockDAO ("den", "1234", "Stock", true, metalPlus);
+        
+        //AdminVentasDao ventasDAO = new AdminVentasDao();
         
         //tests del AdminSistema
         
@@ -38,13 +37,31 @@ public class Main {
         //dani.nuevoTicket();
         
         //Es funcional
-        dani.visualizarStock();
+        //dani.visualizarStock();
         
         //Es funcional
         //dani.visualizarOperacionesDeVenta();
         
         //test Validacion del LogIn ventas
         
+        
+        //test del AdminStock
+        
+        //den.agregarMaterial(null);
+        
+        //den.mostrarStock();
+        
+        //den.mostrarStockTipo(null);
+        
+        //den.mostrarStockTipoPurezaAlta(null);
+        
+        //den.mostrarStockTipoPurezaMedia(null);
+        
+        //den.mostrarStockTipoPurezaBaja(null);
+        
+        //den.buscarMaterial(null, null);
+        
+        den.eliminarMaterial();
    
         
 
