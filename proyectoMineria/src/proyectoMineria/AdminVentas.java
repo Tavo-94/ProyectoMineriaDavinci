@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import javax.swing.JOptionPane;
 
-import mineriaTest.Validaciones;
 import negocio.ClienteDAO;
 import negocio.DireccionDAO;
 import negocio.MaterialDAO;

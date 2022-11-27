@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-import mineriaTest.Validaciones;
 import negocio.AdminStockDAO;
 import negocio.AdminVentasDao;
 
