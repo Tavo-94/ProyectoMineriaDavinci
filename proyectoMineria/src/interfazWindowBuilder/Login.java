@@ -1,6 +1,19 @@
 package interfazWindowBuilder;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+import negocio.AdminStockDAO;
+import negocio.AdminVentasDao;
+
 import java.awt.Button;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
@@ -27,7 +40,11 @@ public class Login {
     JFrame frmMetalplus;
     private JPasswordField passTxt;
     private JTextField userTxt;
+<<<<<<< Updated upstream
     private JFrame frmAdminsistemas;
+=======
+    
+>>>>>>> Stashed changes
 
     /**
      * Launch the application.
@@ -122,6 +139,7 @@ public class Login {
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	
             }
         });
         loginButton.setForeground(new Color(255, 255, 255));
