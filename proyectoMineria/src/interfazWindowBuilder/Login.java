@@ -157,7 +157,7 @@ public class Login {
 					
 					AdminVentasMenu menuVentas = new AdminVentasMenu(nuevoLogInVentas);
 					menuVentas.AdminVentasMenu();
-					dispose();
+					frmMetalplus.dispose();
 					} else if (stockDAO.validarLogInStock(nuevoLogInStock)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
 					
@@ -172,10 +172,6 @@ public class Login {
                 
             }
 
-			private void dispose() {
-				// TODO Auto-generated method stub
-				
-			}
         });
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setFont(new Font("JetBrains Mono Medium", Font.BOLD, 17));
