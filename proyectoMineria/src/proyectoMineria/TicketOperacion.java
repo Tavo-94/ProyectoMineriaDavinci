@@ -20,8 +20,6 @@ public class TicketOperacion {
 		this.materialComprado = materialComprado;
 		this.total = total;
 	}
-
-	
 	
 	public TicketOperacion(Cliente cliente, AdminVentas vendedor, Material materialComprado) {
         super();
@@ -31,7 +29,20 @@ public class TicketOperacion {
         this.fechaDeOperacion = LocalDate.now();
     }
 
-
+	public void Alerta(double cantidadDeMaterialComprado, double valor, double valorPromo, double montoAbonado) {
+        if(cantidadDeMaterialComprado <= 0.0) {
+            throw new IllegalArgumentException("Cantidad de material tiene que ser un numero positivo.");
+        }
+        if(valor <= 0.0){
+            throw new IllegalArgumentException("Valor tiene que ser un numero positivo.");
+        }
+        if(valorPromo <= 0.0){
+            throw new IllegalArgumentException("Valor tiene que ser un numero positivo.");
+        }
+        if(montoAbonado <= 0.0) {
+            throw new IllegalArgumentException("Valor tiene que ser un numero positivo.");
+        }
+    }
 
     @Override
 	public String toString() {

@@ -12,7 +12,16 @@ public class Cliente {
     private String telefono;
     private Integer idCliente;
 	
+	public void agregarRegistroCliente(Usuario usuario,String nombre,String apellido,String dni) {
+		
+	    if (usuario.validarCargoVentas()) {
+	    	
+            listaClientes.add(new Cliente(nombre,apellido, esMayorista, telefono));
+            System.out.println("Cliente registrado");
 
+        }
+		
+	}
 
 	public Cliente(List<Cliente> listaClientes, String nombre, String apellido, String dni, Boolean esMayorista,
 			String telefono, Integer idCliente) {
