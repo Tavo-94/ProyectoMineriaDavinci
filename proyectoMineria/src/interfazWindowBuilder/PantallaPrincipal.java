@@ -89,22 +89,17 @@ public class PantallaPrincipal {
         JMenuItem mntmNewMenuItem_8 = new JMenuItem("Menu Principal");
         mnNewMenu.add(mntmNewMenuItem_8);
         
-        JSeparator separator_4 = new JSeparator();
-        mnNewMenu.add(separator_4);
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("AdminSistema");
-        mnNewMenu.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("AdminVentas");
-        mnNewMenu.add(mntmNewMenuItem_3);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("AdminStock");
-        mnNewMenu.add(mntmNewMenuItem_4);
-        
         JSeparator separator_1 = new JSeparator();
         mnNewMenu.add(separator_1);
         
         JMenuItem mntmNewMenuItem = new JMenuItem("Login");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frmAdminsistemas.dispose();
+            	Login login = new Login();
+        		login.VentanaLogin();
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem);
         
         JMenuItem mntmNewMenuItem_5 = new JMenuItem("Log Out");
@@ -114,6 +109,11 @@ public class PantallaPrincipal {
         mnNewMenu.add(separator_2);
         
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Close");
+        mntmNewMenuItem_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.exit(0);
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem_1);
         
         JTextArea txtrLoremIpsumDolor = new JTextArea();
@@ -124,34 +124,7 @@ public class PantallaPrincipal {
         txtrLoremIpsumDolor.setBounds(31, 131, 291, 219);
         frmAdminsistemas.getContentPane().add(txtrLoremIpsumDolor);
         
-        JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	frmAdminsistemas.dispose();
-            	Login login = new Login();
-        		login.VentanaLogin();
-               
-            }
-        });
-        btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnNewButton.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
-        btnNewButton.setBounds(407, 111, 291, 38);
-        frmAdminsistemas.getContentPane().add(btnNewButton);
-        
-        JButton btnPanelAdminVentas = new JButton("PANEL ADMIN VENTAS");
-        btnPanelAdminVentas.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		frmAdminsistemas.dispose();
-        		Login login = new Login();
-        		login.VentanaLogin();
-        	}
-        });
-        btnPanelAdminVentas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnPanelAdminVentas.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
-        btnPanelAdminVentas.setBounds(407, 200, 291, 38);
-        frmAdminsistemas.getContentPane().add(btnPanelAdminVentas);
-        
-        JButton btnPanelAdminStock = new JButton("PANEL ADMIN STOCK");
+        JButton btnPanelAdminStock = new JButton("INGRESAR");
         btnPanelAdminStock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		frmAdminsistemas.dispose();
@@ -161,16 +134,12 @@ public class PantallaPrincipal {
         });
         btnPanelAdminStock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnPanelAdminStock.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
-        btnPanelAdminStock.setBounds(407, 287, 291, 38);
+        btnPanelAdminStock.setBounds(403, 156, 291, 38);
         frmAdminsistemas.getContentPane().add(btnPanelAdminStock);
         
         JSeparator separator_3 = new JSeparator();
-        separator_3.setBounds(407, 262, 291, 2);
+        separator_3.setBounds(403, 221, 291, 2);
         frmAdminsistemas.getContentPane().add(separator_3);
-        
-        JSeparator separator_3_1 = new JSeparator();
-        separator_3_1.setBounds(407, 171, 291, 2);
-        frmAdminsistemas.getContentPane().add(separator_3_1);
         
         JLabel lblNewLabel_1_1_2 = new JLabel("MINERAL PLUS");
         lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -196,5 +165,15 @@ public class PantallaPrincipal {
         JSeparator separator = new JSeparator();
         separator.setBounds(83, 122, 164, 2);
         frmAdminsistemas.getContentPane().add(separator);
+        
+        JButton btnPanelAdminStock_1 = new JButton("SALIR");
+        btnPanelAdminStock_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.exit(0);
+        	}
+        });
+        btnPanelAdminStock_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
+        btnPanelAdminStock_1.setBounds(403, 250, 291, 38);
+        frmAdminsistemas.getContentPane().add(btnPanelAdminStock_1);
     }
 }

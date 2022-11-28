@@ -62,7 +62,7 @@ public class MODIFICARadminstock {
 		frmAgregarCliente.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add-user.png"));
+        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\edit (1).png"));
         lblNewLabel_1.setBounds(159, 27, 71, 77);
         frmAgregarCliente.getContentPane().add(lblNewLabel_1);
 		

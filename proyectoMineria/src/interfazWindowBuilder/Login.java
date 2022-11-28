@@ -242,7 +242,9 @@ public class Login {
         lblNewLabel.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		System.exit(0);
+        		frmMetalplus.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
         	}
         	
         });

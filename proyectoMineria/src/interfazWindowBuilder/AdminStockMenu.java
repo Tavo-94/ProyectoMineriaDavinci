@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminStockMenu {
 
@@ -63,6 +65,16 @@ public class AdminStockMenu {
         frmAdminstockMenu.getContentPane().setLayout(null);
         
         JLabel lblNewLabel_1_1_2_1 = new JLabel("MENU PRINCIPAL");
+        lblNewLabel_1_1_2_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblNewLabel_1_1_2_1.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		frmAdminstockMenu.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
+        	}
+        	
+        });
         lblNewLabel_1_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1_1_2_1.setForeground(Color.DARK_GRAY);
         lblNewLabel_1_1_2_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 12));
@@ -80,24 +92,26 @@ public class AdminStockMenu {
         menuBar.add(mnNewMenu);
         
         JMenuItem mntmNewMenuItem_8 = new JMenuItem("Menu Principal");
+        mntmNewMenuItem_8.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frmAdminstockMenu.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem_8);
         
         JSeparator separator_4 = new JSeparator();
         mnNewMenu.add(separator_4);
         
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("AdminSistema");
-        mnNewMenu.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("AdminVentas");
-        mnNewMenu.add(mntmNewMenuItem_3);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("AdminStock");
-        mnNewMenu.add(mntmNewMenuItem_4);
-        
-        JSeparator separator_1 = new JSeparator();
-        mnNewMenu.add(separator_1);
-        
         JMenuItem mntmNewMenuItem = new JMenuItem("Login");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frmAdminstockMenu.dispose();
+            	Login login = new Login();
+        		login.VentanaLogin();
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem);
         
         JMenuItem mntmNewMenuItem_5 = new JMenuItem("Log Out");

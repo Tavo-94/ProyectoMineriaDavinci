@@ -66,6 +66,16 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().setLayout(null);
         
         JLabel lblNewLabel_1_1_2_1 = new JLabel("MENU PRINCIPAL");
+        lblNewLabel_1_1_2_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblNewLabel_1_1_2_1.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		frmAdminventasMenu.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
+        	}
+        	
+        });
         lblNewLabel_1_1_2_1.setForeground(Color.DARK_GRAY);
         lblNewLabel_1_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1_1_2_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 12));
@@ -96,18 +106,6 @@ public class AdminVentasMenu {
         	}
         });
         mnNewMenu.add(mntmNewMenuItem_8);
-        
-        JSeparator separator_4 = new JSeparator();
-        mnNewMenu.add(separator_4);
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("AdminSistema");
-        mnNewMenu.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("AdminVentas");
-        mnNewMenu.add(mntmNewMenuItem_3);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("AdminStock");
-        mnNewMenu.add(mntmNewMenuItem_4);
         
         JSeparator separator_1 = new JSeparator();
         mnNewMenu.add(separator_1);

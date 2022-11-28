@@ -24,6 +24,8 @@ import java.awt.Rectangle;
 import java.awt.Cursor;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.UIManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminSistemasMenu {
 
@@ -70,6 +72,16 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().setLayout(null);
         
         JLabel lblNewLabel_1_1_2_1 = new JLabel("MENU PRINCIPAL");
+        lblNewLabel_1_1_2_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblNewLabel_1_1_2_1.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		frmAdminsistemaMenu.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
+        	}
+        	
+        });
         lblNewLabel_1_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_1_1_2_1.setForeground(Color.DARK_GRAY);
         lblNewLabel_1_1_2_1.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 12));
@@ -93,18 +105,6 @@ public class AdminSistemasMenu {
         
         JMenuItem mntmNewMenuItem_8 = new JMenuItem("Menu Principal");
         mnNewMenu.add(mntmNewMenuItem_8);
-        
-        JSeparator separator_4 = new JSeparator();
-        mnNewMenu.add(separator_4);
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("AdminSistema");
-        mnNewMenu.add(mntmNewMenuItem_2);
-        
-        JMenuItem mntmNewMenuItem_3 = new JMenuItem("AdminVentas");
-        mnNewMenu.add(mntmNewMenuItem_3);
-        
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("AdminStock");
-        mnNewMenu.add(mntmNewMenuItem_4);
         
         JSeparator separator_1 = new JSeparator();
         mnNewMenu.add(separator_1);
@@ -130,9 +130,21 @@ public class AdminSistemasMenu {
         mnNewMenu_1.add(mnNewMenu_2);
         
         JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar AdminVentas");
+        mntmNewMenuItem_6.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas();
+        		agregarAdminVentas.addAdminVentas();
+        	}
+        });
         mnNewMenu_2.add(mntmNewMenuItem_6);
         
         JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar AdminVentas");
+        mntmNewMenuItem_7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	MODIFICARadminventas modifyadminventas = new MODIFICARadminventas();
+            	modifyadminventas.modifyAdminVentas();
+            }
+        });
         mnNewMenu_2.add(mntmNewMenuItem_7);
         
         JMenuItem mntmNewMenuItem_9 = new JMenuItem("Eliminar AdminVentas");
@@ -145,9 +157,22 @@ public class AdminSistemasMenu {
         mnNewMenu_1.add(mnNewMenu_3);
         
         JMenuItem mntmNewMenuItem_10 = new JMenuItem("Agregar AdminStock");
+        mntmNewMenuItem_10.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARadminstock addAdminstock = new AGREGARadminstock();
+        		addAdminstock.addAdminStock();
+        	}
+        });
         mnNewMenu_3.add(mntmNewMenuItem_10);
         
         JMenuItem mntmNewMenuItem_11 = new JMenuItem("Modificar AdminStock");
+        mntmNewMenuItem_11.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		MODIFICARadminstock modifyadminstock = new MODIFICARadminstock();
+        		modifyadminstock.modifyAdminStock();
+        		
+        	}
+        });
         mnNewMenu_3.add(mntmNewMenuItem_11);
         
         JMenuItem mntmNewMenuItem_12 = new JMenuItem("EliminarAdminStock");
@@ -174,6 +199,8 @@ public class AdminSistemasMenu {
         btnModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	MODIFICARadminventas modifyadminventas = new MODIFICARadminventas();
+            	modifyadminventas.modifyAdminVentas();
             }
         });
         btnModificar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
