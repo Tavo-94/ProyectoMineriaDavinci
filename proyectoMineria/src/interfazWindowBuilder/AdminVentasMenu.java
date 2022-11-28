@@ -308,6 +308,12 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(btnRealizar_1);
         
         JButton btnComprobante = new JButton("COMPROBANTE");
+        btnComprobante.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARventas ticket = new CONSULTARventas();
+        		ticket.consultarVentas();
+        	}
+        });
         btnComprobante.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnComprobante.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnComprobante.setBounds(276, 262, 192, 23);
