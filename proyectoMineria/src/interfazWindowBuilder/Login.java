@@ -154,15 +154,14 @@ public class Login {
             	
             	if (ventasDAO.validarLoginVentas(nuevoLogInVentas)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
-					
 					AdminVentasMenu menuVentas = new AdminVentasMenu(nuevoLogInVentas);
 					menuVentas.AdminVentasMenu();
 					frmMetalplus.dispose();
+					
 					} else if (stockDAO.validarLogInStock(nuevoLogInStock)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
-					
 					AdminStockMenu menuAdminStock = new AdminStockMenu();
-					
+					frmMetalplus.dispose();
 					menuAdminStock.AdminStockMenu();
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");

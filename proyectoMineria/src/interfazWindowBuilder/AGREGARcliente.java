@@ -35,8 +35,7 @@ public class AGREGARcliente {
 	private JTextField textIngreseCP;
 	private JTextField textIngreseProvincia;
 	private JTextField textIngreseLocalidad;
-	
-	final AdminVentasMenu menuVentas = new AdminVentasMenu();
+
 
 	/**
 	 * Launch the application.
