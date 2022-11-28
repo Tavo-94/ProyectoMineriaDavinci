@@ -25,6 +25,7 @@ import java.awt.Rectangle;
 import java.awt.Cursor;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.UIManager;
+import java.awt.Toolkit;
 
 public class PantallaPrincipal {
 
@@ -64,6 +65,7 @@ public class PantallaPrincipal {
      */
     private void initialize() {
         frmAdminsistemas = new JFrame();
+        frmAdminsistemas.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
         frmAdminsistemas.setResizable(false);
         frmAdminsistemas.setTitle("MINERALPLUS");
         frmAdminsistemas.getContentPane().setBackground(Color.WHITE);

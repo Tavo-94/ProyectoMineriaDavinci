@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
 import java.awt.Cursor;
+import java.awt.Toolkit;
 
 public class AGREGARcliente {
 
@@ -57,6 +58,7 @@ public class AGREGARcliente {
 	 */
 	private void initialize() {
 		frmAgregarCliente = new JFrame();
+		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
 		frmAgregarCliente.getContentPane().setBackground(Color.WHITE);
 		frmAgregarCliente.getContentPane().setForeground(Color.WHITE);
 		frmAgregarCliente.setTitle("Agregar Cliente");

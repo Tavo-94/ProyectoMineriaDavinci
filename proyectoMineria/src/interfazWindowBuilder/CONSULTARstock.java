@@ -27,6 +27,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
+import java.awt.Toolkit;
 
 public class CONSULTARstock {
 
@@ -61,6 +62,7 @@ public class CONSULTARstock {
 	 */
 	private void initialize() {
 		frmConsultarStock = new JFrame();
+		frmConsultarStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
 		frmConsultarStock.setBackground(Color.WHITE);
 		frmConsultarStock.setTitle("CONSULTAR STOCK");
 		frmConsultarStock.setResizable(false);

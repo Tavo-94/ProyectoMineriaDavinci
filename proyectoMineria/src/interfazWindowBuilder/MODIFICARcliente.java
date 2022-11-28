@@ -15,6 +15,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Choice;
+import java.awt.Toolkit;
 
 public class MODIFICARcliente {
 
@@ -57,6 +58,7 @@ public class MODIFICARcliente {
 	 */
 	private void initialize() {
 		frmAgregarCliente = new JFrame();
+		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
 		frmAgregarCliente.getContentPane().setBackground(Color.WHITE);
 		frmAgregarCliente.getContentPane().setForeground(Color.WHITE);
 		frmAgregarCliente.setTitle("Modificar Cliente");
