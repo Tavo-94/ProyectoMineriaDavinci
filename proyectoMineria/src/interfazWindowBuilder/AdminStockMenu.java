@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class AdminStockMenu {
 
@@ -57,6 +58,7 @@ public class AdminStockMenu {
      */
     private void initialize() {
         frmAdminstockMenu = new JFrame();
+        frmAdminstockMenu.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
         frmAdminstockMenu.setResizable(false);
         frmAdminstockMenu.setTitle("ADMINSTOCK MENU");
         frmAdminstockMenu.getContentPane().setBackground(Color.WHITE);
