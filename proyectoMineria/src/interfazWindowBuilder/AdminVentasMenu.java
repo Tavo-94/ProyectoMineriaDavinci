@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class AdminVentasMenu {
 
@@ -58,6 +59,7 @@ public class AdminVentasMenu {
      */
     private void initialize() {
         frmAdminventasMenu = new JFrame();
+        frmAdminventasMenu.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
         frmAdminventasMenu.setResizable(false);
         frmAdminventasMenu.setTitle("ADMINVENTAS MENU");
         frmAdminventasMenu.getContentPane().setBackground(Color.WHITE);
@@ -267,6 +269,12 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(separator_5_1);
         
         JButton btnRealizar = new JButton("REALIZAR");
+        btnRealizar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		RealizarCompra buy = new RealizarCompra();
+        		buy.compra();
+        	}
+        });
         btnRealizar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnRealizar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnRealizar.setBounds(276, 225, 192, 23);

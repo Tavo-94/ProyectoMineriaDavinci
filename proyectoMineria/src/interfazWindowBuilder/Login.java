@@ -26,6 +26,7 @@ import javax.swing.SwingConstants;
 
 import negocio.TicketOperacionDAO;
 import proyectoMineria.TicketOperacion;
+import java.awt.Toolkit;
 
 public class Login {
 
@@ -60,6 +61,7 @@ public class Login {
      */
     private void initialize() {
         frmMetalplus = new JFrame();
+        frmMetalplus.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
         frmMetalplus.setTitle("Login");
         frmMetalplus.setResizable(false);
         frmMetalplus.getContentPane().setForeground(Color.GRAY);
