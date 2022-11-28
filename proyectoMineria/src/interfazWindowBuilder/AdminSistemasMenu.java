@@ -104,6 +104,13 @@ public class AdminSistemasMenu {
         menuBar.add(mnNewMenu);
         
         JMenuItem mntmNewMenuItem_8 = new JMenuItem("Menu Principal");
+        mntmNewMenuItem_8.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frmAdminsistemaMenu.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem_8);
         
         JSeparator separator_1 = new JSeparator();

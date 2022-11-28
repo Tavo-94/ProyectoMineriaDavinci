@@ -282,6 +282,12 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(separator_5_1_1);
         
         JButton btnRealizar_1 = new JButton("CONSULTAR");
+        btnRealizar_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARstock consulta = new CONSULTARstock();
+        		consulta.consultarStock();
+        	}
+        });
         btnRealizar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnRealizar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnRealizar_1.setBounds(521, 225, 192, 23);
