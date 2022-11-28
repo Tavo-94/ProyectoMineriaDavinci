@@ -25,6 +25,17 @@ public abstract class Usuario {
 		this.sessionActiva = false;
 		this.mineria = mineria;
 	}
+	
+	
+	
+	public Usuario(String nombreUsuario, String clave) {
+		super();
+		this.nombreUsuario = nombreUsuario;
+		this.clave = clave;
+	}
+
+
+
 	public abstract void loguearse(Scanner inputDelUsuario);
 	public abstract void cambiarClave(Scanner inputUsuario);
 	public abstract void cerrarSesion();

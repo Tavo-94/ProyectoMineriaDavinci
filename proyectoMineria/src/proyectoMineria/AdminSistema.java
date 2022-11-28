@@ -21,8 +21,18 @@ public class AdminSistema extends Usuario {
         // TODO Auto-generated constructor stub
 
     }
+    
+    
 
-    @Override
+    public AdminSistema(String nombreUsuario, String clave) {
+		super(nombreUsuario, clave);
+
+		super.setCargo("sistema");
+	}
+
+
+
+	@Override
     public void loguearse(Scanner inputDelUsuario) {
         // TODO Auto-generated method stub
 

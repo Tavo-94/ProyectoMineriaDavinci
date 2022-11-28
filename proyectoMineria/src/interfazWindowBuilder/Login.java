@@ -24,7 +24,12 @@ import javax.swing.JTextField;
 import java.awt.Component;
 import javax.swing.SwingConstants;
 
+import negocio.AdminStockDAO;
+import negocio.AdminVentasDao;
 import negocio.TicketOperacionDAO;
+import proyectoMineria.AdminSistema;
+import proyectoMineria.AdminStock;
+import proyectoMineria.AdminVentas;
 import proyectoMineria.TicketOperacion;
 
 public class Login {
@@ -127,38 +132,37 @@ public class Login {
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	String adminSistema = "adminsistema";
-                String adminSistemaPassword = "1234";
-                String adminVentas = "adminventas";
-                String adminVentasPassword = "1234";
-                String adminStock = "adminstock";
-                String adminStockPassword = "1234";
-
-                if (userTxt.getText().equals(adminSistema) && String.valueOf(passTxt.getPassword()).equals(adminSistemaPassword)) {
-                	
-                	frmMetalplus.dispose();
-                    JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
-                    AdminSistemasMenu adminsistemas = new AdminSistemasMenu();
-                    adminsistemas.AdminSistemaMenu();
-            		
-            	} else if (userTxt.getText().equals(adminVentas) && String.valueOf(passTxt.getPassword()).equals(adminVentasPassword)) {
-                	
-            		frmMetalplus.dispose();
-                    JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
-                    AdminVentasMenu adminventas = new AdminVentasMenu();
-                    adminventas.AdminVentasMenu();
+            	String nombreDeUsusarioForm = userTxt.getText();
             	
-            }else if (userTxt.getText().equals(adminStock) && String.valueOf(passTxt.getPassword()).equals(adminStockPassword)) {
+            	char[] claveForm = passTxt.getPassword();
             	
-            	frmMetalplus.dispose();
-                JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
-                AdminStockMenu adminstock = new AdminStockMenu();
-                adminstock.AdminStockMenu();
-            } else {
+            	String claveEnString = new String(claveForm);
             	
-            	JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos", "ERROR", JOptionPane.ERROR_MESSAGE);
+            	System.out.println(nombreDeUsusarioForm + " | " + claveEnString);
             	
-            }
+            	AdminVentas nuevoLogInVentas = new AdminVentas(nombreDeUsusarioForm, claveEnString);
+            	
+            	AdminStock nuevoLogInStock = new AdminStock(nombreDeUsusarioForm, claveEnString);
+            	
+            	AdminSistema nuevoLogInSistema = new AdminSistema(nombreDeUsusarioForm, claveEnString);
+            	
+            	AdminVentasDao ventasDAO = new AdminVentasDao();
+            	
+            	AdminStockDAO stockDAO = new AdminStockDAO();
+            	
+            	if (ventasDAO.validarLoginVentas(nuevoLogInVentas)) {
+					JOptionPane.showMessageDialog(null, "log In exitoso");
+				} else if (stockDAO.validarLogInStock(nuevoLogInStock)) {
+					JOptionPane.showMessageDialog(null, "log In exitoso");
+					
+					AdminStockMenu menuAdminStock = new AdminStockMenu();
+					
+					menuAdminStock.AdminStockMenu();
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+				}
+            	
+            	
                 
             }
 

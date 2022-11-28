@@ -12,7 +12,18 @@ public class AdminStock extends Usuario {
         // TODO Auto-generated constructor stub
     }
     
-    @Override
+    
+    
+    public AdminStock(String nombreUsuario, String clave) {
+		super(nombreUsuario, clave);
+		// TODO Auto-generated constructor stub
+		
+		this.setCargo("stock");
+	}
+
+
+
+	@Override
     public void loguearse(Scanner inputUsuario) {
         // TODO Auto-generated method stub
 

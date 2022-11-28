@@ -184,6 +184,7 @@ public class AdminStockMenu {
         	public void actionPerformed(ActionEvent e) {
         		AGREGARstock agregarStock = new AGREGARstock();
         		agregarStock.addStock();
+
         		
         	}
         });

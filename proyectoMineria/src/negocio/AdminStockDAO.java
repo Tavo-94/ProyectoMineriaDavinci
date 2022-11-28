@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.*;
 import java.util.ArrayList;
+import java.util.function.Predicate;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -15,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminStock;
+import proyectoMineria.AdminVentas;
 import proyectoMineria.Material;
 import proyectoMineria.Mineria;
 import proyectoMineria.Validaciones;
@@ -628,6 +631,67 @@ public class AdminStockDAO {
         }
 
     }
+    
+    public Boolean validarLogInStock(AdminStock adminAValidar) {
+
+        try {
+
+            conexion = getConnection();
+            
+            String query = "SELECT nombre_usuario, clave FROM admin_stock;";
+
+            ptmt = conexion.prepareStatement(query);
+
+            resultSet = ptmt.executeQuery();
+
+            ArrayList<AdminStock> listaDeAdminStock = new ArrayList<>();
+            while (resultSet.next()) {
+                
+                String nombre_usuario = resultSet.getString("nombre_usuario");
+                String clave = resultSet.getString("clave");
+                
+                AdminStock ventas = new AdminStock(nombre_usuario, clave, "ventas", true, null);
+
+                listaDeAdminStock.add(ventas);
+
+            }
+            Predicate<AdminStock> coincideNombre = stock -> stock.getNombreUsuario().equals(adminAValidar.getNombreUsuario());
+            Predicate<AdminStock> coincideClave = stock -> stock.getClave().equals(adminAValidar.getClave());
+            Predicate<AdminStock> validacionFinal = coincideNombre.and(coincideClave);
+            
+            System.out.println(listaDeAdminStock.stream().
+                    anyMatch(validacionFinal));
+            
+            return listaDeAdminStock.stream().
+                    anyMatch(validacionFinal);
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+
+                if (conexion != null) {
+                    conexion.close();
+                }
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+
+
             
            /* while (resultSet.next()) {
             	int ID = resultSet.getInt(1);

@@ -25,8 +25,23 @@ public class AdminVentas extends Usuario {
     
     
     
+    
+    
+    
 
-    @Override
+    public AdminVentas(String nombreUsuario, String clave) {
+		super(nombreUsuario, clave);
+		super.setCargo("ventas");
+		
+    }
+
+
+
+
+
+
+
+	@Override
     public void loguearse(Scanner inputUsuario) {
         // TODO Auto-generated method stub
 
