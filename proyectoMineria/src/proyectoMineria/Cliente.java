@@ -43,6 +43,13 @@ public class Cliente {
 
 	
 
+	public Cliente(String nombre, String apellido, String telefono) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
+	}
+
 	public Cliente(Integer idCliente, String nombre, String apellido, String telefono) {
 		super();
 		this.nombre = nombre;
