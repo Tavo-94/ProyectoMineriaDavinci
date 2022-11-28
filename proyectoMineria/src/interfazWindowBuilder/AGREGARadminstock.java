@@ -85,7 +85,7 @@ public class AGREGARadminstock {
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				frmAgregarCliente.dispose();
 			}
 		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

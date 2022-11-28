@@ -127,7 +127,7 @@ public class PantallaPrincipal {
         JButton btnNewButton = new JButton("PANEL ADMIN SISTEMAS");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	dispose();
+            	frmAdminsistemas.dispose();
             	Login login = new Login();
         		login.VentanaLogin();
                
@@ -141,7 +141,7 @@ public class PantallaPrincipal {
         JButton btnPanelAdminVentas = new JButton("PANEL ADMIN VENTAS");
         btnPanelAdminVentas.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		dispose();
+        		frmAdminsistemas.dispose();
         		Login login = new Login();
         		login.VentanaLogin();
         	}
@@ -154,7 +154,7 @@ public class PantallaPrincipal {
         JButton btnPanelAdminStock = new JButton("PANEL ADMIN STOCK");
         btnPanelAdminStock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		dispose();
+        		frmAdminsistemas.dispose();
         		Login login = new Login();
         		login.VentanaLogin();
         	}
@@ -197,9 +197,4 @@ public class PantallaPrincipal {
         separator.setBounds(83, 122, 164, 2);
         frmAdminsistemas.getContentPane().add(separator);
     }
-
-	protected void dispose() {
-		// TODO Auto-generated method stub
-		
-	}
 }

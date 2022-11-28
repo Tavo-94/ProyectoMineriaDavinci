@@ -17,7 +17,8 @@ import javax.swing.SwingConstants;
 
 public class AGREGARadminventas {
 
-	JFrame frmAgregarCliente;
+	
+	private JFrame frmAgregarCliente;
 	private JTextField txtIngreseNombre;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -84,7 +85,7 @@ public class AGREGARadminventas {
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				frmAgregarCliente.dispose();
 			}
 		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

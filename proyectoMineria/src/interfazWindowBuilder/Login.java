@@ -136,21 +136,21 @@ public class Login {
 
                 if (userTxt.getText().equals(adminSistema) && String.valueOf(passTxt.getPassword()).equals(adminSistemaPassword)) {
                 	
-                	this.dispose();
+                	frmMetalplus.dispose();
                     JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
                     AdminSistemasMenu adminsistemas = new AdminSistemasMenu();
                     adminsistemas.AdminSistemaMenu();
             		
             	} else if (userTxt.getText().equals(adminVentas) && String.valueOf(passTxt.getPassword()).equals(adminVentasPassword)) {
                 	
-            		this.dispose();
+            		frmMetalplus.dispose();
                     JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
                     AdminVentasMenu adminventas = new AdminVentasMenu();
                     adminventas.AdminVentasMenu();
             	
             }else if (userTxt.getText().equals(adminStock) && String.valueOf(passTxt.getPassword()).equals(adminStockPassword)) {
             	
-            	this.dispose();
+            	frmMetalplus.dispose();
                 JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
                 AdminStockMenu adminstock = new AdminStockMenu();
                 adminstock.AdminStockMenu();

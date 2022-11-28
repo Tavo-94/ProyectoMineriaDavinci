@@ -83,6 +83,11 @@ public class AGREGARcliente {
 		frmAgregarCliente.getContentPane().add(lblTelfono);
 		
 		JButton btnCancel = new JButton("CANCEL");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmAgregarCliente.dispose();
+			}
+		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancel.setBounds(220, 312, 87, 34);
 		frmAgregarCliente.getContentPane().add(btnCancel);
