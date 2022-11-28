@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import java.awt.Component;
 import javax.swing.SwingConstants;
 
+import negocio.AdminSistemaDAO;
 import negocio.AdminStockDAO;
 import negocio.AdminVentasDao;
 import negocio.TicketOperacionDAO;
@@ -152,14 +153,26 @@ public class Login {
             	
             	AdminStockDAO stockDAO = new AdminStockDAO();
             	
+            	AdminSistemaDAO sistemaDAO = new AdminSistemaDAO();
+            	
             	if (ventasDAO.validarLoginVentas(nuevoLogInVentas)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
+					
+					
 				} else if (stockDAO.validarLogInStock(nuevoLogInStock)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
 					
 					AdminStockMenu menuAdminStock = new AdminStockMenu();
 					
 					menuAdminStock.AdminStockMenu();
+				} else if (sistemaDAO.validarLogInSistema(nuevoLogInSistema)) {
+					
+					JOptionPane.showMessageDialog(null, "log In exitoso");
+
+					AdminSistemasMenu menuAdminSistema = new AdminSistemasMenu();
+					
+					menuAdminSistema.AdminSistemaMenu();
+					
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
 				}
