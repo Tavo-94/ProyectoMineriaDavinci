@@ -173,7 +173,9 @@ public class AdminVentas extends Usuario {
         
         //INGRESO DATOS DEL MATERIAL
 
-        tipoDeMaterial = JOptionPane.showInputDialog("Ingresar tipo del material");
+        do {
+            tipoDeMaterial = JOptionPane.showInputDialog("Ingresar tipo del material");
+        } while (v.validacionTextoVacio(tipoDeMaterial)!=true);
         
         cantMaterial = Double.parseDouble(JOptionPane.showInputDialog("ingresar Cantidad Requerida"));
         
