@@ -126,27 +126,46 @@ public class Login {
         loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	
+            	String adminSistema = "adminsistema";
+                String adminSistemaPassword = "1234";
+                String adminVentas = "adminventas";
+                String adminVentasPassword = "1234";
+                String adminStock = "adminstock";
+                String adminStockPassword = "1234";
 
-            	char[] clave = passTxt.getPassword();
-            	String claveFinal = new String(clave);
-            	
-            	if (userTxt.getText().equals("") && claveFinal.equals("1234")) {
-            		dispose();
-            		JOptionPane.showMessageDialog(null, "Accesso exitoso.", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
-            		AdminSistemasMenu adminSistema = new AdminSistemasMenu();
-            		adminSistema.setVisible(true);
-            	}else if (userTxt.getText().equals("") && claveFinal.equals("1234")) {
-            		dispose();
-            		JOptionPane.showMessageDialog(null, "Accesso exitoso.", "LOGIN", JOptionPane.INFORMATION_MESSAGE);
-            		AdminSistemasMenu adminSistema = new AdminSistemasMenu();
-            		adminSistema.setVisible(true);)
+                if (userTxt.getText().equals(adminSistema) && String.valueOf(passTxt.getPassword()).equals(adminSistemaPassword)) {
+                	
+                	dispose();
+                    JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
+                    AdminSistemasMenu adminsistemas = new AdminSistemasMenu();
+                    adminsistemas.AdminSistemaMenu();
             		
-            			
+            	} else if (userTxt.getText().equals(adminVentas) && String.valueOf(passTxt.getPassword()).equals(adminVentasPassword)) {
+                	
+                	dispose();
+                    JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
+                    AdminVentasMenu adminventas = new AdminVentasMenu();
+                    adminventas.AdminVentasMenu();
             	
-            		
-            	}
+            }else if (userTxt.getText().equals(adminStock) && String.valueOf(passTxt.getPassword()).equals(adminStockPassword)) {
+            	
+            	dispose();
+                JOptionPane.showMessageDialog(null, "Acceso exitoso", "SIGN IN", JOptionPane.INFORMATION_MESSAGE);
+                AdminStockMenu adminstock = new AdminStockMenu();
+                adminstock.AdminStockMenu();
+            } else {
+            	
+            	JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos", "ERROR", JOptionPane.ERROR_MESSAGE);
             	
             }
+                
+            }
+
+			private void dispose() {
+				// TODO Auto-generated method stub
+				
+			}
         });
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setFont(new Font("JetBrains Mono Medium", Font.BOLD, 17));
@@ -176,32 +195,45 @@ public class Login {
         frmMetalplus.getContentPane().add(separator);
         
         passTxt = new JPasswordField();
+        passTxt.setText("*******");
         passTxt.setBorder(null);
-        passTxt.setText("**********");
         passTxt.setForeground(Color.LIGHT_GRAY);
         passTxt.setBounds(361, 266, 305, 27);
         frmMetalplus.getContentPane().add(passTxt);
         passTxt.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                userTxt.setText("");
-                passTxt.setText("*******");
+                if (String.valueOf(passTxt.getPassword()).equals("*******")) {
+                	passTxt.setText("");
+                	passTxt.setForeground(Color.black);
+                }
+               if (userTxt.getText().isEmpty()) {
+            	   userTxt.setText("Ingrese su nombre de usuario.");
+            	   userTxt.setForeground(Color.gray);
+          
+            }
             }
         });
         
         userTxt = new JTextField();
+        userTxt.setText("Ingrese su nombre de usuario.");
         userTxt.setFont(new Font("JetBrains Mono", Font.PLAIN, 14));
         userTxt.setForeground(Color.LIGHT_GRAY);
         userTxt.setDisabledTextColor(Color.LIGHT_GRAY);
         userTxt.setBorder(null);
-        userTxt.setText("Ingrese su nombre de usuario.");
         userTxt.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                userTxt.setText("");
-                passTxt.setText("*******");
-            }
-        });
+            	if (userTxt.getText().equals("Ingrese su nombre de usuario.")) {
+                    userTxt.setText("");
+                    userTxt.setForeground(Color.black);
+                    }
+                   if (String.valueOf(passTxt.getPassword()).isEmpty()) {
+                    passTxt.setText("*******");
+                    passTxt.setForeground(Color.gray);
+                }
+                }
+            });
         userTxt.setBounds(361, 181, 302, 27);
         frmMetalplus.getContentPane().add(userTxt);
         userTxt.setColumns(10);
