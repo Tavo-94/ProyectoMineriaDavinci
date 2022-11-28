@@ -9,9 +9,11 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import negocio.ClienteDAO;
+import negocio.DireccionDAO;
 import negocio.MaterialDAO;
 import proyectoMineria.AdminVentas;
 import proyectoMineria.Cliente;
+import proyectoMineria.DireccionCliente;
 import proyectoMineria.Material;
 
 import javax.swing.JPanel;
@@ -257,7 +259,7 @@ public class RealizarCompra {
 		textField_9.setBounds(911, 258, 218, 27);
 		frmRealizarCompra.getContentPane().add(textField_9);
 		
-		JLabel lblTelfono_1_1_1 = new JLabel("Provincia:");
+		JLabel lblTelfono_1_1_1 = new JLabel("ciudad:");
 		lblTelfono_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelfono_1_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
 		lblTelfono_1_1_1.setBounds(795, 300, 108, 34);
@@ -266,7 +268,7 @@ public class RealizarCompra {
 		textField_10 = new JTextField();
 		textField_10.setToolTipText("Ingrese Teléfono");
 		textField_10.setColumns(10);
-		textField_10.setBounds(912, 303, 218, 27);
+		textField_10.setBounds(912, 305, 218, 27);
 		frmRealizarCompra.getContentPane().add(textField_10);
 		
 		JLabel lblTelfono_1_1_1_1 = new JLabel("Localidad:");
@@ -329,8 +331,16 @@ public class RealizarCompra {
 				
 				//agrego datos de la direccion a la tabla direccion
 				
+				String direccionCalle = textField_6.getText();
+				String direccionNumero = textField_7.getText();
+				String direccionCodigoPostal = textField_9.getText();
+				String direccionCiudad = textField_10.getText();
 				
+				DireccionCliente nuevaDireccion = new DireccionCliente(direccionCalle, direccionNumero, direccionCodigoPostal, direccionCiudad);
 				
+				DireccionDAO dirDAO = new DireccionDAO();
+				
+				dirDAO.agregarNuevadireccion(nuevaDireccion);
 				
 			}
 		});
