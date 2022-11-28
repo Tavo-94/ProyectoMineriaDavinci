@@ -7,6 +7,13 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import negocio.ClienteDAO;
+import negocio.MaterialDAO;
+import proyectoMineria.AdminVentas;
+import proyectoMineria.Cliente;
+import proyectoMineria.Material;
+
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import java.awt.Toolkit;
@@ -32,6 +39,8 @@ public class RealizarCompra {
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private JTextField textField_11;
+    private static AdminVentas adminVentasLogeado;
+
 
 	/**
 	 * Launch the application.
@@ -40,7 +49,7 @@ public class RealizarCompra {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RealizarCompra window = new RealizarCompra();
+					RealizarCompra window = new RealizarCompra(adminVentasLogeado);
 					window.frmRealizarCompra.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,8 +61,9 @@ public class RealizarCompra {
 	/**
 	 * Create the application.
 	 */
-	public RealizarCompra() {
+	public RealizarCompra(AdminVentas adminVentasLogeado) {
 		initialize();
+		RealizarCompra.adminVentasLogeado = adminVentasLogeado;
 	}
 
 	/**
@@ -289,6 +299,39 @@ public class RealizarCompra {
 		JButton btnAceptar = new JButton("ACEPTAR");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//agrego datos del material a la tabla material_pedido
+				String tipoMaterialComprado = textField.getText();
+				String purezaMaterialComprado = textField_1.getText();
+				
+				Double cantidadMaterialComprado = Double.parseDouble(textField_2.getText());
+				
+				Material nuevoMaterialComprado = new Material(tipoMaterialComprado, purezaMaterialComprado, cantidadMaterialComprado);
+				
+				MaterialDAO matDAO = new MaterialDAO();
+				
+				matDAO.agregarNuevoMaterialPedido(nuevoMaterialComprado);
+				
+				//agrego datos del cliente a la tabla cliente
+				
+				String nombreDelNuevoCliente = textField_3.getText();
+				String apellidoDelNuevoCliente = textField_4.getText();
+				String telefonoDelNuevoCliente = textField_5.getText();
+
+				Cliente nuevoCliente = new Cliente(nombreDelNuevoCliente, apellidoDelNuevoCliente, telefonoDelNuevoCliente);
+				
+				ClienteDAO clienteDAO = new ClienteDAO();
+				
+				
+				clienteDAO.agregarNuevoCliente(nuevoCliente, adminVentasLogeado);
+				
+				Integer ultimoIdCliente = clienteDAO.obtenerUltimoIDDeCliente();
+				
+				//agrego datos de la direccion a la tabla direccion
+				
+				
+				
+				
 			}
 		});
 		btnAceptar.setBounds(468, 414, 87, 34);

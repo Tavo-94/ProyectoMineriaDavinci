@@ -62,8 +62,13 @@ public class Material {
 		}
 
 
-		public Material(String tipoDeMaterial, String pureza2, Double cantMaterial) {
-			// TODO Auto-generated constructor stub
+
+		public Material(String tipo, String pureza, Double cantidad) {
+			super();
+			this.tipo = tipo;
+			this.pureza = pureza;
+			this.cantidad = cantidad;
+			this.seteoDePrecio(tipo);
 		}
 
 

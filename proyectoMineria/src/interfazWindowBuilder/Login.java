@@ -155,7 +155,7 @@ public class Login {
             	if (ventasDAO.validarLoginVentas(nuevoLogInVentas)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
 					
-					AdminVentasMenu menuVentas = new AdminVentasMenu();
+					AdminVentasMenu menuVentas = new AdminVentasMenu(nuevoLogInVentas);
 					menuVentas.AdminVentasMenu();
 					dispose();
 					} else if (stockDAO.validarLogInStock(nuevoLogInStock)) {

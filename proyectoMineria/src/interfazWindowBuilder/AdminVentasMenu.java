@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
@@ -18,6 +19,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+
+import negocio.TicketOperacionDAO;
+import proyectoMineria.AdminVentas;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Toolkit;
@@ -25,6 +30,7 @@ import java.awt.Toolkit;
 public class AdminVentasMenu {
 
     private JFrame frmAdminventasMenu;
+    private static AdminVentas adminVentasLogeado;
 
     /**
      * Launch the application.
@@ -38,7 +44,7 @@ public class AdminVentasMenu {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    AdminVentasMenu window = new AdminVentasMenu();
+                    AdminVentasMenu window = new AdminVentasMenu(adminVentasLogeado);
                     window.frmAdminventasMenu.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -50,8 +56,9 @@ public class AdminVentasMenu {
     /**
      * Create the application.
      */
-    public AdminVentasMenu() {
+    public AdminVentasMenu(AdminVentas adminVentasLogeado) {
         initialize();
+        AdminVentasMenu.adminVentasLogeado = adminVentasLogeado;
     }
 
     /**
@@ -271,7 +278,7 @@ public class AdminVentasMenu {
         JButton btnRealizar = new JButton("REALIZAR");
         btnRealizar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		RealizarCompra buy = new RealizarCompra();
+        		RealizarCompra buy = new RealizarCompra(adminVentasLogeado);
         		buy.compra();
         	}
         });
@@ -308,9 +315,26 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(btnRealizar_1);
         
         JButton btnComprobante = new JButton("COMPROBANTE");
+        btnComprobante.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		TicketOperacionDAO ticketDAO = new TicketOperacionDAO();
+        		
+        		ticketDAO.mostrarTodasLasOperaciones();
+        	}
+        });
         btnComprobante.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnComprobante.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnComprobante.setBounds(276, 262, 192, 23);
         frmAdminventasMenu.getContentPane().add(btnComprobante);
     }
+
+	public static AdminVentas getAdminVentasLogeado() {
+		return adminVentasLogeado;
+	}
+
+	public static void setAdminVentasLogeado(AdminVentas adminVentasLogeado) {
+		AdminVentasMenu.adminVentasLogeado = adminVentasLogeado;
+	}
+    
+    
 }
