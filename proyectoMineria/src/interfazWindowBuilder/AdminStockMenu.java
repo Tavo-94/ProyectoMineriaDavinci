@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AdminStockMenu {
 
@@ -152,6 +154,14 @@ public class AdminStockMenu {
         frmAdminstockMenu.getContentPane().add(lblNewLabel_1_1_1);
         
         JButton btnNewButton_1 = new JButton("AGREGAR NUEVO STOCK");
+        btnNewButton_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		AGREGARcliente agregarCliente = new AGREGARcliente();
+        		agregarCliente.addCliente();
+        		
+        	}
+        });
         btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnNewButton_1.setBounds(46, 340, 291, 23);

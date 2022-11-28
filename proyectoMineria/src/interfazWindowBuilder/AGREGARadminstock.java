@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 
 public class AGREGARadminstock {
 
-	private JFrame frame;
+
 	private JFrame frmAgregarCliente;
 	private JTextField txtIngreseNombre;
 	private JTextField textField_1;
@@ -31,7 +31,7 @@ public class AGREGARadminstock {
 			public void run() {
 				try {
 					AGREGARadminstock window = new AGREGARadminstock();
-					window.frame.setVisible(true);
+					window.frmAgregarCliente.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

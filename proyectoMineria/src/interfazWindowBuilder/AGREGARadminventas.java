@@ -17,8 +17,7 @@ import javax.swing.SwingConstants;
 
 public class AGREGARadminventas {
 
-	private JFrame frame;
-	private JFrame frmAgregarCliente;
+	JFrame frmAgregarCliente;
 	private JTextField txtIngreseNombre;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -31,7 +30,7 @@ public class AGREGARadminventas {
 			public void run() {
 				try {
 					AGREGARadminventas window = new AGREGARadminventas();
-					window.frame.setVisible(true);
+					window.frmAgregarCliente.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
