@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class CONSULTARstock {
 
@@ -72,6 +73,8 @@ public class CONSULTARstock {
 		frmConsultarStock.getContentPane().add(scrollPane);
 		
 		table = new JTable();
+		table.setRowSelectionAllowed(false);
+		table.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 14));
 		table.setBackground(Color.WHITE);
 		scrollPane.setViewportView(table);
 		
@@ -88,6 +91,7 @@ public class CONSULTARstock {
 		frmConsultarStock.getContentPane().add(panel);
 		
 		JButton btnNewButton = new JButton("CERRAR");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmConsultarStock.dispose();
@@ -98,6 +102,7 @@ public class CONSULTARstock {
 		frmConsultarStock.getContentPane().add(btnNewButton);
 		
 		JButton btnConsultar = new JButton("CONSULTAR");
+		btnConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {

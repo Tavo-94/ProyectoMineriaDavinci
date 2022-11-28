@@ -177,6 +177,12 @@ public class AdminVentasMenu {
         mnNewMenu_1.add(mnNewMenu_4);
         
         JMenuItem mntmNewMenuItem_12 = new JMenuItem("Consultar Stock");
+        mntmNewMenuItem_12.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARstock consulta = new CONSULTARstock();
+        		consulta.consultarStock();
+        	}
+        });
         mnNewMenu_4.add(mntmNewMenuItem_12);
         
         JLabel lblNewLabel_1_1_2 = new JLabel("PANEL ADMINVENTAS");
