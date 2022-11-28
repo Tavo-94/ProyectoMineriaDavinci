@@ -117,7 +117,7 @@ public class CONSULTARstock {
 						colName[i]=rsmd.getColumnName(i+1);
 					model.setColumnIdentifiers(colName);
 					
-					String id,nombre,pureza,cantidad,precio;
+					String id,nombre,pureza,cantidad,precio,deposito;
 					
 					while(rs.next()) {
 						id=rs.getString(1);
@@ -125,7 +125,8 @@ public class CONSULTARstock {
 						pureza=rs.getString(3);
 						cantidad=rs.getString(4);
 						precio=rs.getString(5);
-						String[] row= {id,nombre,pureza,cantidad,precio};
+						deposito=rs.getString(6);
+						String[] row= {id,nombre,pureza,cantidad,precio,deposito};
 						model.addRow(row);
 						
 					}
