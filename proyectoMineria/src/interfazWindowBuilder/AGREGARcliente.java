@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -13,6 +14,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import negocio.ClienteDAO;
+import negocio.DireccionDAO;
+import proyectoMineria.Cliente;
+
 import javax.swing.JSeparator;
 import java.awt.Cursor;
 import java.awt.Toolkit;
@@ -21,14 +27,16 @@ public class AGREGARcliente {
 
 	private JFrame frmAgregarCliente;
 	private JTextField txtIngreseNombre;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField textIngreseApellido;
+	private JTextField textIngreseTelefono;
+	private JTextField textIngreseCalle;
+	private JTextField textIngreseNumero;
+	private JTextField textIngreseDepto;
+	private JTextField textIngreseCP;
+	private JTextField textIngreseProvincia;
+	private JTextField textIngreseLocalidad;
+	
+	final AdminVentasMenu menuVentas = new AdminVentasMenu();
 
 	/**
 	 * Launch the application.
@@ -100,6 +108,39 @@ public class AGREGARcliente {
 		btnCancel.setBounds(398, 343, 87, 34);
 		frmAgregarCliente.getContentPane().add(btnCancel);
 		
+		JButton btnAgregar = new JButton("AGREGAR");
+		btnAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String nombreDCliente = txtIngreseNombre.getText();
+				String apellidoDCliente = textIngreseApellido.getText();
+				String telefonoCliente = textIngreseTelefono.getText();
+				
+				Cliente nuevoCliente = new Cliente(nombreDCliente, apellidoDCliente, telefonoCliente);		
+				
+				String calleCliente = textIngreseCalle.getText();
+				String numeroCliente = textIngreseNumero.getText();
+				String deptoCliente = textIngreseDepto.getText();
+				String CPCliente = textIngreseCP.getText();
+				String provinciaCliente = textIngreseProvincia.getText();
+				String localidadCliente = textIngreseLocalidad.getText();
+				
+				DireccionDAO direccionCliente = new DireccionDAO();
+				
+				addCliente();
+				
+				JOptionPane.showMessageDialog(null, "Se agrego exitosamente");
+				
+				
+				AdminVentasMenu.AdminVentasMenu();
+				//String 
+				
+			}
+		});
+		btnAgregar.setBounds(276, 343, 87, 34);
+		frmAgregarCliente.getContentPane().add(btnAgregar);
+		
 		txtIngreseNombre = new JTextField();
 		txtIngreseNombre.setToolTipText("Ingrese Nombre");
 		txtIngreseNombre.setSelectedTextColor(Color.WHITE);
@@ -108,26 +149,19 @@ public class AGREGARcliente {
 		frmAgregarCliente.getContentPane().add(txtIngreseNombre);
 		txtIngreseNombre.setColumns(10);
 		
-		JButton btnAgregar = new JButton("AGREGAR");
-		btnAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAgregar.setBounds(276, 343, 87, 34);
-		frmAgregarCliente.getContentPane().add(btnAgregar);
 		
-		textField_1 = new JTextField();
-		textField_1.setToolTipText("Ingrese Apellido");
-		textField_1.setColumns(10);
-		textField_1.setBounds(119, 209, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setToolTipText("Ingrese Teléfono");
-		textField_2.setColumns(10);
-		textField_2.setBounds(119, 254, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_2);
+		textIngreseApellido = new JTextField();
+		textIngreseApellido.setToolTipText("Ingrese Apellido");
+		textIngreseApellido.setColumns(10);
+		textIngreseApellido.setBounds(119, 209, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseApellido);
+		
+		textIngreseTelefono = new JTextField();
+		textIngreseTelefono.setToolTipText("Ingrese Teléfono");
+		textIngreseTelefono.setColumns(10);
+		textIngreseTelefono.setBounds(119, 254, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseTelefono);
 		
 		JLabel lblAgregarCliente = new JLabel("AGREGAR CLIENTE");
 		lblAgregarCliente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -150,13 +184,13 @@ public class AGREGARcliente {
 		lblCalle.setBounds(454, 43, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblCalle);
 		
-		textField = new JTextField();
-		textField.setToolTipText("Ingrese Nombre");
-		textField.setSelectedTextColor(Color.WHITE);
-		textField.setName("");
-		textField.setColumns(10);
-		textField.setBounds(542, 48, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField);
+		textIngreseCalle = new JTextField();
+		textIngreseCalle.setToolTipText("Ingrese Calle");
+		textIngreseCalle.setSelectedTextColor(Color.WHITE);
+		textIngreseCalle.setName("");
+		textIngreseCalle.setColumns(10);
+		textIngreseCalle.setBounds(542, 48, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseCalle);
 		
 		JLabel lblNmero = new JLabel("Número:");
 		lblNmero.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -164,11 +198,11 @@ public class AGREGARcliente {
 		lblNmero.setBounds(455, 93, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblNmero);
 		
-		textField_3 = new JTextField();
-		textField_3.setToolTipText("Ingrese Apellido");
-		textField_3.setColumns(10);
-		textField_3.setBounds(542, 96, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_3);
+		textIngreseNumero = new JTextField();
+		textIngreseNumero.setToolTipText("Ingrese Numero");
+		textIngreseNumero.setColumns(10);
+		textIngreseNumero.setBounds(542, 96, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseNumero);
 		
 		JLabel lblPisodepto = new JLabel("Piso/Depto:");
 		lblPisodepto.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -176,11 +210,11 @@ public class AGREGARcliente {
 		lblPisodepto.setBounds(437, 138, 96, 34);
 		frmAgregarCliente.getContentPane().add(lblPisodepto);
 		
-		textField_4 = new JTextField();
-		textField_4.setToolTipText("Ingrese Teléfono");
-		textField_4.setColumns(10);
-		textField_4.setBounds(542, 141, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_4);
+		textIngreseDepto = new JTextField();
+		textIngreseDepto.setToolTipText("Ingrese Depto");
+		textIngreseDepto.setColumns(10);
+		textIngreseDepto.setBounds(542, 141, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseDepto);
 		
 		JLabel lblTelfono_1_1 = new JLabel("Código Postal:");
 		lblTelfono_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -188,11 +222,11 @@ public class AGREGARcliente {
 		lblTelfono_1_1.setBounds(380, 188, 152, 34);
 		frmAgregarCliente.getContentPane().add(lblTelfono_1_1);
 		
-		textField_5 = new JTextField();
-		textField_5.setToolTipText("Ingrese Teléfono");
-		textField_5.setColumns(10);
-		textField_5.setBounds(541, 191, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_5);
+		textIngreseCP = new JTextField();
+		textIngreseCP.setToolTipText("Ingrese CP");
+		textIngreseCP.setColumns(10);
+		textIngreseCP.setBounds(541, 191, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseCP);
 		
 		JLabel lblTelfono_1_1_1 = new JLabel("Provincia:");
 		lblTelfono_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -200,17 +234,17 @@ public class AGREGARcliente {
 		lblTelfono_1_1_1.setBounds(425, 233, 108, 34);
 		frmAgregarCliente.getContentPane().add(lblTelfono_1_1_1);
 		
-		textField_6 = new JTextField();
-		textField_6.setToolTipText("Ingrese Teléfono");
-		textField_6.setColumns(10);
-		textField_6.setBounds(542, 236, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_6);
+		textIngreseProvincia = new JTextField();
+		textIngreseProvincia.setToolTipText("Ingrese Provincia");
+		textIngreseProvincia.setColumns(10);
+		textIngreseProvincia.setBounds(542, 236, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseProvincia);
 		
-		textField_7 = new JTextField();
-		textField_7.setToolTipText("Ingrese Teléfono");
-		textField_7.setColumns(10);
-		textField_7.setBounds(542, 281, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_7);
+		textIngreseLocalidad = new JTextField();
+		textIngreseLocalidad.setToolTipText("Ingrese Localidad");
+		textIngreseLocalidad.setColumns(10);
+		textIngreseLocalidad.setBounds(542, 281, 218, 27);
+		frmAgregarCliente.getContentPane().add(textIngreseLocalidad);
 		
 		JLabel lblTelfono_1_1_1_1 = new JLabel("Localidad:");
 		lblTelfono_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
