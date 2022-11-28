@@ -129,9 +129,21 @@ public class AdminStockMenu {
         menuBar.add(mnNewMenu_1);
         
         JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar Stock");
+        mntmNewMenuItem_6.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARstock agregarStock = new AGREGARstock();
+        		agregarStock.addStock();
+        	}
+        });
         mnNewMenu_1.add(mntmNewMenuItem_6);
         
         JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar Stock");
+        mntmNewMenuItem_7.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		MODIFICARstock modifyStock = new MODIFICARstock();
+        		modifyStock.modifyStock();
+        	}
+        });
         mnNewMenu_1.add(mntmNewMenuItem_7);
         
         JMenuItem mntmNewMenuItem_9 = new JMenuItem("Eliminar Stock");
@@ -170,9 +182,8 @@ public class AdminStockMenu {
         JButton btnNewButton_1 = new JButton("AGREGAR NUEVO STOCK");
         btnNewButton_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
-        		AGREGARcliente agregarCliente = new AGREGARcliente();
-        		agregarCliente.addCliente();
+        		AGREGARstock agregarStock = new AGREGARstock();
+        		agregarStock.addStock();
         		
         	}
         });
@@ -182,6 +193,12 @@ public class AdminStockMenu {
         frmAdminstockMenu.getContentPane().add(btnNewButton_1);
         
         JButton btnModificar_1 = new JButton("MODIFICAR EXISTENTE");
+        btnModificar_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		MODIFICARstock modifyStock = new MODIFICARstock();
+        		modifyStock.modifyStock();
+        	}
+        });
         btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnModificar_1.setBounds(46, 376, 291, 23);
