@@ -171,9 +171,6 @@ public class AdminStockMenu {
         btnNewButton_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		AGREGARcliente agregarCliente = new AGREGARcliente();
-        		agregarCliente.addCliente();
-        		
         	}
         });
         btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
