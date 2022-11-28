@@ -82,5 +82,57 @@ public class ClienteDAO {
         }
         return 0;
     }
+    
+    
+    public Cliente obtenerDatosPorId(Integer id) {
+        try {
+
+            // defino la query
+            String queryString = "SELECT `idcliente`, `nombre`, `apellido`, `telefono` FROM `cliente` WHERE idcliente = ?";
+            // armo la conexion
+            conexion = getConnection();
+
+            // preparo el statement que ejecuta la query
+            ptmt = conexion.prepareStatement(queryString);
+            ptmt.setInt(1, id);
+            
+            resultSet = ptmt.executeQuery();
+            
+            if (resultSet.next()) {
+
+            	Integer idcliente = resultSet.getInt(1);
+            	String nombre = resultSet.getString(2);
+            	String apellido = resultSet.getString(3);
+            	String telefono = resultSet.getString(4);
+            	
+            	Cliente clientePorId = new Cliente (idcliente, nombre, apellido, telefono);
+            	
+            	return clientePorId;
+			}
+            
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // siempre cierro el Statement y la conexion al finalizar el metodo
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+		return null;
+
+    }
+
+
 
 }

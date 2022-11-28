@@ -41,7 +41,17 @@ public class Cliente {
     }
 
 
-    public List<Cliente> getListaClientes() {
+	
+
+	public Cliente(Integer idCliente, String nombre, String apellido, String telefono) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
+		this.idCliente = idCliente;
+	}
+
+	public List<Cliente> getListaClientes() {
 		return listaClientes;
 	}
 

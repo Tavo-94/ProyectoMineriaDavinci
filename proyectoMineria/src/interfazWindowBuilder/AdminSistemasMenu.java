@@ -26,6 +26,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.UIManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Toolkit;
 
 public class AdminSistemasMenu {
 
@@ -64,6 +65,7 @@ public class AdminSistemasMenu {
      */
     private void initialize() {
         frmAdminsistemaMenu = new JFrame();
+        frmAdminsistemaMenu.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
         frmAdminsistemaMenu.setResizable(false);
         frmAdminsistemaMenu.setTitle("ADMINSISTEMAS MENU");
         frmAdminsistemaMenu.getContentPane().setBackground(Color.WHITE);
