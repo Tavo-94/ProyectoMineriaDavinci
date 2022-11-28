@@ -177,6 +177,12 @@ public class AdminVentasMenu {
         mnNewMenu_1.add(mnNewMenu_4);
         
         JMenuItem mntmNewMenuItem_12 = new JMenuItem("Consultar Stock");
+        mntmNewMenuItem_12.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARstock consulta = new CONSULTARstock();
+        		consulta.consultarStock();
+        	}
+        });
         mnNewMenu_4.add(mntmNewMenuItem_12);
         
         JLabel lblNewLabel_1_1_2 = new JLabel("PANEL ADMINVENTAS");
@@ -282,6 +288,12 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(separator_5_1_1);
         
         JButton btnRealizar_1 = new JButton("CONSULTAR");
+        btnRealizar_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARstock consulta = new CONSULTARstock();
+        		consulta.consultarStock();
+        	}
+        });
         btnRealizar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnRealizar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnRealizar_1.setBounds(521, 225, 192, 23);
