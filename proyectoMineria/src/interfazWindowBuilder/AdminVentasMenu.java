@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class AdminVentasMenu {
 
@@ -86,6 +88,13 @@ public class AdminVentasMenu {
         menuBar.add(mnNewMenu);
         
         JMenuItem mntmNewMenuItem_8 = new JMenuItem("Menu Principal");
+        mntmNewMenuItem_8.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frmAdminventasMenu.dispose();
+        		PantallaPrincipal main = new PantallaPrincipal();
+        		main.Aplicacion();
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem_8);
         
         JSeparator separator_4 = new JSeparator();
@@ -104,6 +113,13 @@ public class AdminVentasMenu {
         mnNewMenu.add(separator_1);
         
         JMenuItem mntmNewMenuItem = new JMenuItem("Login");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		frmAdminventasMenu.dispose();
+            	Login login = new Login();
+        		login.VentanaLogin();
+        	}
+        });
         mnNewMenu.add(mntmNewMenuItem);
         
         JMenuItem mntmNewMenuItem_5 = new JMenuItem("Log Out");
@@ -124,9 +140,21 @@ public class AdminVentasMenu {
         mnNewMenu_1.add(mnNewMenu_2);
         
         JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar Cliente");
+        mntmNewMenuItem_6.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARcliente agregarCliente = new AGREGARcliente();
+        		agregarCliente.addCliente();
+        	}
+        });
         mnNewMenu_2.add(mntmNewMenuItem_6);
         
         JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar Cliente");
+        mntmNewMenuItem_7.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		MODIFICARcliente modifyCliente = new MODIFICARcliente();
+        		modifyCliente.modifyCliente();
+        	}
+        });
         mnNewMenu_2.add(mntmNewMenuItem_7);
         
         JMenuItem mntmNewMenuItem_9 = new JMenuItem("Eliminar Cliente");
@@ -192,6 +220,12 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(btnNewButton);
         
         JButton btnModificar = new JButton("MODIFICAR");
+        btnModificar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		MODIFICARcliente modifyCliente = new MODIFICARcliente();
+        		modifyCliente.modifyCliente();
+        	}
+        });
         btnModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnModificar.setBounds(26, 261, 192, 23);

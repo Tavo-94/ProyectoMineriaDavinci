@@ -207,12 +207,25 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(lblNewLabel_1_1_1);
         
         JButton btnNewButton_1 = new JButton("AGREGAR");
+        btnNewButton_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		AGREGARadminstock addAdminstock = new AGREGARadminstock();
+        		addAdminstock.addAdminStock();
+        	}
+        });
         btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnNewButton_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnNewButton_1.setBounds(407, 225, 291, 23);
         frmAdminsistemaMenu.getContentPane().add(btnNewButton_1);
         
         JButton btnModificar_1 = new JButton("MODIFICAR");
+        btnModificar_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		MODIFICARadminstock modifyadminstock = new MODIFICARadminstock();
+        		modifyadminstock.modifyAdminStock();
+        		
+        	}
+        });
         btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnModificar_1.setBounds(407, 261, 291, 23);
