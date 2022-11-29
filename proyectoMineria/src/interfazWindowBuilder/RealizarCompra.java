@@ -5,16 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import negocio.ClienteDAO;
 import negocio.DireccionDAO;
 import negocio.MaterialDAO;
+import negocio.TicketOperacionDAO;
 import proyectoMineria.AdminVentas;
 import proyectoMineria.Cliente;
 import proyectoMineria.DireccionCliente;
 import proyectoMineria.Material;
+import proyectoMineria.TicketOperacion;
 
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
@@ -314,6 +318,10 @@ public class RealizarCompra {
 				
 				matDAO.agregarNuevoMaterialPedido(nuevoMaterialComprado);
 				
+				
+				
+				nuevoMaterialComprado.setIdMaterial(matDAO.obtenerUltimoIDMaterialPedido());
+				
 				//agrego datos del cliente a la tabla cliente
 				
 				String nombreDelNuevoCliente = textField_3.getText();
@@ -329,6 +337,8 @@ public class RealizarCompra {
 				
 				Integer ultimoIdCliente = clienteDAO.obtenerUltimoIDDeCliente();
 				
+				nuevoCliente.setIdCliente(ultimoIdCliente);
+				
 				//agrego datos de la direccion a la tabla direccion
 				
 				String direccionCalle = textField_6.getText();
@@ -338,9 +348,30 @@ public class RealizarCompra {
 				
 				DireccionCliente nuevaDireccion = new DireccionCliente(direccionCalle, direccionNumero, direccionCodigoPostal, direccionCiudad);
 				
+				nuevaDireccion.setIdCliente(ultimoIdCliente);
+				
 				DireccionDAO dirDAO = new DireccionDAO();
 				
 				dirDAO.agregarNuevadireccion(nuevaDireccion);
+				
+				//agrego un pedido nuevo
+				
+				TicketOperacion nuevaOperacion = new TicketOperacion(nuevoCliente, adminVentasLogeado, nuevoMaterialComprado);
+				
+				if (nuevoMaterialComprado.getPureza().equalsIgnoreCase("alta")) {
+		            nuevaOperacion.setTotal(nuevoMaterialComprado.getPrecioBase() * nuevoMaterialComprado.getCantidad() * nuevoMaterialComprado.getCoeficientePurezaAlta());
+					
+		        } else if (nuevoMaterialComprado.getPureza().equalsIgnoreCase("media")) {
+		            nuevaOperacion.setTotal(nuevoMaterialComprado.getPrecioBase() * nuevoMaterialComprado.getCantidad() * nuevoMaterialComprado.getCoeficientePurezaMedia());
+		        } else {
+		        	nuevaOperacion.setTotal(nuevoMaterialComprado.getPrecioBase() * nuevoMaterialComprado.getCantidad() * nuevoMaterialComprado.getCoeficientePurezaBaja());
+		        }
+				
+				TicketOperacionDAO ticketDAO = new TicketOperacionDAO();
+				
+				ticketDAO.agregarNuevoTicketOperacionDelPedido(nuevaOperacion, adminVentasLogeado, nuevoCliente, nuevoMaterialComprado);
+				
+				JOptionPane.showMessageDialog(null, "se creo ticket exitosamente");
 				
 			}
 		});

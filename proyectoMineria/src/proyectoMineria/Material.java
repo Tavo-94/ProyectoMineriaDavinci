@@ -69,6 +69,7 @@ public class Material {
 			this.pureza = pureza;
 			this.cantidad = cantidad;
 			this.seteoDePrecio(tipo);
+			this.seteoDeCoeficientes(pureza);
 		}
 
 
@@ -85,13 +86,13 @@ public class Material {
         }
         
         private void seteoDeCoeficientes(String pureza) {
-            if (pureza == "Alta") {
+            if (pureza.equalsIgnoreCase("alta")) {
                 this.coeficientePurezaAlta = 2d;
             }
-            if (pureza == "Media") {
+            if (pureza.equalsIgnoreCase("media")) {
                 this.coeficientePurezaMedia = 1d;
             }
-            if (pureza == "Baja") {
+            if (pureza.equalsIgnoreCase("baja")) {
                 this.coeficientePurezaBaja = 0.5d;
             }            
         }
@@ -156,11 +157,17 @@ public class Material {
             this.coeficientePurezaBaja = coeficientePurezaBaja;
         }
 
-        @Override
-        public String toString() {
-            return "Material [tipo=" + tipo + ", pureza=" + pureza + ", cantidad=" + cantidad + ", fecha_ingreso=" + fecha_de_ingreso
-                    + ", precio=" + precioBase + "]";
-        }
+        
+        
+
+
+		@Override
+		public String toString() {
+			return "Material [idMaterial=" + idMaterial + ", tipo=" + tipo + ", pureza=" + pureza + ", cantidad="
+					+ cantidad + ", fecha_de_ingreso=" + fecha_de_ingreso + ", precioBase=" + precioBase
+					+ ", coeficientePurezaAlta=" + coeficientePurezaAlta + ", coeficientePurezaMedia="
+					+ coeficientePurezaMedia + ", coeficientePurezaBaja=" + coeficientePurezaBaja + "]";
+		}
 
 
 		public LocalDate getFecha_ingreso() {
