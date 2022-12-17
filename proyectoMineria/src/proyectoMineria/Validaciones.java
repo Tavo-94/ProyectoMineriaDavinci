@@ -1,6 +1,8 @@
 package proyectoMineria;
 
 public class Validaciones {
+	
+
 
 	public static boolean validarTexto(String cadenaTexto) { 
 		return cadenaTexto.matches("[a-zA-z]+([ '-][a-zA-Z]+)*"); //expresiones regulares permitidas
@@ -17,10 +19,12 @@ public class Validaciones {
 	
 	public boolean validacionTextoVacio(String cadenaTexto) { //valida si una cadena de texto esta vacia y si es menor a 3
 		
-			if(cadenaTexto.isBlank() || cadenaTexto.isEmpty() || cadenaTexto.length()<3) {
+			if(cadenaTexto.isBlank() || cadenaTexto.isEmpty()) {
+				System.out.println("No se ingreso texto");
 				return false;
 			}
 			else {
+				System.out.println("Texto "+cadenaTexto+" valido.");
 				return true;
 			}
 		
@@ -37,34 +41,46 @@ public class Validaciones {
 			}
 		
 	}
- 
-	public boolean validacionContrasenia(String clave) {
-
-		return clave.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[@#$%^&+=])(?=\\S+$).{8,32}$");//valida que la contraseña contenga numeros, letras, caracteres especiales, no contenga espacios y sea entre 8 - 32 caracteres.
+	
+	public static boolean validarPassword(String cadenaTexto) {
+		
+		return cadenaTexto.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$");
+		
+	}
+	
+	public boolean validarTelefono(String cadenaNumerica) {
+		return cadenaNumerica.matches("^[0-9]{10}$"); 
 
 	}
-
-	public boolean validacionCodPostal(String codigoPostal) {
-
-		if(codigoPostal.matches("^[0-9]{4}$")){
-			return true;
-		} else {
-			return false;
+	
+	
+	public boolean validarDept(String cadenaTexto){
+		
+		return cadenaTexto.matches("[0-9]{1}");
+	}
+	
+	public boolean validarASCII(String cadenaTexto) {
+		int contador =0;
+		int valorASCII=0;
+		boolean validador = false;
+		
+		for(int i = 0; i<cadenaTexto.length();i++) {
+			
+			char caracter = cadenaTexto.charAt(i);
+			valorASCII = (int) caracter;
+				if(valorASCII < 97 || valorASCII > 122) {
+					
+					contador++;
+					validador = true;
+				}
+				else {
+					validador = false;
+				}
+		
 		}
-
-	}
-
-	public boolean validarCargo(String cargo) {
-		
-		if (cargo.equalsIgnoreCase("ventas") || cargo.equalsIgnoreCase("stock") || cargo.equalsIgnoreCase("sistema") ) {
-			return true;
-		} else {
-			return false;
-		}
-		
+		return validador;
 		
 	}
-
+	
+	
 }
-	
-	
