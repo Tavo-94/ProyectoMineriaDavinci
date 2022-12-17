@@ -225,6 +225,12 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(btnModificar);
         
         JButton btnEliminar = new JButton("ELIMINAR");
+        btnEliminar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		ELIMINARadminVentas eliminarVentas = new ELIMINARadminVentas(adminSistemaLogeado);
+        		eliminarVentas.deleteAdminVentas();
+        	}
+        });
         btnEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnEliminar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnEliminar.setBounds(36, 295, 291, 23);

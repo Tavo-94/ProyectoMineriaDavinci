@@ -57,7 +57,6 @@ public class StockMostrarTodo extends JFrame {
 		MaterialDAO matDAO = new MaterialDAO();
 
 		table = new JTable();
-		table.setModel(matDAO.mostrarTodoElStockDelDepo());
 		
 		
 		
