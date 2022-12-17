@@ -101,6 +101,39 @@ public class AdminVentasDao {
             }
         }
     }
+    
+    public void eliminarAdminVentasPorId(String nombreDeUsuarioAEliminar) {
+    	try {
+    		conexion = getConnection();
+    		
+    		String query = "DELETE FROM admin_ventas WHERE nombre_usuario = ?";
+
+    		
+    		ptmt = conexion.prepareStatement(query);
+    		ptmt.setString(1, nombreDeUsuarioAEliminar);
+    		
+    		ptmt.executeUpdate();
+    		System.out.println("Eliminado con exito");
+    		
+    	} catch (SQLException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+    	} finally {
+    		try {
+    			if (ptmt != null) {
+    				ptmt.close();
+    			}
+    			if (conexion != null) {
+    				conexion.close();
+    			}
+    			
+    		} catch (SQLException e) {
+    			e.printStackTrace();
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+    }
 
     // creo un array que contiene todos los nombres de usuario de la tabla
     private Object[] obtenerListaDeUsuariosVentas() {
