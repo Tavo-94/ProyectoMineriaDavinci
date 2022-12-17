@@ -29,7 +29,7 @@ public class AdminVentasDao {
         try {
 
             // defino la query
-            String queryString = "INSERT INTO admin_ventas(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,MD5(?),?,?)";
+            String queryString = "INSERT INTO admin_ventas(nombre, apellido, nombre_usuario, clave, admin_sistema_nombre_usuario, deposito_iddeposito) VALUES(?,?,?,?,?,?)";
             // armo la conexion
             conexion = getConnection();
 
@@ -39,8 +39,8 @@ public class AdminVentasDao {
             ptmt.setString(2, nuevoVentas.getApellido());
             ptmt.setString(3, nuevoVentas.getNombreUsuario());
             ptmt.setString(4, nuevoVentas.getClave());
-            ptmt.setInt(5, 1); //hardcode de id deposito = 1 xq hay un solo deposito
-            ptmt.setString(6, adminSistema.getNombreUsuario());
+            ptmt.setString(5, adminSistema.getNombreUsuario());
+            ptmt.setInt(6, 1); //hardcode de id deposito = 1 xq hay un solo deposito
 
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
@@ -140,6 +140,115 @@ public class AdminVentasDao {
         return null;
     }
 
+    
+    public Object[] obtenerListaDeIdsVentas() {
+		
+        try {
+        	
+            conexion = getConnection();
+
+
+            String query = "SELECT nombre_usuario FROM admin_ventas;";
+
+            ptmt = conexion.prepareStatement(query);
+
+            resultSet = ptmt.executeQuery();
+
+            ArrayList<String> lista = new ArrayList<>();
+            while (resultSet.next()) {
+
+                lista.add(resultSet.getString("nombre_usuario"));
+
+            }
+            return lista.toArray();
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+
+                if (conexion != null) {
+                    conexion.close();
+                }
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+    }
+    
+    public AdminVentas obtenerTodosLosDatosPorId (String nombreDeUsuario) {
+    	 AdminVentas ventasDeLaDB = null;
+		
+        try {
+        	
+            conexion = getConnection();
+
+
+            String query = "SELECT * FROM admin_ventas WHERE nombre_usuario = ?;";
+
+            ptmt = conexion.prepareStatement(query);
+            
+            ptmt.setString(1, nombreDeUsuario);
+
+            resultSet = ptmt.executeQuery();
+            
+            if (resultSet.next()) {
+
+                String nombre = resultSet.getString(1);
+                String apellido = resultSet.getString(2);
+                String nombreid = resultSet.getString(3);
+                String clave = resultSet.getString(4);
+                Long idDeposito = resultSet.getLong(6);
+                
+                ventasDeLaDB = new AdminVentas(nombre, apellido, nombreid, clave, idDeposito.intValue());
+                
+                
+
+            }
+
+
+            return ventasDeLaDB;
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+
+                if (conexion != null) {
+                    conexion.close();
+                }
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    	
+    	return null;
+    	
+    	
+    }
+    
     public Boolean validarLoginVentas(AdminVentas adminAValidar) {
 
         try {
@@ -199,6 +308,50 @@ public class AdminVentasDao {
         return null;
     }
 
+    
+    public void hacerUnUpdatePorId(AdminVentas adminVentasAModificar) {
+    	
+        try {
+            conexion = getConnection();
+
+            String query = "UPDATE `admin_ventas` SET `nombre`= ?,`apellido`= ?,`clave`= ? WHERE nombre_usuario = ?";
+
+
+           
+            ptmt = conexion.prepareStatement(query);
+            ptmt.setString(1, adminVentasAModificar.getNombre());
+            ptmt.setString(2, adminVentasAModificar.getApellido());
+            ptmt.setString(3, adminVentasAModificar.getClave());
+            ptmt.setString(4, adminVentasAModificar.getNombreUsuario());
+            
+           
+
+            ptmt.executeUpdate();
+            System.out.println("Actualizado con exito");
+            
+            
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    	
+    }
+    
     public Boolean validarNombreDeUsuario(String nombreDeUsuario) {
 
         // Falta implementar

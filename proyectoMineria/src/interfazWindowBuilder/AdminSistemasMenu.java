@@ -24,6 +24,9 @@ import java.awt.Rectangle;
 import java.awt.Cursor;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.UIManager;
+
+import proyectoMineria.AdminSistema;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Toolkit;
@@ -31,9 +34,11 @@ import java.awt.Toolkit;
 public class AdminSistemasMenu {
 
     private JFrame frmAdminsistemaMenu;
+    private static AdminSistema adminSistemaLogeado;
 
     /**
      * Launch the application.
+     * metodo
      */
     public static void AdminSistemaMenu() {
     	try {
@@ -44,7 +49,7 @@ public class AdminSistemasMenu {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    AdminSistemasMenu window = new AdminSistemasMenu();
+                    AdminSistemasMenu window = new AdminSistemasMenu(adminSistemaLogeado);
                     window.frmAdminsistemaMenu.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -55,9 +60,12 @@ public class AdminSistemasMenu {
 
     /**
      * Create the application.
+     * @param nuevoLogInSistema
+     * constructor 
      */
-    public AdminSistemasMenu() {
+    public AdminSistemasMenu(AdminSistema nuevoLogInSistema) {
         initialize();
+        AdminSistemasMenu.adminSistemaLogeado = nuevoLogInSistema;
     }
 
     /**
@@ -141,7 +149,7 @@ public class AdminSistemasMenu {
         JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar AdminVentas");
         mntmNewMenuItem_6.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas();
+        		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas(null);
         		agregarAdminVentas.addAdminVentas();
         	}
         });
@@ -195,7 +203,7 @@ public class AdminSistemasMenu {
         JButton btnNewButton = new JButton("AGREGAR");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas();
+        		AGREGARadminventas agregarAdminVentas= new AGREGARadminventas(adminSistemaLogeado);
         		agregarAdminVentas.addAdminVentas();
         	}
         });

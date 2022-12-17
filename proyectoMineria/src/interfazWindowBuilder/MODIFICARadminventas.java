@@ -8,21 +8,29 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import negocio.AdminVentasDao;
+import proyectoMineria.AdminVentas;
+
 import java.awt.Toolkit;
+import javax.swing.JComboBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class MODIFICARadminventas {
 
 	private JFrame frmAgregarCliente;
 	private JTextField txtIngreseNombre;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField textField;
 	private JTextField textField_3;
 
@@ -80,12 +88,6 @@ public class MODIFICARadminventas {
 		lblApellido.setBounds(39, 361, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblApellido);
 		
-		JLabel lblTelfono = new JLabel("Teléfono:");
-		lblTelfono.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelfono.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono.setBounds(39, 406, 78, 34);
-		frmAgregarCliente.getContentPane().add(lblTelfono);
-		
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,6 +110,21 @@ public class MODIFICARadminventas {
 		btnAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				AdminVentasDao ventasDAO = new AdminVentasDao();
+				
+				
+				String nombreId = textField_3.getText();
+				
+				String clave = textField.getText();
+				
+				String nombre = txtIngreseNombre.getText();
+				
+				String apellido = textField_1.getText();
+				
+				AdminVentas adminVentasAModificar = new AdminVentas(nombre, apellido, nombreId, clave, 1);
+				
+				ventasDAO.hacerUnUpdatePorId(adminVentasAModificar);
 			}
 		});
 		btnAgregar.setBounds(101, 469, 87, 34);
@@ -118,12 +135,6 @@ public class MODIFICARadminventas {
 		textField_1.setColumns(10);
 		textField_1.setBounds(126, 364, 218, 27);
 		frmAgregarCliente.getContentPane().add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setToolTipText("Ingrese Teléfono");
-		textField_2.setColumns(10);
-		textField_2.setBounds(126, 409, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_2);
 		
 		JLabel lblAgregarCliente = new JLabel("MODIFICAR ADMIN VENTAS");
 		lblAgregarCliente.setHorizontalAlignment(SwingConstants.CENTER);
@@ -171,5 +182,41 @@ public class MODIFICARadminventas {
 		Choice choice = new Choice();
 		choice.setBounds(126, 165, 95, 20);
 		frmAgregarCliente.getContentPane().add(choice);
+		
+		JComboBox comboBoxOpcionesDeId = new JComboBox();
+		comboBoxOpcionesDeId.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getStateChange() == ItemEvent.SELECTED) {
+					
+					String seleccionado = (String) comboBoxOpcionesDeId.getSelectedItem();
+					
+					AdminVentasDao ventasDAO = new AdminVentasDao();
+					
+					AdminVentas adminPorId = ventasDAO.obtenerTodosLosDatosPorId(seleccionado);
+					
+					textField_3.setText(adminPorId.getNombreUsuario());
+					
+					textField.setText(adminPorId.getClave());
+					
+					txtIngreseNombre.setText(adminPorId.getNombre());
+					
+					textField_1.setText(adminPorId.getApellido());
+					
+					
+				}
+			}
+		});
+		comboBoxOpcionesDeId.setBounds(239, 164, 133, 21);
+		
+		AdminVentasDao ventasDAOparaIds = new AdminVentasDao();
+		
+		Object[] listaDeAdminVentas = ventasDAOparaIds.obtenerListaDeIdsVentas();
+		
+		DefaultComboBoxModel modelocombo = new DefaultComboBoxModel(listaDeAdminVentas);
+		
+		comboBoxOpcionesDeId.setModel(modelocombo);
+		
+		frmAgregarCliente.getContentPane().add(comboBoxOpcionesDeId);
+		
 	}
 }

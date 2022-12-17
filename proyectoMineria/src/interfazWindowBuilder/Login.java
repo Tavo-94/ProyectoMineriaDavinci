@@ -168,7 +168,7 @@ public class Login {
 					menuAdminStock.AdminStockMenu();
 				} else if (adminDAO.validarLogInSistema(nuevoLogInSistema)) {
 					JOptionPane.showMessageDialog(null, "log In exitoso");
-					AdminSistemasMenu menuAdminSistema = new AdminSistemasMenu();
+					AdminSistemasMenu menuAdminSistema = new AdminSistemasMenu(nuevoLogInSistema);
 					menuAdminSistema.AdminSistemaMenu();
 					frmMetalplus.dispose();
 

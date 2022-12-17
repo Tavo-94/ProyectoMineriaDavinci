@@ -11,9 +11,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import negocio.AdminVentasDao;
+import proyectoMineria.AdminSistema;
+import proyectoMineria.AdminVentas;
+
 import java.awt.Toolkit;
 
 public class AGREGARadminventas {
@@ -22,10 +28,11 @@ public class AGREGARadminventas {
 	private JFrame frmAgregarCliente;
 	private JTextField txtIngreseNombre;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField textField;
 	private JTextField textField_3;
+    private static AdminSistema adminSistemaLogeado;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -33,7 +40,7 @@ public class AGREGARadminventas {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AGREGARadminventas window = new AGREGARadminventas();
+					AGREGARadminventas window = new AGREGARadminventas(adminSistemaLogeado);
 					window.frmAgregarCliente.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,9 +51,11 @@ public class AGREGARadminventas {
 
 	/**
 	 * Create the application.
+	 * @param adminSistemaLogeado 
 	 */
-	public AGREGARadminventas() {
+	public AGREGARadminventas(AdminSistema adminSistemaLogeado) {
 		initialize();
+		this.adminSistemaLogeado = adminSistemaLogeado;
 	}
 
 	/**
@@ -80,12 +89,6 @@ public class AGREGARadminventas {
 		lblApellido.setBounds(39, 318, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblApellido);
 		
-		JLabel lblTelfono = new JLabel("Teléfono:");
-		lblTelfono.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelfono.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono.setBounds(39, 363, 78, 34);
-		frmAgregarCliente.getContentPane().add(lblTelfono);
-		
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,6 +111,31 @@ public class AGREGARadminventas {
 		btnAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//obtengo los datos del formulario
+				
+				/*
+				 * ACA agregar validaciones para los input !!!!
+				 * 
+				 * */
+				
+				String nombreDeUsuario = textField_3.getText();
+				String clave = textField.getText();
+				String nombre = txtIngreseNombre.getText();
+				String apellido = textField_1.getText();
+				
+				//creo el admin ventas en base a los datos del formulario
+				
+				// Hardcodeo 1 como idDeposito
+				
+				AdminVentas nuevoAdminVentas = new AdminVentas(nombre, apellido, nombreDeUsuario, clave, 1);
+				
+				AdminVentasDao ventasDAO = new AdminVentasDao();
+				
+				ventasDAO.agregarNuevoAdminVentas(nuevoAdminVentas, adminSistemaLogeado);
+				
+				JOptionPane.showMessageDialog(null, "Se agrego con EXITO!!!");
+				
 			}
 		});
 		btnAgregar.setBounds(98, 419, 87, 34);
@@ -118,12 +146,6 @@ public class AGREGARadminventas {
 		textField_1.setColumns(10);
 		textField_1.setBounds(126, 321, 218, 27);
 		frmAgregarCliente.getContentPane().add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setToolTipText("Ingrese Teléfono");
-		textField_2.setColumns(10);
-		textField_2.setBounds(126, 366, 218, 27);
-		frmAgregarCliente.getContentPane().add(textField_2);
 		
 		JLabel lblAgregarCliente = new JLabel("AGREGAR ADMIN VENTAS");
 		lblAgregarCliente.setHorizontalAlignment(SwingConstants.CENTER);

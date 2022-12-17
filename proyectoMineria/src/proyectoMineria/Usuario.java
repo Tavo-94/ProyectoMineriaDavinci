@@ -34,10 +34,22 @@ public abstract class Usuario {
 		this.clave = clave;
 	}
 
+	//constructor para insertar un Admin en la DB
+	
+	public Usuario(String nombre, String apellido, String nombreUsuario, String clave) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.nombreUsuario = nombreUsuario;
+		this.clave = clave;
+	}
+	
 
 
 	public abstract void loguearse(Scanner inputDelUsuario);
-	public abstract void cambiarClave(Scanner inputUsuario);
+
+
+ abstract void cambiarClave(Scanner inputUsuario);
 	public abstract void cerrarSesion();
 	
 	//getters y setters

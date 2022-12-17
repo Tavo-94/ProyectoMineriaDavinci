@@ -17,6 +17,8 @@ public class AdminVentas extends Usuario {
 	 Validaciones v = new Validaciones();
 	
     Deposito deposito;
+    
+    Integer idDeposito;
 
     public AdminVentas(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
@@ -34,6 +36,16 @@ public class AdminVentas extends Usuario {
 		super.setCargo("ventas");
 		
     }
+    
+    
+    //construnctor para insertar en la DB
+    
+    public AdminVentas(String nombre, String apellido, String nombreUsuario, String clave, Integer idDeposito) {
+		super(nombre, apellido, nombreUsuario, clave);
+		this.idDeposito = idDeposito;
+	}
+
+
 
 
 
@@ -47,7 +59,8 @@ public class AdminVentas extends Usuario {
 
     }
 
-    @Override
+
+	@Override
     public void cambiarClave(Scanner inputUsuario) {
         // TODO Auto-generated method stub
 
@@ -230,14 +243,45 @@ public class AdminVentas extends Usuario {
         this.deposito = deposito;
     }
 
+    
 
-    @Override
-    public String toString() {
-        return "AdminVentas [getNombre()=" + getNombre() + ", getApellido()=" + getApellido() + ", getNombreUsuario()="
-                + getNombreUsuario() + ", getClave()=" + getClave() + ", getCargo()=" + getCargo()
-                + ", getEstadoActivo()=" + getEstadoActivo() + ", getSessionActiva()=" + getSessionActiva()
-                + ", getMineria()=" + getMineria() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-                + ", toString()=" + super.toString() + "]";
-    }
+    public Integer getIdDeposito() {
+		return idDeposito;
+	}
+
+
+
+
+
+
+
+	public void setIdDeposito(Integer idDeposito) {
+		this.idDeposito = idDeposito;
+	}
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "AdminVentas [deposito=" + deposito + ", idDeposito=" + idDeposito + ", getNombre()=" + getNombre()
+				+ ", getApellido()=" + getApellido() + ", getNombreUsuario()=" + getNombreUsuario() + ", getClave()="
+				+ getClave() + ", getCargo()=" + getCargo() + ", getEstadoActivo()=" + getEstadoActivo()
+				+ ", getSessionActiva()=" + getSessionActiva() + ", getMineria()=" + getMineria() + "]";
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 }
