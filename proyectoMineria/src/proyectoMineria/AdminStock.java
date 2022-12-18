@@ -8,10 +8,22 @@ public class AdminStock extends Usuario {
     Deposito depositoDeMateriales;
     Validaciones v = new Validaciones();
     
+    Integer idDeposito;
+
+    
     public AdminStock(String nombreUsuario, String clave, String cargo, Boolean estadoActivo, Mineria mineria) {
         super(nombreUsuario, clave, cargo, estadoActivo, mineria);
         // TODO Auto-generated constructor stub
     }
+    
+    //constructor para insertar en la DB
+    
+    
+    
+    public AdminStock(String nombre, String apellido, String nombreUsuario, String clave, Integer idDeposito) {
+		super(nombre, apellido, nombreUsuario, clave);
+		this.idDeposito = idDeposito;
+	}
     
     public void agregarMaterial() {
 
@@ -43,8 +55,9 @@ public class AdminStock extends Usuario {
 	        }
 	        
         }
-    
-    public AdminStock(String nombreUsuario, String clave) {
+
+
+	public AdminStock(String nombreUsuario, String clave) {
 		super(nombreUsuario, clave);
 		// TODO Auto-generated constructor stub
 		

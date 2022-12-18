@@ -167,7 +167,7 @@ public class AdminVentas extends Usuario {
         do {
             codigoPostal = JOptionPane.showInputDialog("Ingresar codigo postal");
 
-        } while ((v.validacionNumerosVacios(codigoPostal)!=true || v.validacionCodPostal(codigoPostal)!=true));
+        } while ((v.validacionNumerosVacios(codigoPostal)!=true));
         do {
             ciudad = JOptionPane.showInputDialog("Ingresar ciudad");
 

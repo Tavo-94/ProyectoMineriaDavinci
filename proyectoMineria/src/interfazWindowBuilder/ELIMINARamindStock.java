@@ -5,44 +5,48 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import negocio.AdminStockDAO;
 import negocio.AdminVentasDao;
+import proyectoMineria.AdminSistema;
+import proyectoMineria.AdminStock;
 import proyectoMineria.AdminVentas;
 
-import java.awt.Toolkit;
-import javax.swing.JComboBox;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+public class ELIMINARamindStock {
 
-public class MODIFICARadminventas {
-
-	private JFrame frmModificarAdminVentas;
+	private JFrame frmEliminarAdminStock;
+	
 	private JTextField txtIngreseNombre;
 	private JTextField textField_1;
 	private JTextField textField;
 	private JTextField textField_3;
+    private static AdminSistema adminSistemaLogeado;
+
 
 	/**
 	 * Launch the application.
 	 */
-	public static void modifyAdminVentas() {
+	public static void deleteAdminStock() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MODIFICARadminventas window = new MODIFICARadminventas();
-					window.frmModificarAdminVentas.setVisible(true);
+					ELIMINARamindStock window = new ELIMINARamindStock(adminSistemaLogeado);
+					window.frmEliminarAdminStock.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,58 +56,62 @@ public class MODIFICARadminventas {
 
 	/**
 	 * Create the application.
+	 * @param adminSistemaLogeado2 
 	 */
-	public MODIFICARadminventas() {
+	public ELIMINARamindStock(AdminSistema adminSistemaLogeado) {
 		initialize();
+		this.adminSistemaLogeado = adminSistemaLogeado;
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmModificarAdminVentas = new JFrame();
-		frmModificarAdminVentas.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
-		frmModificarAdminVentas.getContentPane().setBackground(Color.WHITE);
-		frmModificarAdminVentas.getContentPane().setForeground(Color.WHITE);
-		frmModificarAdminVentas.setTitle("Modificar Admin Ventas");
-		frmModificarAdminVentas.setResizable(false);
-		frmModificarAdminVentas.setBounds(100, 100, 410, 581);
-		frmModificarAdminVentas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frmModificarAdminVentas.getContentPane().setLayout(null);
+		
+		frmEliminarAdminStock = new JFrame();
+		frmEliminarAdminStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmEliminarAdminStock.getContentPane().setBackground(Color.WHITE);
+		frmEliminarAdminStock.getContentPane().setForeground(Color.WHITE);
+		frmEliminarAdminStock.setTitle("Modificar Admin Ventas");
+		frmEliminarAdminStock.setResizable(false);
+		frmEliminarAdminStock.setBounds(100, 100, 410, 581);
+		frmEliminarAdminStock.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmEliminarAdminStock.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\edit (1).png"));
-        lblNewLabel_1.setBounds(159, 27, 71, 77);
-        frmModificarAdminVentas.getContentPane().add(lblNewLabel_1);
+	    lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\edit (1).png"));
+	    lblNewLabel_1.setBounds(159, 27, 71, 77);
+	    frmEliminarAdminStock.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblNewLabel.setBounds(38, 311, 78, 34);
-		frmModificarAdminVentas.getContentPane().add(lblNewLabel);
+		lblNewLabel.setBounds(38, 356, 78, 34);
+		frmEliminarAdminStock.getContentPane().add(lblNewLabel);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblApellido.setBounds(39, 361, 78, 34);
-		frmModificarAdminVentas.getContentPane().add(lblApellido);
+		lblApellido.setBounds(39, 406, 78, 34);
+		frmEliminarAdminStock.getContentPane().add(lblApellido);
 		
 		JButton btnCancel = new JButton("CANCEL");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frmModificarAdminVentas.dispose();
+				frmEliminarAdminStock.dispose();
 			}
 		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancel.setBounds(223, 469, 87, 34);
-		frmModificarAdminVentas.getContentPane().add(btnCancel);
+		frmEliminarAdminStock.getContentPane().add(btnCancel);
 		
 		txtIngreseNombre = new JTextField();
+		txtIngreseNombre.setEditable(false);
 		txtIngreseNombre.setToolTipText("Ingrese Nombre");
 		txtIngreseNombre.setSelectedTextColor(Color.WHITE);
 		txtIngreseNombre.setName("");
-		txtIngreseNombre.setBounds(126, 316, 218, 27);
-		frmModificarAdminVentas.getContentPane().add(txtIngreseNombre);
+		txtIngreseNombre.setBounds(126, 361, 218, 27);
+		frmEliminarAdminStock.getContentPane().add(txtIngreseNombre);
 		txtIngreseNombre.setColumns(10);
 		
 		JButton btnAgregar = new JButton("ACEPTAR");
@@ -111,88 +119,89 @@ public class MODIFICARadminventas {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				AdminVentasDao ventasDAO = new AdminVentasDao();
+				AdminStockDAO stockDAO = new AdminStockDAO();
 				
+				String idDelAdminAEliminar = textField_3.getText();
 				
-				String nombreId = textField_3.getText();
+				stockDAO.eliminarAdminStockPorId(idDelAdminAEliminar);
 				
-				String clave = textField.getText();
-				
-				String nombre = txtIngreseNombre.getText();
-				
-				String apellido = textField_1.getText();
-				
-				AdminVentas adminVentasAModificar = new AdminVentas(nombre, apellido, nombreId, clave, 1);
-				
-				ventasDAO.hacerUnUpdatePorId(adminVentasAModificar);
 			}
 		});
 		btnAgregar.setBounds(101, 469, 87, 34);
-		frmModificarAdminVentas.getContentPane().add(btnAgregar);
+		frmEliminarAdminStock.getContentPane().add(btnAgregar);
 		
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
 		textField_1.setToolTipText("Ingrese Apellido");
 		textField_1.setColumns(10);
-		textField_1.setBounds(126, 364, 218, 27);
-		frmModificarAdminVentas.getContentPane().add(textField_1);
+		textField_1.setBounds(126, 409, 218, 27);
+		frmEliminarAdminStock.getContentPane().add(textField_1);
 		
-		JLabel lblAgregarCliente = new JLabel("MODIFICAR ADMIN VENTAS");
+		JLabel lblAgregarCliente = new JLabel("ELIMINAR ADMIN STOCK");
 		lblAgregarCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAgregarCliente.setFont(new Font("JetBrains Mono SemiBold", Font.PLAIN, 15));
 		lblAgregarCliente.setBounds(82, 100, 225, 34);
-		frmModificarAdminVentas.getContentPane().add(lblAgregarCliente);
+		frmEliminarAdminStock.getContentPane().add(lblAgregarCliente);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(67, 133, 255, 11);
-		frmModificarAdminVentas.getContentPane().add(separator);
+		frmEliminarAdminStock.getContentPane().add(separator);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuario.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblUsuario.setBounds(38, 198, 78, 34);
-		frmModificarAdminVentas.getContentPane().add(lblUsuario);
+		lblUsuario.setBounds(38, 243, 78, 34);
+		frmEliminarAdminStock.getContentPane().add(lblUsuario);
 		
 		JLabel lblContrasea = new JLabel("Contraseña:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasea.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblContrasea.setBounds(10, 248, 107, 34);
-		frmModificarAdminVentas.getContentPane().add(lblContrasea);
+		lblContrasea.setBounds(10, 293, 107, 34);
+		frmEliminarAdminStock.getContentPane().add(lblContrasea);
 		
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setToolTipText("Ingrese Apellido");
 		textField.setColumns(10);
-		textField.setBounds(126, 251, 218, 27);
-		frmModificarAdminVentas.getContentPane().add(textField);
+		textField.setBounds(126, 296, 218, 27);
+		frmEliminarAdminStock.getContentPane().add(textField);
 		
 		textField_3 = new JTextField();
+		textField_3.setEditable(false);
 		textField_3.setToolTipText("Ingrese Nombre");
 		textField_3.setSelectedTextColor(Color.WHITE);
 		textField_3.setName("");
 		textField_3.setColumns(10);
-		textField_3.setBounds(126, 203, 218, 27);
-		frmModificarAdminVentas.getContentPane().add(textField_3);
+		textField_3.setBounds(126, 248, 218, 27);
+		frmEliminarAdminStock.getContentPane().add(textField_3);
 		
-		JLabel lblId = new JLabel("ID:");
+		JLabel lblId = new JLabel("Seleccionar Usuario:");
 		lblId.setHorizontalTextPosition(SwingConstants.RIGHT);
-		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		lblId.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblId.setBounds(38, 156, 78, 34);
-		frmModificarAdminVentas.getContentPane().add(lblId);
-		
-		Choice choice = new Choice();
-		choice.setBounds(126, 165, 95, 20);
-		frmModificarAdminVentas.getContentPane().add(choice);
+		lblId.setBounds(67, 156, 257, 34);
+		frmEliminarAdminStock.getContentPane().add(lblId);
 		
 		JComboBox comboBoxOpcionesDeId = new JComboBox();
+		comboBoxOpcionesDeId.setBounds(69, 203, 253, 21);
+		
+		AdminStockDAO stockDAOparaIds = new AdminStockDAO();
+		
+		Object[] listaDeAdminVentas = stockDAOparaIds.obtenerListaDeIdsStock();
+		
+		DefaultComboBoxModel modelocombo = new DefaultComboBoxModel(listaDeAdminVentas);
+		
+		comboBoxOpcionesDeId.setModel(modelocombo);
+		
 		comboBoxOpcionesDeId.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					
 					String seleccionado = (String) comboBoxOpcionesDeId.getSelectedItem();
 					
-					AdminVentasDao ventasDAO = new AdminVentasDao();
+					AdminStockDAO stockDAO = new AdminStockDAO();
 					
-					AdminVentas adminPorId = ventasDAO.obtenerTodosLosDatosPorId(seleccionado);
+					AdminStock adminPorId = stockDAO.obtenerTodosLosDatosPorId(seleccionado);
 					
 					textField_3.setText(adminPorId.getNombreUsuario());
 					
@@ -206,17 +215,10 @@ public class MODIFICARadminventas {
 				}
 			}
 		});
-		comboBoxOpcionesDeId.setBounds(239, 164, 133, 21);
+		frmEliminarAdminStock.getContentPane().add(comboBoxOpcionesDeId);
 		
-		AdminVentasDao ventasDAOparaIds = new AdminVentasDao();
-		
-		Object[] listaDeAdminVentas = ventasDAOparaIds.obtenerListaDeIdsVentas();
-		
-		DefaultComboBoxModel modelocombo = new DefaultComboBoxModel(listaDeAdminVentas);
-		
-		comboBoxOpcionesDeId.setModel(modelocombo);
-		
-		frmModificarAdminVentas.getContentPane().add(comboBoxOpcionesDeId);
-		
+		}
+
 	}
-}
+
+

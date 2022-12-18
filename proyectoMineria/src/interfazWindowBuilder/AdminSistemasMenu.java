@@ -176,8 +176,9 @@ public class AdminSistemasMenu {
         JMenuItem mntmNewMenuItem_10 = new JMenuItem("Agregar AdminStock");
         mntmNewMenuItem_10.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		AGREGARadminstock addAdminstock = new AGREGARadminstock();
+        		AGREGARadminstock addAdminstock = new AGREGARadminstock(AdminSistemasMenu.adminSistemaLogeado);
         		addAdminstock.addAdminStock();
+        		
         	}
         });
         mnNewMenu_3.add(mntmNewMenuItem_10);
@@ -259,7 +260,7 @@ public class AdminSistemasMenu {
         JButton btnNewButton_1 = new JButton("AGREGAR");
         btnNewButton_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		AGREGARadminstock addAdminstock = new AGREGARadminstock();
+        		AGREGARadminstock addAdminstock = new AGREGARadminstock(adminSistemaLogeado);
         		addAdminstock.addAdminStock();
         	}
         });
@@ -282,6 +283,13 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(btnModificar_1);
         
         JButton btnEliminar_1 = new JButton("ELIMINAR");
+        btnEliminar_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		ELIMINARamindStock deleteAdminStock = new ELIMINARamindStock(adminSistemaLogeado);
+        		
+        		deleteAdminStock.deleteAdminStock();
+        	}
+        });
         btnEliminar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnEliminar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnEliminar_1.setBounds(407, 295, 291, 23);

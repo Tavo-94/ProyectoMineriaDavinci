@@ -63,7 +63,8 @@ public class ELIMINARadminVentas {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {frmEliminarAdminVentas = new JFrame();
+	private void initialize() {
+	frmEliminarAdminVentas = new JFrame();
 	frmEliminarAdminVentas.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
 	frmEliminarAdminVentas.getContentPane().setBackground(Color.WHITE);
 	frmEliminarAdminVentas.getContentPane().setForeground(Color.WHITE);

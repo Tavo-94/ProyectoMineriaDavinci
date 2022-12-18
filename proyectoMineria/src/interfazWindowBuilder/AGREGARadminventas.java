@@ -42,6 +42,7 @@ public class AGREGARadminventas {
 				try {
 					AGREGARadminventas window = new AGREGARadminventas(adminSistemaLogeado);
 					window.frmAgregarCliente.setVisible(true);
+					System.out.println(adminSistemaLogeado);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
