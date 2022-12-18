@@ -216,5 +216,15 @@ public class AdminStockMenu {
         btnEliminar_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnEliminar_1_1.setBounds(46, 410, 291, 23);
         frmAdminstockMenu.getContentPane().add(btnEliminar_1_1);
+        
+        JButton btnBuscarMaterial = new JButton("BUSCAR MATERIAL");
+        btnBuscarMaterial.setFont(new Font("Dialog", Font.PLAIN, 13));
+        btnBuscarMaterial.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARstock2.consultarStock();
+        	}
+        });
+        btnBuscarMaterial.setBounds(46, 452, 291, 27);
+        frmAdminstockMenu.getContentPane().add(btnBuscarMaterial);
     }
 }

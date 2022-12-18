@@ -46,7 +46,7 @@ public class AdminStockDAO {
     
     public void agregarNuevoAdminStock(AdminStock nuevoStock, AdminSistema adminSistema) {
         try {
-        	String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, admin_sistema_nombre_usuario, deposito_iddeposito) VALUES(?,?,?,?,?,?)";
+        	String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, deposito_iddeposito, admin_sistema_nombre_usuario) VALUES(?,?,?,MD5(?),?,?)";
             //String queryString = "INSERT INTO admin_stock(nombre, apellido, nombre_usuario, clave, admin_sistema_nombre_usuario) VALUES(?,?,?,?,?)";
             conexion = getConnection();
             ptmt = conexion.prepareStatement(queryString);
@@ -55,7 +55,6 @@ public class AdminStockDAO {
             ptmt.setString(3, nuevoStock.getNombreUsuario());
             ptmt.setString(4, nuevoStock.getClave());
             ptmt.setString(5, adminSistema.getNombreUsuario());
-            ptmt.setInt(6, 1);
             ptmt.executeUpdate();
             System.out.println("Se agrego con exito");
         } catch (SQLException e) {
@@ -224,7 +223,7 @@ public class AdminStockDAO {
     public void mostrarStockTipo(String tipo) {
         try {
 
-        	tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
+        	//tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		String queryString = "SELECT tipo, pureza, SUM(cantidad) AS cantidad_total FROM material WHERE tipo = '"+tipo+"' GROUP BY pureza ORDER BY fecha_de_ingreso DESC";
             // armo la conexion
             conexion = getConnection();
@@ -291,7 +290,7 @@ public class AdminStockDAO {
     public void mostrarStockTipoPurezaAlta(String tipo) {
         try {
 
-        	tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
+        	//tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		String queryString = "SELECT tipo, pureza, fecha_de_ingreso,  cantidad FROM material WHERE tipo = '"+tipo+"' AND pureza = 'ALTA'";
             // armo la conexion
             conexion = getConnection();
@@ -358,7 +357,7 @@ public class AdminStockDAO {
     public void mostrarStockTipoPurezaMedia(String tipo) {
         try {
 
-        	tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
+        	//tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		String queryString = "SELECT tipo, pureza, fecha_de_ingreso,  cantidad FROM material WHERE tipo = '"+tipo+"' AND pureza = 'MEDIA'";
             // armo la conexion
             conexion = getConnection();
@@ -425,7 +424,7 @@ public class AdminStockDAO {
     public void mostrarStockTipoPurezaBaja(String tipo) {
         try {
 
-        	tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
+        	//tipo = JOptionPane.showInputDialog("ingrese tipo de material requerido");
     		String queryString = "SELECT tipo, pureza, fecha_de_ingreso,  cantidad FROM material WHERE tipo = '"+tipo+"' AND pureza = 'BAJA'";
             // armo la conexion
             conexion = getConnection();
@@ -491,19 +490,18 @@ public class AdminStockDAO {
 	
     public void agregarMaterial (Material material) {
     	try {
-    		Material m = new Material();
     		 String query = "INSERT INTO material(tipo, pureza, cantidad, deposito_iddeposito) VALUES(?,?,?,1)";
              conexion = getConnection();
              ptmt = conexion.prepareStatement(query);
-             m.setTipo(JOptionPane.showInputDialog("ingrese tipo de material"));
-             ptmt.setString(1, m.getTipo());
-             m.setPureza(JOptionPane.showInputDialog("ingrese pureza"));
-             ptmt.setString(2, m.getPureza());
-             m.setCantidad(Double.parseDouble(JOptionPane.showInputDialog("ingrese cantidad")));
-             ptmt.setDouble(3, m.getCantidad());
+             //m.setTipo(JOptionPane.showInputDialog("ingrese tipo de material"));
+             ptmt.setString(1, material.getTipo());
+            // m.setPureza(JOptionPane.showInputDialog("ingrese pureza"));
+             ptmt.setString(2, material.getPureza());
+            // m.setCantidad(Double.parseDouble(JOptionPane.showInputDialog("ingrese cantidad")));
+             ptmt.setDouble(3, material.getCantidad());
              ptmt.executeUpdate();
              
-            JOptionPane.showMessageDialog(null,"Se agrego con exito");
+            //JOptionPane.showMessageDialog(null,"Se agrego con exito");
             
             String query2 = "SELECT * FROM material ORDER BY fecha_de_ingreso DESC";
             conexion = getConnection();
@@ -802,188 +800,5 @@ public class AdminStockDAO {
         } 
     }
 
-	public void hacerUnUpdatePorId(AdminStock adminStockAModificar) {
-		// TODO Auto-generated method stub
-    	
-        try {
-            conexion = getConnection();
-
-            String query = "UPDATE `admin_stock` SET `nombre`= ?,`apellido`= ?,`clave`= ? WHERE nombre_usuario = ?";
-
-
-           
-            ptmt = conexion.prepareStatement(query);
-            ptmt.setString(1, adminStockAModificar.getNombre());
-            ptmt.setString(2, adminStockAModificar.getApellido());
-            ptmt.setString(3, adminStockAModificar.getClave());
-            ptmt.setString(4, adminStockAModificar.getNombreUsuario());
-            
-           
-
-            ptmt.executeUpdate();
-            System.out.println("Actualizado con exito");
-            
-            
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            try {
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (conexion != null) {
-                    conexion.close();
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-	}
-
-	public Object[] obtenerListaDeIdsStock() {
-		// TODO Auto-generated method stub
-		
-        try {
-        	
-            conexion = getConnection();
-
-
-            String query = "SELECT nombre_usuario FROM admin_stock;";
-
-            ptmt = conexion.prepareStatement(query);
-
-            resultSet = ptmt.executeQuery();
-
-            ArrayList<String> lista = new ArrayList<>();
-            while (resultSet.next()) {
-
-                lista.add(resultSet.getString("nombre_usuario"));
-
-            }
-            return lista.toArray();
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            try {
-
-                if (conexion != null) {
-                    conexion.close();
-                }
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-		return null;
-	}
-
-	public AdminStock obtenerTodosLosDatosPorId(String nombreDeUsuario) {
-		// TODO Auto-generated method stub
-AdminStock stockDeLaDB = null;
-		
-        try {
-        	
-            conexion = getConnection();
-
-
-            String query = "SELECT * FROM admin_stock WHERE nombre_usuario = ?;";
-
-            ptmt = conexion.prepareStatement(query);
-            
-            ptmt.setString(1, nombreDeUsuario);
-
-            resultSet = ptmt.executeQuery();
-            
-            if (resultSet.next()) {
-
-                String nombre = resultSet.getString(1);
-                String apellido = resultSet.getString(2);
-                String nombreid = resultSet.getString(3);
-                String clave = resultSet.getString(4);
-                Long idDeposito = resultSet.getLong(6);
-                
-               stockDeLaDB = new AdminStock(nombre, apellido, nombreid, clave, idDeposito.intValue());
-                
-                
-
-            }
-
-
-            return stockDeLaDB;
-
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            try {
-
-                if (conexion != null) {
-                    conexion.close();
-                }
-                if (ptmt != null) {
-                    ptmt.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-		return null;
-	}
-
-	public void eliminarAdminStockPorId(String nombreDeUsuarioAEliminar) {
-		// TODO Auto-generated method stub
-    	try {
-    		conexion = getConnection();
-    		
-    		String query = "DELETE FROM admin_stock WHERE nombre_usuario = ?";
-
-    		
-    		ptmt = conexion.prepareStatement(query);
-    		ptmt.setString(1, nombreDeUsuarioAEliminar);
-    		
-    		ptmt.executeUpdate();
-    		System.out.println("Eliminado con exito");
-    		
-    	} catch (SQLException e) {
-    		// TODO Auto-generated catch block
-    		e.printStackTrace();
-    	} finally {
-    		try {
-    			if (ptmt != null) {
-    				ptmt.close();
-    			}
-    			if (conexion != null) {
-    				conexion.close();
-    			}
-    			
-    		} catch (SQLException e) {
-    			e.printStackTrace();
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
-    	}
-	}
     
 }
