@@ -144,6 +144,7 @@ public class AdminStockMenu {
         	public void actionPerformed(ActionEvent e) {
         		MODIFICARstock modifyStock = new MODIFICARstock();
         		modifyStock.modifyStock();
+        		frmAdminstockMenu.dispose();
         	}
         });
         mnNewMenu_1.add(mntmNewMenuItem_7);
@@ -186,8 +187,9 @@ public class AdminStockMenu {
         	public void actionPerformed(ActionEvent e) {
         		AGREGARstock agregarStock = new AGREGARstock();
         		agregarStock.addStock();
-
         		
+        		frmAdminstockMenu.dispose();
+       
         	}
         });
         btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -200,6 +202,8 @@ public class AdminStockMenu {
         	public void actionPerformed(ActionEvent e) {
         		MODIFICARstock modifyStock = new MODIFICARstock();
         		modifyStock.modifyStock();
+        		
+        		frmAdminstockMenu.dispose();
         	}
         });
         btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
