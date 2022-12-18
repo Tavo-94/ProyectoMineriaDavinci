@@ -2,6 +2,7 @@ package proyectoMineria;
 
 public class DireccionCliente {
 
+	private Integer idDireccion;
     private String calle;
     private String altura;
     private String codigoPostal;
@@ -56,6 +57,26 @@ public class DireccionCliente {
     public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
+    
+    
+
+	public Integer getIdDireccion() {
+		return idDireccion;
+	}
+
+	public void setIdDireccion(Integer idDireccion) {
+		this.idDireccion = idDireccion;
+	}
+
+	@Override
+	public String toString() {
+		return "DireccionCliente [idDireccion=" + idDireccion + ", calle=" + calle + ", altura=" + altura
+				+ ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", idCliente=" + idCliente + "]";
+	}
+
+
+    
+    
     
     
     

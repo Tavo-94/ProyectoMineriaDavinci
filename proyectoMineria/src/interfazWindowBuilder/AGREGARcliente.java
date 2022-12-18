@@ -17,7 +17,9 @@ import javax.swing.SwingConstants;
 
 import negocio.ClienteDAO;
 import negocio.DireccionDAO;
+import proyectoMineria.AdminVentas;
 import proyectoMineria.Cliente;
+import proyectoMineria.DireccionCliente;
 
 import javax.swing.JSeparator;
 import java.awt.Cursor;
@@ -31,10 +33,9 @@ public class AGREGARcliente {
 	private JTextField textIngreseTelefono;
 	private JTextField textIngreseCalle;
 	private JTextField textIngreseNumero;
-	private JTextField textIngreseDepto;
 	private JTextField textIngreseCP;
-	private JTextField textIngreseProvincia;
 	private JTextField textIngreseLocalidad;
+	private static AdminVentas adminLogueado;
 
 
 	/**
@@ -44,7 +45,7 @@ public class AGREGARcliente {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AGREGARcliente window = new AGREGARcliente();
+					AGREGARcliente window = new AGREGARcliente(adminLogueado);
 					window.frmAgregarCliente.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,9 +56,11 @@ public class AGREGARcliente {
 
 	/**
 	 * Create the application.
+	 * @param adminVentasLogeado 
 	 */
-	public AGREGARcliente() {
+	public AGREGARcliente(AdminVentas adminVentasLogeado) {
 		initialize();
+		this.adminLogueado = adminVentasLogeado;
 	}
 
 	/**
@@ -116,23 +119,33 @@ public class AGREGARcliente {
 				String apellidoDCliente = textIngreseApellido.getText();
 				String telefonoCliente = textIngreseTelefono.getText();
 				
-				Cliente nuevoCliente = new Cliente(nombreDCliente, apellidoDCliente, telefonoCliente);		
+				Cliente nuevoCliente = new Cliente(nombreDCliente, apellidoDCliente, telefonoCliente);
+				
+				ClienteDAO clienteDAO = new ClienteDAO();
+				
+				clienteDAO.agregarNuevoCliente(nuevoCliente, adminLogueado);
+				
+				Integer idDelClienteIngresado = clienteDAO.obtenerUltimoIDDeCliente();
 				
 				String calleCliente = textIngreseCalle.getText();
 				String numeroCliente = textIngreseNumero.getText();
-				String deptoCliente = textIngreseDepto.getText();
+				//String deptoCliente = textIngreseDepto.getText();
 				String CPCliente = textIngreseCP.getText();
-				String provinciaCliente = textIngreseProvincia.getText();
+				//String provinciaCliente = textIngreseProvincia.getText();
 				String localidadCliente = textIngreseLocalidad.getText();
+				
+				DireccionCliente nuevaDireccion = new DireccionCliente(calleCliente, numeroCliente, CPCliente, localidadCliente);
+				
+				nuevaDireccion.setIdCliente(idDelClienteIngresado);
 				
 				DireccionDAO direccionCliente = new DireccionDAO();
 				
-				addCliente();
+				direccionCliente.agregarNuevadireccion(nuevaDireccion);
+				
 				
 				JOptionPane.showMessageDialog(null, "Se agrego exitosamente");
 				
-				
-				AdminVentasMenu.AdminVentasMenu();
+				frmAgregarCliente.setVisible(false);
 				//String 
 				
 			}
@@ -191,7 +204,7 @@ public class AGREGARcliente {
 		textIngreseCalle.setBounds(542, 48, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseCalle);
 		
-		JLabel lblNmero = new JLabel("Número:");
+		JLabel lblNmero = new JLabel("Altura:");
 		lblNmero.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNmero.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
 		lblNmero.setBounds(455, 93, 78, 34);
@@ -202,18 +215,6 @@ public class AGREGARcliente {
 		textIngreseNumero.setColumns(10);
 		textIngreseNumero.setBounds(542, 96, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseNumero);
-		
-		JLabel lblPisodepto = new JLabel("Piso/Depto:");
-		lblPisodepto.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPisodepto.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblPisodepto.setBounds(437, 138, 96, 34);
-		frmAgregarCliente.getContentPane().add(lblPisodepto);
-		
-		textIngreseDepto = new JTextField();
-		textIngreseDepto.setToolTipText("Ingrese Depto");
-		textIngreseDepto.setColumns(10);
-		textIngreseDepto.setBounds(542, 141, 218, 27);
-		frmAgregarCliente.getContentPane().add(textIngreseDepto);
 		
 		JLabel lblTelfono_1_1 = new JLabel("Código Postal:");
 		lblTelfono_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -226,18 +227,6 @@ public class AGREGARcliente {
 		textIngreseCP.setColumns(10);
 		textIngreseCP.setBounds(541, 191, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseCP);
-		
-		JLabel lblTelfono_1_1_1 = new JLabel("Provincia:");
-		lblTelfono_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelfono_1_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono_1_1_1.setBounds(425, 233, 108, 34);
-		frmAgregarCliente.getContentPane().add(lblTelfono_1_1_1);
-		
-		textIngreseProvincia = new JTextField();
-		textIngreseProvincia.setToolTipText("Ingrese Provincia");
-		textIngreseProvincia.setColumns(10);
-		textIngreseProvincia.setBounds(542, 236, 218, 27);
-		frmAgregarCliente.getContentPane().add(textIngreseProvincia);
 		
 		textIngreseLocalidad = new JTextField();
 		textIngreseLocalidad.setToolTipText("Ingrese Localidad");

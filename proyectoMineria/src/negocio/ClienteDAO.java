@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminVentas;
 import proyectoMineria.Cliente;
@@ -132,6 +136,143 @@ public class ClienteDAO {
 		return null;
 
     }
+
+	public DefaultTableModel modeloParaJTable() {
+		// TODO Auto-generated method stub
+		try {
+			conexion = getConnection();
+
+			// id deposito hardcodeado a 1 porque hay un solo deposito
+			String query = "SELECT * FROM cliente WHERE 1;";
+
+			ptmt = conexion.prepareStatement(query);
+
+			resultSet = ptmt.executeQuery();
+
+			DefaultTableModel modeloDeTabla = new DefaultTableModel();
+
+			Integer numeroDeColumnas = resultSet.getMetaData().getColumnCount();
+			Object[] labelDeColumnas = new Object[numeroDeColumnas];
+
+			for (int i = 0; i < numeroDeColumnas; i++) {
+				labelDeColumnas[i] = resultSet.getMetaData().getColumnLabel(i + 1);
+			}
+
+			modeloDeTabla.setColumnIdentifiers(labelDeColumnas);
+
+			while (resultSet.next()) {
+
+				Object[] fila = new Object[numeroDeColumnas];
+
+				for (int i = 0; i < numeroDeColumnas; i++) {
+					fila[i] = resultSet.getObject(i + 1);
+				}
+
+				modeloDeTabla.addRow(fila);
+			}
+
+			return modeloDeTabla;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// siempre cierro el Statement y la conexion al finalizar el metodo
+			try {
+				if (ptmt != null) {
+					ptmt.close();
+				}
+				if (conexion != null) {
+					conexion.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return null;
+	}
+	
+	
+	   public void hacerUnUpdatePorId(Cliente clienteAModificar) {
+	    	
+	        try {
+	            conexion = getConnection();
+
+	            String query = "UPDATE `cliente` SET `nombre`= ?,`apellido`= ?,`telefono`= ? WHERE idcliente = ?";
+
+
+	           
+	            ptmt = conexion.prepareStatement(query);
+	            ptmt.setString(1, clienteAModificar.getNombre());
+	            ptmt.setString(2, clienteAModificar.getApellido());
+	            ptmt.setString(3, clienteAModificar.getTelefono());
+	            ptmt.setInt(4, clienteAModificar.getIdCliente());
+	            
+	           
+
+	            ptmt.executeUpdate();
+	            System.out.println("Actualizado con exito");
+	            
+	            
+
+	        } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                if (ptmt != null) {
+	                    ptmt.close();
+	                }
+	                if (conexion != null) {
+	                    conexion.close();
+	                }
+
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    	
+	    }
+	   
+	   public void eliminarCliente(Integer idCliente) {
+	        try {
+	            conexion = getConnection();
+
+	            String query = "DELETE FROM cliente WHERE idcliente = ?";
+
+
+	            ptmt = conexion.prepareStatement(query);
+	            ptmt.setInt(1, idCliente);
+
+	            ptmt.executeUpdate();
+	            System.out.println("Eliminado con exito");
+
+	        } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } finally {
+	            try {
+	                if (ptmt != null) {
+	                    ptmt.close();
+	                }
+	                if (conexion != null) {
+	                    conexion.close();
+	                }
+
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
 
 
 

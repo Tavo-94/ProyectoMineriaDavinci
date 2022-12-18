@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
@@ -14,6 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
@@ -21,8 +24,12 @@ import javax.swing.table.DefaultTableModel;
 import com.mysql.jdbc.ResultSetMetaData;
 import com.mysql.jdbc.Statement;
 
+import negocio.MaterialDAO;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.event.ActionEvent;
@@ -78,6 +85,8 @@ public class CONSULTARstock {
 		table.setRowSelectionAllowed(false);
 		table.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 14));
 		table.setBackground(Color.WHITE);
+		table.setFocusable(false);
+		table.setUpdateSelectionOnSort(false);
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("CONSULTAR STOCK");
@@ -107,44 +116,12 @@ public class CONSULTARstock {
 		btnConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mineria","root","");
-					
-					java.sql.Statement st = con.createStatement();
-					
-					String sql= "select * from material";
-					ResultSet rs = st.executeQuery(sql);
-					java.sql.ResultSetMetaData rsmd = rs.getMetaData();
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
-					
-					int cols=rsmd.getColumnCount();
-					String[] colName=new String[cols];
-					for(int i=0;i<cols;i++)
-						colName[i]=rsmd.getColumnName(i+1);
-					model.setColumnIdentifiers(colName);
-					
-					String id,nombre,pureza,cantidad,precio,deposito;
-					
-					while(rs.next()) {
-						id=rs.getString(1);
-						nombre=rs.getString(2);
-						pureza=rs.getString(3);
-						cantidad=rs.getString(4);
-						precio=rs.getString(5);
-						deposito=rs.getString(6);
-						String[] row= {id,nombre,pureza,cantidad,precio,deposito};
-						model.addRow(row);
-						
-					}
-						
-					
-					
-						st.close();
-					con.close();				
-			} catch(Exception e1) {
-				System.out.println(e1.getMessage());
-			}
+				
+				
+				MaterialDAO materialDAO = new MaterialDAO();
+				
+				table.setModel(materialDAO.modeloParaJTable());
+				
 		}
 		
 			

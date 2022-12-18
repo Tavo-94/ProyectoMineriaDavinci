@@ -149,7 +149,7 @@ public class AdminVentasMenu {
         JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar Cliente");
         mntmNewMenuItem_6.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		AGREGARcliente agregarCliente = new AGREGARcliente();
+        		AGREGARcliente agregarCliente = new AGREGARcliente(adminVentasLogeado);
         		agregarCliente.addCliente();
         	}
         });
@@ -158,8 +158,7 @@ public class AdminVentasMenu {
         JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar Cliente");
         mntmNewMenuItem_7.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		MODIFICARcliente modifyCliente = new MODIFICARcliente();
-        		modifyCliente.modifyCliente();
+
         	}
         });
         mnNewMenu_2.add(mntmNewMenuItem_7);
@@ -222,7 +221,7 @@ public class AdminVentasMenu {
         JButton btnNewButton = new JButton("AGREGAR");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		AGREGARcliente agregarCliente = new AGREGARcliente();
+        		AGREGARcliente agregarCliente = new AGREGARcliente(adminVentasLogeado);
         		agregarCliente.addCliente();
         		
         	}
@@ -235,8 +234,10 @@ public class AdminVentasMenu {
         JButton btnModificar = new JButton("MODIFICAR");
         btnModificar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		MODIFICARcliente modifyCliente = new MODIFICARcliente();
-        		modifyCliente.modifyCliente();
+
+        		CONSULTARcliente consultarTablaCliente = new CONSULTARcliente();
+        		
+        		CONSULTARcliente.ConsultarClientes();
         	}
         });
         btnModificar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -245,6 +246,12 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(btnModificar);
         
         JButton btnEliminar = new JButton("ELIMINAR");
+        btnEliminar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CONSULTARclienteParaEliminar consultarTablaCliente = new CONSULTARclienteParaEliminar();
+        		consultarTablaCliente.consultarClientes();
+        	}
+        });
         btnEliminar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnEliminar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnEliminar.setBounds(26, 295, 192, 23);

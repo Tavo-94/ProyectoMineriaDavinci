@@ -11,6 +11,7 @@ public class Cliente {
 	private Boolean esMayorista;
     private String telefono;
     private Integer idCliente;
+    private String idAdminVentas;
 	
 	public void agregarRegistroCliente(Usuario usuario,String nombre,String apellido,String dni) {
 		
@@ -56,6 +57,16 @@ public class Cliente {
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.idCliente = idCliente;
+	}
+	
+	
+
+	public Cliente(String nombre, String apellido, String telefono, String idAdminVentas) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.telefono = telefono;
+		this.idAdminVentas = idAdminVentas;
 	}
 
 	public List<Cliente> getListaClientes() {
@@ -127,6 +138,15 @@ public class Cliente {
 		this.idCliente = idCliente;
 	}
 
+	
+
+	public String getIdAdminVentas() {
+		return idAdminVentas;
+	}
+
+	public void setIdAdminVentas(String idAdminVentas) {
+		this.idAdminVentas = idAdminVentas;
+	}
 
 	@Override
 	public String toString() {
