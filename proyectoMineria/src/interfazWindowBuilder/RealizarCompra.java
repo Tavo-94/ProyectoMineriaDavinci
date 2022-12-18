@@ -78,7 +78,7 @@ public class RealizarCompra {
 	private void initialize() {
 		frmRealizarCompra = new JFrame();
 		frmRealizarCompra.setResizable(false);
-		frmRealizarCompra.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmRealizarCompra.setIconImage(Toolkit.getDefaultToolkit().getImage(RealizarCompra.class.getResource("/img/icon.png")));
 		frmRealizarCompra.getContentPane().setBackground(Color.WHITE);
 		frmRealizarCompra.setTitle("REALIZAR COMPRA");
 		frmRealizarCompra.setBounds(100, 100, 1197, 515);
@@ -160,7 +160,7 @@ public class RealizarCompra {
 		frmRealizarCompra.getContentPane().add(textField_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\caja.png"));
+		lblNewLabel_1.setIcon(new ImageIcon(RealizarCompra.class.getResource("/img/caja.png")));
 		lblNewLabel_1.setBounds(153, 74, 71, 77);
 		frmRealizarCompra.getContentPane().add(lblNewLabel_1);
 		
@@ -298,7 +298,7 @@ public class RealizarCompra {
 		frmRealizarCompra.getContentPane().add(lblCliente);
 		
 		JLabel lblNewLabel_1_2 = new JLabel("");
-		lblNewLabel_1_2.setIcon(new ImageIcon("D:\\carol\\payment-method.png"));
+		lblNewLabel_1_2.setIcon(new ImageIcon(RealizarCompra.class.getResource("/img/buy.png")));
 		lblNewLabel_1_2.setBounds(545, 74, 71, 77);
 		frmRealizarCompra.getContentPane().add(lblNewLabel_1_2);
 		

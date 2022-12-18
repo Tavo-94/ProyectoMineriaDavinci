@@ -63,17 +63,17 @@ public class MODIFICARadminstock {
 	 */
 	private void initialize() {
 		frmModificarAdminStock = new JFrame();
-		frmModificarAdminStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmModificarAdminStock.setIconImage(Toolkit.getDefaultToolkit().getImage(MODIFICARadminstock.class.getResource("/img/icon.png")));
 		frmModificarAdminStock.getContentPane().setBackground(Color.WHITE);
 		frmModificarAdminStock.getContentPane().setForeground(Color.WHITE);
 		frmModificarAdminStock.setTitle("Modificar Admin Stock");
 		frmModificarAdminStock.setResizable(false);
-		frmModificarAdminStock.setBounds(100, 100, 410, 581);
+		frmModificarAdminStock.setBounds(100, 100, 410, 540);
 		frmModificarAdminStock.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmModificarAdminStock.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\edit (1).png"));
+        lblNewLabel_1.setIcon(new ImageIcon(MODIFICARadminstock.class.getResource("/img/MODIFICAR.png")));
         lblNewLabel_1.setBounds(159, 27, 71, 77);
         frmModificarAdminStock.getContentPane().add(lblNewLabel_1);
 		
@@ -96,7 +96,7 @@ public class MODIFICARadminstock {
 			}
 		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnCancel.setBounds(223, 469, 87, 34);
+		btnCancel.setBounds(223, 451, 87, 34);
 		frmModificarAdminStock.getContentPane().add(btnCancel);
 		
 		txtIngreseNombre = new JTextField();
@@ -129,7 +129,7 @@ public class MODIFICARadminstock {
 			
 			}
 		});
-		btnAgregar.setBounds(101, 469, 87, 34);
+		btnAgregar.setBounds(101, 451, 87, 34);
 		frmModificarAdminStock.getContentPane().add(btnAgregar);
 		
 		textField_1 = new JTextField();
@@ -151,19 +151,19 @@ public class MODIFICARadminstock {
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuario.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblUsuario.setBounds(38, 234, 78, 34);
+		lblUsuario.setBounds(38, 252, 78, 34);
 		frmModificarAdminStock.getContentPane().add(lblUsuario);
 		
 		JLabel lblContrasea = new JLabel("Contraseña:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasea.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblContrasea.setBounds(10, 284, 107, 34);
+		lblContrasea.setBounds(10, 302, 107, 34);
 		frmModificarAdminStock.getContentPane().add(lblContrasea);
 		
 		textField = new JTextField();
 		textField.setToolTipText("Ingrese Apellido");
 		textField.setColumns(10);
-		textField.setBounds(126, 287, 218, 27);
+		textField.setBounds(126, 305, 218, 27);
 		frmModificarAdminStock.getContentPane().add(textField);
 		
 		textField_3 = new JTextField();
@@ -171,18 +171,18 @@ public class MODIFICARadminstock {
 		textField_3.setSelectedTextColor(Color.WHITE);
 		textField_3.setName("");
 		textField_3.setColumns(10);
-		textField_3.setBounds(126, 239, 218, 27);
+		textField_3.setBounds(126, 257, 218, 27);
 		frmModificarAdminStock.getContentPane().add(textField_3);
 		
-		JLabel lblId = new JLabel("Seleccionar Usuario:");
+		JLabel lblId = new JLabel("SELECIONAR USUARIO");
 		lblId.setHorizontalTextPosition(SwingConstants.RIGHT);
 		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		lblId.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblId.setBounds(67, 165, 255, 34);
+		lblId.setBounds(64, 148, 255, 34);
 		frmModificarAdminStock.getContentPane().add(lblId);
 		
 		JComboBox comboBoxOpcionesDeId = new JComboBox();
-		comboBoxOpcionesDeId.setBounds(69, 203, 253, 21);
+		comboBoxOpcionesDeId.setBounds(74, 186, 245, 21);
 		
 		AdminStockDAO stockDAOparaIds = new AdminStockDAO();
 		
@@ -215,6 +215,10 @@ public class MODIFICARadminstock {
 			}
 		});
 		frmModificarAdminStock.getContentPane().add(comboBoxOpcionesDeId);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(67, 231, 255, 11);
+		frmModificarAdminStock.getContentPane().add(separator_1);
 		
 	}
 }

@@ -65,7 +65,7 @@ public class PantallaPrincipal {
      */
     private void initialize() {
         frmAdminsistemas = new JFrame();
-        frmAdminsistemas.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+        frmAdminsistemas.setIconImage(Toolkit.getDefaultToolkit().getImage(PantallaPrincipal.class.getResource("/img/icon.png")));
         frmAdminsistemas.setResizable(false);
         frmAdminsistemas.setTitle("MINERALPLUS");
         frmAdminsistemas.getContentPane().setBackground(Color.WHITE);
@@ -74,7 +74,7 @@ public class PantallaPrincipal {
         frmAdminsistemas.getContentPane().setLayout(null);
         
         JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\AdobeStock_2813541252.jpg"));
+        lblNewLabel.setIcon(new ImageIcon(PantallaPrincipal.class.getResource("/img/INICIO.jpg")));
         lblNewLabel.setBounds(-87, 371, 920, 246);
         frmAdminsistemas.getContentPane().add(lblNewLabel);
         

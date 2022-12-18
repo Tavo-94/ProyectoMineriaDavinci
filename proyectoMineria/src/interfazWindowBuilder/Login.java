@@ -67,7 +67,7 @@ public class Login {
      */
     private void initialize() {
         frmMetalplus = new JFrame();
-        frmMetalplus.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+        frmMetalplus.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/img/icon.png")));
         frmMetalplus.setTitle("Login");
         frmMetalplus.setResizable(false);
         frmMetalplus.getContentPane().setForeground(Color.GRAY);

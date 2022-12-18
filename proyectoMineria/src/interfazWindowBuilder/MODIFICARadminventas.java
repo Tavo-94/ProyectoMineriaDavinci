@@ -67,7 +67,7 @@ public class MODIFICARadminventas {
 		frmModificarAdminVentas.getContentPane().setForeground(Color.WHITE);
 		frmModificarAdminVentas.setTitle("Modificar Admin Ventas");
 		frmModificarAdminVentas.setResizable(false);
-		frmModificarAdminVentas.setBounds(100, 100, 410, 581);
+		frmModificarAdminVentas.setBounds(100, 100, 410, 543);
 		frmModificarAdminVentas.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmModificarAdminVentas.getContentPane().setLayout(null);
 		
@@ -79,13 +79,13 @@ public class MODIFICARadminventas {
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblNewLabel.setBounds(38, 311, 78, 34);
+		lblNewLabel.setBounds(38, 345, 78, 34);
 		frmModificarAdminVentas.getContentPane().add(lblNewLabel);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblApellido.setBounds(39, 361, 78, 34);
+		lblApellido.setBounds(39, 395, 78, 34);
 		frmModificarAdminVentas.getContentPane().add(lblApellido);
 		
 		JButton btnCancel = new JButton("CANCEL");
@@ -95,14 +95,14 @@ public class MODIFICARadminventas {
 			}
 		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnCancel.setBounds(223, 469, 87, 34);
+		btnCancel.setBounds(223, 449, 87, 34);
 		frmModificarAdminVentas.getContentPane().add(btnCancel);
 		
 		txtIngreseNombre = new JTextField();
 		txtIngreseNombre.setToolTipText("Ingrese Nombre");
 		txtIngreseNombre.setSelectedTextColor(Color.WHITE);
 		txtIngreseNombre.setName("");
-		txtIngreseNombre.setBounds(126, 316, 218, 27);
+		txtIngreseNombre.setBounds(126, 350, 218, 27);
 		frmModificarAdminVentas.getContentPane().add(txtIngreseNombre);
 		txtIngreseNombre.setColumns(10);
 		
@@ -127,13 +127,13 @@ public class MODIFICARadminventas {
 				ventasDAO.hacerUnUpdatePorId(adminVentasAModificar);
 			}
 		});
-		btnAgregar.setBounds(101, 469, 87, 34);
+		btnAgregar.setBounds(101, 449, 87, 34);
 		frmModificarAdminVentas.getContentPane().add(btnAgregar);
 		
 		textField_1 = new JTextField();
 		textField_1.setToolTipText("Ingrese Apellido");
 		textField_1.setColumns(10);
-		textField_1.setBounds(126, 364, 218, 27);
+		textField_1.setBounds(126, 398, 218, 27);
 		frmModificarAdminVentas.getContentPane().add(textField_1);
 		
 		JLabel lblAgregarCliente = new JLabel("MODIFICAR ADMIN VENTAS");
@@ -149,19 +149,19 @@ public class MODIFICARadminventas {
 		JLabel lblUsuario = new JLabel("Usuario:");
 		lblUsuario.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsuario.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblUsuario.setBounds(38, 198, 78, 34);
+		lblUsuario.setBounds(38, 250, 78, 34);
 		frmModificarAdminVentas.getContentPane().add(lblUsuario);
 		
 		JLabel lblContrasea = new JLabel("Contraseña:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasea.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblContrasea.setBounds(10, 248, 107, 34);
+		lblContrasea.setBounds(10, 300, 107, 34);
 		frmModificarAdminVentas.getContentPane().add(lblContrasea);
 		
 		textField = new JTextField();
 		textField.setToolTipText("Ingrese Apellido");
 		textField.setColumns(10);
-		textField.setBounds(126, 251, 218, 27);
+		textField.setBounds(126, 303, 218, 27);
 		frmModificarAdminVentas.getContentPane().add(textField);
 		
 		textField_3 = new JTextField();
@@ -169,19 +169,8 @@ public class MODIFICARadminventas {
 		textField_3.setSelectedTextColor(Color.WHITE);
 		textField_3.setName("");
 		textField_3.setColumns(10);
-		textField_3.setBounds(126, 203, 218, 27);
+		textField_3.setBounds(126, 255, 218, 27);
 		frmModificarAdminVentas.getContentPane().add(textField_3);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setHorizontalTextPosition(SwingConstants.RIGHT);
-		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblId.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblId.setBounds(38, 156, 78, 34);
-		frmModificarAdminVentas.getContentPane().add(lblId);
-		
-		Choice choice = new Choice();
-		choice.setBounds(126, 165, 95, 20);
-		frmModificarAdminVentas.getContentPane().add(choice);
 		
 		JComboBox comboBoxOpcionesDeId = new JComboBox();
 		comboBoxOpcionesDeId.addItemListener(new ItemListener() {
@@ -206,7 +195,7 @@ public class MODIFICARadminventas {
 				}
 			}
 		});
-		comboBoxOpcionesDeId.setBounds(239, 164, 133, 21);
+		comboBoxOpcionesDeId.setBounds(74, 188, 245, 21);
 		
 		AdminVentasDao ventasDAOparaIds = new AdminVentasDao();
 		
@@ -217,6 +206,17 @@ public class MODIFICARadminventas {
 		comboBoxOpcionesDeId.setModel(modelocombo);
 		
 		frmModificarAdminVentas.getContentPane().add(comboBoxOpcionesDeId);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(70, 230, 255, 11);
+		frmModificarAdminVentas.getContentPane().add(separator_1);
+		
+		JLabel lblId = new JLabel("SELECIONAR USUARIO");
+		lblId.setHorizontalTextPosition(SwingConstants.RIGHT);
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblId.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+		lblId.setBounds(65, 151, 255, 34);
+		frmModificarAdminVentas.getContentPane().add(lblId);
 		
 	}
 }

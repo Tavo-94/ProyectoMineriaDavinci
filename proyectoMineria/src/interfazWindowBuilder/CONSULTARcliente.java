@@ -54,7 +54,7 @@ public class CONSULTARcliente {
 	 */
 	private void initialize() {
 		frmConsultarClientes = new JFrame();
-		frmConsultarClientes.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmConsultarClientes.setIconImage(Toolkit.getDefaultToolkit().getImage(CONSULTARcliente.class.getResource("/img/icon.png")));
 		frmConsultarClientes.setBackground(Color.WHITE);
 		frmConsultarClientes.setTitle("CONSULTAR STOCK");
 		frmConsultarClientes.setResizable(false);
