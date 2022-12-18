@@ -75,7 +75,7 @@ public class ELIMINARadminVentas {
 	frmEliminarAdminVentas.getContentPane().setLayout(null);
 	
 	JLabel lblNewLabel_1 = new JLabel("");
-    lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\edit (1).png"));
+    lblNewLabel_1.setIcon(new ImageIcon(ELIMINARadminVentas.class.getResource("/img/MODIFICAR.png")));
     lblNewLabel_1.setBounds(159, 27, 71, 77);
     frmEliminarAdminVentas.getContentPane().add(lblNewLabel_1);
 	

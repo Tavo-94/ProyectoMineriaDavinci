@@ -127,7 +127,7 @@ public class Login {
         
         JLabel imagen = new JLabel("");
         imagen.setBounds(-35, 0, 358, 469);
-        imagen.setIcon(new ImageIcon("D:\\carol\\two-horizontal-mining-banners-with-extractive-equipment\\18669a.jpg"));
+        imagen.setIcon(new ImageIcon(Login.class.getResource("/img/login.jpg")));
         frmMetalplus.getContentPane().add(imagen);
         
         Button loginButton = new Button("LOGIN");

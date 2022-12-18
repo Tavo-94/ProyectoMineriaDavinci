@@ -64,7 +64,7 @@ public class AGREGARadminventas {
 	 */
 	private void initialize() {
 		frmAgregarCliente = new JFrame();
-		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage(AGREGARadminventas.class.getResource("/img/icon.png")));
 		frmAgregarCliente.getContentPane().setBackground(Color.WHITE);
 		frmAgregarCliente.getContentPane().setForeground(Color.WHITE);
 		frmAgregarCliente.setTitle("Agregar Admin Ventas");
@@ -74,7 +74,7 @@ public class AGREGARadminventas {
 		frmAgregarCliente.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add-user.png"));
+        lblNewLabel_1.setIcon(new ImageIcon(AGREGARadminventas.class.getResource("/img/AGREGARuser.png")));
         lblNewLabel_1.setBounds(159, 27, 71, 77);
         frmAgregarCliente.getContentPane().add(lblNewLabel_1);
 		

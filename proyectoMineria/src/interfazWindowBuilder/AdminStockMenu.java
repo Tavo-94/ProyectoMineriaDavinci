@@ -58,7 +58,7 @@ public class AdminStockMenu {
      */
     private void initialize() {
         frmAdminstockMenu = new JFrame();
-        frmAdminstockMenu.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+        frmAdminstockMenu.setIconImage(Toolkit.getDefaultToolkit().getImage(AdminStockMenu.class.getResource("/img/icon.png")));
         frmAdminstockMenu.setResizable(false);
         frmAdminstockMenu.setTitle("ADMINSTOCK MENU");
         frmAdminstockMenu.getContentPane().setBackground(Color.WHITE);
@@ -163,12 +163,12 @@ public class AdminStockMenu {
         frmAdminstockMenu.getContentPane().add(panel);
         
         JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\checklist (3).png"));
+        lblNewLabel_1.setIcon(new ImageIcon(AdminStockMenu.class.getResource("/img/BIGadminstockicon.png")));
         lblNewLabel_1.setBounds(132, 150, 128, 133);
         frmAdminstockMenu.getContentPane().add(lblNewLabel_1);
         
         JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\adsdsa.png"));
+        lblNewLabel.setIcon(new ImageIcon(AdminStockMenu.class.getResource("/img/adminstock.png")));
         lblNewLabel.setBounds(391, 54, 345, 519);
         frmAdminstockMenu.getContentPane().add(lblNewLabel);
         
