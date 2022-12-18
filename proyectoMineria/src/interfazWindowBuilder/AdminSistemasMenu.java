@@ -73,7 +73,7 @@ public class AdminSistemasMenu {
      */
     private void initialize() {
         frmAdminsistemaMenu = new JFrame();
-        frmAdminsistemaMenu.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+        frmAdminsistemaMenu.setIconImage(Toolkit.getDefaultToolkit().getImage(AdminSistemasMenu.class.getResource("/img/icon.png")));
         frmAdminsistemaMenu.setResizable(false);
         frmAdminsistemaMenu.setTitle("ADMINSISTEMAS MENU");
         frmAdminsistemaMenu.getContentPane().setBackground(Color.WHITE);
@@ -99,7 +99,7 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(lblNewLabel_1_1_2_1);
         
         JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\aaaa.png"));
+        lblNewLabel.setIcon(new ImageIcon(AdminSistemasMenu.class.getResource("/img/adminsistema.png")));
         lblNewLabel.setBounds(0, 358, 736, 215);
         frmAdminsistemaMenu.getContentPane().add(lblNewLabel);
         
@@ -296,12 +296,12 @@ public class AdminSistemasMenu {
         frmAdminsistemaMenu.getContentPane().add(btnEliminar_1);
         
         JLabel lblNewLabel_2 = new JLabel("");
-        lblNewLabel_2.setIcon(new ImageIcon("D:\\carol\\checklist (1).png"));
+        lblNewLabel_2.setIcon(new ImageIcon(AdminSistemasMenu.class.getResource("/img/adminstockicono.png")));
         lblNewLabel_2.setBounds(526, 93, 71, 76);
         frmAdminsistemaMenu.getContentPane().add(lblNewLabel_2);
         
         JLabel lblNewLabel_2_1 = new JLabel("");
-        lblNewLabel_2_1.setIcon(new ImageIcon("D:\\carol\\trade (1).png"));
+        lblNewLabel_2_1.setIcon(new ImageIcon(AdminSistemasMenu.class.getResource("/img/adminventasicono.png")));
         lblNewLabel_2_1.setBounds(146, 93, 71, 76);
         frmAdminsistemaMenu.getContentPane().add(lblNewLabel_2_1);
         

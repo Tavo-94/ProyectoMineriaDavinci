@@ -68,7 +68,7 @@ public class AGREGARadminstock {
 	 */
 	private void initialize() {
 		frmAgregarAdminStock = new JFrame();
-		frmAgregarAdminStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmAgregarAdminStock.setIconImage(Toolkit.getDefaultToolkit().getImage(AGREGARadminstock.class.getResource("/img/icon.png")));
 		frmAgregarAdminStock.getContentPane().setBackground(Color.WHITE);
 		frmAgregarAdminStock.getContentPane().setForeground(Color.WHITE);
 		frmAgregarAdminStock.setTitle("Agregar Admin Stock");
@@ -78,7 +78,7 @@ public class AGREGARadminstock {
 		frmAgregarAdminStock.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add-user.png"));
+        lblNewLabel_1.setIcon(new ImageIcon(AGREGARadminstock.class.getResource("/img/AGREGARuser.png")));
         lblNewLabel_1.setBounds(159, 27, 71, 77);
         frmAgregarAdminStock.getContentPane().add(lblNewLabel_1);
 		

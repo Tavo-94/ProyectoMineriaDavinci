@@ -66,7 +66,7 @@ public class AdminVentasMenu {
      */
     private void initialize() {
         frmAdminventasMenu = new JFrame();
-        frmAdminventasMenu.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+        frmAdminventasMenu.setIconImage(Toolkit.getDefaultToolkit().getImage(AdminVentasMenu.class.getResource("/img/icon.png")));
         frmAdminventasMenu.setResizable(false);
         frmAdminventasMenu.setTitle("ADMINVENTAS MENU");
         frmAdminventasMenu.getContentPane().setBackground(Color.WHITE);
@@ -92,7 +92,7 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(lblNewLabel_1_1_2_1);
         
         JLabel lblNewLabel = new JLabel("New label");
-        lblNewLabel.setIcon(new ImageIcon("D:\\carol\\AAAAAAA.png"));
+        lblNewLabel.setIcon(new ImageIcon(AdminVentasMenu.class.getResource("/img/adminventas.png")));
         lblNewLabel.setBounds(0, 358, 736, 215);
         frmAdminventasMenu.getContentPane().add(lblNewLabel);
         
@@ -204,7 +204,7 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(panel);
         
         JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add-user.png"));
+        lblNewLabel_1.setIcon(new ImageIcon(AdminVentasMenu.class.getResource("/img/AGREGARuser.png")));
         lblNewLabel_1.setBounds(91, 101, 71, 77);
         frmAdminventasMenu.getContentPane().add(lblNewLabel_1);
         
@@ -268,7 +268,7 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(separator_3_2_1);
         
         JLabel lblNewLabel_1_2 = new JLabel("");
-        lblNewLabel_1_2.setIcon(new ImageIcon("D:\\carol\\shopping-bag.png"));
+        lblNewLabel_1_2.setIcon(new ImageIcon(AdminVentasMenu.class.getResource("/img/ventaicono.png")));
         lblNewLabel_1_2.setBounds(342, 103, 64, 77);
         frmAdminventasMenu.getContentPane().add(lblNewLabel_1_2);
         
@@ -295,7 +295,7 @@ public class AdminVentasMenu {
         frmAdminventasMenu.getContentPane().add(btnRealizar);
         
         JLabel lblNewLabel_1_2_1 = new JLabel("");
-        lblNewLabel_1_2_1.setIcon(new ImageIcon("D:\\carol\\conversation.png"));
+        lblNewLabel_1_2_1.setIcon(new ImageIcon(AdminVentasMenu.class.getResource("/img/consultaicono.png")));
         lblNewLabel_1_2_1.setBounds(587, 103, 64, 77);
         frmAdminventasMenu.getContentPane().add(lblNewLabel_1_2_1);
         
