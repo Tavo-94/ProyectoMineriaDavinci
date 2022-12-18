@@ -47,7 +47,7 @@ public class AdminSistema extends Usuario {
         System.out.println("ingresar clave");
         do {
             clave = inputDelUsuario.next();
-        } while ((v.validacionContrasenia(clave)!=true));
+        } while ((v.validarPassword(clave)!=true));
 
         this.getMineria().loguearse(nombreUsuario, clave);
 
@@ -90,12 +90,12 @@ public class AdminSistema extends Usuario {
         System.out.println("ingresar clave actual");
         do {
             clave = inputDelUsuario.next();
-        } while ((v.validacionContrasenia(clave)!=true));
+        } while ((v.validarPassword(clave)!=true));
 
         System.out.println("ingresar clave nueva");
         do {
             claveNueva = inputDelUsuario.next();
-        } while ((v.validacionContrasenia(claveNueva)!=true));
+        } while ((v.validarPassword(claveNueva)!=true));
 
         if (this.validarLogIn(nombreUsuario, clave)) {
             this.getMineria().cambiarClave(nombreUsuario, claveNueva);
@@ -122,11 +122,11 @@ public class AdminSistema extends Usuario {
 		
 		do {
 			clave = JOptionPane.showInputDialog("Ingrese clave");
-		} while ((v.validacionContrasenia(clave)!=true));
+		} while ((v.validarPassword(clave)!=true));
 		
 		do {
 			cargo = JOptionPane.showInputDialog("Ingrese Nombre de cargo (ventas/stock/sistema)");
-		} while ((Validaciones.validarTexto(cargo)!=true || v.validacionTextoVacio(cargo)!=true || v.validarCargo(cargo)!=true));
+		} while ((Validaciones.validarTexto(cargo)!=true || v.validacionTextoVacio(cargo)!=true));
 
         do {
             Object[] opciones = { true, false };
