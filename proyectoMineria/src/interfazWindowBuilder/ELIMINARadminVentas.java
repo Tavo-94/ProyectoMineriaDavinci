@@ -111,17 +111,7 @@ public class ELIMINARadminVentas {
 	
 	JButton btnAgregar = new JButton("ACEPTAR");
 	btnAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-	btnAgregar.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			
-			AdminVentasDao ventasDAO = new AdminVentasDao();
-			
-			String idDelAdminAEliminar = textField_3.getText();
-			
-			ventasDAO.eliminarAdminVentasPorId(idDelAdminAEliminar);
-			
-		}
-	});
+	
 	btnAgregar.setBounds(98, 362, 87, 34);
 	frmEliminarAdminVentas.getContentPane().add(btnAgregar);
 	
@@ -172,7 +162,7 @@ public class ELIMINARadminVentas {
 				
 				AdminVentas adminPorId = ventasDAO.obtenerTodosLosDatosPorId(seleccionado);
 				
-				textField_3.setText(adminPorId.getNombreUsuario());
+				//textField_3.setText(adminPorId.getNombreUsuario());
 				
 				textField.setText(adminPorId.getClave());
 				
@@ -182,6 +172,18 @@ public class ELIMINARadminVentas {
 				
 				
 			}
+		}
+	});
+	
+	btnAgregar.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+			AdminVentasDao ventasDAO = new AdminVentasDao();
+			
+			String idDelAdminAEliminar = (String) comboBoxOpcionesDeId.getSelectedItem();
+			
+			ventasDAO.eliminarAdminVentasPorId(idDelAdminAEliminar);
+			
 		}
 	});
 	comboBoxOpcionesDeId.setBounds(126, 163, 218, 21);

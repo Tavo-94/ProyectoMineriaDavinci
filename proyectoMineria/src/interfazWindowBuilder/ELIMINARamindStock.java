@@ -115,17 +115,7 @@ public class ELIMINARamindStock {
 		
 		JButton btnAgregar = new JButton("ACEPTAR");
 		btnAgregar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				AdminStockDAO stockDAO = new AdminStockDAO();
-				
-				String idDelAdminAEliminar = textField_3.getText();
-				
-				stockDAO.eliminarAdminStockPorId(idDelAdminAEliminar);
-				
-			}
-		});
+		
 		btnAgregar.setBounds(101, 355, 87, 34);
 		frmEliminarAdminStock.getContentPane().add(btnAgregar);
 		
@@ -186,7 +176,6 @@ public class ELIMINARamindStock {
 					
 					AdminStock adminPorId = stockDAO.obtenerTodosLosDatosPorId(seleccionado);
 					
-					textField_3.setText(adminPorId.getNombreUsuario());
 					
 					textField.setText(adminPorId.getClave());
 					
@@ -196,6 +185,18 @@ public class ELIMINARamindStock {
 					
 					
 				}
+			}
+		});
+		
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				AdminStockDAO stockDAO = new AdminStockDAO();
+				
+				String idDelAdminAEliminar = (String) comboBoxOpcionesDeId.getSelectedItem();
+				
+				stockDAO.eliminarAdminStockPorId(idDelAdminAEliminar);
+				
 			}
 		});
 		frmEliminarAdminStock.getContentPane().add(comboBoxOpcionesDeId);
