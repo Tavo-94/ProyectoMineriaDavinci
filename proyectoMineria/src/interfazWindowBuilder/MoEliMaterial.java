@@ -58,7 +58,7 @@ public class MoEliMaterial {
 
 		AdminStockDAO material = new AdminStockDAO();
 
-		MoEliMaterial.materialDeLaDB = material.obtenerDatosPorId(row);
+		MoEliMaterial.materialDeLaDB = material.obtenerTodosLosDatosPorId(row);
 		
 		System.out.println(materialDeLaDB);
 		initialize();
@@ -203,5 +203,10 @@ public class MoEliMaterial {
 
 	public static void setFila(Integer fila) {
 		MoEliMaterial.fila = fila;
+	}
+
+	public void modifyStock() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -101,7 +101,7 @@ public class CONSULTARstock2 {
 		
 		JComboBox comboBoxTipo = new JComboBox();
 		comboBoxTipo.setFont(new Font("Dialog", Font.PLAIN, 13));
-		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"Oro", "Plata", "Cobre", "*"}));
+		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"Oro", "Plata", "Cobre"}));
 		comboBoxTipo.setBounds(180, 111, 125, 30);
 		frmConsultarStock.getContentPane().add(comboBoxTipo);
 		

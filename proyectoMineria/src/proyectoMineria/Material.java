@@ -41,12 +41,7 @@ public class Material {
 
 
 
-        public Material() {
-			// TODO Auto-generated constructor stub
-		}
-
-
-		public Material(String tipoDeMaterial, Double pureza2, Double cantMaterial) {
+        public Material(String tipo, String pureza, Double cantidad, LocalDate fecha_de_ingreso) {
 			// TODO Auto-generated constructor stub
 		}
 
@@ -56,13 +51,6 @@ public class Material {
 			// TODO Auto-generated constructor stub
 		}
 
-
-		public Material(int int1, String string, String string2, double double1) {
-			// TODO Auto-generated constructor stub
-		}
-
-
-
 		public Material(String tipo, String pureza, Double cantidad) {
 			super();
 			this.tipo = tipo;
@@ -70,6 +58,21 @@ public class Material {
 			this.cantidad = cantidad;
 			this.seteoDePrecio(tipo);
 			this.seteoDeCoeficientes(pureza);
+		}
+
+
+		public Material(Integer idmaterial2, String tipo2, String pureza2, Double cantidad2, LocalDate fecha) {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Material(int int1, String string, String string2, double double1) {
+			// TODO Auto-generated constructor stub
+		}
+
+
+		public Material(String tipo2, Double pureza2, Double cantidad2) {
+			// TODO Auto-generated constructor stub
 		}
 
 

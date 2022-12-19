@@ -182,7 +182,7 @@ public class ELIMINARmaterial {
 					
 					AdminStockDAO stockDAO = new AdminStockDAO();
 					
-					AdminStock adminPorId = stockDAO.eliminarMaterial(seleccionado);
+					AdminStock adminPorId = stockDAO.eliminarMaterial(seleccionado).toString();
 					
 					textField_1.setText(adminPorId.getNombreUsuario());
 					
@@ -194,12 +194,10 @@ public class ELIMINARmaterial {
 					
 					
 				}
-			}
+			};
 		};
 		frmEliminarMaterial.getContentPane().add(comboBoxOpcionesDeId);
 		
 		}
-
-	}
-
+}
 

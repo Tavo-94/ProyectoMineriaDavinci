@@ -1,14 +1,24 @@
+package interfazWindowBuilder;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.UIManager;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 public class AdminStockMenu {
@@ -120,27 +130,28 @@ public class AdminStockMenu {
         mnNewMenu_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         menuBar.add(mnNewMenu_1);
         
-        JMenuItem mntmNewMenuItem_6 = new JMenuItem("Agregar Stock");
-        mntmNewMenuItem_6.addActionListener(new ActionListener() {
+        JMenuItem mntmAgregarStock = new JMenuItem("Agregar Stock");
+        mntmAgregarStock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		AGREGARstock agregarStock = new AGREGARstock();
         		agregarStock.addStock();
         	}
         });
-        mnNewMenu_1.add(mntmNewMenuItem_6);
+        mnNewMenu_1.add(mntmAgregarStock);
         
-        JMenuItem mntmNewMenuItem_7 = new JMenuItem("Modificar Stock");
-        mntmNewMenuItem_7.addActionListener(new ActionListener() {
+        JMenuItem mntmConsultarStock = new JMenuItem("Consultar Stock");
+        mntmConsultarStock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		MODIFICARstock modifyStock = new MODIFICARstock();
+        		MoEliMaterial modifyStock = new MoEliMaterial(null);
         		modifyStock.modifyStock();
         		frmAdminstockMenu.dispose();
         	}
         });
-        mnNewMenu_1.add(mntmNewMenuItem_7);
+        mnNewMenu_1.add(mntmConsultarStock);
         
-        JMenuItem mntmNewMenuItem_9 = new JMenuItem("Eliminar Stock");
-        mnNewMenu_1.add(mntmNewMenuItem_9);
+        JMenuItem mntmBuscar = new JMenuItem("Buscar Material");
+        mnNewMenu_1.add(mntmBuscar);
+        
         
         JLabel lblNewLabel_1_1_2 = new JLabel("PANEL ADMINSTOCK");
         lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -172,8 +183,8 @@ public class AdminStockMenu {
         lblNewLabel_1_1_1.setBounds(80, 294, 207, 23);
         frmAdminstockMenu.getContentPane().add(lblNewLabel_1_1_1);
         
-        JButton btnNewButton_1 = new JButton("AGREGAR NUEVO STOCK");
-        btnNewButton_1.addActionListener(new ActionListener() {
+        JButton btnAgregarStock = new JButton("AGREGAR NUEVO STOCK");
+        btnAgregarStock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		AGREGARstock agregarStock = new AGREGARstock();
         		agregarStock.addStock();
@@ -182,22 +193,22 @@ public class AdminStockMenu {
        
         	}
         });
-        btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnNewButton_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-        btnNewButton_1.setBounds(46, 340, 291, 23);
-        frmAdminstockMenu.getContentPane().add(btnNewButton_1);
+        btnAgregarStock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnAgregarStock.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnAgregarStock.setBounds(46, 340, 291, 23);
+        frmAdminstockMenu.getContentPane().add(btnAgregarStock);
         
-        JButton btnModificar_1 = new JButton("CONSULTAR STOCK");
-        btnModificar_1.addActionListener(new ActionListener() {
+        JButton btnConsultar = new JButton("CONSULTAR STOCK");
+        btnConsultar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		MoEliMaterial.modifyMaterial(null);
         		
         	}
         });
-        btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnModificar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-        btnModificar_1.setBounds(46, 376, 291, 23);
-        frmAdminstockMenu.getContentPane().add(btnModificar_1);
+        btnConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnConsultar.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
+        btnConsultar.setBounds(46, 376, 291, 23);
+        frmAdminstockMenu.getContentPane().add(btnConsultar);
         
         JButton btnBuscarMaterial = new JButton("BUSCAR MATERIAL");
         btnBuscarMaterial.setFont(new Font("Dialog", Font.PLAIN, 13));

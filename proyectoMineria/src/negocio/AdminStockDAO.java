@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import proyectoMineria.AdminSistema;
 import proyectoMineria.AdminStock;
 import proyectoMineria.AdminVentas;
+import proyectoMineria.Cliente;
 import proyectoMineria.Material;
 import proyectoMineria.Mineria;
 import proyectoMineria.Validaciones;
@@ -152,7 +153,7 @@ public class AdminStockDAO {
 		return null;
 	}
 
-	public void mostrarStock() {
+	/*public void mostrarStock() {
 		try {
 
 			// defino la query
@@ -219,7 +220,7 @@ public class AdminStockDAO {
 
 		}
 
-	}
+	}*/
 
 	public void mostrarStockTipo(String tipo) {
 		try {
@@ -498,21 +499,10 @@ public class AdminStockDAO {
 			String query = "INSERT INTO material(tipo, pureza, cantidad, deposito_iddeposito) VALUES(?,?,?,1)";
 			conexion = getConnection();
 			ptmt = conexion.prepareStatement(query);
-			// m.setTipo(JOptionPane.showInputDialog("ingrese tipo de material"));
 			ptmt.setString(1, material.getTipo());
-			// m.setPureza(JOptionPane.showInputDialog("ingrese pureza"));
 			ptmt.setString(2, material.getPureza());
-			// m.setCantidad(Double.parseDouble(JOptionPane.showInputDialog("ingrese
-			// cantidad")));
 			ptmt.setDouble(3, material.getCantidad());
 			ptmt.executeUpdate();
-
-			// JOptionPane.showMessageDialog(null,"Se agrego con exito");
-
-			String query2 = "SELECT * FROM material ORDER BY fecha_de_ingreso DESC";
-			conexion = getConnection();
-			ptmt = conexion.prepareStatement(query2);
-			resultSet = ptmt.executeQuery(query2);
 
 			DefaultTableModel modeloDeTabla = new DefaultTableModel();
 
@@ -568,7 +558,7 @@ public class AdminStockDAO {
 
 	}
 
-	public void buscarMaterial(String tipo, String pureza) {
+	/*public void buscarMaterial(String tipo, String pureza) {
 
 		try {
 
@@ -635,7 +625,7 @@ public class AdminStockDAO {
 
 		}
 
-	}
+	}*/
 
 	public Boolean validarLogInStock(AdminStock adminAValidar) {
 
@@ -695,26 +685,7 @@ public class AdminStockDAO {
 		return null;
 	}
 
-	/*
-	 * while (resultSet.next()) { int ID = resultSet.getInt(1); String Material =
-	 * resultSet.getString(2); double Pureza = resultSet.getDouble(3); double
-	 * Cantidad = resultSet.getDouble(4); Date Fecha_Ingreso = resultSet.getDate(5);
-	 * int ID_Deposito = resultSet.getInt(6);
-	 * 
-	 * 
-	 * System.out.println("ID: " + ID + " | Material: " + Material + " | Pureza: " +
-	 * Pureza + " | Cantidad: " + Cantidad + " | ID_Deposito: " + ID_Deposito +
-	 * " | Fecha_Ingreso: " + Fecha_Ingreso);
-	 * 
-	 * }
-	 * 
-	 * } catch (SQLException e) { e.printStackTrace(); } finally { try { if (ptmt !=
-	 * null) ptmt.close(); if (conexion != null) conexion.close(); if (resultSet !=
-	 * null) { resultSet.close(); } } catch (SQLException e) { e.printStackTrace();
-	 * } catch (Exception e) { e.printStackTrace(); } } }
-	 */
-
-	private Object[] listaDeMateriales() {
+/*	private Object[] listaDeMateriales() {
 		try {
 
 			String query = "SELECT idmaterial FROM material;";
@@ -745,21 +716,15 @@ public class AdminStockDAO {
 			}
 		}
 		return null;
-	}
+	}*/
 
-	public void eliminarMaterial() {
+	public void eliminarMaterial(Integer id) {
 		try {
 			conexion = getConnection();
 
 			String query = "DELETE FROM material WHERE idmaterial = ?";
-
-			Object[] opciones = this.listaDeMateriales();
-
-			String materialAEliminar = (String) JOptionPane.showInputDialog(null, "Seleccionar material a eliminar",
-					"Eliminar", JOptionPane.DEFAULT_OPTION, null, opciones, opciones[0]);
 			ptmt = conexion.prepareStatement(query);
-			ptmt.setString(1, materialAEliminar);
-
+			ptmt.setInt(1, id);
 			ptmt.executeUpdate();
 			JOptionPane.showMessageDialog(null, "Eliminado con exito");
 
@@ -964,6 +929,91 @@ public class AdminStockDAO {
         }
     	
 		
+	}
+
+	
+
+	public void modificarMaterial(Material materialDeLaDB) {
+		try{
+			conexion = getConnection();
+
+        String query = "UPDATE material SET tipo = ?, pureza= ?, cantidad= ?, fecha_de_ingreso= ? WHERE idmaterial = ?";
+
+
+       
+        ptmt = conexion.prepareStatement(query);
+        ptmt.setString(1, materialDeLaDB.getTipo());
+        ptmt.setString(2, materialDeLaDB.getPureza());
+        ptmt.setDouble(3, materialDeLaDB.getCantidad());
+ //       ptmt.setDate(4, materialDeLaDB.getFecha_ingreso().format(null));
+        
+        ptmt.executeUpdate();
+        System.out.println("Actualizado con exito");
+        
+    } catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    } finally {
+        try {
+            if (ptmt != null) {
+                ptmt.close();
+            }
+            if (conexion != null) {
+                conexion.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	}
+
+	public Material obtenerTodosLosDatosPorId(Integer id) {
+		try {
+
+            String queryString = "SELECT idmaterial, tipo, pureza, cantidad, fecha_de_ingreso FROM material WHERE idmaterial = ?";
+
+            conexion = getConnection();
+            ptmt = conexion.prepareStatement(queryString);
+            ptmt.setInt(1, id);
+            
+            resultSet = ptmt.executeQuery();
+            
+            if (resultSet.next()) {
+
+            	Integer idmaterial = resultSet.getInt(1);
+            	String tipo = resultSet.getString(2);
+            	String pureza = resultSet.getString(3);
+            	Double cantidad = resultSet.getDouble(4);
+            	LocalDate fecha = resultSet.getDate(5).toLocalDate();           	
+            	Material materialPorId = new Material (idmaterial, tipo, pureza, cantidad, fecha);
+            	
+            	return materialPorId;
+			}
+            
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // siempre cierro el Statement y la conexion al finalizar el metodo
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+		return null;
+
 	}
 
 }
