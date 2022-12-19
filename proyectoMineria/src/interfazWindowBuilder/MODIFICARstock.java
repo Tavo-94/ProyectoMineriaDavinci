@@ -52,7 +52,7 @@ public class MODIFICARstock {
 	 */
 	private void initialize() {
 		frmAgregarCliente = new JFrame();
-		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage(MODIFICARstock.class.getResource("/img/icon.png")));
 		frmAgregarCliente.getContentPane().setBackground(Color.WHITE);
 		frmAgregarCliente.getContentPane().setForeground(Color.WHITE);
 		frmAgregarCliente.setTitle("Modificar Material");
@@ -62,7 +62,7 @@ public class MODIFICARstock {
 		frmAgregarCliente.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\edit (1).png"));
+        lblNewLabel_1.setIcon(new ImageIcon(MODIFICARstock.class.getResource("/img/MODIFICAR.png")));
         lblNewLabel_1.setBounds(164, 27, 71, 77);
         frmAgregarCliente.getContentPane().add(lblNewLabel_1);
 		
@@ -143,5 +143,9 @@ public class MODIFICARstock {
 		Choice choice = new Choice();
 		choice.setBounds(123, 170, 95, 20);
 		frmAgregarCliente.getContentPane().add(choice);
+		
+		JButton btnConsultar = new JButton("CONSULTAR");
+		btnConsultar.setBounds(233, 166, 108, 27);
+		frmAgregarCliente.getContentPane().add(btnConsultar);
 	}
 }

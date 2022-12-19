@@ -58,7 +58,7 @@ public class AGREGARstock {
 	 */
 	private void initialize() {
 		frmAgregarStock = new JFrame();
-		frmAgregarStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmAgregarStock.setIconImage(Toolkit.getDefaultToolkit().getImage(AGREGARstock.class.getResource("/img/icon.png")));
 		frmAgregarStock.getContentPane().setBackground(Color.WHITE);
 		frmAgregarStock.getContentPane().setForeground(Color.WHITE);
 		frmAgregarStock.setTitle("Agregar Material");
@@ -78,7 +78,7 @@ public class AGREGARstock {
 		frmAgregarStock.getContentPane().add(separator);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add.png"));
+        lblNewLabel_1.setIcon(new ImageIcon(AGREGARstock.class.getResource("/img/add.png")));
         lblNewLabel_1.setBounds(164, 27, 71, 77);
         frmAgregarStock.getContentPane().add(lblNewLabel_1);
 		

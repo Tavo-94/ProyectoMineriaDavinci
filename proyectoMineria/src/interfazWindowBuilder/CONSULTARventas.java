@@ -53,7 +53,7 @@ public class CONSULTARventas {
 	 */
 	private void initialize() {
 		frmConsultarStock = new JFrame();
-		frmConsultarStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmConsultarStock.setIconImage(Toolkit.getDefaultToolkit().getImage(CONSULTARventas.class.getResource("/img/icon.png")));
 		frmConsultarStock.setBackground(Color.WHITE);
 		frmConsultarStock.setTitle("CONSULTAR VENTA");
 		frmConsultarStock.setResizable(false);

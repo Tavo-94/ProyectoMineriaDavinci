@@ -68,36 +68,36 @@ public class AGREGARcliente {
 	 */
 	private void initialize() {
 		frmAgregarCliente = new JFrame();
-		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmAgregarCliente.setIconImage(Toolkit.getDefaultToolkit().getImage(AGREGARcliente.class.getResource("/img/icon.png")));
 		frmAgregarCliente.getContentPane().setBackground(Color.WHITE);
 		frmAgregarCliente.getContentPane().setForeground(Color.WHITE);
 		frmAgregarCliente.setTitle("Agregar Cliente");
 		frmAgregarCliente.setResizable(false);
-		frmAgregarCliente.setBounds(100, 100, 811, 439);
+		frmAgregarCliente.setBounds(100, 100, 422, 583);
 		frmAgregarCliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAgregarCliente.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-        lblNewLabel_1.setIcon(new ImageIcon("D:\\carol\\add-user.png"));
-        lblNewLabel_1.setBounds(155, 25, 71, 77);
+        lblNewLabel_1.setIcon(new ImageIcon(AGREGARcliente.class.getResource("/img/AGREGARuser.png")));
+        lblNewLabel_1.setBounds(187, 29, 71, 77);
         frmAgregarCliente.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblNewLabel.setBounds(31, 156, 78, 34);
+		lblNewLabel.setBounds(55, 157, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblNewLabel);
 		
 		JLabel lblApellido = new JLabel("Apellido:");
 		lblApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblApellido.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblApellido.setBounds(32, 206, 78, 34);
+		lblApellido.setBounds(56, 207, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblApellido);
 		
 		JLabel lblTelfono = new JLabel("Teléfono:");
 		lblTelfono.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelfono.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono.setBounds(32, 251, 78, 34);
+		lblTelfono.setBounds(56, 252, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblTelfono);
 		
 		JButton btnCancel = new JButton("CANCEL");
@@ -107,7 +107,7 @@ public class AGREGARcliente {
 			}
 		});
 		btnCancel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnCancel.setBounds(398, 343, 87, 34);
+		btnCancel.setBounds(240, 495, 87, 34);
 		frmAgregarCliente.getContentPane().add(btnCancel);
 		
 		JButton btnAgregar = new JButton("AGREGAR");
@@ -150,14 +150,14 @@ public class AGREGARcliente {
 				
 			}
 		});
-		btnAgregar.setBounds(276, 343, 87, 34);
+		btnAgregar.setBounds(118, 495, 87, 34);
 		frmAgregarCliente.getContentPane().add(btnAgregar);
 		
 		txtIngreseNombre = new JTextField();
 		txtIngreseNombre.setToolTipText("Ingrese Nombre");
 		txtIngreseNombre.setSelectedTextColor(Color.WHITE);
 		txtIngreseNombre.setName("");
-		txtIngreseNombre.setBounds(119, 161, 218, 27);
+		txtIngreseNombre.setBounds(143, 162, 218, 27);
 		frmAgregarCliente.getContentPane().add(txtIngreseNombre);
 		txtIngreseNombre.setColumns(10);
 		
@@ -166,34 +166,29 @@ public class AGREGARcliente {
 		textIngreseApellido = new JTextField();
 		textIngreseApellido.setToolTipText("Ingrese Apellido");
 		textIngreseApellido.setColumns(10);
-		textIngreseApellido.setBounds(119, 209, 218, 27);
+		textIngreseApellido.setBounds(143, 210, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseApellido);
 		
 		textIngreseTelefono = new JTextField();
 		textIngreseTelefono.setToolTipText("Ingrese Teléfono");
 		textIngreseTelefono.setColumns(10);
-		textIngreseTelefono.setBounds(119, 254, 218, 27);
+		textIngreseTelefono.setBounds(143, 255, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseTelefono);
 		
 		JLabel lblAgregarCliente = new JLabel("AGREGAR CLIENTE");
 		lblAgregarCliente.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAgregarCliente.setFont(new Font("JetBrains Mono SemiBold", Font.PLAIN, 15));
-		lblAgregarCliente.setBounds(78, 98, 225, 34);
+		lblAgregarCliente.setBounds(110, 102, 225, 34);
 		frmAgregarCliente.getContentPane().add(lblAgregarCliente);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(95, 137, 192, 2);
+		separator.setBounds(127, 141, 192, 2);
 		frmAgregarCliente.getContentPane().add(separator);
-		
-		JSeparator separator_3_2 = new JSeparator();
-		separator_3_2.setOrientation(SwingConstants.VERTICAL);
-		separator_3_2.setBounds(380, 25, 2, 298);
-		frmAgregarCliente.getContentPane().add(separator_3_2);
 		
 		JLabel lblCalle = new JLabel("Calle:");
 		lblCalle.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCalle.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblCalle.setBounds(454, 43, 78, 34);
+		lblCalle.setBounds(55, 297, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblCalle);
 		
 		textIngreseCalle = new JTextField();
@@ -201,43 +196,43 @@ public class AGREGARcliente {
 		textIngreseCalle.setSelectedTextColor(Color.WHITE);
 		textIngreseCalle.setName("");
 		textIngreseCalle.setColumns(10);
-		textIngreseCalle.setBounds(542, 48, 218, 27);
+		textIngreseCalle.setBounds(143, 302, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseCalle);
 		
 		JLabel lblNmero = new JLabel("Altura:");
 		lblNmero.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNmero.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblNmero.setBounds(455, 93, 78, 34);
+		lblNmero.setBounds(56, 347, 78, 34);
 		frmAgregarCliente.getContentPane().add(lblNmero);
 		
 		textIngreseNumero = new JTextField();
 		textIngreseNumero.setToolTipText("Ingrese Numero");
 		textIngreseNumero.setColumns(10);
-		textIngreseNumero.setBounds(542, 96, 218, 27);
+		textIngreseNumero.setBounds(143, 350, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseNumero);
 		
 		JLabel lblTelfono_1_1 = new JLabel("Código Postal:");
 		lblTelfono_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelfono_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono_1_1.setBounds(380, 188, 152, 34);
+		lblTelfono_1_1.setBounds(-19, 392, 152, 34);
 		frmAgregarCliente.getContentPane().add(lblTelfono_1_1);
 		
 		textIngreseCP = new JTextField();
 		textIngreseCP.setToolTipText("Ingrese CP");
 		textIngreseCP.setColumns(10);
-		textIngreseCP.setBounds(541, 191, 218, 27);
+		textIngreseCP.setBounds(142, 395, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseCP);
 		
 		textIngreseLocalidad = new JTextField();
 		textIngreseLocalidad.setToolTipText("Ingrese Localidad");
 		textIngreseLocalidad.setColumns(10);
-		textIngreseLocalidad.setBounds(542, 281, 218, 27);
+		textIngreseLocalidad.setBounds(143, 440, 218, 27);
 		frmAgregarCliente.getContentPane().add(textIngreseLocalidad);
 		
 		JLabel lblTelfono_1_1_1_1 = new JLabel("Localidad:");
 		lblTelfono_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelfono_1_1_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono_1_1_1_1.setBounds(425, 278, 108, 34);
+		lblTelfono_1_1_1_1.setBounds(26, 437, 108, 34);
 		frmAgregarCliente.getContentPane().add(lblTelfono_1_1_1_1);
 	}
 }

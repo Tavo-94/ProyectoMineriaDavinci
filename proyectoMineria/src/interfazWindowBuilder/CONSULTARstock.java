@@ -69,7 +69,7 @@ public class CONSULTARstock {
 	 */
 	private void initialize() {
 		frmConsultarStock = new JFrame();
-		frmConsultarStock.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmConsultarStock.setIconImage(Toolkit.getDefaultToolkit().getImage(CONSULTARstock.class.getResource("/img/icon.png")));
 		frmConsultarStock.setBackground(Color.WHITE);
 		frmConsultarStock.setTitle("CONSULTAR STOCK");
 		frmConsultarStock.setResizable(false);

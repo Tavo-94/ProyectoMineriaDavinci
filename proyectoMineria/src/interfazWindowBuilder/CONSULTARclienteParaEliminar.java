@@ -54,9 +54,9 @@ public class CONSULTARclienteParaEliminar {
 	 */
 	private void initialize() {
 		frmConsultarClientes = new JFrame();
-		frmConsultarClientes.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\carol\\casco-de-seguridad.png"));
+		frmConsultarClientes.setIconImage(Toolkit.getDefaultToolkit().getImage(CONSULTARclienteParaEliminar.class.getResource("/img/icon.png")));
 		frmConsultarClientes.setBackground(Color.WHITE);
-		frmConsultarClientes.setTitle("CONSULTAR STOCK");
+		frmConsultarClientes.setTitle("CONSULTAR CLIENTE ELIMINAR");
 		frmConsultarClientes.setResizable(false);
 		frmConsultarClientes.getContentPane().setBackground(Color.WHITE);
 		frmConsultarClientes.getContentPane().setLayout(null);
@@ -99,7 +99,7 @@ public class CONSULTARclienteParaEliminar {
 	          }
 	       });
 		
-		JLabel lblNewLabel_1_1_2 = new JLabel("CONSULTAR STOCK");
+		JLabel lblNewLabel_1_1_2 = new JLabel("CONSULTAR CLIENTE PARA ELIMINAR");
 		lblNewLabel_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_1_1_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1_1_2.setFont(new Font("JetBrains Mono NL SemiBold", Font.PLAIN, 15));
