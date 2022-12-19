@@ -163,4 +163,38 @@ public class TicketOperacionDAO {
         return null;
 
     }
+
+	public void eliminarPorIdCliente(Integer idCliente) {
+		// TODO Auto-generated method stub
+        try {
+            conexion = getConnection();
+
+            String query = "DELETE FROM pedido WHERE cliente_idcliente = ?";
+
+
+            ptmt = conexion.prepareStatement(query);
+            ptmt.setInt(1, idCliente);
+
+            ptmt.executeUpdate();
+            System.out.println("Eliminado con exito");
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ptmt != null) {
+                    ptmt.close();
+                }
+                if (conexion != null) {
+                    conexion.close();
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+	}
 }

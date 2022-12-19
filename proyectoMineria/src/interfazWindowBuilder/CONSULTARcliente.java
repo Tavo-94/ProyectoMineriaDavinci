@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -83,6 +84,8 @@ public class CONSULTARcliente {
 	                Integer id = (Integer)table.getValueAt(row, 0);
 	        		MODIFICARcliente modifyCliente = new MODIFICARcliente(id);
 	        		modifyCliente.modifyCliente(id);
+	        		
+	        		frmConsultarClientes.dispose();
 	                
 	             }
 	          }
@@ -128,7 +131,7 @@ public class CONSULTARcliente {
 		btnConsultar.setBounds(180, 349, 114, 41);
 		frmConsultarClientes.getContentPane().add(btnConsultar);
 		frmConsultarClientes.setBounds(100, 100, 639, 440);
-		frmConsultarClientes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmConsultarClientes.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	}

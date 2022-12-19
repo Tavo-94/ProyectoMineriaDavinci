@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -169,6 +170,10 @@ public class MODIFICARcliente {
 				direccionDelCliente.setCiudad(textField_7.getText());
 				
 				direccionDAO.hacerUnUpdatePorId(direccionDelCliente);
+				
+				JOptionPane.showMessageDialog(null, "Se modifico con exito!!!");
+				
+				frmAgregarCliente.dispose();
 
 			}
 		});

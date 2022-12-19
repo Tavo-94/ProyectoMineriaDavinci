@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 
 import negocio.ClienteDAO;
 import negocio.DireccionDAO;
+import negocio.TicketOperacionDAO;
 
 public class CONSULTARclienteParaEliminar {
 
@@ -81,12 +82,22 @@ public class CONSULTARclienteParaEliminar {
 	                Integer row = target.getSelectedRow(); // select a row
 	                	                
 	                Integer id = (Integer)table2.getValueAt(row, 0);
+	                
+	                JOptionPane.showMessageDialog(null, id);
 	                	        		
 	                ClienteDAO clienteDAO = new ClienteDAO();
 	                DireccionDAO direccionDAO = new DireccionDAO();
+	                TicketOperacionDAO ticketDao = new TicketOperacionDAO();
 	                
 	                direccionDAO.eliminarDireccion(id);
+	                ticketDao.eliminarPorIdCliente(id);
+
 	                clienteDAO.eliminarCliente(id);
+	                
+	                
+	                JOptionPane.showMessageDialog(null, "se elimino con exito!!!");
+	                
+	                frmConsultarClientes.dispose();
 	                
 	                
 	             }
@@ -133,7 +144,7 @@ public class CONSULTARclienteParaEliminar {
 		btnConsultar.setBounds(180, 349, 114, 41);
 		frmConsultarClientes.getContentPane().add(btnConsultar);
 		frmConsultarClientes.setBounds(100, 100, 639, 440);
-		frmConsultarClientes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmConsultarClientes.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 
