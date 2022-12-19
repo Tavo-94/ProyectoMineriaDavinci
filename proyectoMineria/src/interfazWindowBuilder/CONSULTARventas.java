@@ -20,6 +20,8 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
+import negocio.TicketOperacionDAO;
+
 public class CONSULTARventas {
 
 	private JFrame frmConsultarStock;
@@ -98,78 +100,18 @@ public class CONSULTARventas {
 		btnConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mineria","root","");
-					
-					java.sql.Statement st = con.createStatement();
-					
-					String sql= "SELECT cliente_con_direccion.idcliente, \r\n"
-							+ "	cliente_con_direccion.nombre,\r\n"
-							+ "	cliente_con_direccion.apellido,\r\n"
-							+ "    cliente_con_direccion.calle,\r\n"
-							+ "    cliente_con_direccion.numero,\r\n"
-							+ "    cliente_con_direccion.ciudad,\r\n"
-							+ "    material_pedido.tipo,\r\n"
-							+ "    material_pedido.cantidad,\r\n"
-							+ "    material_pedido.pureza,\r\n"
-							+ "    pedido.admin_ventas_nombre_usuario AS vendedor,\r\n"
-							+ "    pedido.fecha,\r\n"
-							+ "    pedido.total\r\n"
-							+ "FROM (\r\n"
-							+ "	SELECT * FROM cliente\r\n"
-							+ "    INNER JOIN direccion\r\n"
-							+ "    	ON cliente.idcliente = direccion.cliente_idcliente\r\n"
-							+ ")AS cliente_con_direccion\r\n"
-							+ "JOIN pedido\r\n"
-							+ "	on pedido.cliente_idcliente = cliente_con_direccion.idcliente\r\n"
-							+ "JOIN material_pedido\r\n"
-							+ "	ON pedido.material_pedido_idmaterial = material_pedido.idmaterial\r\n";
-						
-					ResultSet rs = st.executeQuery(sql);
-					java.sql.ResultSetMetaData rsmd = rs.getMetaData();
-					DefaultTableModel model = (DefaultTableModel) table.getModel();
-					
-					int cols=rsmd.getColumnCount();
-					String[] colName=new String[cols];
-					for(int i=0;i<cols;i++)
-						colName[i]=rsmd.getColumnName(i+1);
-					model.setColumnIdentifiers(colName);
-					
-					String id,nombre, apellido, calle, numero, pureza,cantidad, vendedor, fecha, total, ciudad, tipo;
-					
-					while(rs.next()) {
-						id=rs.getString(1);
-						nombre=rs.getString(2);
-						apellido=rs.getString(3);
-						calle=rs.getString(4);
-						numero=rs.getString(5);
-						ciudad=rs.getString(6);
-						tipo=rs.getString(7);
-						cantidad=rs.getString(8);
-						pureza=rs.getString(9);
-						vendedor=rs.getString(10);
-						fecha=rs.getString(11);
-						total=rs.getString(12);
-						String[] row= {id,nombre, apellido, calle, numero, pureza,cantidad, vendedor, fecha, total, ciudad, tipo};
-						model.addRow(row);
-						
-					}
-						
-					
-					
-						st.close();
-					con.close();				
-			} catch(Exception e1) {
-				System.out.println(e1.getMessage());
-			}
-		}
-		
+				
+				TicketOperacionDAO ticketDAO = new TicketOperacionDAO();
+				
+				table.setModel(ticketDAO.mostrarTodasLasOperaciones());
+				
 			
+		}
 		});
 		btnConsultar.setBounds(316, 453, 114, 41);
 		frmConsultarStock.getContentPane().add(btnConsultar);
 		frmConsultarStock.setBounds(100, 100, 913, 555);
-		frmConsultarStock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmConsultarStock.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 }
+

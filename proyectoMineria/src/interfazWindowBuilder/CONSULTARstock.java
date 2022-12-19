@@ -129,6 +129,6 @@ public class CONSULTARstock {
 		btnConsultar.setBounds(180, 349, 114, 41);
 		frmConsultarStock.getContentPane().add(btnConsultar);
 		frmConsultarStock.setBounds(100, 100, 639, 440);
-		frmConsultarStock.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmConsultarStock.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 }

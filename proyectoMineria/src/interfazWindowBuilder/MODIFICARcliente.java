@@ -246,17 +246,6 @@ public class MODIFICARcliente {
 		lblTelfono_1_1_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
 		lblTelfono_1_1_1_1.setBounds(4, 473, 108, 34);
 		frmAgregarCliente.getContentPane().add(lblTelfono_1_1_1_1);
-
-		JLabel lblId = new JLabel("ID:");
-		lblId.setHorizontalTextPosition(SwingConstants.RIGHT);
-		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblId.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblId.setBounds(33, 151, 78, 34);
-		frmAgregarCliente.getContentPane().add(lblId);
-
-		Choice choice = new Choice();
-		choice.setBounds(121, 160, 95, 20);
-		frmAgregarCliente.getContentPane().add(choice);
 		
 		// seteo los datos de la table en el formulario
 
@@ -267,15 +256,6 @@ public class MODIFICARcliente {
 		textField_3.setText(direccionDelCliente.getAltura());
 		textField_5.setText(direccionDelCliente.getCodigoPostal());
 		textField_7.setText(direccionDelCliente.getCiudad());
-		
-		JButton btnConsultar = new JButton("CONSULTAR");
-		btnConsultar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnConsultar.setBounds(231, 157, 108, 27);
-		frmAgregarCliente.getContentPane().add(btnConsultar);
 
 
 

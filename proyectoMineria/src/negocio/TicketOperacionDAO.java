@@ -71,7 +71,7 @@ public class TicketOperacionDAO {
     
     //muestro todas la ventas
 
-    public JTable mostrarTodasLasOperaciones() {
+    public DefaultTableModel mostrarTodasLasOperaciones() {
         try {
 
             // defino la query
@@ -136,7 +136,7 @@ public class TicketOperacionDAO {
             
             JOptionPane.showMessageDialog(null, new JScrollPane(tabla));
             
-            return tabla;
+            return modeloDeTabla;
 
             
         } catch (SQLException e) {

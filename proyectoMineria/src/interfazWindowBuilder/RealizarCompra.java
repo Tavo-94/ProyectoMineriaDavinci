@@ -41,10 +41,8 @@ public class RealizarCompra {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
-	private JTextField textField_11;
     private static AdminVentas adminVentasLogeado;
 
 
@@ -82,7 +80,7 @@ public class RealizarCompra {
 		frmRealizarCompra.getContentPane().setBackground(Color.WHITE);
 		frmRealizarCompra.setTitle("REALIZAR COMPRA");
 		frmRealizarCompra.setBounds(100, 100, 1197, 515);
-		frmRealizarCompra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmRealizarCompra.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmRealizarCompra.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("REALIZAR COMPRA");
@@ -109,17 +107,6 @@ public class RealizarCompra {
 		separator_3_2.setOrientation(SwingConstants.VERTICAL);
 		separator_3_2.setBounds(372, 11, 2, 519);
 		frmRealizarCompra.getContentPane().add(separator_3_2);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setHorizontalTextPosition(SwingConstants.RIGHT);
-		lblId.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblId.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblId.setBounds(21, 207, 78, 34);
-		frmRealizarCompra.getContentPane().add(lblId);
-		
-		Choice choice = new Choice();
-		choice.setBounds(109, 216, 95, 20);
-		frmRealizarCompra.getContentPane().add(choice);
 		
 		JLabel lblNewLabel = new JLabel("Tipo:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -163,17 +150,6 @@ public class RealizarCompra {
 		lblNewLabel_1.setIcon(new ImageIcon(RealizarCompra.class.getResource("/img/caja.png")));
 		lblNewLabel_1.setBounds(153, 74, 71, 77);
 		frmRealizarCompra.getContentPane().add(lblNewLabel_1);
-		
-		Choice choice_1 = new Choice();
-		choice_1.setBounds(491, 215, 95, 20);
-		frmRealizarCompra.getContentPane().add(choice_1);
-		
-		JLabel lblId_1 = new JLabel("ID:");
-		lblId_1.setHorizontalTextPosition(SwingConstants.RIGHT);
-		lblId_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblId_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblId_1.setBounds(403, 206, 78, 34);
-		frmRealizarCompra.getContentPane().add(lblId_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Nombre:");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -239,18 +215,6 @@ public class RealizarCompra {
 		textField_7.setBounds(912, 163, 218, 27);
 		frmRealizarCompra.getContentPane().add(textField_7);
 		
-		JLabel lblPisodepto = new JLabel("Piso/Depto:");
-		lblPisodepto.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPisodepto.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblPisodepto.setBounds(807, 205, 96, 34);
-		frmRealizarCompra.getContentPane().add(lblPisodepto);
-		
-		textField_8 = new JTextField();
-		textField_8.setToolTipText("Ingrese Teléfono");
-		textField_8.setColumns(10);
-		textField_8.setBounds(912, 208, 218, 27);
-		frmRealizarCompra.getContentPane().add(textField_8);
-		
 		JLabel lblTelfono_1_1 = new JLabel("Código Postal:");
 		lblTelfono_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblTelfono_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
@@ -274,18 +238,6 @@ public class RealizarCompra {
 		textField_10.setColumns(10);
 		textField_10.setBounds(912, 305, 218, 27);
 		frmRealizarCompra.getContentPane().add(textField_10);
-		
-		JLabel lblTelfono_1_1_1_1 = new JLabel("Localidad:");
-		lblTelfono_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblTelfono_1_1_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-		lblTelfono_1_1_1_1.setBounds(795, 345, 108, 34);
-		frmRealizarCompra.getContentPane().add(lblTelfono_1_1_1_1);
-		
-		textField_11 = new JTextField();
-		textField_11.setToolTipText("Ingrese Teléfono");
-		textField_11.setColumns(10);
-		textField_11.setBounds(912, 348, 218, 27);
-		frmRealizarCompra.getContentPane().add(textField_11);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(485, 186, 192, 2);

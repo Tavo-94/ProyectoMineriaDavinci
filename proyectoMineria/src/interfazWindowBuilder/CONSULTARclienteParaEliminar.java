@@ -79,15 +79,9 @@ public class CONSULTARclienteParaEliminar {
 	             if (me.getClickCount() == 1) {     // to detect doble click events
 	                JTable target = (JTable)me.getSource();
 	                Integer row = target.getSelectedRow(); // select a row
-	                
-	                System.out.println("hola");
-	                
+	                	                
 	                Integer id = (Integer)table2.getValueAt(row, 0);
-	                
-	                System.out.println(id + "Este es el id");
-	                
-	                JOptionPane.showMessageDialog(null, row);
-	        		
+	                	        		
 	                ClienteDAO clienteDAO = new ClienteDAO();
 	                DireccionDAO direccionDAO = new DireccionDAO();
 	                

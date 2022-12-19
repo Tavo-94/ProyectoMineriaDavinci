@@ -76,16 +76,13 @@ public class CONSULTARcliente {
 
 	      table.addMouseListener(new MouseAdapter() {
 	          public void mouseClicked(MouseEvent me) {
-	             if (me.getClickCount() == 1) {     // to detect doble click events
+	             if (me.getClickCount() == 1) {   
 	                JTable target = (JTable)me.getSource();
-	                Integer row = target.getSelectedRow() + 1; // select a row
-	                int column = target.getSelectedColumn(); // select a column	                
+	                Integer row = target.getSelectedRow(); 
 	                
-	                System.out.println("hola");
-	                
-	                JOptionPane.showMessageDialog(null, row);
-	        		MODIFICARcliente modifyCliente = new MODIFICARcliente(row);
-	        		modifyCliente.modifyCliente(row);
+	                Integer id = (Integer)table.getValueAt(row, 0);
+	        		MODIFICARcliente modifyCliente = new MODIFICARcliente(id);
+	        		modifyCliente.modifyCliente(id);
 	                
 	             }
 	          }
