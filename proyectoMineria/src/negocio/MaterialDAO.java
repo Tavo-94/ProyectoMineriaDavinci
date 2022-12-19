@@ -245,8 +245,7 @@ public class MaterialDAO {
 
 		}
 	}
-
-	// Metodos tabla material_pedido
+	
 	public void agregarNuevoMaterialPedido(Material material) {
 		try {
 
@@ -261,6 +260,46 @@ public class MaterialDAO {
 			ptmt.setString(2, material.getPureza());
 			ptmt.setDouble(3, material.getCantidad());
 			ptmt.setDouble(4, material.getPrecioBase());
+
+			ptmt.executeUpdate();
+			System.out.println("Se agrego con exito");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// siempre cierro el Statement y la conexion al finalizar el metodo
+			try {
+				if (ptmt != null) {
+					ptmt.close();
+				}
+				if (conexion != null) {
+					conexion.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+	
+
+	// Metodos tabla material_pedido
+	public void agregarNuevoMaterialAlDeposito(Material material) {
+		try {
+
+			// defino la query
+			String queryString = "INSERT INTO material(tipo, pureza, cantidad, fecha_de_ingreso, deposito_iddeposito) VALUES(?,?,?, CURDATE(), ?)";
+			// armo la conexion
+			conexion = getConnection();
+
+			// preparo el statement que ejecuta la query
+			ptmt = conexion.prepareStatement(queryString);
+			ptmt.setString(1, material.getTipo());
+			ptmt.setString(2, material.getPureza());
+			ptmt.setDouble(3, material.getCantidad());
+			ptmt.setInt(4, 1);
 
 			ptmt.executeUpdate();
 			System.out.println("Se agrego con exito");

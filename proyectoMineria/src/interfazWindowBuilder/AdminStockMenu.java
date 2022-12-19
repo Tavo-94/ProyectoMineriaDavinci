@@ -142,9 +142,9 @@ public class AdminStockMenu {
         JMenuItem mntmConsultarStock = new JMenuItem("Consultar Stock");
         mntmConsultarStock.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		MoEliMaterial modifyStock = new MoEliMaterial(null);
-        		modifyStock.modifyStock();
-        		frmAdminstockMenu.dispose();
+//        		MoEliMaterial modifyStock = new MoEliMaterial(null);
+//        		modifyStock.modifyStock();
+//        		frmAdminstockMenu.dispose();
         	}
         });
         mnNewMenu_1.add(mntmConsultarStock);
@@ -201,8 +201,9 @@ public class AdminStockMenu {
         JButton btnConsultar = new JButton("CONSULTAR STOCK");
         btnConsultar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		MoEliMaterial.modifyMaterial(null);
-        		
+        		//MoEliMaterial.modifyMaterial(null);
+        		CONSULTARstock consulta = new CONSULTARstock();
+        		consulta.consultarStock();
         	}
         });
         btnConsultar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

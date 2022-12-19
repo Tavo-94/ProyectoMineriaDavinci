@@ -168,11 +168,11 @@ public class ELIMINARmaterial {
 		
 		AdminStockDAO stock = new AdminStockDAO();
 		
-		Object[] listaDeStock = stock.listaDeMateriales();
+		//Object[] listaDeStock = stock.listaDeMateriales();
 		
-		DefaultComboBoxModel modelocombo = new DefaultComboBoxModel(listaDeStock);
+		//DefaultComboBoxModel modelocombo = new DefaultComboBoxModel(listaDeStock);
 		
-		comboBoxOpcionesDeId.setModel(modelocombo);
+		//comboBoxOpcionesDeId.setModel(modelocombo);
 		
 		comboBoxOpcionesDeId.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -182,20 +182,20 @@ public class ELIMINARmaterial {
 					
 					AdminStockDAO stockDAO = new AdminStockDAO();
 					
-					AdminStock adminPorId = stockDAO.eliminarMaterial(seleccionado).toString();
-					
-					textField_1.setText(adminPorId.getNombreUsuario());
-					
-					textField.setText(adminPorId.getClave());
-					
-					txtIngreseNombre.setText(adminPorId.getNombre());
-					
-					textField_1.setText(adminPorId.getApellido());
+					//AdminStock adminPorId = stockDAO.eliminarMaterial(seleccionado).toString();
+//					
+//					textField_1.setText(adminPorId.getNombreUsuario());
+//					
+//					textField.setText(adminPorId.getClave());
+//					
+//					txtIngreseNombre.setText(adminPorId.getNombre());
+//					
+//					textField_1.setText(adminPorId.getApellido());
 					
 					
 				}
 			};
-		};
+		});
 		frmEliminarMaterial.getContentPane().add(comboBoxOpcionesDeId);
 		
 		}

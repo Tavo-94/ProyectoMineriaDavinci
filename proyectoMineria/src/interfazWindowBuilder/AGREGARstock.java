@@ -119,10 +119,10 @@ public class AGREGARstock {
 				String Pureza = textIngresePureza.getText();
 				Double Cantidad = Double.parseDouble(textIngreseCantidad.getText());
 				Material material = new Material(Tipo, Pureza, Cantidad);
+
+				MaterialDAO materialDAO = new MaterialDAO();
 				
-				AdminStockDAO nuevoStock = new AdminStockDAO();
-				nuevoStock.agregarMaterial(material);
-				addStock();
+				materialDAO.agregarNuevoMaterialAlDeposito(material);
 				
 				JOptionPane.showMessageDialog(null, "Se agrego exitosamente");
 				frmAgregarStock.dispose();
