@@ -101,7 +101,7 @@ public class CONSULTARstock2 {
 		
 		JComboBox comboBoxTipo = new JComboBox();
 		comboBoxTipo.setFont(new Font("Dialog", Font.PLAIN, 13));
-		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"Oro", "Plata", "Cobre", "Todos"}));
+		comboBoxTipo.setModel(new DefaultComboBoxModel(new String[] {"Oro", "Plata", "Cobre", "*"}));
 		comboBoxTipo.setBounds(180, 111, 125, 30);
 		frmConsultarStock.getContentPane().add(comboBoxTipo);
 		
@@ -168,7 +168,7 @@ public class CONSULTARstock2 {
 					porTipo.mostrarStockTipoPurezaAlta(Item);
 				} if (Item2.equals("Media")) {
 					porTipo.mostrarStockTipoPurezaMedia(Item);
-				} else {
+				} if (Item2.equals("Baja")) {
 					porTipo.mostrarStockTipoPurezaBaja(Item);
 				}
 				

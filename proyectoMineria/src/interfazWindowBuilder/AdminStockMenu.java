@@ -1,13 +1,3 @@
-package interfazWindowBuilder;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.EventQueue;
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
@@ -197,25 +187,17 @@ public class AdminStockMenu {
         btnNewButton_1.setBounds(46, 340, 291, 23);
         frmAdminstockMenu.getContentPane().add(btnNewButton_1);
         
-        JButton btnModificar_1 = new JButton("MODIFICAR EXISTENTE");
+        JButton btnModificar_1 = new JButton("CONSULTAR STOCK");
         btnModificar_1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		MODIFICARstock modifyStock = new MODIFICARstock();
-        		modifyStock.modifyStock();
+        		MoEliMaterial.modifyMaterial(null);
         		
-        		frmAdminstockMenu.dispose();
         	}
         });
         btnModificar_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btnModificar_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
         btnModificar_1.setBounds(46, 376, 291, 23);
         frmAdminstockMenu.getContentPane().add(btnModificar_1);
-        
-        JButton btnEliminar_1_1 = new JButton("ELIMINAR");
-        btnEliminar_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btnEliminar_1_1.setFont(new Font("JetBrains Mono NL", Font.PLAIN, 13));
-        btnEliminar_1_1.setBounds(46, 410, 291, 23);
-        frmAdminstockMenu.getContentPane().add(btnEliminar_1_1);
         
         JButton btnBuscarMaterial = new JButton("BUSCAR MATERIAL");
         btnBuscarMaterial.setFont(new Font("Dialog", Font.PLAIN, 13));
@@ -224,7 +206,7 @@ public class AdminStockMenu {
         		CONSULTARstock2.consultarStock();
         	}
         });
-        btnBuscarMaterial.setBounds(46, 452, 291, 27);
+        btnBuscarMaterial.setBounds(46, 409, 291, 27);
         frmAdminstockMenu.getContentPane().add(btnBuscarMaterial);
     }
 }
