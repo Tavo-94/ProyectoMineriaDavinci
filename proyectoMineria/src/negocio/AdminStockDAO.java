@@ -690,45 +690,6 @@ public class AdminStockDAO {
         return null;
     }
 
-
-            
-           /* while (resultSet.next()) {
-            	int ID = resultSet.getInt(1);
-            	String Material = resultSet.getString(2);
-            	double Pureza = resultSet.getDouble(3);
-            	double Cantidad = resultSet.getDouble(4);
-            	Date Fecha_Ingreso = resultSet.getDate(5);
-            	int ID_Deposito = resultSet.getInt(6);
-            	
-            	
-            	System.out.println("ID: " + ID + 
-            			" | Material: " + Material + 
-            			" | Pureza: " + Pureza + 
-            			" | Cantidad: " + Cantidad + 
-            			" | ID_Deposito: " + ID_Deposito +
-            			" | Fecha_Ingreso: " + Fecha_Ingreso);
-            	
-			}
-    		
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-        try {
-        	if (ptmt != null)
-                ptmt.close();
-        	if (conexion != null)
-                conexion.close();
-        	if (resultSet != null) {
-        		resultSet.close();
-        	}
-        	} catch (SQLException e) {
-            e.printStackTrace();
-            } catch (Exception e) {
-            e.printStackTrace();
-            }
-        } 
-    }*/
-    
     private Object[] listaDeMateriales() {
     	try {
     		
